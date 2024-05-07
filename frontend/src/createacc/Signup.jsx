@@ -1,7 +1,8 @@
-import React from 'react'
 import React, {useState} from 'react'
+import axios from 'axios'
 
-function Signup() {
+const Signup = () => {
+    
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -12,7 +13,7 @@ function Signup() {
     }
     const handleSubmit = (event) =>{
         event.preventDefault();
-        axios.post('http://localhost:8800/signup', {values})
+        axios.post('http://localhost:8800/Signup', {values})
         .then(res => console.log("Registered Successfully!"))
         .catch(err => console.log(err));
     }
