@@ -17,7 +17,17 @@ const db =  mysql.createConnection ({
     database: "barbershop"
 })
 
+db.connect((err) => {
+    if (err) {
+        console.error("Error connecting to MySQL :", err);
+        return;
+    }
+    console.log('connected to mysql database');
+});
+
+
 app.post('/customer', (req, res) => {
+    const {customer_id, name, email, phone_num, password, usename} = req.body
     const sql = "INSERT INTO customer(`customer_id`, `name`, `email`, `phone_num`, `password`, `username`) Values (?)";
     const values = [
         req.body.customer_id,
@@ -28,8 +38,12 @@ app.post('/customer', (req, res) => {
         req.body.username,
     ]
     db.query(sql, [values], (err, data) => {
-        if(err) return res.json(err);
-        return res.json(data);
+        if(err) {
+            console.error('Error inserting customer acc:', err);
+            res.status(500).json({error: 'an error occurred while inserting customer'});
+        } else {
+            res.status(200).json({message: 'customer inserted succesfully'});
+        }
     })
 })
 
