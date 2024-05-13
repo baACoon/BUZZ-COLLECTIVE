@@ -11,18 +11,23 @@
 <body>
 
         <header id="mainheader">
-            <img src="image/buzz.png" alt="">
-                <a href="#">HOME </a>
-                <div class="dropdown">
-                    <button class="dropbtn">ABOUT US <i class="fa-solid fa-chevron-down"></i> </button>
-                    <div class="dropdown-content">
-                        <a href="#">About us</a>
-                        <a href="#">Barbers</a>
+       
+                <img src="image/buzz.png" alt="">
+                    <a href="#">HOME </a>
+                    <div class="dropdown">
+                        <a class="dropbtn">ABOUT US <i class="fa-solid fa-chevron-down"></i> </a>
+                        <div class="dropdown-content">
+                            <li href="#">About us</li>
+                            <li href="#">Barbers</li>
+                        </div>
                     </div>
-                </div>
-                <a href="#">SERVICE </a>
-                <a href="#">PRODUCTS </a>
-                <a class="usericon" href=""><i class="fa-regular fa-user"></i></a>
+                    <a href="#">SERVICES</a>
+                    <a href="#">PRODUCTS </a>
+                    <a class="usericon" href=""><i class="fa-solid fa-user"></i></a>
+        
+      
+
+
         </header>
     
 </body>
