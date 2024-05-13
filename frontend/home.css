@@ -1,43 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body{
+/* Base styles */
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
-#mainheader{
+
+#mainheader {
     background-color: #111F4D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
-#mainheader img{
+#mainheader img {
     width: 200px;
     height: 70px;
-    position: relative;
-    margin-top: 25px;
-    margin-left: 25px;
 }
 
-#navbar .buttons{
-    gap: 70px;
-    justify-content: center;
-    display: flex;
-    margin-left: 100px;
-    margin-top: 20px;
-}
-
-#navbar a{
-    position: relative;
-    cursor: pointer;
-    font-size: 20px;
+#mainheader a{
     text-decoration: none;
     color: white;
-    margin-top: -70px;
+    font-size: 18px;
 }
 
-#navbar .usericon{
-    left: 13.5%;
-    font-size: 2em;
-    top: -10px;
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
+.dropbtn {
+    background-color: #111F4D;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #E43A19;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #1d1d1d;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Media queries */
+@media screen and (max-width: 654px) {
+    .dropdown-content {
+        background-color: #E43A19;
+        min-width: unset;
+    }
+
+    .dropdown-content a {
+        color: white;
+    }
+}

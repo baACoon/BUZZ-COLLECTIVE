@@ -12,19 +12,17 @@
 
         <header id="mainheader">
             <img src="image/buzz.png" alt="">
-
-            <nav id="navbar">
-                <div class="buttons">
-                    <a href="">Home</a>
-                    <a href="">About us</a>
-                    <a href="">Services</a>
-                    <a href="">Products</a>
-                    <a class="usericon" href=""><i class="fa-regular fa-user"></i></a>
-                    
+                <a href="#">HOME </a>
+                <div class="dropdown">
+                    <button class="dropbtn">ABOUT US <i class="fa-solid fa-chevron-down"></i> </button>
+                    <div class="dropdown-content">
+                        <a href="#">About us</a>
+                        <a href="#">Barbers</a>
+                    </div>
                 </div>
-     
-            </nav>
-
+                <a href="#">SERVICE </a>
+                <a href="#">PRODUCTS </a>
+                <a class="usericon" href=""><i class="fa-regular fa-user"></i></a>
         </header>
     
 </body>
