@@ -29,8 +29,7 @@
                 </div>
         </header>
 
-
-        <button class="book-appointment-btn">BOOK AN APPOINTMENT</button>
+        <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
 
 </body>
         <div class="barbers-container">
