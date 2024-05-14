@@ -13,22 +13,96 @@
         <header id="mainheader">
        
                 <img src="image/buzz.png" alt="">
-                    <a href="#">HOME </a>
+                <div class="buttons">
+                    <a href="home.php">HOME </a>
                     <div class="dropdown">
-                        <a class="dropbtn">ABOUT US <i class="fa-solid fa-chevron-down"></i> </a>
+                        <a class="dropbtn" href="aboutus.php">ABOUT US <i class="fa-solid fa-chevron-down"></i> </a>
                         <div class="dropdown-content">
-                            <li href="#">About us</li>
-                            <li href="#">Barbers</li>
+                            <li><a href="aboutus.php">About us</a></li>
+                            <li><a href="#">Barbers</a></li>
                         </div>
                     </div>
                     <a href="#">SERVICES</a>
                     <a href="#">PRODUCTS </a>
                     <a class="usericon" href=""><i class="fa-solid fa-user"></i></a>
-        
-      
 
-
+                </div>
         </header>
-    
+
+
+        <button class="book-appointment-btn">BOOK AN APPOINTMENT</button>
+
 </body>
+        <div class="barbers-container">
+            <h1 class="text">BARBERS' AVAILABILITY</h1>
+            <div class="barbers">
+                <img src="image/Barber1.jpg" alt="">
+                <img src="image/barber 2.jpg" alt="">
+                <img src="image/Barber 3.jpg" alt="">
+                <img src="image/barber4.jpg" alt="">
+                <img src="image/barber5.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="days">
+            <div class="day">
+            <h1>MONDAY</h1>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="day">
+            <h1>TUESDAY</h1>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="day">
+            <h1>WEDNESDAY</h1>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="day">
+            <h1>THURSDAY</h1>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="day">
+            <h1>FRIDAY</h1>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="day">
+            <h1>SATURDAY</h1>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="day">
+            <h1>SUNDAY</h1>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            <i id="check" class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+
+
+
 </html>
