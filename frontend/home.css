@@ -8,26 +8,26 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
     height: 150vh;
-    
-    
 }
 
 #mainheader {
     background-color: #111F4D;
     display: flex;
     align-items: center;
-    padding: 10px 20px;
     position: fixed;
-    top: 0;
     width: 100%;
+    height: 100px;
     z-index: 1000; /* Ensure the header appears above other content */
 }
 
 #mainheader img {
-    width: 200px;
-    height: 70px;
+    width: 180px;
+    position: relative;
+    height: 150px; /* Adjust the height as needed */
+    margin-left: 35px; /* Adjust the margin as needed */
+    margin-right: 20px; /* Adjust the margin as needed */
+    margin-top: -10px;
 }
 
 #mainheader a{
@@ -182,6 +182,13 @@ body {
     color: #FF473E;
     font-size: 50px;
 }
+
+
+
+
+/* FOOTER  */
+
+
 
 
 

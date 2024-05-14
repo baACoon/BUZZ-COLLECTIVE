@@ -104,5 +104,7 @@
         </div>
 
 
-
+        <footer>
+            <img src="image/buzz.png" alt="">
+        </footer>
 </html>
