@@ -31,6 +31,7 @@
 
         <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
 
+
 </body>
         <div class="barbers-container">
             <h1 class="text">BARBERS' AVAILABILITY</h1>
@@ -104,6 +105,12 @@
 
 
         <footer>
-            <img src="image/buzz.png" alt="">
+            <div class="footer-container">
+                <div class="footer-section">
+                <img src="image/buzz.png" alt="">
+
+                </div>
+
+            </div>
         </footer>
 </html>
