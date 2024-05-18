@@ -53,6 +53,7 @@ if (isset($_POST['reg_user'])) {
   	$result = mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
+    $_SESSION['show_popup'] = true; //set popup flag
   	header('location: ../frontend/home.php');
   }
 }
@@ -76,6 +77,7 @@ if (isset($_POST['login_user'])) {
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
+      $_SESSION['show_popup'] = true; //set popup flag
   	  header('location: ../frontend/home.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");

@@ -1,7 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location: login.php');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="design/popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -28,6 +39,28 @@
 
                 </div>
         </header>
+
+        
+        <?php if (isset($_SESSION['show_popup'])) : ?>
+            <div class="popup" id="welcomePopup">
+                <p>Welcome to <i>Buzzin' Collective,</i></p>
+                <p class ="username"><?php echo $_SESSION['username']; ?>!</p>
+                <p>You are now logged in. </p>
+                <button onclick="closePopup()">Close</button>
+            </div>
+            <script>
+                function closePopup() {
+                    var popup = document.getElementById('welcomePopup');
+                    popup.style.display = 'none';
+                    <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
+                }
+
+                window.onload = function() {
+                    var popup = document.getElementById('welcomePopup');
+                    popup.style.display = 'block';
+                }
+            </script>
+        <?php endif; ?>
 
         <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
 
