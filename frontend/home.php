@@ -11,13 +11,13 @@ if (!isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="design/home.css">
     <link rel="stylesheet" href="design/popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Home</title>
+    <title>Buzz & Collective | Home</title>
 </head>
 <body>
 
@@ -39,6 +39,9 @@ if (!isset($_SESSION['username'])) {
 
                 </div>
         </header>
+        
+        <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
+
 
         
         <?php if (isset($_SESSION['show_popup'])) : ?>
@@ -46,7 +49,7 @@ if (!isset($_SESSION['username'])) {
                 <p>Welcome to <i>Buzzin' Collective,</i></p>
                 <p class ="username"><?php echo $_SESSION['username']; ?>!</p>
                 <p>You are now logged in. </p>
-                <button onclick="closePopup()">Close</button>
+                <button class="popbutton" onclick="closePopup()">Close</button>
             </div>
             <script>
                 function closePopup() {
@@ -62,8 +65,7 @@ if (!isset($_SESSION['username'])) {
             </script>
         <?php endif; ?>
 
-        <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
-
+        
 
 </body>
         <div class="barbers-container">

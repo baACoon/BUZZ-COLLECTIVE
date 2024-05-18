@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
-    background: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('image/buzz&collectives.jpg');
+    background: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('image/aboutuscover.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

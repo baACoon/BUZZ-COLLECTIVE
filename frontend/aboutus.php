@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="design/about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -39,6 +39,8 @@
                 where craftsmanship meets community. Experience top-notch grooming services 
                 alongside curated selections of lifestyle products, fostering a vibrant space 
                 where style and culture intersect.</p>
+
+
 
 
         </div>
