@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="buzz-img">
-        <img src="image/buzz.png" alt="">
+        <img src="design/image/buzz.png" alt="">
     </div>
 
     <div id="appointment-form">

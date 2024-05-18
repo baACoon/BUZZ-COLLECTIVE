@@ -14,7 +14,7 @@
 
         <header id="mainheader">
        
-                <img src="image/buzz.png" alt="">
+                <img src="design/image/buzz.png" alt="">
                 <div class="buttons">
                     <a href="home.php">HOME </a>
                     <div class="dropdown">
@@ -34,7 +34,7 @@
 
         <div id="body-container">
 
-            <img src="image/buzz.png" class="logo-body"alt="">
+            <img src="design/image/buzz.png" class="logo-body"alt="">
             <p>Buzz & Collectives is more than just a barbershop—it's a dynamic concept store 
                 where craftsmanship meets community. Experience top-notch grooming services 
                 alongside curated selections of lifestyle products, fostering a vibrant space 

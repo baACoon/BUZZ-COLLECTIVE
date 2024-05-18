@@ -23,7 +23,7 @@ if (!isset($_SESSION['username'])) {
 
         <header id="mainheader">
        
-                <img src="image/buzz.png" alt="">
+                <img src="design/image/buzz.png" alt="">
                 <div class="buttons">
                     <a href="home.php">HOME </a>
                     <div class="dropdown">
@@ -71,11 +71,11 @@ if (!isset($_SESSION['username'])) {
         <div class="barbers-container">
             <h1 class="text">BARBERS' AVAILABILITY</h1>
             <div class="barbers">
-                <img src="image/Barber1.jpg" alt="">
-                <img src="image/barber 2.jpg" alt="">
-                <img src="image/Barber 3.jpg" alt="">
-                <img src="image/barber4.jpg" alt="">
-                <img src="image/barber5.jpg" alt="">
+                <img src="design/image/Barber1.jpg" alt="">
+                <img src="design/image/barber 2.jpg" alt="">
+                <img src="design/image/Barber 3.jpg" alt="">
+                <img src="design/image/barber4.jpg" alt="">
+                <img src="design/image/barber5.jpg" alt="">
             </div>
         </div>
 
@@ -142,7 +142,7 @@ if (!isset($_SESSION['username'])) {
         <footer>
             <div class="footer-container">
                 <div class="footer-section">
-                <img src="image/buzz.png" alt="">
+                <img src="design/image/buzz.png" alt="">
 
                 </div>
 
