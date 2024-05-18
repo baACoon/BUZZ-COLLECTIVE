@@ -46,10 +46,9 @@ if (!isset($_SESSION['username'])) {
         
         <?php if (isset($_SESSION['show_popup'])) : ?>
             <div class="popup" id="welcomePopup">
-                <p>Welcome to <i>Buzzin' Collective,</i></p>
+                <p>Welcome,</p>
                 <p class ="username"><?php echo $_SESSION['username']; ?>!</p>
-                <p>You are now logged in. </p>
-                <button class="popbutton" onclick="closePopup()">Close</button>
+                <button class="popbutton" onclick="closePopup()">Get Started</button>
             </div>
             <script>
                 function closePopup() {
