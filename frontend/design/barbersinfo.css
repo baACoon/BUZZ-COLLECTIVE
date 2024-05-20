@@ -1,22 +1,32 @@
 /*BARBERS INFO */
+.txt{
+    margin-top: 20%;
+    margin-left: 8em;
+}
+.txt h1{
+    font-weight: 400;
+}
 .image-container {
     display: flex;
     justify-content: center ;
     flex-wrap: wrap;
+    margin-top: 5%;
 }
 
 .image-wrapper {
     position: relative;
-    margin: 10px;
+    margin: 1px;
+    z-index: 1; /* Ensure the image wrapper has a z-index set */
 }
 
 .image {
     cursor: pointer;
-    width: 100px; /* Adjust as needed */
+    width: 200px; /* Adjust as needed */
     height: auto;
     border-radius: 50%;
     transition: transform 0.3s, filter 0.3s;
     filter: grayscale(100%); /* Apply grayscale by default */
+    z-index: 0; /* Set higher z-index for the image */
 }
 
 .image:hover,
@@ -28,7 +38,7 @@
 .info {
     display: block;
     position: absolute;
-    top: 110%; /* Adjust as needed */
+    top: 90%; /* Adjust as needed */
     left: 50%;
     transform: translateX(-50%);
     width: 500px; /* Adjust as needed */
@@ -37,12 +47,13 @@
     color: white;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 2;
     opacity: 0;
     height: 0;
     overflow: hidden;
     transition: opacity 0.5s, height 0.5s; /* Transition for smooth dropdown effect */
     text-align: left; /* Align text to the left */
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 .image-wrapper:hover .info {

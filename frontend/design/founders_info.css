@@ -36,8 +36,8 @@
 .v105_40{
     position: absolute;
     float: left;
-    width: 487px;
-    height: 487px;
+    width: 500px;
+    height: 500px;
     top: 1000px;
     left: 263px;
 }
@@ -49,6 +49,7 @@
     height: 446px;
     opacity: 1;
     position: absolute;
-    top: 1290px;
+    top: 1240px;
     left: 80px;
+    border-radius: 4px;
 }

@@ -69,6 +69,9 @@
         </div>
 
 
+            <div class="txt">
+                <h1>Meet the <b>PRIDE</b> of Buzz&Collectives</h1>
+            </div>
         
             <!--BARBERS INFO -->
         <div class="image-container">
@@ -77,6 +80,8 @@
                 ['src' => 'design/image/Barber1.jpg', 'info' => 'Juan “Baby” Luna<br>Fav Cut: Fade<br>Fun Fact:<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'],
                 ['src' => 'design/image/barber4.jpg', 'info' => 'Information about Image 2'],
                 ['src' => 'design/image/barber5.jpg', 'info' => 'Information about Image 3'],
+                ['src' => 'design/image/barber 2.jpg', 'info' => 'Information about Image 3'],
+                ['src' => 'design/image/Barber 3.jpg', 'info' => 'Information about Image 3'],
                 
             ];
 
@@ -97,7 +102,7 @@
                     images.forEach(image => {
                         image.addEventListener('click', function() {
                             const index = this.getAttribute('data-index');
-                            const info = document.getElementById('info-' + index);
+                            const info = document.getElementById('info-' + index);  
 
                             // Hide all info boxes and remove active class from all images
                             infos.forEach(info => {
