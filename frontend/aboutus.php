@@ -49,20 +49,20 @@
         <!--BUZZING & FOUNDERS INFO-->
         <div class="buzzing_container">
                     <h3>Founders</h3>
-                    <h2>Monti & Comia Started</h2>
-                    <h1>BUZZING</h1>
-                    <p class = "akira-monti1050_47">
-                        In May 2022, Akira Gata and Monti Comia establised Buzz&Collectives just as Cavite City was still recovering 
+                    <h2>Monti & Comia started</h2>
+                    <h1><i>BUZZING</i></h1>
+                    <p>
+                        In <b>May 2022</b>, Akira Gata and Monti Comia establised Buzz&Collectives just as Cavite City was still recovering 
                         from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures builded 
                         the trust with the clients.
                     </p>
 
 
-                        <div class="v105_40">
-                            <img src="design/image/Monti_Comia.png" alt="" >
+                        <div class="v105_40">  <!--MONTI IMAGE-->
+                            <img src="design/image/Monti_comia.png" alt="" >
                         </div>
 
-                        <div class="v105_38">
+                        <div class="v105_38">  <!--AKIRA IMAGE-->
                             <img src="design/image/Akira_Gata.png" alt="">
                         </div>
 
@@ -137,10 +137,7 @@
                 });
         </script>
 
-
-
-                <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
-
+            <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
 
 
 </body>

@@ -1,11 +1,54 @@
 /* AKIRA_MONTI */
 .buzzing_container{
-    color: white;
+    justify-content: space-between;
+    padding-top: 500px;
+    color: #000000;
+    margin-left: 45em;
+}
+
+.buzzing_container h1{
+    font-size: 100px;
+    margin-top: -40px;
+    font-weight: 800;
+
+}
+
+.buzzing_container h2{
+    font-size: 50px;
+    font-weight: 300;
+    margin-top: -20px;
+
+}
+
+.buzzing_container h3{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.buzzing_container  p{
+    width: 50%;
+    text-align: justify;
+    margin-top: -20px;
 }
 
 
-
 /* MONTI IMAGE */
+.v105_40{
+    position: absolute;
+    float: left;
+    width: 487px;
+    height: 487px;
+    top: 1000px;
+    left: 263px;
+}
 
 
 /*AKIRA IMAGE */
+.v105_38{
+    width: 450px;
+    height: 446px;
+    opacity: 1;
+    position: absolute;
+    top: 1290px;
+    left: 80px;
+}
