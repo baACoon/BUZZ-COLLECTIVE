@@ -1,0 +1,51 @@
+/*BARBERS INFO */
+.image-container {
+    display: flex;
+    justify-content: center ;
+    flex-wrap: wrap;
+}
+
+.image-wrapper {
+    position: relative;
+    margin: 10px;
+}
+
+.image {
+    cursor: pointer;
+    width: 100px; /* Adjust as needed */
+    height: auto;
+    border-radius: 50%;
+    transition: transform 0.3s, filter 0.3s;
+    filter: grayscale(100%); /* Apply grayscale by default */
+}
+
+.image:hover,
+.image.active {
+    transform: scale(1.1);
+    filter: grayscale(0%); /* Remove grayscale on hover or when active */
+}
+
+.info {
+    display: block;
+    position: absolute;
+    top: 110%; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px; /* Adjust as needed */
+    padding: 10px;
+    background: #111F4D;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s, height 0.5s; /* Transition for smooth dropdown effect */
+    text-align: left; /* Align text to the left */
+}
+
+.image-wrapper:hover .info {
+    opacity: 1;
+    height: auto; /* Allows the dropdown to expand to fit the content */
+}
