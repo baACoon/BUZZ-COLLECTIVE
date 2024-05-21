@@ -67,84 +67,137 @@ if (!isset($_SESSION['username'])) {
         
 
 </body>
+            <!-- Barbers' Availability Section -->
         <div class="barbers-container">
             <h1 class="text">BARBERS' AVAILABILITY</h1>
-            <div class="barbers">
-                <img src="design/image/Barber1.jpg" alt="">
-                <img src="design/image/barber 2.jpg" alt="">
-                <img src="design/image/Barber 3.jpg" alt="">
-                <img src="design/image/barber4.jpg" alt="">
-                <img src="design/image/barber5.jpg" alt="">
-            </div>
         </div>
 
-        <div class="days">
-            <div class="day">
-            <h1>MONDAY</h1>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
+        <section class="availability">
+    
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><img src="design/image/Barber1.jpg" alt="Barber 1"></th>
+                        <th><img src="design/image/barber 2.jpg" alt="Barber 2"></th>
+                        <th><img src="design/image/Barber 3.jpg" alt="Barber 3"></th>
+                        <th><img src="design/image/barber4.jpg" alt="Barber 4"></th>
+                        <th><img src="design/image/barber5.jpg" alt="Barber 5"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MONDAY</td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>TUESDAY</td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>WEDNESDAY</td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>THURSDAY</td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>FRIDAY</td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>SATURDAY</td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i id="xmark" class="fa-solid fa-circle-xmark"></i></td>
+                    </tr>
+                    <tr>
+                        <td>SUNDAY</td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                        <td><i id="check" class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="buzzin-barber">
+            <h2>BE A BUZZIN’ BARBER! <i>More Info</i></h2>
+            <img src="design/image/stockphotos5.jpg" alt="Be Part of the Crew">
+        </section>
+
+        <!-- Stock Photos Section -->
+        <section class="stock-photos">
+            <h2>STOCK PHOTOS</h2>
+            <div class="gallery">
+                <img src="https://placehold.co/200x200" alt="Stock Photo 1">
+                <img src="https://placehold.co/200x200" alt="Stock Photo 2">
+                <img src="https://placehold.co/200x200" alt="Stock Photo 3">
+                <img src="https://placehold.co/200x200" alt="Stock Photo 4">
+                <img src="https://placehold.co/200x200" alt="Stock Photo 5">
             </div>
-            <div class="day">
-            <h1>TUESDAY</h1>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
+            <div class="appointment">
+            <a href="appointment.php"><button>BOOK AN APPOINTMENT</button></a>
+
             </div>
-            <div class="day">
-            <h1>WEDNESDAY</h1>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            </div>
-            <div class="day">
-            <h1>THURSDAY</h1>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            </div>
-            <div class="day">
-            <h1>FRIDAY</h1>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            </div>
-            <div class="day">
-            <h1>SATURDAY</h1>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            <i id="xmark" class="fa-solid fa-circle-xmark"></i>
-            </div>
-            <div class="day">
-            <h1>SUNDAY</h1>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            <i id="check" class="fa-solid fa-circle-check"></i>
-            </div>
-        </div>
+        </section>
+
 
 
         <footer>
-            <div class="footer-container">
-                <div class="footer-section">
-                <img src="design/image/buzz.png" alt="">
-
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2>BUZZ & COLLECTIVES</h2>
+                <p>SIGN UP FOR NEWS AND PROMOS</p>
+                <form>
+                    <input type="email" placeholder="buzzandcollective@gmail.com">
+                    <button type="submit">→</button>
+                </form>
+                <address>
+                    <p>89 Nueno Ave, Imus Cavite, Imus, Philippines, 4103</p>
+                    <p>buzzandcollective@gmail.com</p>
+                    <p>0995 451 5631</p>
+                </address>
+                <div class="social-media">
+                    <a href="#"><img src="https://placehold.co/24x24" alt="Facebook"></a>
+                    <a href="#"><img src="https://placehold.co/24x24" alt="Instagram"></a>
+                    <a href="#"><img src="https://placehold.co/24x24" alt="TikTok"></a>
                 </div>
-
             </div>
-        </footer>
+            <div class="footer-right">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Be a Buzzing Barber</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
 </html>

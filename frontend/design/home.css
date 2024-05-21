@@ -117,11 +117,12 @@ body {
     background-color: black;
 }
 
-/*BARBERS */
 
+/*BARBERS AVAILABILITY */
 .barbers-container {
     display: flex;
     flex-direction: column; /* Stack items vertically */
+    
     
 }
 
@@ -132,47 +133,34 @@ body {
     font-size: 28px;
 }
 
-.barbers{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
+
+.availability{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2em;
+}
+.availability h2 {
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
 
-.barbers img{
+th, td {
+    padding: 0.5rem;
+}
+
+th img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    margin-top: 5.5%;
-
 }
 
-.days h1{
-    margin-left: 20px;
-    margin-top: 50px;
-    font-weight: 300;
-    font-size: 16px;
-}
-
-
-
-.days {
-    display: flex;
-    flex-direction: column;
-}
-
-.day {
-    display: flex;
-    align-items: center;
-    gap: 10em; /* Adjust the gap between icons and text */
-}
-
-.day i {
-    margin-top: 28px;
-}
-
-/*icon color */
 #check{
     color: #4BD37B;
     font-size: 50px;
@@ -184,31 +172,147 @@ body {
     font-size: 50px;
 }
 
+/*BUZZIN BARBERS */
+.buzzin-barber {
+    text-align: center;
+}
+
+.buzzin-barber h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.buzzin-barber i {
+    color: #ff5733;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.buzzin-barber img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.stock-photos h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.stock-photos .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.stock-photos .gallery img {
+    flex: 1;
+    max-width: calc(33.333% - 1rem);
+    border-radius: 10px;
+}
+
+.appointment {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.appointment button {
+    background-color: #E43A19;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.appointment button:hover {
+    background-color: black;
+}
+
 
 
 
 /* FOOTER  */
 footer {
     background-color: #111F4D;
-    color: white;
-    padding: 15px;
-    margin-top: 100px;
-    
+    color: #fff;
+    padding: 2rem;
 }
 
-footer img{
-    width: 180px;
-    position: relative;
-    height: 180px; /* Adjust the height as needed */
-    margin-left: 35px; /* Adjust the margin as needed */
-    margin-right: 20px; /* Adjust the margin as needed */
-    margin-top: -30px;
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.footer-container{
+.footer-left, .footer-right {
+    flex: 1;
+    min-width: 250px;
+    margin: 1rem;
+}
+
+.footer-left h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.footer-left p, .footer-left address, .footer-left form {
+    margin: 1rem 0;
+}
+
+.footer-left form {
     display: flex;
 }
 
+.footer-left input {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.footer-left button {
+    padding: 0.5rem;
+    border: none;
+    background-color: #ff5733;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.footer-left address p {
+    margin: 0.5rem 0;
+}
+
+.footer-left .social-media {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.footer-left .social-media a img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-right ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-right ul li a {
+    color: #fff;
+    text-decoration: none;
+}
 
 
 
