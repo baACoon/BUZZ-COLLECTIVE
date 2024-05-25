@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Appointment</title>
+    <title>Appointment Form</title>
 </head>
 <body>
     <div id="buzz-img">
@@ -15,31 +15,98 @@
 
     <div id="appointment-form">
         <h2>Buzz & Collective Appointment Form</h2>
-        </div>
+    </div>
     
     <div class="form-container">
-        <form>
+        <form action="appointment.php" method="POST"> 
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name">
+                <input type="text" id="first-name" name="first-name" required>
             </div>
+
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name">
+                <input type="text" id="last-name" name="last-name" required>
             </div>
+
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" required>
             </div>
+
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone" required>
             </div>
 
-            <h3 class="select">Select Services</h3>
+            <h2 class="select">Select Services</h2>
 
+            <div class="form-group services">
+                <label><input type="checkbox" name="services[]" value="haircut"> Haircut</label>
+                <label><input type="checkbox" name="services[]" value="kiddie_haircut"> Kiddie Haircut</label>
+                <label><input type="checkbox" name="services[]" value="haircut_shave"> Haircut and Shave</label>
+                <label><input type="checkbox" name="services[]" value="hair_art"> Hair Art</label>
+                <label><input type="checkbox" name="services[]" value="haircut_perm"> Haircut and Perm</label>
+                <label><input type="checkbox" name="services[]" value="hair_color"> Hair Color</label>
+                <label><input type="checkbox" name="services[]" value="hair_color_haircut"> Hair Color and Haircut</label>
+                <label><input type="checkbox" name="services[]" value="scalp_treatment"> Scalp Treatment</label>
+                <label><input type="checkbox" name="services[]" value="scalp_treatment_haircut"> Scalp Treatment and Haircut</label>
+                <label><input type="checkbox" name="services[]" value="shave_sculpting"> Shave and Sculpting</label>
+            </div>
+
+            <h2 class="select">Stylist</h2>
+            <div id="stylist">
+                <div class="stylist-item">
+                    <img src="design/image/barber5.jpg" alt="Stylist">
+                    <p>Adi</p>
+                    <input type="checkbox" name="barbers">
+                </div>
+
+                <div class="stylist-item">
+                    <img src="design/image/barber4.jpg" alt="Stylist">
+                    <p>Adi</p>
+                    <input type="checkbox" name="barbers">
+                </div>
+
+                <div class="stylist-item">
+                    <img src="design/image/Barber 3.jpg" alt="Stylist">
+                    <p>Adi</p>
+                    <input type="checkbox" name="barbers">
+                </div>
+
+                <div class="stylist-item">
+                    <img src="design/image/barber 2.jpg" alt="Stylist">
+                    <p>Adi</p>
+                    <input type="checkbox" name="barbers">
+                </div>
+
+                <div class="stylist-item">
+                    <img src="design/image/Barber1.jpg" alt="Stylist">
+                    <p>Adi</p>
+                    <input type="checkbox" name="barbers">
+                </div>
+            </div>
+
+            <div class="recos">
+                <input type="checkbox" id="recommended-barber" name="recommended-barber" value="recommended-barber">
+                <label for="recommended-barber">Recommended Barber</label>
+            </div>
+
+            <h2 class="select">Set Date and Time</h2>
+            <div class="form-group datetime">
+                <label for="appointment-date">Date</label>
+                <input type="date" id="appointment-date" name="appointment-date" required>
+            </div>
+
+            <div class="form-group datetime">
+                <label for="appointment-time">Time</label>
+                <input type="time" id="appointment-time" name="appointment-time" required>
+            </div>
+
+            <div class="form-group button-group">
+                <button type="submit">Submit</button>
+            </div>
         </form>
     </div>
-
 </body>
 </html>
