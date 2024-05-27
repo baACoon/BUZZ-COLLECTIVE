@@ -8,28 +8,23 @@
   <link rel="stylesheet" type="text/css" href="design/login_register.css">
 </head>
 <body>
-	 
-<div class ="image-container">
-	<div class="img29_6"></div>
-</div>
-  <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
-	  <h2>Login</h2>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		<a href="register.php">Sign up</a>
-  	</p>
-
-</form>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form method="post" action="login.php">
+			<?php include('errors.php'); ?>
+                <h4>Username</h4>
+                <input type="text" name="username" placeholder="Username" required>
+                <h4>Password</h4>
+                <input type="password" name="password" placeholder="Password" required>
+                <a href="#">Forgot Password?</a>
+                <input type="submit" value="Login" name="login_user">
+            </form>
+            <a href="register.php">Sign up</a>
+        </div>
+        <div class="image-section">
+            <!-- Image and text overlay -->
+        </div>
+    </div>
 </body>
 </html>
