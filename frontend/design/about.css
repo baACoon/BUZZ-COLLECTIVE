@@ -115,7 +115,6 @@ body {
 }
 
 /*book appointment button */
-
 .book-appointment-btn {
     background-color: #E43A19;
     color: white;
@@ -125,13 +124,128 @@ body {
     font-weight: bold;
     font-size: 18.5px;
     cursor: pointer;
-    position: absolute;
-    bottom: -400%; /* Adjust the distance from the bottom */
-    left: 50%;
-    transform: translateX(-50%); /* Center the button horizontally */
+    display: block;
+    margin: 50px auto 100px; /* Centers the button and adds space above */
+    text-align: center;
+    transition: background-color 0.3s;
+    text-decoration: none;
 }
+
 
 .book-appointment-btn:hover {
     background-color: black;
 }
 
+/* FOOTER */
+
+footer {
+    background-color: #111F4D; 
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    align-items: flex-start;
+}
+
+.footer-logo{
+    width: 300px;
+    height: 300px;
+    margin-top: 5px; 
+}
+
+.footer-left, .footer-left1, .footer-right{
+    margin: 5px;
+}
+
+.footer-left1 h2 {
+    color: white;
+}
+
+.footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
+    margin: 10px 0 20px;
+}
+
+.footer-left1 address p {
+    font-style: normal;
+    margin: 20px 0;
+}
+
+.footer-left1 address a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-left1 form {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left1 form input[type="email"] {
+    padding: 19px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    flex: 1;
+    font-size: 18px;
+}
+
+.footer-left1 form button {
+    padding: 22px;
+    background-color: #E43A19;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-right ul li {
+    margin: 30px 0;
+}
+
+.footer-right ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-right ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Align items to the center vertically */
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    
+}
+
+.social-media a {
+    margin-right: 40px; 
+}
+
+.social-media i {
+    font-size: 35px; /* Adjust icon size */
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-left, .footer-right {
+        margin: 20px 0;
+    }
+}
