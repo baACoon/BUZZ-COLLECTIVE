@@ -194,6 +194,7 @@ if (!isset($_SESSION['username'])) {
                 </ul>
             </div>
 
+
             <div class="social-media">
                 <a href="https://www.instagram.com/buzzncollective?igsh=NTk4eTR5dHBzMThi"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a>
                 <a href="https://www.facebook.com/buzzncollective"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></a>

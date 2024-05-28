@@ -284,6 +284,7 @@ footer {
 .footer-left1 form {
     display: flex;
     align-items: center;
+    
 }
 
 .footer-left1 form input[type="email"] {
@@ -299,9 +300,10 @@ footer {
     background-color: #E43A19;
     color: white;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 10px 10px 0;
     cursor: pointer;
 }
+
 
 .footer-right ul {
     list-style: none;
@@ -339,6 +341,7 @@ footer {
 .social-media i {
     font-size: 35px; /* Adjust icon size */
 }
+
 
 
 /* Media queries */
