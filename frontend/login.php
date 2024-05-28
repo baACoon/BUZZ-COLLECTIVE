@@ -1,4 +1,5 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/server.php'); ?>  
+<!--<?php //include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/server.php'); ?> -->
+<?php include('../backend/server.php')?>
 
 
 <!DOCTYPE html>
@@ -17,9 +18,9 @@
                 <input type="text" name="username" placeholder="Username" required>
                 <h4>Password</h4>
                 <input type="password" name="password" placeholder="Password" required>
-                <a href="#">Forgot Password?</a>
                 <input type="submit" value="Login" name="login_user">
             </form>
+            <p>Forgot password? </p>
             <a href="register.php">Sign up</a>
         </div>
         <div class="image-section">

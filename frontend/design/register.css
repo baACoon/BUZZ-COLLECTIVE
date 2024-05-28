@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    display: flex;
+    width: 800px;
+    box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+/*Image bg left side*/
+.signup-image {
+    flex: 1;
+    background: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('buzz&collectives.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/*Container*/
+.signup-form-container { 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #002d62;
+    width: 70%;
+    height: 500px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-form-container h2 {
+    margin-bottom: 20px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.signup-form input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 300px;
+    border-radius: 1rem;
+}
+
+/*.signup-form button{
+    color: white;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8500000238418579));
+    border-radius: 1rem;
+}*/
+
+.signup-form-container button {
+    background-color: #E43A19;
+    color: #fff;
+    cursor: pointer;
+    width: 40%;
+    margin-left: 7rem;
+  }
+
+.signup-form-container h3{
+    margin-bottom: px;
+    margin-left: 1rem;
+}
+

@@ -1,39 +1,37 @@
 <?php include('../backend/server.php') ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Registration system PHP and MySQL</title>
-  <link rel="stylesheet" type="text/css" href="login_register.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	    <link rel="stylesheet" href="design/register.css">
+    <title>Sign Up - BUZZ Collective</title>
+
 </head>
 <body>
-  <div class="header">
-  	<h2>Register</h2>
-  </div>
-	
-  <form method="post" action="register.php">
-  	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  	  <label>Username</label>
-  	  <input type="text" name="username" value="<?php echo $username; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Email</label>
-  	  <input type="email" name="email" value="<?php echo $email; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Password</label>
-  	  <input type="password" name="password_1">
-  	</div>
-  	<div class="input-group">
-  	  <label>Confirm password</label>
-  	  <input type="password" name="password_2">
-  	</div>
-  	<div class="input-group">
-  	  <button type="submit" class="btn" name="reg_user">Register</button>
-  	</div>
-  	<p>
-  		Already a member? <a href="login.php">Sign in</a>
-  	</p>
-  </form>
+    <div class="signup-container">
+        <div class="signup-image">
+            <img src="buzzin-dept.png" alt="">
+        </div>
+        <div class="signup-form-container">
+        <?php include('errors.php'); ?>
+            <h2>Sign Up</h2>
+            <form class="signup-form" method="POST" action="register.php" >
+                <!--<h4>Username</h4>-->
+                <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>" required>
+                <!--<h4>Email</h4>-->
+                <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
+                <!--<h4>Password</h4>-->
+                <input type="password" name="password_1" placeholder="Password" required>
+                <!--<h4>Confirm Password</h4>-->
+                <input type="password" name="password_2" placeholder="Confirm Password" required>
+            </form>
+
+			<button type="submit"valu="Register" name="reg_user">Sign-Up</button>
+            <h3>Already a member?<a href="login.php">Login</a></h3>
+        </div>
+
+    </div>
 </body>
 </html>
