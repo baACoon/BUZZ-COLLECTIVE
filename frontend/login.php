@@ -20,8 +20,8 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="submit" value="Login" name="login_user">
             </form>
-            <p>Forgot password? </p>
-            <a href="register.php">Sign up</a>
+            <h3>Forgot password?</h3>
+            <a href="register.php"> Sign up</a>
         </div>
         <div class="image-section">
             <!-- Image and text overlay -->

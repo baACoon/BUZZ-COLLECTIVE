@@ -36,13 +36,12 @@ if (!isset($_SESSION['username'])) {
                     <a href="#">SERVICES</a>
                     <a href="#">PRODUCTS </a>
                     <a class="usericon" href=""><i class="fa-solid fa-user"></i></a>
+                    
 
                 </div>
         </header>
         
         <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
-
-
         
         <?php if (isset($_SESSION['show_popup'])) : ?>
             <div class="popup" id="welcomePopup">
