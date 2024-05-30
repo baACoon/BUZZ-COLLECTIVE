@@ -373,3 +373,60 @@ footer {
         text-align: center; /* Center align the dropdown links */
     }
 }
+
+.blur {
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+}
+
+
+/*----------------- USER DROPDOWN ---------------*/
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.usericon {
+    background-color: #111F4D;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.user-dropdown-content {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: #E43A19;
+    z-index: 1;
+    border-radius: 10px;
+    left: 22.5%;
+    top: 100%;
+    min-width: 100px;
+}
+.user-dropdown-content li{
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin-left: -20%;
+}
+
+.user-dropdown-content a {
+    color: black;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.user-dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user-dropdown:hover .user-dropdown-content {
+    display: block;
+}

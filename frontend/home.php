@@ -17,12 +17,13 @@ if (!isset($_SESSION['username'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="frontend/usericon.js" defer></script>
     <title>Buzz & Collective | Home</title>
 </head>
 <body>
 
         <header id="mainheader">
-       
                 <img src="design/image/buzz.png" alt="">
                 <div class="buttons">
                     <a href="home.php">HOME </a>
@@ -35,33 +36,36 @@ if (!isset($_SESSION['username'])) {
                     </div>
                     <a href="#">SERVICES</a>
                     <a href="#">PRODUCTS </a>
-                    <a class="usericon" href=""><i class="fa-solid fa-user"></i></a>
-                    
-
+                    <div class="user-dropdown">
+                        <a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
+                        <div class="user-dropdown-content">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="login.php">Logout</a></li>
+                        </div>
+                    </div>
                 </div>
         </header>
         
         <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
         
-        <?php if (isset($_SESSION['show_popup'])) : ?>
-            <div class="popup" id="welcomePopup">
-                <p>Welcome,</p>
-                <p class ="username"><?php echo $_SESSION['username']; ?>!</p>
-                <button class="popbutton" onclick="closePopup()">Get Started</button>
+                <?php if (isset($_SESSION['show_popup'])) : ?>
+            <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
+            <div class="pop-background">
+                <div class="popup" id="welcomePopup">
+                    <p>Welcome,</p>
+                    <p class="username"><?php echo $_SESSION['username']; ?>!</p>
+                    <button class="popbutton" onclick="closePopup()"> Get Started </button>
+                </div>
             </div>
-            <script>
-                function closePopup() {
-                    var popup = document.getElementById('welcomePopup');
-                    popup.style.display = 'none';
-                    <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
-                }
-
-                window.onload = function() {
-                    var popup = document.getElementById('welcomePopup');
-                    popup.style.display = 'block';
-                }
-            </script>
         <?php endif; ?>
+        <script>
+            function closePopup() {
+                var popup = document.getElementById('welcomePopup');
+                popup.style.display = 'none';
+            }
+        </script>
+
+        
 
     
             <!-- Barbers' Availability Section -->
@@ -201,5 +205,6 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
     </footer>
+   
 </body>
 </html>

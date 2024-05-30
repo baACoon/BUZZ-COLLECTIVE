@@ -106,6 +106,10 @@
             <div class="form-group button-group">
                 <button type="submit">Submit</button>
             </div>
+
+            <div class="form-group button-group">
+                <button type="submit"><a href="home.php">Cancel</a></button>
+            </div>
         </form>
     </div>
 </body>

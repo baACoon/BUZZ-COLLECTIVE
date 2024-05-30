@@ -13,7 +13,9 @@
         <div class="login-form">
             <h2>Login</h2>
             <form method="post" action="login.php">
-			<?php include('errors.php'); ?>
+			<?php include('errors.php');
+                
+            ?>
                 <h4>Username</h4>
                 <input type="text" name="username" placeholder="Username" required>
                 <h4>Password</h4>
