@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #002d62;
+    color: white;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form input {
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+}
+
+.login-form button {
+    padding: 10px 20px;
+    background-color: #ff4b2b;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: #002d62;
+    color: white;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-content {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+header {
+    background-color: #004080;
+    color: white;
+    padding: 10px 20px;
+}
+
+.schedule, .stats, .appointment-list {
+    margin-top: 20px;
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.schedule-table, .appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th, .schedule-table td, .appointments-table th, .appointments-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stats-card {
+    background-color: #004080;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.barber-icons img{
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+}

@@ -1,3 +1,4 @@
+<?php include('../backend/appointment.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,15 +19,15 @@
     </div>
     
     <div class="form-container">
-        <form action="appointment.php" method="POST"> 
+        <form method="POST" action="appointment.php" method="POST"> 
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name" required>
+                <input type="text" id="first-name" name="first_name" required>
             </div>
 
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name" required>
+                <input type="text" id="last-name" name="last_name" required>
             </div>
 
             <div class="form-group">
@@ -36,7 +37,7 @@
 
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone_num" required>
             </div>
 
             <h2 class="select">Select Services</h2>
@@ -59,48 +60,48 @@
                 <div class="stylist-item">
                     <img src="design/image/barber5.jpg" alt="Stylist">
                     <p>Adi</p>
-                    <input type="checkbox" name="barbers">
+                    <input type="checkbox" name="barber">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/barber4.jpg" alt="Stylist">
                     <p>Adi</p>
-                    <input type="checkbox" name="barbers">
+                    <input type="checkbox" name="barber">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/Barber 3.jpg" alt="Stylist">
                     <p>Adi</p>
-                    <input type="checkbox" name="barbers">
+                    <input type="checkbox" name="barber">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/barber 2.jpg" alt="Stylist">
                     <p>Adi</p>
-                    <input type="checkbox" name="barbers">
+                    <input type="checkbox" name="barber">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/Barber1.jpg" alt="Stylist">
                     <p>Adi</p>
-                    <input type="checkbox" name="barbers">
+                    <input type="checkbox" name="barber">
                 </div>
             </div>
 
             <div class="recos">
-                <input type="checkbox" id="recommended-barber" name="recommended-barber" value="recommended-barber">
+                <input type="checkbox" id="recommended-barber" name="barbers" value="recommended-barber">
                 <label for="recommended-barber">Recommended Barber</label>
             </div>
 
             <h2 class="select">Set Date and Time</h2>
             <div class="form-group datetime">
-                <label for="appointment-date">Date</label>
-                <input type="date" id="appointment-date" name="appointment-date" required>
+                <label for="appointment_date">Date</label>
+                <input type="date" id="appointment-date" name="appointment_date" required>
             </div>
 
             <div class="form-group datetime">
-                <label for="appointment-time">Time</label>
-                <input type="time" id="appointment-time" name="appointment-time" required>
+                <label for="appointment_time">Time</label>
+                <input type="time" id="appointment-time" name="appointment_time" required>
             </div>
 
             <div class="form-group button-group">

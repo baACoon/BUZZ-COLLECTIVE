@@ -415,16 +415,9 @@ footer {
     white-space: nowrap;
     margin-left: -20%;
 }
-
-.user-dropdown-content a {
-    color: black;
-    padding: 10px 12px;
-    text-decoration: none;
-    display: block;
-}
-
 .user-dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: black;
+    border-radius: 5px;
 }
 
 .user-dropdown:hover .user-dropdown-content {

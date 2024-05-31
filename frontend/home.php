@@ -39,8 +39,8 @@ if (!isset($_SESSION['username'])) {
                     <div class="user-dropdown">
                         <a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
                         <div class="user-dropdown-content">
-                        <li><a href="#">My Profile</a></li>
-                        <li><a href="login.php">Logout</a></li>
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="login.php">Logout</a></li>
                         </div>
                     </div>
                 </div>
@@ -48,22 +48,23 @@ if (!isset($_SESSION['username'])) {
         
         <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
         
-                <?php if (isset($_SESSION['show_popup'])) : ?>
-            <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
-            <div class="pop-background">
-                <div class="popup" id="welcomePopup">
-                    <p>Welcome,</p>
-                    <p class="username"><?php echo $_SESSION['username']; ?>!</p>
-                    <button class="popbutton" onclick="closePopup()"> Get Started </button>
+            <?php if (isset($_SESSION['show_popup'])) : ?>
+                <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
+                <div class="pop-background" id="popBackground">
+                    <div class="popup" id="welcomePopup">
+                        <p>Welcome,</p>
+                        <p class="username"><?php echo $_SESSION['username']; ?>!</p>
+                        <button class="popbutton" onclick="closePopup()">Get Started</button>
+                    </div>
                 </div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
         <script>
             function closePopup() {
-                var popup = document.getElementById('welcomePopup');
-                popup.style.display = 'none';
+                var background = document.getElementById('popBackground');
+                background.style.display = 'none';
             }
         </script>
+
 
         
 

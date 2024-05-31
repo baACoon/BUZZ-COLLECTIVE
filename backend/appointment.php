@@ -12,16 +12,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $barber = $_POST['barber'];
     $appointmentDate = $_POST ['appointment_date'];
     $appointmentTime = $_POST ['appointment_time'];
-    $haircutStyle = $_POST ['haircut_style'];
+    $services = isset($_POST['services']) ? $_POST['services'] : [];
 
-    $sql = "INSERT INTO appointments (first_name, last_name, phone_num, email, barber, appointment_date, appointment_time, haircut_style) VALUES ('$firstName', '$lastName', '$phonenumber', '$email',  '$barber', '$appointmentDate', '$appointmentTime', '$haircutStyle')";
+    // Convert the services array to a string to store in the database
+    $servicesSerialized = serialize($services);
+
+    $sql = "INSERT INTO appointments (first_name, last_name, phone_num, email, barber, appointment_date, appointment_time, services) VALUES ('$firstName', '$lastName', '$phonenumber', '$email',  '$barber', '$appointmentDate', '$appointmentTime', '$servicesSerialized')";
 
     if($db -> query($sql) === TRUE ){
         echo "NEW RECORD CREATED SUCCESFULLY";
     }else{
         echo "Error: ". $sql . "<br>" .$db->error;
     }
-
     $db->close();
 }
 ?>
