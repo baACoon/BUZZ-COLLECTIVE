@@ -12,7 +12,7 @@ body {
 }
 
 #mainheader {
-    background-color: #111F4D;
+    background-color: #F8F8F8;
     display: flex;
     align-items: center;
     position: fixed;
@@ -32,7 +32,7 @@ body {
 
 #mainheader a{
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 18px;
     margin-left: 70px;
 }
@@ -49,7 +49,7 @@ body {
 }
 
 .dropbtn {
-    background-color: #111F4D;
+    background-color: #F8F8F8;
     color: white;
     font-size: 18px;
     border: none;
@@ -64,7 +64,7 @@ body {
     display: none;
     cursor: pointer;
     position: absolute;
-    background-color: #E43A19;
+    background-color: #222222;
     z-index: 1;
     border-radius: 10px;
     left: 22.5%;
@@ -82,6 +82,7 @@ body {
     white-space: nowrap;
     margin-left: -20%;
 }
+
 
 /* Change color of dropdown links on hover */
 .dropdown-content li a:hover {
@@ -239,7 +240,7 @@ th img {
 /* FOOTER */
 
 footer {
-    background-color: #111F4D; 
+    background-color: #222; 
     color: white;
     padding: 20px;
     position: relative;
@@ -386,7 +387,7 @@ footer {
 }
 
 .usericon {
-    background-color: #111F4D;
+    background-color: #F8F8F8;
     color: white;
     font-size: 18px;
     border: none;

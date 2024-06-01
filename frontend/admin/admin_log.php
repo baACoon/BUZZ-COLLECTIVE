@@ -1,6 +1,4 @@
-<?php //include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/admindash.php'); ?>
-
-<?php include('../backend/admindash.php')?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/admindash.php'); ?>
 
 <!DOCTYPE html>
 <html>

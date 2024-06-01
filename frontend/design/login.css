@@ -18,7 +18,7 @@
     overflow: hidden;
 }
 .login-form {
-    background-color: #111F4D;
+    background-color: #222222;
     width: 70%;
     height: 500px;
     color: #fff;
@@ -63,13 +63,14 @@
     margin-bottom: 100px;
 }
 .login-form a {
-    color: #ff3b3f;
+    color: #E43A19;
     text-decoration: none;
     font-size: 0.9em;
     margin-left: 3rem;
     position: absolute;
     padding-left: 7.5rem;
     margin-top: 275px;
+    font-weight: 500;
 }
 .login-form h3 {
     font-weight: 200;

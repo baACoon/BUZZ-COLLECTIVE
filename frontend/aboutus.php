@@ -12,7 +12,7 @@
 </head>
 <body>
     <header id="mainheader">
-        <img src="design/image/buzz.png" alt="">
+        <img src="design/image/BUZZ-Black.png" alt="">
         <div class="buttons">
             <a href="home.php">HOME </a>
             <div class="dropdown">
