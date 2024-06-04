@@ -146,6 +146,19 @@ if (!isset($_SESSION['username'])) {
                     </tr>
                 </tbody>
             </table>
+            <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>" . $row['id'] . "</td>
+                        <td>" . $row['name'] . "</td>
+                        <td>" . $row['availability'] . "</td>
+                    </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='3'>No barbers found</td></tr>";
+        }
+        ?>
         </section>
 
         <section class="buzzin-barber">

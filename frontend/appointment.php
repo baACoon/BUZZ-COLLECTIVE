@@ -1,4 +1,4 @@
-<?php include('../backend/appointment.php')?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/adminappointments.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
     </div>
     
     <div class="form-container">
-        <form method="POST" action="appointment.php" method="POST"> 
+        <form method="POST" action="appointment.php"> 
             <div class="form-group">
                 <label for="first-name">First Name</label>
                 <input type="text" id="first-name" name="first_name" required>
@@ -60,36 +60,36 @@
                 <div class="stylist-item">
                     <img src="design/image/barber5.jpg" alt="Stylist">
                     <p>Adi</p>
-                    <input type="checkbox" name="barber">
+                    <input type="radio" name="barber" value="Adi">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/barber4.jpg" alt="Stylist">
-                    <p>Adi</p>
-                    <input type="checkbox" name="barber">
+                    <p>Ben</p>
+                    <input type="radio" name="barber" value="Ben">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/Barber 3.jpg" alt="Stylist">
-                    <p>Adi</p>
-                    <input type="checkbox" name="barber">
+                    <p>Charlie</p>
+                    <input type="radio" name="barber" value="Charlie">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/barber 2.jpg" alt="Stylist">
-                    <p>Adi</p>
-                    <input type="checkbox" name="barber">
+                    <p>David</p>
+                    <input type="radio" name="barber" value="David">
                 </div>
 
                 <div class="stylist-item">
                     <img src="design/image/Barber1.jpg" alt="Stylist">
-                    <p>Adi</p>
-                    <input type="checkbox" name="barber">
+                    <p>Edward</p>
+                    <input type="radio" name="barber" value="Edward">
                 </div>
             </div>
 
             <div class="recos">
-                <input type="checkbox" id="recommended-barber" name="barbers" value="recommended-barber">
+                <input type="checkbox" id="recommended-barber" name="barber" value="Recommended Barber">
                 <label for="recommended-barber">Recommended Barber</label>
             </div>
 
@@ -109,7 +109,7 @@
             </div>
 
             <div class="form-group button-group">
-                <button type="submit"><a href="home.php">Cancel</a></button>
+                <button type="button" onclick="window.location.href='home.php'">Cancel</button>
             </div>
         </form>
     </div>

@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    background: url('image/LandingPageBG.jpg'); 
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;;
+    height: 1000px;
+}
+
+#mainheader {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 1000; /* Ensure the header appears above other content */
+}
+
+#mainheader img {
+    width: 180px;
+    position: relative;
+    height: 150px; /* Adjust the height as needed */
+    margin-left: 35px; /* Adjust the margin as needed */
+    margin-right: 20px; /* Adjust the margin as needed */
+    margin-top: -10px;
+}
+
+#mainheader a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin-left: 50px;
+}
+
+#mainheader .navbar {
+    margin-left: 10em;
+}
+
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #ffffff;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: #676767;
+    z-index: 1;
+    border-radius: 10px;
+    left: 22.5%;
+    top: 100%;
+    min-width: 100px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content li {
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin-left: -20%;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content li a:hover {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+} 
+.signin-button {
+    background-color: #E43A19; 
+    color: white; 
+    padding: 8px 8px; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer;
+    text-align: center; 
+    margin-left: 70px;
+}
+
+.signin-button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Hover effect for the button */
+.signin-button:hover {
+    background-color: #6e1f1f; 
+}
+
+#landing-container h1 {
+    margin: 150px;
+    margin-top: 300px;
+    text-align: justify;
+    position: absolute;
+    width: 400px;
+}
+#landing-container p {
+    margin: 150px;
+    font-size: 20px; 
+    margin-top: 440px;
+    text-align: justify;
+    position: absolute;
+    width: 350px;   
+}
+.landing-button{
+    background-color: color;
+    color: white;
+    margin: 150px;
+    margin-top: 520px;
+    background-color: #E43A19; 
+    font-size: 20px;
+    padding: 13px 17px;
+    border: none; 
+    border-radius: 30px; 
+    cursor: pointer; 
+}
+
+.landing-button a{
+    color: white; 
+    text-decoration: none;
+
+}
+.see-more{
+    color: black; 
+    text-decoration: none; 
+    font-size: 20px;
+}
+
+.landing-images {
+    display: flex   ;
+    margin-top: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+.landing-images img {
+    width: 350px; 
+    height: 400px;
+    object-fit: cover;
+    margin-top: -50px; 
+    margin-left: 30px;   
+    display: block;
+}
+.landing-txt-images{
+    position: relative;
+    margin-top: 10px;
+}
+
+.landing-txt-images h1{
+    margin: 100px;
+    margin-top: 200px;
+    width: 400px;
+    font-size: 30px;
+    font-style: italic;
+}
+.landing-txt-images p{
+    margin: 100px;
+    font-size: 16px;
+    margin-top: -100px;
+    width: 370px;
+}
+.landing-txt-images img{
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    object-fit: cover;
+    margin-top: -150px;
+    margin-right: 60px;
+    top: 0;
+    right: 0;
+}
+.landing-images2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+.landing-images2 img{
+    width: 350px;
+    height: 400px;
+    object-fit: cover;
+    margin-top: 90px;
+    margin-left: 30px;
+    display: block;
+}
+
+.landing-txt-images2{    
+    position: relative;
+    margin-top: 10px;
+}
+.landing-txt-images2 h1{
+    margin: 800px;
+    margin-top: 100px;
+    width: 400px;
+    font-size: 30px;
+    font-style: italic;
+    text-align: right;
+}
+
+.landing-txt-images2 p{
+    margin: 750px;
+    margin-top: -790px;
+    font-size: 16px;
+    width: 450px;
+    text-align: right;
+}
+.landing-txt-images2 img{
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    object-fit: cover;
+    margin-top: -50px;
+    margin-left: 90px;
+    top: 0;
+    left: 0;
+}
+
+.landing-images3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+.landing-images3 img{
+    width: 350px;
+    height: 400px;
+    object-fit: cover;
+    margin-top: -600px;
+    margin-left: 30px;
+    display: block;
+}
+
+.salitran img{
+    width: 250px;
+    height: auto;
+    margin: 2px;
+
+}
+.and-more{
+    display: block;
+    margin: 50px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+.salitran {
+    text-align: center; 
+}
+.branch {
+    margin: 0 auto; 
+}
+.experience{
+    padding: 10px;
+    margin: 4px auto;
+    width: 399px;
+}
+.branch h1{
+    margin: 5px;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.is-now-open{
+    letter-spacing: 10px;
+}
+.images-row {
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 10px; 
+    margin: 20px 0;
+}
+
+.images-row img {
+    display: inline-block; 
+    width: auto; 
+    height: auto; 
+    object-fit: cover; 
+}
+
+.salitran-add{
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+
+.buzz-and-collectives p{
+    font-weight: bold;
+    margin: 350px;
+    margin-top: 100px;
+}
+.buzz-and-collectives h1{
+    margin: 350px;
+    margin-top: -350px;
+}
+.container {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+}
+.book{
+    background-color: color;
+    margin: 350px;
+    margin-top: -405px;
+    background-color: #E43A19; 
+    font-size: 20px;
+    padding: 13px 17px;
+    border: none; 
+    border-radius: 30px; 
+    cursor: pointer; 
+}
+.book a{
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* FOOTER */
+
+footer {
+    background-color: #222222; 
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    align-items: flex-start;
+}
+
+.footer-logo{
+    width: 300px;
+    height: 300px;
+    margin-top: 5px; 
+}
+
+.footer-left, .footer-left1, .footer-right{
+    margin: 5px;
+}
+
+.footer-left1 h2 {
+    color: white;
+}
+
+.footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
+    margin: 10px 0 20px;
+}
+
+.footer-left1 address p {
+    font-style: normal;
+    margin: 20px 0;
+}
+
+.footer-left1 address a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-left1 form {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left1 form input[type="email"] {
+    padding: 19px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    flex: 1;
+    font-size: 18px;
+}
+
+.footer-left1 form button {
+    padding: 22px;
+    background-color: #E43A19;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-right ul li {
+    margin: 30px 0;
+}
+
+.footer-right ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-right ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Align items to the center vertically */
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    
+}
+
+.social-media a {
+    margin-right: 40px; 
+}
+
+.social-media i {
+    font-size: 35px; /* Adjust icon size */
+}
