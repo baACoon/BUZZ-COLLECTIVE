@@ -1,37 +1,141 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #111F4D;
+    /* background: url('design/image/buzzeme.jpg'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;;
+    height: 100px;
 }
+
+/* LOGIN */
+#buzz-img {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 30vh; 
+}
+
+#buzz-img img {
+    width: 60vh; 
+    height: 60vh;
+}
+
 
 .login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #002d62;
+    height: 50vh;
     color: white;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: fit-content;
+}
+.login-form h4{
+    font-weight: 200;
+    font-size: 15px;
+    margin: 5px 0 6px 0;
+    text-align: left;
+    width: 100%;
 }
 
 .login-form input {
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
-    width: 200px;
+    width: 275px;
+    border-radius: 12px;
 }
 
 .login-form button {
     padding: 10px 20px;
+    margin: 10px;
     background-color: #ff4b2b;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
+    width: 40%;
+    font-weight: bold;
+    align-self: center;
+}
+.login-form h3{
+    font-weight: 200;
+    font-size: 15px;
+    font-style: italic;
+    align-self: center;
+}
+.login-form a{
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    align-self: center;
+
+}
+
+/* REGISTER */
+
+.login-container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    color: white;
+}
+
+.login-form2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns all child elements to the left */
+    width: fit-content;
+}
+
+.login-form2 h4 {
+    font-weight: 200;
+    font-size: 15px;
+    margin: 5px 0 6px 0; /* Uniform vertical margins */
+    text-align: left; /* Aligns the text within the h4 to the left */
+    width: 100%;
+}
+
+
+.login-form2 input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 275px;
+    border-radius: 12px;
+    
+}
+
+.login-form2 button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #ff4b2b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 40%;
+    font-weight: bold;
+    align-self: center;
+    
+}
+
+.login-form2 a{
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    align-self: center;
+
 }
 
 .sidebar {

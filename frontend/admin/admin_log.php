@@ -9,16 +9,21 @@
     <link rel="stylesheet" href="Designs/admindash.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>BUZZ Collective</h1>
-        <form class="login-form" method="post" action="admin_log.php">
+    <div id="buzz-img">
+        <img src="images/BUZZ-White.png" alt="">
 
+    </div>
+    <div class="login-container">
+        <form class="login-form" method="post" action="admin_log.php">
+            <h4>Username</h4>
             <input type="text" placeholder="Email" name="username"required>
+            <h4>Password</h4>
             <input type="password" placeholder="Password" name="password" required>
             <button type="submit" name="log_admin">Login</button>
-        </form>
-        <h3>Forgot password?</h3>
+            <h3>Forgot Password</h3>
         <a href="admin_reg.php"> Sign up</a>
+        </form>
+       
     </div>
 </body>
 </html>
