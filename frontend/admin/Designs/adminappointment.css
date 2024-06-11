@@ -8,34 +8,32 @@ body {
     background-color: #333;
     color: #fff;
     padding: 20px;
-    height: 100vh;
-    position: fixed;
 }
 
-.sidebar h2 {
-    font-size: 18px;
+.sidebar .logo {
     text-align: center;
+    margin-bottom: 10px;
+
 }
 
-.sidebar ul {
+.sidebar nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-.sidebar ul li {
-    margin: 15px 0;
+.sidebar nav ul li {
+    margin: 10px 0;
 }
 
-.sidebar ul li a {
+.sidebar nav ul li a {
     color: #fff;
     text-decoration: none;
     display: block;
-    padding: 10px;
-    border-radius: 4px;
 }
 
-.sidebar ul li a.active, .sidebar ul li a:hover {
-    background-color: #555;
+.sidebar nav ul li a:hover {
+    background-color: #444;
+    padding-left: 10px;
 }
 
 .main-content {
@@ -88,7 +86,7 @@ body {
 }
 
 .appointments-table-container {
-    background-color: #f9f9f9;
+    background-color: #cb1a1a;
     padding: 20px;
     border-radius: 8px;
 }
@@ -102,6 +100,7 @@ body {
 .appointments-table th, .appointments-table td {
     border: 1px solid #ddd;
     padding: 8px;
+    
 }
 
 .appointments-table th {

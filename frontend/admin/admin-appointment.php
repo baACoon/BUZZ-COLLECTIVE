@@ -15,19 +15,22 @@ unset($_SESSION['appointments']);
     <link rel="stylesheet" href="Designs/adminappointment.css">
 </head>
 <body>
-    <div class="sidebars">
-        <h2>BUZZ & COLLECTIVE</h2>
-        <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Notification</a></li>
-            <li><a href="#">Barbers' Schedule</a></li>
-            <li><a href="#">News and Events</a></li>
-            <li><a href="#" class="active">Appointments</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Reports and Analytics</a></li>
-        </ul>
-    </div>
+<aside class="sidebar">
+            <div class="logo">
+                <img src="image/BUZZ-White.png" alt="Buzz Collective Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="admin-home.php">Home</a></li>
+                    <li><a href="admin-barber.php">Barbers' Schedule</a></li>
+                    <li><a href="#">News and Events</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Reports and Analytics</a></li>
+                </ul>
+            </nav>
+        </aside>
 
     <div class="appointments-table-container">
         <h2>Appointments List</h2>

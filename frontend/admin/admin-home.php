@@ -13,7 +13,7 @@
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
-                <img src="logo.png" alt="Buzz Collective Logo">
+                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
             </div>
             <nav>
                 <ul>
