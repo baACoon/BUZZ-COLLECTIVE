@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+body {
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: hidden;
+  color: black;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 249px;
+  border-bottom: 1px solid white;
+}
+header ul {
+  display: flex;
+  align-items: center;
+}
+header ul li {
+  position: relative;
+  list-style: none;
+  margin: 0 30px;
+}
+header ul li:last-child {
+  margin-right: 0;
+}
+header ul li a {
+  text-decoration: none;
+  color: black;
+  padding: 22px 0;
+  display: inline-block;
+  transition: all ease 0.3s;
+  font-size: 18px;
+}
+header ul li a:hover {
+  color: brown;
+  
+}
+header ul .submenu {
+  position: absolute;
+  width: 200px;
+  background-color: beige;
+  box-shadow: 0 5px 15px black;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  z-index: -999;
+  transition: all ease 0.5s;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column; /* This ensures the submenu items are in a vertical list */
+  
+}
+header ul li:hover .submenu {
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+}
+header ul .submenu li {
+  margin: 0;
+  width: 100%;
+}
+header ul .submenu li a {
+  padding: 15px 20px;
+  display: inline-block;
+  width: 100%;
+}
+header ul .submenu li a:hover{
+}
+.hero_sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
