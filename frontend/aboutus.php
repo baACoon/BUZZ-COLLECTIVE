@@ -80,7 +80,20 @@
     <div class="image-container">
         <?php
         $images = [
-            ['src' => 'design/image/Barber1.jpg', 'info' => 'Juan “Baby” Luna<br>Fav Cut: Fade <br> Fun Fact:<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'],
+            ['src' => 'design/image/Barber1.jpg', 'info' => 
+            '<div class="info">
+                <h2>Juan <span>“Baby”</span> Luna</h2>
+                <p><strong>Fav Cut:</strong> Fade</p>
+                <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                <h3>WORKS</h3>
+                <div class="works-gallery">
+                    <div class="work-item"></div>
+                    <div class="work-item"></div>
+                    <div class="work-item"></div>
+                    <div class="work-item"></div>
+                </div>
+            </div>'],
             ['src' => 'design/image/barber4.jpg', 'info' => 'Information about Image 2'],
             ['src' => 'design/image/barber5.jpg', 'info' => 'Information about Image 3'],
             ['src' => 'design/image/barber 2.jpg', 'info' => 'Information about Image 3'],
