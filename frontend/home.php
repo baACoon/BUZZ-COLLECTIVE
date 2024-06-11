@@ -23,31 +23,42 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
 
-        <header id="mainheader">
-                <img src="design/image/BUZZ-Black.png" alt="">
-                <div class="buttons">
-                    <a href="home.php">HOME </a>
-                    <div class="dropdown">
-                        <a class="dropbtn" href="aboutus.php">ABOUT US <i class="fa-solid fa-chevron-down"></i> </a>
-                        <div class="dropdown-content">
-                            <li><a href="aboutus.php">About us</a></li>
+<header id="mainheader">
+            <div class="logo">
+                <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="aboutus.php">About Us</a>
+                        <ul class="submenu">
                             <li><a href="#">Barbers</a></li>
-                        </div>
-                    </div>
-                    <a href="#">SERVICES</a>
-                    <a href="#">PRODUCTS </a>
-                    <div class="user-dropdown">
-                        <a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
-                        <div class="user-dropdown-content">
+                            <li><a href="aboutus.ph">About Us</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="service.php">Service</a>
+                        <ul class="submenu">
+                            <li><a href="#">....</a></li>
+                            <li><a href="#">....</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="product.php">Product</a>
+                        <ul class="submenu">
+                            <li><a href="#">Product1</a></li>
+                            <li><a href="#">Product2</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
+                        <ul class="submenu">
                             <li><a href="#">My Profile</a></li>
                             <li><a href="login.php">Logout</a></li>
-                        </div>
-                    </div>
-                </div>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
-        
         <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
-        
+
             <?php if (isset($_SESSION['show_popup'])) : ?>
                 <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
                 <div class="pop-background" id="popBackground">
@@ -65,10 +76,6 @@ if (!isset($_SESSION['username'])) {
             }
         </script>
 
-
-        
-
-    
             <!-- Barbers' Availability Section -->
         <div class="barbers-container">
             <h1 class="text">BARBERS' AVAILABILITY</h1>
@@ -147,7 +154,7 @@ if (!isset($_SESSION['username'])) {
                 </tbody>
             </table>
             <?php
-        if ($result->num_rows > 0) {
+        /*if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
                         <td>" . $row['id'] . "</td>
@@ -157,28 +164,35 @@ if (!isset($_SESSION['username'])) {
             }
         } else {
             echo "<tr><td colspan='3'>No barbers found</td></tr>";
-        }
+        }*/
         ?>
         </section>
 
         <section class="buzzin-barber">
             <h2>BE A BUZZIN’ BARBER! <i>More Info</i></h2>
-            <img src="design/image/stockphotos5.jpg" alt="Be Part of the Crew">
+            <img src="design/image/stockphotos5.png" alt="Be Part of the Crew">
         </section>
 
         <!-- Stock Photos Section -->
         <section class="stock-photos">
             <h2>STOCK PHOTOS</h2>
-            <div class="gallery">
-                <img src="https://placehold.co/200x200" alt="Stock Photo 1">
-                <img src="https://placehold.co/200x200" alt="Stock Photo 2">
-                <img src="https://placehold.co/200x200" alt="Stock Photo 3">
-                <img src="https://placehold.co/200x200" alt="Stock Photo 4">
-                <img src="https://placehold.co/200x200" alt="Stock Photo 5">
-            </div>
-            <div class="appointment">
+            <div class="photo-grid">
+                <div class="gallery">
+                    <img src="design/image/stockphotos1.jpg" alt="Stock Photo 1">
+                </div>
+                <div class="gallery">
+                    <img src="design/image/stockphotos2.jpg" alt="Stock Photo 2">
+                </div>
+                <div class="gallery">
+                    <img src="design/image/stockphotos3.jpg" alt="Stock Photo 3">
+                </div>
+                <div class="gallery1">
+                    <img src="design/image/stockphotos4.jpg" alt="Stock Photo 4">
+                </div>
+            
+        </div>
+        <div class="appointment">
             <a href="appointment.php"><button>BOOK AN APPOINTMENT</button></a>
-
             </div>
         </section>
 

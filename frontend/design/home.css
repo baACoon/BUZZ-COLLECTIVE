@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
 body {
     margin: 0;
     padding: 0;
@@ -15,93 +21,94 @@ body {
     background-color: #F8F8F8;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: fixed;
     width: 100%;
-    height: 100px;
-    z-index: 1000; /* Ensure the header appears above other content */
+    height: 80px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 }
 
-#mainheader img {
-    width: 180px;
+#mainheader .logo img {
+    height: 150px; /* Adjust based on your logo size */
+    margin-left: 120px;
+    width: 150px;
+}
+
+#mainheader nav {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 0;
+    width: 0;
+}
+
+#mainheader ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-left: 350px;
+}
+
+#mainheader ul li {
     position: relative;
-    height: 150px; /* Adjust the height as needed */
-    margin-left: 35px; /* Adjust the margin as needed */
-    margin-right: 20px; /* Adjust the margin as needed */
-    margin-top: -10px;
-}
-
-#mainheader a{
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 18px;
-    margin-left: 70px;
-}
-
-#mainheader .buttons {
-    margin-left: 10em;
-}
-
-
-/* Dropdown Button */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-
-.dropbtn {
-    background-color: #F8F8F8;
-    color: white;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
+    list-style: none;
+    margin: 0 20px;
     padding: 10px 15px;
-    text-decoration: none;
 }
 
+#mainheader ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 20px 0;
+    display: inline-block;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    font-size: 16px;
+}
 
-/* Dropdown Content */
-.dropdown-content {
-    display: none;
-    cursor: pointer;
+#mainheader ul li a:hover {
+    color: brown;
+    text-decoration: underline; /* Add underline on hover */
+}
+
+#mainheader ul .submenu {
     position: absolute;
-    background-color: #222222;
-    z-index: 1;
-    border-radius: 10px;
-    left: 22.5%;
-    top: 100%;
-    min-width: 100px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content li {
-    color: white;
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-    border-radius: 10px;
-    white-space: nowrap;
-    margin-left: -20%;
-}
-
-.dropdown-content a{
-    color: white;
-}
-
-
-
-
-/* Change color of dropdown links on hover */
-.dropdown-content li a:hover {
-    background-color: black;
+    width: 150px;
+    background-color: beige;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    
+    left: -360px;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+#mainheader ul li:hover .submenu {
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+}
+
+#mainheader ul .submenu li {
+    margin: 0;
+    width: 100%;
+}
+
+#mainheader ul .submenu li a {
+    padding: 15px 20px;
     display: block;
-} 
+    width: 100%;
+    color: black; /* Ensure submenu links have the correct color */
+}
+
+.usericon {
+    font-size: 18px;
+}
+
+
 
 /*book appointment button */
 
@@ -125,13 +132,11 @@ body {
     background-color: black;
 }
 
-
 /*BARBERS AVAILABILITY */
 .barbers-container {
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    
-    
+
 }
 
 .text {
@@ -180,6 +185,7 @@ th img {
     font-size: 50px;
 }
 
+
 /*BUZZIN BARBERS */
 .buzzin-barber {
     text-align: center;
@@ -188,7 +194,8 @@ th img {
 .buzzin-barber h2 {
     font-size: 1.5rem;
     font-weight: bold;
-}
+    bottom: 20%;
+    }
 
 .buzzin-barber i {
     color: #ff5733;
@@ -203,39 +210,64 @@ th img {
     margin-top: 1rem;
 }
 
+
+
+.stock-photos{
+    align-items: center;
+    text-align: center;
+    object-fit: contain; 
+    image-rendering: crisp-edges; 
+    image-rendering: pixelated; 
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
 .stock-photos h2 {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2em;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-top: 50px;
+    margin-bottom: 1em;
 }
 
-.stock-photos .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+.photo-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.gallery img {
+    width:100%;
+    height: auto;
+    left: 75px;
+}
+.gallery1 img {
+    width:100%;
+    height: auto;
+    background-color: #222;
 }
 
-.stock-photos .gallery img {
-    flex: 1;
-    max-width: calc(33.333% - 1rem);
-    border-radius: 10px;
-}
-
-.appointment {
+.buzzin-barber .appointment {
     text-align: center;
     margin-top: 2rem;
 }
 
 .appointment button {
+    align-items: center;
+    text-align: center;
+    object-fit: contain; 
     background-color: #E43A19;
     color: #fff;
     border: none;
     border-radius: 25px;
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    padding: 15px 30px;
+    font-weight: bold;
+    font-size: 18.5px;
     cursor: pointer;
-    margin-bottom: 2rem;
+    margin: 20px;
+    
 }
 
 .appointment button:hover {
@@ -354,17 +386,17 @@ footer {
 
 /* Media queries */
 @media screen and (max-width: 600px) {
-    #mainheader {
+    #main#mainheader {
         flex-direction: column;
         padding: 10px;
     }
 
-    #mainheader img {
+    #main#mainheader img {
         width: 40%; /* Make the logo full width */
         margin-bottom: 10px; /* Add space between logo and links */
     }
 
-    #mainheader a {
+    #main#mainheader a {
         margin: 0; /* Remove the margin */
         text-align: center; /* Center align the links */
     }
@@ -387,47 +419,3 @@ footer {
 }
 
 
-/*----------------- USER DROPDOWN ---------------*/
-.user-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.usericon {
-    background-color: #F8F8F8;
-    color: white;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    text-decoration: none;
-}
-
-.user-dropdown-content {
-    display: none;
-    cursor: pointer;
-    position: absolute;
-    background-color: #E43A19;
-    z-index: 1;
-    border-radius: 10px;
-    left: 22.5%;
-    top: 100%;
-    min-width: 100px;
-}
-.user-dropdown-content li{
-    color: white;
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-    border-radius: 10px;
-    white-space: nowrap;
-    margin-left: -20%;
-}
-.user-dropdown-content a:hover {
-    background-color: black;
-    border-radius: 5px;
-}
-
-.user-dropdown:hover .user-dropdown-content {
-    display: block;
-}
