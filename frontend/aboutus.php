@@ -11,22 +11,40 @@
     <title>About us</title>
 </head>
 <body>
-    <header id="mainheader">
-        <img src="design/image/BUZZ-Black.png" alt="">
-        <div class="buttons">
-            <a href="home.php">HOME </a>
-            <div class="dropdown">
-                <a class="dropbtn" href="aboutus.php">ABOUT US <i class="fa-solid fa-chevron-down"></i> </a>
-                <div class="dropdown-content">
-                    <li><a href="aboutus.php">About us</a></li>
-                    <li><a href="#">Barbers</a></li>
-                </div>
+<header id="mainheader">
+            <div class="logo">
+                <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
             </div>
-            <a href="#">SERVICES</a>
-            <a href="#">PRODUCTS </a>
-            <a class="usericon" href=""><i class="fa-solid fa-user"></i></a>
-        </div>
-    </header>
+            <nav>
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="aboutus.php">About Us</a>
+                        <ul class="submenu">
+                            <li><a href="#">Barbers</a></li>
+                            <li><a href="aboutus.php">About Us</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="service.php">Service</a>
+                        <ul class="submenu">
+                            <li><a href="#">....</a></li>
+                            <li><a href="#">....</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="product.php">Product</a>
+                        <ul class="submenu">
+                            <li><a href="#">Product1</a></li>
+                            <li><a href="#">Product2</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="login.php">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
     <div id="body-container">
         <img src="design/image/buzz.png" class="logo-body" alt="">
@@ -40,22 +58,29 @@
         <p>
             In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
         </p>
-        <div class="v105_40">
-            <img src="design/image/Monti_comia.png" alt="">
+            <div class="v105_40">
+                <img src="design/image/Monti_comia.png" alt="">
+            </div>
+            <div class="v105_38">
+                <img src="design/image/Akira_Gata.png" alt="">
+            </div>
+        <div class="name1">
+            <h3> Monti Comia </h3>
         </div>
-        <div class="v105_38">
-            <img src="design/image/Akira_Gata.png" alt="">
+        <div class="name2">
+            <h3> Akira Gata </h3>
         </div>
+        
     </div>
 
     <div class="txt">
-        <h1>Meet the <b>PRIDE</b> of Buzz&Collectives</h1>
+        <h1>Meet the <b><strong>PRIDE</strong></b> of Buzz&Collectives</h1>
     </div>
 
     <div class="image-container">
         <?php
         $images = [
-            ['src' => 'design/image/Barber1.jpg', 'info' => 'Juan “Baby” Luna<br>Fav Cut: Fade<br>Fun Fact:<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'],
+            ['src' => 'design/image/Barber1.jpg', 'info' => 'Juan “Baby” Luna<br>Fav Cut: Fade <br> Fun Fact:<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'],
             ['src' => 'design/image/barber4.jpg', 'info' => 'Information about Image 2'],
             ['src' => 'design/image/barber5.jpg', 'info' => 'Information about Image 3'],
             ['src' => 'design/image/barber 2.jpg', 'info' => 'Information about Image 3'],
