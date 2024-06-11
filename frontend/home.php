@@ -33,7 +33,7 @@ if (!isset($_SESSION['username'])) {
                     <li><a href="aboutus.php">About Us</a>
                         <ul class="submenu">
                             <li><a href="#">Barbers</a></li>
-                            <li><a href="aboutus.ph">About Us</a></li>
+                            <li><a href="aboutus.php">About Us</a></li>
                         </ul>
                     </li>
                     <li><a href="service.php">Service</a>
