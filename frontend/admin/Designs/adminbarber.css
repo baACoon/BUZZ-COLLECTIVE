@@ -6,7 +6,7 @@ body {
 }
 /* HEADER */ 
 .top-nav {
-    position: flex;
+    position: block;
     top: 0;
     left: 0;
     right: 200px;
@@ -35,20 +35,18 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-    position: fixed;
-    top: 0;
-    width: 200px;
-    height: 100%;
+    width: 250px;
     background-color: #333;
-    color: white;
-    padding-top: 20px;
-    z-index: 999;
+    color: #fff;
+    padding: 20px;
 }
+
 .sidebar .logo img{
-    margin-top: -70px;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    text-align: center;
+    height: 150px; /* Adjust based on your logo size */
+    width: 150px;
+    margin-top: -60px;
+    margin-left: 15px;
 }
 
 .sidebar nav ul {
@@ -57,29 +55,26 @@ body {
 }
 
 .sidebar nav ul li {
-    padding: 10px 0;
-    text-align: center;
+    margin: 10px 0;
+    padding: 5px;
 }
 
 .sidebar nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
+    display: block;
 }
 
-
-.container {
-    width: 70%;
-    margin: 50px auto;
-    margin-left: 240px;
-    background-color: #fff;
-    padding: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.sidebar nav ul li a:hover {
+    background-color: #000000;
+    padding-left: 10px;
 }
+
 .dropdown-container{
     text-align: left;
     margin: 20px;
-    margin-left: 250px;
-    margin-bottom: 20px;
+    margin-left: 350px;
+    margin-top: -400px;
 }
 label {
     font-size: 14px;
@@ -93,6 +88,15 @@ select {
     border-radius: 15px;
     background-color: #fff;
 }
+.container {
+    width: 70%;
+    margin: 30px auto;
+    margin-left: 300px;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 
 .btn {
     display: inline-block;
@@ -150,69 +154,47 @@ select {
     text-align: center;
 }
 
-.barbers img {
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
+.barber-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 35px; /* Adjust spacing between images */
+}
+
+.barber-container img {
+    width: 100px; 
+    height: 100px; 
     border-radius: 50%; /* Makes the image circular */
-    margin-right: 25px; /* Adjust spacing between images */
+    margin-right: -10px; /* Adjust spacing between images */
     filter: brightness(60%) opacity(0.7); /* Adjust brightness and opacity */
-
+    margin-bottom: 25px;
+}
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
+.checkbox-container div {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input {
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+}
 .schedule {
-    list-style: none; /* Remove default list styles */
+    list-style-type: none;
     padding: 0;
+    margin-top: -336px;
 }
-
 .schedule li {
     padding: 10px;
     margin: 10px;
     text-transform:uppercase;
     font-weight: 100;
-}
-
-
-#schedule {
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-td img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-}
-
-button.save {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-button.edit {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    
 }

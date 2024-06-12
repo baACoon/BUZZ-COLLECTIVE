@@ -53,7 +53,8 @@
                     <option value="november">November</option>
                     <option value="december">December</option>
                 </select>
-        </div>
+    </div>
+    
     <div class="container">
         <button class="btn edit-btn"><a href="#">Edit</a></button>
         <button class="btn save-btn"><a href="#">Save</a></button>
@@ -64,11 +65,70 @@
         </div>
 
         <div class="barbers">
-            <img src="images/Barber1.jpg" alt="">
-            <img src="images/barber 2.jpg" alt="">
-            <img src="images/Barber 3.jpg" alt="">
-            <img src="images/barber4.jpg" alt="">
-            <img src="images/barber5.jpg" alt="">
+            <div class="barber-container">
+                <img src="images/Barber1.jpg" alt="">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="monday1">
+                    <input type="checkbox" id="tuesday1">
+                    <input type="checkbox" id="wednesday1">
+                    <input type="checkbox" id="thursday1">
+                    <input type="checkbox" id="friday1">
+                    <input type="checkbox" id="saturday1">
+                    <input type="checkbox" id="sunday1">
+                </div>
+            </div>
+
+            <div class="barber-container">
+                <img src="images/barber 2.jpg" alt="">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="monday1">
+                    <input type="checkbox" id="tuesday1">
+                    <input type="checkbox" id="wednesday1">
+                    <input type="checkbox" id="thursday1">
+                    <input type="checkbox" id="friday1">
+                    <input type="checkbox" id="saturday1">
+                    <input type="checkbox" id="sunday1">
+                </div>
+            </div>
+
+            <div class="barber-container">
+                <img src="images/barber 3.jpg" alt="">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="monday1">
+                    <input type="checkbox" id="tuesday1">
+                    <input type="checkbox" id="wednesday1">
+                    <input type="checkbox" id="thursday1">
+                    <input type="checkbox" id="friday1">
+                    <input type="checkbox" id="saturday1">
+                    <input type="checkbox" id="sunday1">
+                </div>
+            </div>
+
+            <div class="barber-container">
+                <img src="images/barber4.jpg" alt="">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="monday1">
+                    <input type="checkbox" id="tuesday1">
+                    <input type="checkbox" id="wednesday1">
+                    <input type="checkbox" id="thursday1">
+                    <input type="checkbox" id="friday1">
+                    <input type="checkbox" id="saturday1">
+                    <input type="checkbox" id="sunday1">
+                </div>
+            </div>
+
+            <div class="barber-container">
+                <img src="images/barber5.jpg" alt="">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="monday1">
+                    <input type="checkbox" id="tuesday1">
+                    <input type="checkbox" id="wednesday1">
+                    <input type="checkbox" id="thursday1">
+                    <input type="checkbox" id="friday1">
+                    <input type="checkbox" id="saturday1">
+                    <input type="checkbox" id="sunday1">
+                </div>
+            </div>
         </div>
 
         <ul class="schedule">
