@@ -8,80 +8,81 @@
     <title>Barber Schedule</title>
 </head>
 <body>
+    <main>
+        <header>
+            <nav class="top-nav">
+                <a href="#">Dashboard</a>
+                <a href="#">Profile</a>
+                <a href="#">Notification <span class="notification-dot"></span></a>
+            </nav>
+        </header>
+    </main>
+   
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/BUZZ-White.png"  alt="logo">
 
-
-        
-        <div class="sidebar">
-                <h2>BUZZ Collective</h2>
-                <nav>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="#">Barber Schedule</a></li>
-                        <li><a href="">News and Events</a></li>
-                        <li><a href="">About us</a></li>
-                        <li><a href="#">Appointment Bookings</a></li>
-                        <li><a href="#">Settins</a></li>
-                        <li><a href="#">Reports and Analytics</a></li>
-                        <li><a href="admin-home.php">Logout</a></li>
-                    </ul>
-                </nav>
         </div>
-<div class="container">
-        <h1>Barbers' Availability (Apr 22 - 28, 2024)</h1>
-        <div id="schedule">
-            <table>
-                <tr>
-                    <th>Barber</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                    <th>Actions</th>
-                </tr>
-                <?php foreach ($barbers as $barber): ?>
-                    <tr>
-                        <td><img src="avatar.png" alt="<?php echo $barbers['name']; ?>"><?php echo $barbers['name']; ?></td>
-                        <?php foreach (['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as $day): ?>
-                            <td>
-                                <input type="checkbox" <?php echo $barbers[$day] ? 'checked' : ''; ?> data-id="<?php echo $barber['id']; ?>" data-day="<?php echo $day; ?>">
-                            </td>
-                        <?php endforeach; ?>
-                        <td><button class="save" data-id="<?php echo $barbers['id']; ?>">Save</button></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="#">Barber Schedule</a></li>
+                <li><a href="">News and Events</a></li>
+                <li><a href="">About us</a></li>
+                <li><a href="#">Appointment Bookings</a></li>
+                <li><a href="#">Settins</a></li>
+                <li><a href="#">Reports and Analytics</a></li>
+                <li><a href="admin-home.php">Logout</a></li>
+            </ul>
+        </nav>
     </div>
-    <script>
-        document.querySelectorAll('.save').forEach(button => {
-            button.addEventListener('click', () => {
-                const id = button.getAttribute('data-id');
-                const availability = {};
-                document.querySelectorAll(`input[data-id="${id}"]`).forEach(input => {
-                    availability[input.getAttribute('data-day')] = input.checked ? 1 : 0;
-                });
+  
+    <div class="dropdown-container">
+            <label for="months">This Month</label>
+                <select id="months" name="months">
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                </select>
+        </div>
+    <div class="container">
+        <button class="btn edit-btn"><a href="#">Edit</a></button>
+        <button class="btn save-btn"><a href="#">Save</a></button>
+        <div class="barbers-header">
+            <h1>BARBERS' AVAILABILITY</h1>
+            <h1 class="date">(APRIL 22 - 28, 2024)</h1>
+            <a href="#"><i class="fa-regular fa-pen-to-square" style="color: #000000;"></i></a>
+        </div>
 
-                fetch('', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ id, availability })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                })
-                .catch(error => {
-                    alert('Error updating availability');
-                    console.error('Error:', error);
-                });
-            });
-        });
+        <div class="barbers">
+            <img src="images/Barber1.jpg" alt="">
+            <img src="images/barber 2.jpg" alt="">
+            <img src="images/Barber 3.jpg" alt="">
+            <img src="images/barber4.jpg" alt="">
+            <img src="images/barber5.jpg" alt="">
+        </div>
 
-    </script>
+        <ul class="schedule">
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+        </ul>
+
+    </div>
+   
+
 </body>
 </html>
