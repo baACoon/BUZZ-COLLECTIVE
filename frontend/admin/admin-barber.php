@@ -8,33 +8,24 @@
     <title>Barber Schedule</title>
 </head>
 <body>
-    <main>
-        <header>
-            <nav class="top-nav">
-                <a href="#">Dashboard</a>
-                <a href="#">Profile</a>
-                <a href="#">Notification <span class="notification-dot"></span></a>
+    <aside class="sidebar">
+            <div class="logo">
+                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="admin-home.php">Home</a></li>
+                    <li><a href="admin-barber.php">Barbers' Schedule</a></li>
+                    <li><a href="#">News and Events</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Reports and Analytics</a></li>
+                </ul>
             </nav>
-        </header>
-    </main>
-   
-    <div class="sidebar">
-        <div class="logo">
-            <img src="images/BUZZ-White.png"  alt="logo">
+        </aside>
 
-        </div>
-        <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="#">Barber Schedule</a></li>
-                <li><a href="">News and Events</a></li>
-                <li><a href="">About us</a></li>
-                <li><a href="#">Appointment Bookings</a></li>
-                <li><a href="#">Settins</a></li>
-                <li><a href="#">Reports and Analytics</a></li>
-                <li><a href="admin-home.php">Logout</a></li>
-            </ul>
-        </nav>
+       
     </div>
   
     <div class="dropdown-container">
@@ -54,7 +45,7 @@
                     <option value="december">December</option>
                 </select>
     </div>
-    
+
     <div class="container">
         <button class="btn edit-btn"><a href="#">Edit</a></button>
         <button class="btn save-btn"><a href="#">Save</a></button>
