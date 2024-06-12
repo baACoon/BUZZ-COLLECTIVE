@@ -10,31 +10,47 @@
     <link rel="stylesheet" href="Designs/adminhome.css">
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
+
+    <aside class="sidebar">
+                <div class="logo">
+                    <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+                </div>
+                <nav>
+                    <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Notification</a><span class="notification-dot"></span></li>
+                    <li><a href="admin-home.php">Home</a></li>
                     <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                     <li><a href="#">News and Events</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                     <li><a href="#">Settings</a></li>
                     <li><a href="#">Reports and Analytics</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <main>
-            <header>
-                <nav class="top-nav">
-                    <a href="#">Dashboard</a>
-                    <a href="#">Profile</a>
-                    <a href="#">Notification <span class="notification-dot"></span></a>
+                    </ul>
                 </nav>
-            </header>
+        </aside>
+
+   
+  
+    <div class="dropdown-container">
+            <label for="months">This Month</label>
+                <select id="months" name="months">
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                </select>
+    </div>
+    <main>
             <section class="highlights">
                 <div class="highlight-box">
                     <p>76</p>
@@ -49,10 +65,12 @@
                     <span>New Appointments</span>
                 </div>
             </section>
-            <section class="feedback">
-                <h2>Feedback</h2>
+            <div class="table-container">
                 <table>
                     <thead>
+                        <tr>
+                            <th colspan="3">Feedbacks</th>
+                        </tr>
                         <tr>
                             <th>Name</th>
                             <th>Rating</th>
@@ -61,9 +79,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Name</td>
-                            <td>Rating</td>
-                            <td>Message</td>
+                            <td>Jone</td>
+                            <td>10</td>
+                            <td>Perfect</td>
+                        </tr>
+                        <tr>
+                            <td>Beh</td>
+                            <td>10</td>
+                            <td>Pogi</td>
                         </tr>
                         <tr>
                             <td>Name</td>
@@ -82,8 +105,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </section>
+            </div>
         </main>
-    </div>
 </body>
 </html>

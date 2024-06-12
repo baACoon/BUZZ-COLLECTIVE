@@ -15,12 +15,15 @@ unset($_SESSION['appointments']);
     <link rel="stylesheet" href="Designs/adminappointment.css">
 </head>
 <body>
-<aside class="sidebar">
+        <aside class="sidebar">
             <div class="logo">
-                <img src="image/BUZZ-White.png" alt="Buzz Collective Logo">
+                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
             </div>
             <nav>
                 <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Notification</a><span class="notification-dot"></span></li>
                     <li><a href="admin-home.php">Home</a></li>
                     <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                     <li><a href="#">News and Events</a></li>
@@ -32,17 +35,25 @@ unset($_SESSION['appointments']);
             </nav>
         </aside>
 
+        <div class="dropdown-container">
+                <select id="status" name="status">
+                    <option value="Pending">Pending</option>
+                    <option value="Complete">Complete</option>
+                    <option value="Noshow">No show</option>
+                </select>
+        </div>
+
     <div class="appointments-table-container">
         <h2>Appointments List</h2>
         <table class="appointments-table">
             <thead>
                 <tr>
-                    <th>Select</th>
-                    <th>ID</th>
+                    <th class="left"></th>
+                    <th >ID</th>
                     <th>Booking Data</th>
                     <th>Services</th>
                     <th>Booking Date & Time</th>
-                    <th>Status</th>
+                    <th class="right">Status</th>
                 </tr>
             </thead>
             <tbody>

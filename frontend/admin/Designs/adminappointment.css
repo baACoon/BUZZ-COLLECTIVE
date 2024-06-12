@@ -1,49 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
     display: flex;
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
 }
 
 .sidebar {
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 1;
 }
-
-.sidebar .logo {
-    text-align: center;
-    margin-bottom: 10px;
-
+.sidebar .logo img{
+    margin-top: -70px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .sidebar nav ul {
     list-style-type: none;
     padding: 0;
+    margin-top: -60px;
 }
 
 .sidebar nav ul li {
-    margin: 10px 0;
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
 }
 
 .sidebar nav ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    display: block;
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #444;
+    background-color: #222222;
     padding-left: 10px;
 }
 
-.main-content {
-    margin-left: 220px; /* Sidebar width + some padding */
-    padding: 20px;
-    width: calc(100% - 220px);
+.dropdown-container{
+    text-align: left;
+    margin: 20px;
+    margin-left: 21em;
+    margin-top: 20px;
 }
 
-.filter {
-    margin-bottom: 20px;
+select {
+    width: 160px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #fff;
 }
 
 .appointment-form {
@@ -86,26 +103,45 @@ body {
 }
 
 .appointments-table-container {
-    background-color: #cb1a1a;
+    background-color: white;
     padding: 20px;
     border-radius: 8px;
+    margin-top: 70px;
+    margin-left: 20em;
+    position: absolute;
+
 }
 
 .appointments-table {
     width: 100%;
     border-collapse: collapse;
-    
+    border-radius: 3px;
 }
+
 
 .appointments-table th, .appointments-table td {
-    border: 1px solid #ddd;
     padding: 8px;
-    
+    text-align: left;
 }
+.appointments-table tr{
+    background: #faf9f9;
+    border-bottom: 2px  solid #000000;
+    border-radius: 2px;
+  }
+
+.appointments-table .right{
+    border-radius: 0px 50px 0px 0px;
+  }
+.appointments-table .left{
+    border-radius: 50px 0px 0px 0px;
+  }
 
 .appointments-table th {
-    background-color: #f2f2f2;
+    background-color: #222222;            
     text-align: left;
+    color: white;
+    padding: 1em;
+
 }
 
 .status {

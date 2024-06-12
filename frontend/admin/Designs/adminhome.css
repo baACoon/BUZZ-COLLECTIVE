@@ -1,116 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100vh;
 }
-
-.container {
-    display: flex;
-    width: 100%;
-}
-
-.sidebar {
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-}
-
-.sidebar .logo {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar nav ul li {
-    margin: 10px 0;
-}
-
-.sidebar nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-}
-
-.sidebar nav ul li a:hover {
-    background-color: #444;
-    padding-left: 10px;
-}
-
 main {
     flex-grow: 1;
     padding: 20px;
     background-color: #f9f9f9;
 }
-
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 1;
+}
+.sidebar .logo img{
+    margin-top: -70px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.top-nav a {
-    color: #fff;
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: -60px;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
+    
+}
+
+.sidebar nav ul li a {
+    color: white;
     text-decoration: none;
-    margin: 0 10px;
 }
 
-.notification-dot {
-    height: 8px;
-    width: 8px;
-    background-color: red;
-    border-radius: 50%;
-    display: inline-block;
+.sidebar nav ul li a:hover {
+    background-color: #222222;
+    padding-left: 10px;
 }
 
+
+.dropdown-container{
+    text-align: left;
+    margin: 20px;
+    margin-left: 300px;
+    margin-top: 50px;
+}
+label {
+    font-size: 14px;
+    color: #333;
+}
+select {
+    width: 160px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #fff;
+}
 .highlights {
     display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
+    position: relative;
+    justify-content: space-evenly;
+    left: 10em;
 }
 
 .highlight-box {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    padding: 20px;
-    width: 30%;
-    text-align: center;
+    height: 200px;
+    width: 292px;
+    border-radius: 20px;
 }
 
 .highlight-box p {
-    font-size: 2em;
-    margin: 0;
+    margin-left: 1em;
+    font-size: 40px;
 }
 
 .highlight-box span {
     color: #666;
+    font-size: 16;
+    margin-left: 1em;
+
 }
 
-.feedback {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ddd;
+
+.table-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.feedback table {
+table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.feedback table, .feedback th, .feedback td {
-    border: 1px solid #ddd;
-    padding: 8px;
+thead {
+    background-color: #333;
+    color: white;
+}
+
+thead th {
+    padding: 10px;
     text-align: left;
 }
 
-.feedback th {
-    background-color: #f2f2f2;
+thead th[colspan="3"] {
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody td:nth-child(2),
+tbody td:nth-child(3) {
+    text-align: center;
+}
+
+tbody tr:nth-child(2) td {
+    background-color: #f1f1f1;
+    color: #999;
 }

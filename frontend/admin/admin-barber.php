@@ -14,6 +14,9 @@
             </div>
             <nav>
                 <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Notification</a><span class="notification-dot"></span></li>
                     <li><a href="admin-home.php">Home</a></li>
                     <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                     <li><a href="#">News and Events</a></li>
