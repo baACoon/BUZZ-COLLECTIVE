@@ -10,11 +10,10 @@ body {
     height: 100%;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    z-index: 1; /* Push the background behind other elements */
+    z-index: 1; 
 }
 
 .popup {
-    line-height: 1px;
     width: 30%;
     height: 30%;
     display: flex;
@@ -27,11 +26,11 @@ body {
     transform: translate(-50%, -50%);
     background: white;
     border-radius: 20px;
-    /*z-index: 1;  Ensure the popup is above the blurred background */
 }
 
 .popup button {
     margin-top: 10px;
+    
 }
 
 .popup .username {
@@ -50,7 +49,68 @@ body {
     font-size: 12px;
     cursor: pointer;
 }
-
+.popup :active {
+    box-shadow: inset -4px -4px 12px #ffffff;
+  }
 .popup p{
     font-weight: 500;
 }
+
+
+
+
+/*.cta {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
+
+.cta span {
+  padding-bottom: 7px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  padding-right: 15px;
+  text-transform: uppercase;
+  left: 100px;
+}
+
+.cta svg {
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active svg {
+  transform: scale(0.9);
+}
+
+.hover-underline-animation {
+  position: relative;
+  color: black;
+  padding-bottom: 20px;
+  left: 1em;
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+*/

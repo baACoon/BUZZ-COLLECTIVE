@@ -1,79 +1,118 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('image/aboutuscover.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150vh;
+}
 /*BARBERS INFO */
-.txt{
-    margin-top: 20%;
-    margin-left: 8em;
-}
-.txt h1{
-    font-weight: 400;
-}
 .image-container {
     display: flex;
     justify-content: center ;
     flex-wrap: wrap;
     margin-top: 5%;
-    background-color: aqua;
-}
+    padding:1em;
+  }
 
-.image-wrapper {
-    position: relative;
-    margin: 1px;
-    z-index: 1; /* Ensure the image wrapper has a z-index set */
-}
 
 .image {
+  position: relative;
     cursor: pointer;
-    width: 200px; /* Adjust as needed */
+    width: 300px; /* Adjust as needed */
     height: auto;
+    margin:0;
+    padding:0;
     border-radius: 50%;
     transition: transform 0.3s, filter 0.3s;
     filter: grayscale(100%); /* Apply grayscale by default */
-    z-index: 0; /* Set higher z-index for the image */
+    z-index: 3; /* Set higher z-index for the image */
 }
 
 .image:hover,
 .image.active {
-    transform: scale(1.1);
+    margin:10px;
+    transform: scale(1.2);
     filter: grayscale(0%); /* Remove grayscale on hover or when active */
 }
-
 .info {
-    display: block;
-    position: absolute;
-    top: 90%; /* Adjust as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px; /* Adjust as needed */
-    padding: 10px;
-    background: #fefefe;
-    color: rgb(11, 11, 11);
-    border-radius: 20px;
-    box-shadow: 4px 4px  rgba(0, 0, 0, 0.1);
-    z-index: 2;
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-    transition: opacity 0.5s, height 0.5s; /* Transition for smooth dropdown effect */
-    text-align: left; /* Align text to the left */
-
+  position: relative; /* Change from absolute to relative */
+  margin-top: 0px; /* Adjust margin for spacing */
+  height: 330px;
+  width: 300px;
+  background: rgb(247, 247, 247);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 6px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1;
 }
-.info h2{
+
+.team-section {
+    text-align: center;
+    padding: 20px;
+    position:relative;
+    top: 25%;
+    margin-bottom: 15%;
+
+  }
+  
+  .team-section h1 {
     font-size: 2em;
+    margin-bottom: 20px;
+  }
+  .team-section h1 span {
+    color: #ff6600;
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  
+  .member {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+  .info h2,
+.info p,
+.info h3 {
+  font-size: 0.7em;
+  margin: 5px 0;
+  text-align:justify;
 }
 
 .works-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .work-item {
-    width: 48%;
-    height: 50px;
-    background: #ddd;
-    border-radius: 5px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.work-item {
+  width: 48%;
+  height: 50px;
+  background: #ddd;
+  border-radius: 5px;
+}
 .image-wrapper:hover .info {
     opacity: 1;
     height: auto; /* Allows the dropdown to expand to fit the content */

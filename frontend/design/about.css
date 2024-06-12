@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +9,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
-    background: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('image/aboutuscover.jpg');
+    background-image: url('image/cover.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 150vh;
 }
+
 #mainheader {
     background-color: #F8F8F8;
     display: flex;
@@ -125,6 +125,9 @@ body {
 }
 
 /*book appointment button */
+.appointment-container{
+    text-decoration: none;
+}
 .book-appointment-btn {
     background-color: #E43A19;
     color: white;
@@ -138,7 +141,6 @@ body {
     margin: 50px auto 100px; /* Centers the button and adds space above */
     text-align: center;
     transition: background-color 0.3s;
-    text-decoration: none;
 }
 
 

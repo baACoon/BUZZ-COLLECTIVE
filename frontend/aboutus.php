@@ -72,95 +72,139 @@
         </div>
         
     </div>
+    <section class="team-section">
+        <h1>Meet the <span>PRIDE</span> of Buzz&Collectives</h1>
+        <div class="team-members image-container">
+            <?php
+            $images = [
+                ['src' => 'design/image/Barber1.jpg', 'info' => '
+                    <div class="info">
+                        <h2>Juan <span>“Baby”</span> Luna</h2>
+                        <p><strong>Fav Cut:</strong> Fade</p>
+                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <h3>WORKS</h3>
+                        <div class="works-gallery">
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                        </div>
+                    </div>'
+                ],
+                ['src' => 'design/image/barber4.jpg', 'info' => '
+                    <div class="info">
+                        <h2>Juan <span>“Baby”</span> Luna</h2>
+                        <p><strong>Fav Cut:</strong> Fade</p>
+                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <h3>WORKS</h3>
+                        <div class="works-gallery">
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                        </div>
+                    </div>'
+                ],
+                ['src' => 'design/image/barber5.jpg', 'info' => '
+                    <div class="info">
+                        <h2>Juan <span>“Baby”</span> Luna</h2>
+                        <p><strong>Fav Cut:</strong> Fade</p>
+                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <h3>WORKS</h3>
+                        <div class="works-gallery">
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                        </div>
+                    </div>'
+                ],
+                ['src' => 'design/image/barber 2.jpg', 'info' => '
+                    <div class="info">
+                        <h2>Juan <span>“Baby”</span> Luna</h2>
+                        <p><strong>Fav Cut:</strong> Fade</p>
+                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <h3>WORKS</h3>
+                        <div class="works-gallery">
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                        </div>
+                    </div>'
+                ],
+                ['src' => 'design/image/Barber 3.jpg', 'info' => '
+                    <div class="info">
+                        <h2>Juan <span>“Baby”</span> Luna</h2>
+                        <p><strong>Fav Cut:</strong> Fade</p>
+                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <h3>WORKS</h3>
+                        <div class="works-gallery">
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                            <div class="work-item"></div>
+                        </div>
+                    </div>'
+                ],
+            ];
 
-    <div class="txt">
-        <h1>Meet the <b><strong>PRIDE</strong></b> of Buzz&Collectives</h1>
-    </div>
+            foreach ($images as $index => $image) {
+                echo '<div class="member" onmouseover="showInfo(this)" onmouseout="hideInfo(this)">';
+                echo '<img src="' . $image['src'] . '" alt="Image ' . ($index + 1) . '" class="image" data-index="' . $index . '">';
+                echo $image['info'];
+                echo '</div>';
+            }
+            ?>
 
-    <div class="image-container">
-        <?php
-        $images = [
-            ['src' => 'design/image/Barber1.jpg', 'info' => 
-            '<div class="info">
-                <h2>Juan <span>“Baby”</span> Luna</h2>
-                <p><strong>Fav Cut:</strong> Fade</p>
-                <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                <h3>WORKS</h3>
-                <div class="works-gallery">
-                    <div class="work-item"></div>
-                    <div class="work-item"></div>
-                    <div class="work-item"></div>
-                    <div class="work-item"></div>
-                </div>
-            </div>'],
-            ['src' => 'design/image/barber4.jpg', 'info' => 'Information about Image 2'],
-            ['src' => 'design/image/barber5.jpg', 'info' => 'Information about Image 3'],
-            ['src' => 'design/image/barber 2.jpg', 'info' => 'Information about Image 3'],
-            ['src' => 'design/image/Barber 3.jpg', 'info' => 'Information about Image 3'],
-        ];
+        </div>
+        <div class="appointment-container">
+            <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
+         </div>
 
-        foreach ($images as $index => $image) {
-            echo '<div class="image-wrapper">';
-            echo '<img src="' . $image['src'] . '" alt="Image ' . ($index + 1) . '" class="image" data-index="' . $index . '">';
-            echo '<div class="info" id="info-' . $index . '">' . $image['info'] . '</div>';
-            echo '</div>';
-        }
-        ?>
-    </div>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.image');
-            const infos = document.querySelectorAll('.info');
 
-            images.forEach(image => {
-                image.addEventListener('click', function() {
-                    const index = this.getAttribute('data-index');
-                    const info = document.getElementById('info-' + index);  
+            <script>
+                function showInfo(element) {
+                    const infoDiv = element.querySelector('.info');
+                    infoDiv.style.display = 'block';
+                    infoDiv.style.height = '100px'; // Set height to ensure it's visible
+                    updateButtonPosition();
+                    }
 
-                    // Hide all info boxes and remove active class from all images
-                    infos.forEach(info => {
-                        info.style.opacity = '0';
-                        info.style.height = '0';
+                    function hideInfo(element) {
+                    const infoDiv = element.querySelector('.info');
+                    infoDiv.style.display = 'none';
+                    infoDiv.style.height = '0'; // Reset height
+                    updateButtonPosition();
+                    }
+
+                    function updateButtonPosition() {
+                    const teamSection = document.querySelector('.team-section');
+                    const appointmentButton = document.querySelector('.appointment-btn');
+                    const memberElements = document.querySelectorAll('.member');
+                    
+                    let maxInfoHeight = 0;
+                    
+                    memberElements.forEach(member => {
+                        const infoDiv = member.querySelector('.info');
+                        if (infoDiv.style.display === 'block') {
+                        maxInfoHeight = Math.max(maxInfoHeight, infoDiv.offsetHeight);
+                        }
                     });
-                    images.forEach(img => img.classList.remove('active'));
-
-                    // Toggle the clicked info box and add active class to the clicked image
-                    if (info.style.opacity === '1') {
-                        info.style.opacity = '0';
-                        info.style.height = '0';
-                        this.classList.remove('active');
-                    } else {
-                        info.style.opacity = '1';
-                        info.style.height = 'auto';
-                        this.classList.add('active');
+                    
+                    appointmentButton.style.marginTop = `${20 + maxInfoHeight}px`;
                     }
-                });
 
-                image.addEventListener('mouseenter', function() {
-                    const index = this.getAttribute('data-index');
-                    const info = document.getElementById('info-' + index);
-                    info.style.opacity = '1';
-                    info.style.height = 'auto';
-                });
+            </script>
 
-                image.addEventListener('mouseleave', function() {
-                    const index = this.getAttribute('data-index');
-                    const info = document.getElementById('info-' + index);
-                    if (!this.classList.contains('active')) {
-                        info.style.opacity = '0';
-                        info.style.height = '0';
-                    }
-                });
-            });
-        });
-    </script>
-
-    <div class="appointment-container">
-        <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
-    </div>
-
+   
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -198,5 +242,6 @@
             </div>
         </div>
     </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
