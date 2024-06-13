@@ -43,7 +43,7 @@
     <div id="landing-container">
         <h1>MAKE YOURSELF FEEL GOOD WITH QUALITY HAIRCUTS</h1>
         <p>When it comes to haircuts, Buzz & Collectives got you covered!</p>
-        <button class="landing-button"><a href="appointment.php">Book with us!</a></button>
+        <button class="landing-button"><a href="register.php">Book with us!</a></button>
         <a href="#" class="see-more">See More</a>
     </div>
 
@@ -104,7 +104,7 @@
         <p>EXPERIENCE GREATNESS WITH</p>
         <h1>BUZZ&COLLECTIVES</h1>
         <div class="container">
-           <button class="book"><a href="appointment.php">Book with us!</a></button>
+           <button class="book"><a href="register.php">Book with us!</a></button>
 
         </div>
 
