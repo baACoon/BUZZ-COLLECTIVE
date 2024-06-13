@@ -34,7 +34,6 @@
    
   
     <div class="dropdown-container">
-            <label for="months">This Month</label>
                 <select id="months" name="months">
                     <option value="january">January</option>
                     <option value="february">February</option>
@@ -50,6 +49,21 @@
                     <option value="december">December</option>
                 </select>
     </div>
+    <div class="dropdown-containerhair">
+                <select id="months" name="months">
+                    <option value="january">Haircut</option>
+                    <option value="january">Kiddie Haircut</option>
+                    <option value="february">Haircut and Shave</option>
+                    <option value="march">Hair Art</option>
+                    <option value="april">Haircut and Perm</option>
+                    <option value="may"> Hair Color</option>
+                    <option value="june">Hair Color and Haircut</option>
+                    <option value="july">Scalp Treatment</option>
+                    <option value="august">Scalp Treatment and Haircut</option>
+                    <option value="september">Shave and Sculpting</option>
+                </select>
+    </div>
+    
     <main>
             <section class="highlights">
                 <div class="highlight-box">

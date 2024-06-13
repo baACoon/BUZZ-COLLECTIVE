@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
     font-family: "Montserrat", sans-serif;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
 main {
     flex-grow: 1;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding:50px;
 }
 .sidebar {
     position: fixed;
@@ -52,10 +51,23 @@ main {
 
 
 .dropdown-container{
-    text-align: left;
-    margin: 20px;
-    margin-left: 300px;
-    margin-top: 50px;
+    margin: 2px;
+    margin-left: 23%;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    cursor:pointer;
+}
+.dropdown-containerhair{
+    margin: 2px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    cursor:pointer;
 }
 label {
     font-size: 14px;
@@ -69,19 +81,21 @@ select {
     border-radius: 15px;
     background-color: #fff;
 }
+
+
 .highlights {
-    display: flex;
-    position: relative;
-    justify-content: space-evenly;
-    left: 10em;
+    display: inline-flex;
+    justify-content: space-around;
+    margin-left: 260px;
+    top:20%;
 }
 
 .highlight-box {
-    background-color: #ffffff;
     border: 1px solid #ddd;
-    height: 200px;
-    width: 292px;
+    height: 170px;
+    width: 242px;
     border-radius: 20px;
+    margin: 30px;
 }
 
 .highlight-box p {
@@ -91,25 +105,26 @@ select {
 
 .highlight-box span {
     color: #666;
-    font-size: 16;
+    font-size: 14px;
     margin-left: 1em;
-
 }
 
 
 .table-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+    width: 50%;
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position:absolute;
+    left:30%;
+    top: 70%;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+
 }
 
 thead {
