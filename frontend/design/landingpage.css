@@ -1,120 +1,165 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
 body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
-    background: url('image/LandingPageBG.jpg'); 
-
+    background: url('image/LandingPageBG.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;;
-    height: 1000px;
+    height: 150vh;
 }
 
 #mainheader {
-    background-color: #ffffff;
+    background-color: #F8F8F8;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100px;
-    z-index: 1000; /* Ensure the header appears above other content */
+    height: 80px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 }
 
-#mainheader img {
-    width: 180px;
+#mainheader .logo img {
+    height: 150px; /* Adjust based on your logo size */
+    margin-left: 120px;
+    width: 150px;
+}
+
+#mainheader nav {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 0;
+    width: 0;
+}
+
+#mainheader ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-left: 350px;
+}
+
+#mainheader ul li {
     position: relative;
-    height: 150px; /* Adjust the height as needed */
-    margin-left: 35px; /* Adjust the margin as needed */
-    margin-right: 20px; /* Adjust the margin as needed */
-    margin-top: -10px;
+    list-style: none;
+    margin: 0 20px;
+    padding: 10px 15px;
 }
 
-#mainheader a{
+#mainheader ul li a {
     text-decoration: none;
     color: black;
-    font-size: 18px;
-    margin-left: 50px;
-}
-
-#mainheader .navbar {
-    margin-left: 10em;
-}
-
-/* Dropdown Button */
-.dropdown {
-    position: relative;
+    padding: 20px 0;
     display: inline-block;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    font-size: 16px;
 }
 
-.dropbtn {
-    background-color: #ffffff;
-    color: white;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    text-decoration: none;
+#mainheader ul li a:hover {
+    color: brown;
+    text-decoration: underline; /* Add underline on hover */
 }
 
-/* Dropdown Content */
-.dropdown-content {
-    display: none;
-    cursor: pointer;
+#mainheader ul .submenu {
     position: absolute;
-    background-color: #676767;
-    z-index: 1;
-    border-radius: 10px;
-    left: 22.5%;
-    top: 100%;
-    min-width: 100px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content li {
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-    border-radius: 10px;
-    white-space: nowrap;
-    margin-left: -20%;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content li a:hover {
-    background-color: rgb(255, 255, 255);
+    width: 150px;
+    background-color: beige;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    
+    left: -360px;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+#mainheader ul li:hover .submenu {
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+}
+
+#mainheader ul .submenu li {
+    margin: 0;
+    width: 100%;
+}
+
+#mainheader ul .submenu li a {
+    padding: 15px 20px;
     display: block;
-} 
-.signin-button {
+    width: 100%;
+    color: black; /* Ensure submenu links have the correct color */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup {
+    color: white;
+    padding: 12px;
+    margin: 12px;
     background-color: #E43A19; 
-    color: white; 
-    padding: 8px 8px; 
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;   
     border: none; 
     border-radius: 20px; 
-    cursor: pointer;
-    text-align: center; 
-    margin-left: 70px;
-}
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 
-.signin-button a {
-    color: inherit;
-    text-decoration: none;
+  }
+  .signup a{
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;   
 }
+  
+ .login {
+    color: white;
+    padding: 12px;
+    margin: 12px;
+    background-color: #E43A19; 
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;   
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+  }
 
-/* Hover effect for the button */
-.signin-button:hover {
-    background-color: #6e1f1f; 
+  .login a{
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;   
 }
+  
+  .button:hover {
+    background-color: #555;
+  }
 
 #landing-container h1 {
     margin: 150px;
@@ -142,6 +187,8 @@ body {
     border: none; 
     border-radius: 30px; 
     cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+
 }
 
 .landing-button a{

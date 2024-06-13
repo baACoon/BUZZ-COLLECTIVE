@@ -9,23 +9,37 @@
     <title>Buzz & Collectives Landing Page</title>
 </head>
 <body>
-    <header id="mainheader">
-        <img src="design/image/BUZZ-Black.png" alt="">
-        <div class="navbar">
-            <a href="landingpage.php">HOME</a>
-            <div class="dropdown">
-                <a class="dropbtn" href="aboutus.php">ABOUT US <i class="fa-solid fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                    <li><a href="aboutus.php">About us</a></li>
-                    <li><a href="#">Barbers</a></li>
-                </div>
-            </div>
-            <a href="#">SERVICES</a>
-            <a href="#">PRODUCTS</a>
-                <button class="signin-button"><a href="register.php">Sign In</a></button>
-         </div>
-    </header>
 
+<header id="mainheader">
+            <div class="logo">
+                <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="register.php">Home</a></li>
+                    <li><a href="register.php">About Us</a>
+                        <ul class="submenu">
+                            <li><a href="#">Barbers</a></li>
+                            <li><a href="register.php">About Us</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.php">Service</a>
+                        <ul class="submenu">
+                            <li><a href="#">....</a></li>
+                            <li><a href="#">....</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.php">Product</a>
+                        <ul class="submenu">
+                            <li><a href="#">Product1</a></li>
+                            <li><a href="#">Product2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                    <li><button class="signup"><a href="register.php">Signup</a></button></li>
+                    <li><button class="login"><a href="login.php">Login</a></button></li>
+            </nav>
+        </header>
     <div id="landing-container">
         <h1>MAKE YOURSELF FEEL GOOD WITH QUALITY HAIRCUTS</h1>
         <p>When it comes to haircuts, Buzz & Collectives got you covered!</p>
