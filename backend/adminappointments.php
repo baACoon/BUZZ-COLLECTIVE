@@ -1,18 +1,22 @@
 <?php
-session_start();
+session_start(); // initiates a new session or resume an existing one.
 
+
+//connection to the mysql database. 
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Dummy data
+// Dummy data = it initialize an empty array '$appointments' to hold the appointment data
 $appointments = [];
 
 // Fetch existing appointments from database
+// executes a sql query to fetch all records from the 'appointments' table 
 $sql = "SELECT * FROM appointments";
 $result = $db->query($sql);
+
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -38,11 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("ssssssss", $firstName, $lastName, $email, $phonenumber, $servicesSerialized, $barber, $appointmentDate, $appointmentTime);
 
     if ($stmt->execute()) {
+        echo "NEW RECORD CREATED SUCCESFULLY";
+        
         // Fetch the newly inserted appointment
         $new_appointment_id = $stmt->insert_id;
         $sql = "SELECT * FROM appointments WHERE appointment_id = $new_appointment_id";
+        
+       
         $result = $db->query($sql);
-
+        
         if ($result->num_rows > 0) {
             $appointments[] = $result->fetch_assoc();
         } else {
@@ -51,11 +59,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo "Error: " . $stmt->error;
     }
-    $stmt->close();
 
+    $stmt->close();
     // Store appointments data in session
     $_SESSION['appointments'] = $appointments;
+
     $db->close();
 }
+
 
 ?>

@@ -51,7 +51,7 @@ if (!isset($_SESSION['username'])) {
                     <li><a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
                         <ul class="submenu">
                             <li><a href="#">My Profile</a></li>
-                            <li><a href="login.php">Logout</a></li>
+                            <li><a href="landingpage.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

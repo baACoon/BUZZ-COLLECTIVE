@@ -17,7 +17,7 @@
             <nav>
                 <ul>
                     <li><a href="register.php">Home</a></li>
-                    <li><a href="register.php">About Us</a>
+                    <li><a href="aboutusland.php">About Us</a>
                         <ul class="submenu">
                             <li><a href="#">Barbers</a></li>
                             <li><a href="register.php">About Us</a></li>

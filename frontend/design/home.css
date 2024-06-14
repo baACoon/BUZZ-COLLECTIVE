@@ -386,36 +386,7 @@ footer {
 
 /* Media queries */
 @media screen and (max-width: 600px) {
-    #main#mainheader {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    #main#mainheader img {
-        width: 40%; /* Make the logo full width */
-        margin-bottom: 10px; /* Add space between logo and links */
-    }
-
-    #main#mainheader a {
-        margin: 0; /* Remove the margin */
-        text-align: center; /* Center align the links */
-    }
-
-    .dropdown-content {
-        position: static;
-        display: none;
-        background-color: #E43A19;
-        min-width: unset;
-        margin: 0; /* Remove the margin */
-    }
-
-    .dropdown-content li {
-        text-align: center; /* Center align the dropdown links */
-    }
-}
-
-.blur {
-    filter: blur(5px); /* Adjust the blur intensity as needed */
+   
 }
 
 
