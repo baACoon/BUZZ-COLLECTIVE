@@ -235,6 +235,7 @@ body {
 .landing-txt-images{
     position: relative;
     margin-top: 10px;
+    background-color: #222222;
 }
 
 .landing-txt-images h1{
@@ -259,6 +260,7 @@ body {
     margin-right: 60px;
     top: 0;
     right: 0;
+    
 }
 .landing-images2{
     display: flex;
