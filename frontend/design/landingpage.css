@@ -235,7 +235,7 @@ body {
 .landing-txt-images{
     position: relative;
     margin-top: 10px;
-    background-color: #222222;
+    margin-left: 2em;
 }
 
 .landing-txt-images h1{
@@ -257,7 +257,7 @@ body {
     height: 400px;
     object-fit: cover;
     margin-top: -150px;
-    margin-right: 60px;
+    margin-right: 105px;
     top: 0;
     right: 0;
     
@@ -304,7 +304,7 @@ body {
     height: 400px;
     object-fit: cover;
     margin-top: -50px;
-    margin-left: 90px;
+    margin-left: 135px;
     top: 0;
     left: 0;
 }
