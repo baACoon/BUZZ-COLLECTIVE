@@ -103,9 +103,9 @@
     <div class="buzz-and-collectives">
         <p>EXPERIENCE GREATNESS WITH</p>
         <h1>BUZZ&COLLECTIVES</h1>
+        
         <div class="container">
            <button class="book"><a href="register.php">Book with us!</a></button>
-
         </div>
 
     </div>
