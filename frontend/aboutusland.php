@@ -20,22 +20,12 @@
                     <li><a href="home.php">Home</a></li>
                     <li><a href="aboutus.php">About Us</a>
                         <ul class="submenu">
-                            <li><a href="#">Barbers</a></li>
-                            <li><a href="aboutus.php">About Us</a></li>
+                            <li><a href="#">Buzz & Collectives</a></li>
+                            <li><a href="aboutus.php">Be a Buzzing Barber</a></li>
                         </ul>
                     </li>
-                    <li><a href="service.php">Service</a>
-                        <ul class="submenu">
-                            <li><a href="#">....</a></li>
-                            <li><a href="#">....</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="product.php">Product</a>
-                        <ul class="submenu">
-                            <li><a href="#">Product1</a></li>
-                            <li><a href="#">Product2</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#">Branches</a></li>
+                    <li><a href="product.php">Services</a></li>
                     <li><a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
                         <ul class="submenu">
                             <li><a href="#">My Profile</a></li>

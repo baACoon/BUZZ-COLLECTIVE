@@ -9,11 +9,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
-    background-image: url('image/cover.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 150vh;
+    height: 100vh;
 }
 
 #mainheader {
@@ -109,43 +108,78 @@ body {
     font-size: 18px;
 }
 
-#body-container .logo-body{
-    margin-top: 125px;
-}
 
-#body-container p{
+.bookus-button{
+    background-color: color;
     color: white;
+    margin-left: 1100px;
+    margin-top: 120px;
+    background-color: #E43A19; 
     font-size: 20px;
-    margin-top: -120px;
-    margin-left: 4.5em;
-    text-align: justify;
-    position: absolute;
-    width: 600px;
+    font-weight: 550;
+    font-family: "Montserrat";
+    text-transform: uppercase;
+    padding: 13px 17px;
+    border: none; 
+    border-radius: 30px; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+
 }
 
-/*book appointment button */
-.appointment-container{
+.bookus-button a{
+    color: white; 
     text-decoration: none;
 }
-.book-appointment-btn {
-    background-color: #E43A19;
-    color: white;
-    border-radius: 25px;
-    border: none;
-    padding: 15px 30px;
-    font-weight: bold;
-    font-size: 18.5px;
-    cursor: pointer;
-    display: block;
-    margin: 50px auto 100px; /* Centers the button and adds space above */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buzz-logo {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.buzz-logo img{
+    height: 150px;
+    width: 150px;   
+    margin-left: 250px;
+    margin-right: 20px;
+}
+.branch {
+    display: flex;
+    flex-direction: column; /* Stack the h3 and p vertically */
+}
+
+.branch h3{
+    font-style: italic;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.branch p{
+    font-size: 19px;
+}
+
+.branch a{
+    text-decoration: none;
+    color: #333;
+}
+
+.otherbranch p {
+    margin-left: 280px;
+    font-size: 20px;
+}
+
+.more-soon{
+    font-size: 20px;
+    text-transform: uppercase;
     text-align: center;
-    transition: background-color 0.3s;
+    margin-bottom: 100px;
 }
 
-
-.book-appointment-btn:hover {
-    background-color: black;
-}
 
 /* FOOTER */
 

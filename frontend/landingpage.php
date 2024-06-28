@@ -19,25 +19,14 @@
                     <li><a href="register.php">Home</a></li>
                     <li><a href="aboutusland.php">About Us</a>
                         <ul class="submenu">
-                            <li><a href="#">Barbers</a></li>
-                            <li><a href="register.php">About Us</a></li>
+                            <li><a href="#">Buzz & Collectives</a></li>
+                            <li><a href="#">Be a Buzzing Barber</a></li>
                         </ul>
                     </li>
-                    <li><a href="register.php">Service</a>
-                        <ul class="submenu">
-                            <li><a href="#">....</a></li>
-                            <li><a href="#">....</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="register.php">Product</a>
-                        <ul class="submenu">
-                            <li><a href="#">Product1</a></li>
-                            <li><a href="#">Product2</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="branches.php">Branches</a></li>
+                    <li><a href="services.php">Services</a></li>
                 </ul>
-                    <li><button class="signup"><a href="register.php">Signup</a></button></li>
-                    <li><button class="login"><a href="login.php">Login</a></button></li>
+                    <li><button class="login"><a href="login.php">Sign In</a></button></li>
             </nav>
         </header>
     <div id="landing-container">
