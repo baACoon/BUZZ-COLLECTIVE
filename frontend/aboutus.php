@@ -12,18 +12,18 @@
 </head>
 <body>
 <header id="mainheader">
-        <div class="logo">
-            <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="aboutus.php">About Us</a>
-                <ul class="submenu">
-                    <li><a href="#">Buzz & Collectives</a></li>
-                    <li><a href="aboutus.php">Be a Buzzing Barber</a></li>
-                </ul>
-                </li>
+            <div class="logo">
+                <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="aboutus.php">About Us</a>
+                        <ul class="submenu">
+                            <li><a href="#">Buzz & Collectives</a></li>
+                            <li><a href="aboutus.php">Be a Buzzing Barber</a></li>
+                        </ul>
+                    </li>
                     <li><a href="branches.php">Branches</a></li>
                     <li><a href="services.php">Services</a></li>
                     <li><a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
@@ -32,9 +32,9 @@
                             <li><a href="login.php">Logout</a></li>
                         </ul>
                     </li>
-            </ul>
-        </nav>
-</header>
+                </ul>
+            </nav>
+        </header>
 
     <div id="body-container">
         <img src="design/image/buzz.png" class="logo-body" alt="">
