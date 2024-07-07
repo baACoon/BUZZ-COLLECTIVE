@@ -286,12 +286,145 @@ footer {
     font-size: 35px; /* Adjust icon size */
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
+@media (max-width: 1024px) {
+    #mainheader ul {
+        margin-left: 150px;
     }
 
-    .footer-left, .footer-right {
-        margin: 20px 0;
+    .services-logo h3 {
+        margin-left: 400px;
+        margin-top: -150px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .service-details h3 {
+        font-size: 20px;
+        margin-left: 20px;
+    }
+
+    .service-details p {
+        margin-left: 20px;
+    }
+
+    .price {
+        margin-right: 50px;
+        margin-top: -10px;
     }
 }
+
+@media (max-width: 768px) {
+    #mainheader {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    #mainheader .logo img {
+        margin-left: 20px;
+    }
+
+    #mainheader ul {
+        flex-direction: column;
+        margin-left: 0;
+        width: 100%;
+        display: none;
+    }
+
+    #mainheader ul li {
+        margin: 10px 0;
+    }
+
+    #mainheader .menu-toggle {
+        display: block;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+    .services-logo h3 {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .service-details h3 {
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
+    .service-details p {
+        margin-left: 10px;
+    }
+
+    .price {
+        margin-right: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left, .footer-left1, .footer-right {
+        margin: 20px 0;
+    }
+
+    .footer-logo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    #mainheader ul {
+        align-items: flex-start;
+    }
+
+    #mainheader ul li {
+        margin: 5px 0;
+    }
+
+    .services-logo h3 {
+        font-size: 24px;
+        margin-top: -100px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .service-details h3 {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+
+    .service-details p {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+
+    .price {
+        font-size: 14px;
+        margin-right: 10px;
+        margin-top: 0;
+    }
+
+    .bookus-button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .social-media i {
+        font-size: 28px;
+    }
+}
+
+

@@ -285,12 +285,114 @@ footer {
     font-size: 35px; /* Adjust icon size */
 }
 
+@media (max-width: 1200px) {
+    #mainheader .logo img {
+        height: 50px;
+        margin-left: 10px;
+    }
+
+    .bookus-button {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+}
+
+/* Small screens (large phones, 600px and up) */
 @media (max-width: 768px) {
+    #mainheader {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    #mainheader .logo img {
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    #mainheader ul {
+        flex-direction: column;
+        margin-left: 0;
+        align-items: center;
+    }
+
+    #mainheader ul li {
+        margin: 5px 0;
+    }
+
+    .bookus-button {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+
     .footer-content {
         flex-direction: column;
+        align-items: center;
     }
 
     .footer-left, .footer-right {
         margin: 20px 0;
+        text-align: center;
+    }
+
+    .footer-logo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .social-media {
+        flex-direction: column;
+        bottom: 10px;
+    }
+
+    .social-media a {
+        margin-bottom: 10px;
+    }
+
+    .branch h3, .branch p {
+        font-size: 16px;
+    }
+
+    .otherbranch p {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+
+    .more-soon {
+        font-size: 16px;
+    }
+}
+
+/* Extra small screens (phones, 480px and down) */
+@media (max-width: 480px) {
+    #mainheader {
+        padding: 5px;
+    }
+
+    #mainheader .logo img {
+        height: 30px;
+    }
+
+    .bookus-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .footer-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .branch h3, .branch p {
+        font-size: 14px;
+    }
+
+    .otherbranch p {
+        font-size: 14px;
+    }
+
+    .more-soon {
+        font-size: 14px;
     }
 }
