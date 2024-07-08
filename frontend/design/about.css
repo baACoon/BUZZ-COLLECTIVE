@@ -13,6 +13,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 150vh;
+    background-color: rgb(226, 23, 23);
 }
 
 #mainheader {

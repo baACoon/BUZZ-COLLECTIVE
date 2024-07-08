@@ -44,7 +44,7 @@
     <div class="buzzing_container">
         <h3>Founders</h3>
         <h2>Monti & Comia started</h2>
-        <h1><i>BUZZING</i></h1>
+        <h4><i>BUZZING</i></h4>
         <p>
             In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
         </p>
@@ -62,137 +62,67 @@
         </div>
         
     </div>
-    <section class="team-section">
-        <h1>Meet the <span>PRIDE</span> of Buzz&Collectives</h1>
-        <div class="team-members image-container">
-            <?php
-            $images = [
-                ['src' => 'design/image/Barber1.jpg', 'info' => '
-                    <div class="info">
-                        <h2>Juan <span>“Baby”</span> Luna</h2>
-                        <p><strong>Fav Cut:</strong> Fade</p>
-                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        <h3>WORKS</h3>
-                        <div class="works-gallery">
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                        </div>
-                    </div>'
-                ],
-                ['src' => 'design/image/barber4.jpg', 'info' => '
-                    <div class="info">
-                        <h2>Juan <span>“Baby”</span> Luna</h2>
-                        <p><strong>Fav Cut:</strong> Fade</p>
-                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        <h3>WORKS</h3>
-                        <div class="works-gallery">
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                        </div>
-                    </div>'
-                ],
-                ['src' => 'design/image/barber5.jpg', 'info' => '
-                    <div class="info">
-                        <h2>Juan <span>“Baby”</span> Luna</h2>
-                        <p><strong>Fav Cut:</strong> Fade</p>
-                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        <h3>WORKS</h3>
-                        <div class="works-gallery">
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                        </div>
-                    </div>'
-                ],
-                ['src' => 'design/image/barber 2.jpg', 'info' => '
-                    <div class="info">
-                        <h2>Juan <span>“Baby”</span> Luna</h2>
-                        <p><strong>Fav Cut:</strong> Fade</p>
-                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        <h3>WORKS</h3>
-                        <div class="works-gallery">
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                        </div>
-                    </div>'
-                ],
-                ['src' => 'design/image/Barber 3.jpg', 'info' => '
-                    <div class="info">
-                        <h2>Juan <span>“Baby”</span> Luna</h2>
-                        <p><strong>Fav Cut:</strong> Fade</p>
-                        <p><strong>Fun Fact:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        <h3>WORKS</h3>
-                        <div class="works-gallery">
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                            <div class="work-item"></div>
-                        </div>
-                    </div>'
-                ],
-            ];
 
-            foreach ($images as $index => $image) {
-                echo '<div class="member" onmouseover="showInfo(this)" onmouseout="hideInfo(this)">';
-                echo '<img src="' . $image['src'] . '" alt="Image ' . ($index + 1) . '" class="image" data-index="' . $index . '">';
-                echo $image['info'];
-                echo '</div>';
-            }
-            ?>
-
+     <!-- BARBERS INFO SELECTION -->
+     <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
+     <section class="slider-container">
+      <div class="slider-images">
+        <div class="slider-img">
+          <img src="design/image/Barber1.jpg" alt="1" />
+          <h1>Andre</h1>
+          <div class="details">
+            <h2>Andre</h2>
+            <p>MANG BARBER</p>
+          </div>
         </div>
-        <div class="appointment-container">
-            <a href="appointment.php"><button class="book-appointment-btn">BOOK AN APPOINTMENT</button></a>
-         </div>
+        <div class="slider-img">
+          <img src="design/image/barber 2.jpg" alt="2" />
+          <h1>Drey</h1>
+          <div class="details">
+            <h2>Drey</h2>
+            <p>MANG BARBER</p>
+          </div>
+        </div>
+        <div class="slider-img">
+          <img src="design/image/Barber 3.jpg" alt="3" />
+          <h1>Jeremy</h1>
+          <div class="details">
+            <h2>Jeremy</h2>
+            <p>MANG BARBER</p>
+          </div>
+        </div>
+        <div class="slider-img active">
+          <img src="design/image/barber4.jpg" alt="4" />
+          <h1>Donie</h1>
+          <div class="details">
+            <h2>Donie</h2>
+            <p>MANG BARBER</p>
+          </div>
+        </div>
+        <div class="slider-img">
+          <img src="design/image/barber5.jpg" alt="5" />
+          <h1>Vien</h1>
+          <div class="details">
+            <h2>Vien</h2>
+            <p>MANG BARBER</p>
+          </div>
+        </div>
 
+      </div>
     </section>
 
+    <button class="barbers-button"><a href="register.php">BOOK AN APPOINTMENT </a></button> <br>
 
-            <script>
-                function showInfo(element) {
-                    const infoDiv = element.querySelector('.info');
-                    infoDiv.style.display = 'block';
-                    infoDiv.style.height = '100px'; // Set height to ensure it's visible
-                    updateButtonPosition();
-                    }
-
-                    function hideInfo(element) {
-                    const infoDiv = element.querySelector('.info');
-                    infoDiv.style.display = 'none';
-                    infoDiv.style.height = '0'; // Reset height
-                    updateButtonPosition();
-                    }
-
-                    function updateButtonPosition() {
-                    const teamSection = document.querySelector('.team-section');
-                    const appointmentButton = document.querySelector('.appointment-btn');
-                    const memberElements = document.querySelectorAll('.member');
-                    
-                    let maxInfoHeight = 0;
-                    
-                    memberElements.forEach(member => {
-                        const infoDiv = member.querySelector('.info');
-                        if (infoDiv.style.display === 'block') {
-                        maxInfoHeight = Math.max(maxInfoHeight, infoDiv.offsetHeight);
-                        }
-                    });
-                    
-                    appointmentButton.style.marginTop = `${20 + maxInfoHeight}px`;
-                    }
-
-            </script>
+    
+    <script src="script.js"></script>
+    <script>
+      jQuery(document).ready(function ($) {
+        $(".slider-img").on("click", function () {
+          $(".slider-img").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+    </script>
 
    
     <footer>
