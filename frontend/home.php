@@ -71,7 +71,7 @@ if (!isset($_SESSION['username'])) {
             <div class="v79368">
                 <span class="day">OPEN MONDAY - SUNDAY</span> <br>
                 <span class="time">9:00AM - 9:00PM</span>  <br> 
-                <button class="appntmnt-button"><a href="register.php">BOOK AN APPOINTMENT </a></button> <br>
+                <button class="appntmnt-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
                 <span class="text">We also accepts walk-ins!</span>             
             </div>
 
@@ -123,7 +123,7 @@ if (!isset($_SESSION['username'])) {
 
                 </span>
 
-                    <button class="barber-button"><a href="register.php">BOOK AN APPOINTMENT </a></button> <br>
+                    <button class="barber-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
             </section>
 
             
