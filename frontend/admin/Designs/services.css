@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #FFFFFF;
+    color: #000000;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 999;
+}
+.sidebar .logo img{
+    margin-top: -70px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: -60px;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #222222;
+    padding-left: 10px;
+}
+.content {
+    text-align: left;
+    margin: 20px;
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+.content h3{
+    margin-bottom: 20px;
+
+}
+.subheading h3{
+    position: absolute;
+    right: 440px;
+    top: 110px;
+
+}
+.services-list ul {
+    list-style: none;
+    padding: 0;
+    position: inherit;
+    width: 400px;
+    height: 400px;
+    left: 200px;
+    top: 70px;
+    background: #BFBFBF;
+}
+
+.services-list ul li {
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 300px;
+    top: 150px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    /* or 208% */
+    color: #222222;
+}
+
+.services-list ul li:hover {
+    background: #f0f0f0;
+}
+
+.service-details {
+    position: absolute;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    left: 800px;
+    top: 150px;
+}
+
+.service-details h2 {
+    margin-bottom: 10px;
+}
+
+.service-details p {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.service-details button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.service-details button:hover {
+    background: #0056b3;
+}
+
+.edit-form {
+    position: absolute;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    left: 800px;
+    top: 150px;
+}
+
+.edit-form h2 {
+    margin-bottom: 10px;
+}
+
+.edit-form form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.edit-form form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-form form button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.edit-form form button:hover {
+    background: #218838;
+}
+
+#success-message {
+    margin-top: 20px;
+    padding: 20px;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+.add-new-service {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+s
+.add-new-service:hover {
+    background-color: #45a049;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+}

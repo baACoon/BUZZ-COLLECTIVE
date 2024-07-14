@@ -8,25 +8,24 @@
     <title>Barber Schedule</title>
 </head>
 <body>
-    <aside class="sidebar">
-            <div class="logo">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Notification</a><span class="notification-dot"></span></li>
-                    <li><a href="admin-home.php">Home</a></li>
-                    <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                    <li><a href="#">News and Events</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Reports and Analytics</a></li>
-                </ul>
-            </nav>
-        </aside>
+    
+        <aside class="sidebar">
+                <div class="logo">
+                    <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+                 </div>
+                    <nav>
+                        <ul>
+                        <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+                        <li><a href="admin-barber.php">Barbers' Schedule</a></li>
+                        <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
+                        <li><a href="admin-aboutus.php">About Us</a></li>
+                        <li><a href="news.php">News</a></li>
+                        <li><a href="branches.php">Branches</a></li>
+                        <li><a href="clientprofile.php">Client Profile</a></li>
+                        <li><a href="settings.php">Settings</a></li>
+                        </ul>
+                    </nav>
+                 </aside>
 
        
     </div>
