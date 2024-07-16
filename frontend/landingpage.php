@@ -19,8 +19,8 @@
                     <li><a href="register.php">Home</a></li>
                     <li><a href="aboutusland.php">About Us</a>
                         <ul class="submenu">
-                            <li><a href="#">Buzz & Collectives</a></li>
-                            <li><a href="#">Be a Buzzing Barber</a></li>
+                            <li><a href="aboutus.php">Buzz & Collectives</a></li>
+                            <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
                         </ul>
                     </li>
                     <li><a href="branches.php">Branches</a></li>

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="design/about.css">
-    <link rel="stylesheet" href="design/barbersinfo.css">
-    <link rel="stylesheet" href="design/founders_info.css">
+    <link rel="stylesheet" href="design/aboutushiring.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>About us</title>
+    <title>Be a Buzzin' Barber</title>
 </head>
 <body>
 <header id="mainheader">
@@ -36,95 +34,72 @@
             </nav>
         </header>
 
-    <div id="body-container">
-        <img src="design/image/buzz.png" class="logo-body" alt="">
-        <p>Buzz & Collectives is more than just a barbershop—it's a dynamic concept store where craftsmanship meets community. Experience top-notch grooming services alongside curated selections of lifestyle products, fostering a vibrant space where style and culture intersect.</p>
-    </div>  
+        <!-- SELECTION -->
 
-    <div class="buzzing_container">
-        <h3>Founders</h3>
-        <h2>Monti & Comia started</h2>
-        <h4><i>BUZZING</i></h4>
-        <p>
-            In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
-        </p>
-            <div class="v105_40">
-                <img src="design/image/Monti_comia.png" alt="">
-            </div>
-            <div class="v105_38">
-                <img src="design/image/Akira_Gata.png" alt="">
-            </div>
-        <div class="name1">
-            <h3> Monti Comia </h3>
-        </div>
-        <div class="name2">
-            <h3> Akira Gata </h3>
-        </div>
-        
-    </div>
+         <!-- BG IMAGE -->
+        <div class="hiring-cover"></div>
 
-     <!-- BARBERS INFO SELECTION -->
-     <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
-     <section class="slider-container">
-      <div class="slider-images">
-        <div class="slider-img">
-          <img src="design/image/Barber1.jpg" alt="1" />
-          <h1>Andre</h1>
-          <div class="details">
-            <h2>Andre</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img">
-          <img src="design/image/barber 2.jpg" alt="2" />
-          <h1>Drey</h1>
-          <div class="details">
-            <h2>Drey</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img">
-          <img src="design/image/Barber 3.jpg" alt="3" />
-          <h1>Jeremy</h1>
-          <div class="details">
-            <h2>Jeremy</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img active">
-          <img src="design/image/barber4.jpg" alt="4" />
-          <h1>Donie</h1>
-          <div class="details">
-            <h2>Donie</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img">
-          <img src="design/image/barber5.jpg" alt="5" />
-          <h1>Vien</h1>
-          <div class="details">
-            <h2>Vien</h2>
-            <p>MANG BARBER</p>
-          </div>
+        <div class="v_9018">
+            <h1>WE'RE LOOKING FOR BARBERS</h1>
         </div>
 
-      </div>
-    </section>
+        <div class="overview">
+            <h1>POSITION OVERVIEW</h1>
+            <h2>We are seeking an experienced barber to join our dynamic team. 
+                The ideal candidate will have a passion for the craft, exceptional customer service skills, 
+                and the ability to work well in a fast-paced environment.</h2>
+        </div>
 
-    <button class="barbers-button"><a href="register.php">BOOK AN APPOINTMENT </a></button> <br>
+        <div class="key-respo">
+            <h1>KEY RESPONSIBILITIES</h1>
+            <ul>
+                <li>Provide a variety of barbering services to different clients</li>
+                <li>Consult with clients to understand their needs and provide expert advice.</li>
+                <li>Maintain a clean and organized work station.</li>
+                <li>Follow all health and safety regulations.</li>
+                <li>Stay updated on the latest barbering trends and techniques.</li>
+                <li>Build and maintain a loyal client base</li>
+            </ul>
+            
+        </div>
 
-    
-    <script src="script.js"></script>
-    <script>
-      jQuery(document).ready(function ($) {
-        $(".slider-img").on("click", function () {
-          $(".slider-img").removeClass("active");
-          $(this).addClass("active");
-        });
-      });
-    </script>
+        <div class="quali">
+            <h1>QUALIFICATIONS</h1>
+            <ul>
+                <li>Proven experience as a barber.</li>
+                <li>Strong communication and customer service skills.</li>
+                <li>Ability to work flexible hours, including weekends.</li>
+                <li>A team player with a positive attitude.</li>
+                <li>Up-to-date knowledge of barbering trends and techniques.</li>
+            </ul>
+        </div>
 
-   
+        <div class="offer">
+            <h1>WHAT WE OFFER</h1>
+            <ul>
+                <li>Competitive salary and tips.</li>
+                <li>Flexible working hours.</li>
+                <li>Professional development and training opportunities.</li>
+                <li>A supportive and friendly work environment.</li>
+                <li>Opportunities for career growth.</li>
+            </ul>
+        </div>
+
+        <div class="apply">
+            <h1>HOW TO APPLY</h1>
+            <p>Interested applicants are encouraged to send their resume and a brief 
+                cover letter to buzzandcollective@gmail.com or drop by any branches to 
+                fill out an application.</p>
+        </div>
+
+        <div  class ="v_123">
+            <p>WE LOOK FORWARD TO MEETING YOU</p>
+        </div>
+
+
+
+
+
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -161,7 +136,7 @@
                 <a href="https://www.tiktok.com/@buzzncollective?_t=8mhQewDUUCI&_r=1"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a>
             </div>
         </div>
-    </footer>
-    <script src="scripts.js"></script>
+    </footer>  
+
 </body>
 </html>
