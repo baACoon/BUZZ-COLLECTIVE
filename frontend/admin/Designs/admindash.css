@@ -2,10 +2,18 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
-    background: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('admin/images/buzzeme.jpg');
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('admin/images/buzzeme.jpg'); 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.bglogin{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    
 }
 
 /* LOGIN */
@@ -30,6 +38,8 @@ body {
     justify-content: center;
     height: 50vh;
     color: white;
+  
+    
 }
 
 .login-form {

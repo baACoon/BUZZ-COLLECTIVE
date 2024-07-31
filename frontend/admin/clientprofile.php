@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Designs/adminclientprof.css">
     <title>Client Profile</title>
 </head>
 <body>
@@ -27,8 +28,24 @@
                             </ul>
                         </nav>
                 </aside>
- 
 
+                <div class="clntprfl">
+                    <h1>Client Profile</h1>
+                </div>
+
+                <div id="crud-btn">
+                        <div class="add-btn">
+                            <button class="add-button" ><a href="">ADD</a></button>
+                        </div>
+
+                        <div class="view-btn">
+                            <button class="view-button"><a href="">VIEW</a></button>
+                        </div>
+
+                        <div class="delete-btn">
+                            <button class="delete-button"><a href="">DELETE</a></button>
+                        </div>
+                </div>
 
 </body>
 </html>

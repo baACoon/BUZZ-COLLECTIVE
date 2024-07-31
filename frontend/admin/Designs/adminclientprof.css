@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 1;
+}
+.sidebar .logo img{
+    margin-top: -70px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: -60px;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #222222;
+    padding-left: 10px;
+}
+
+.clntprfl h1{
+    color: black;
+    font-size: 50px;
+    margin-left: 7em;
+    margin-top: 1em;
+    
+}
+
+
+#crud-btn {
+    margin-top: 8em;
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    
+}
+
+/*ADD BUTTON */
+.add-button{
+    width: 139px;
+    height: 50px;
+    background-color: color;
+    color: white;
+    background-color: rgba(75, 211, 123, 1);    
+    font-size: 20px;
+    padding: 13px 17px;
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+}
+
+.add-button a{
+    color: white; 
+    text-decoration: none;
+}
+
+.add-button:hover{
+    background-color: #222222;
+}
+
+.add-btn{
+    margin-right: 20em;
+    margin-left: -21em;
+}
+
+
+/*VIEW BUTTON */
+.view-button{
+    width: 139px;
+    height: 50px;
+    background-color: color;
+    color: white;
+    background-color: rgba(104, 96, 216, 1);   
+    font-size: 20px;
+    padding: 13px 17px;
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+}
+
+.view-button a{
+    color: white; 
+    text-decoration: none;
+}
+
+.view-button:hover{
+    background-color: #222222;
+}
+
+
+/*DELETE BUTTON */
+.delete-button{
+    width: 139px;
+    height: 50px;
+    background-color: color;
+    color: white;
+    background-color: rgba(228, 58, 25, 1);  
+    font-size: 20px;
+    padding: 13px 17px;
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+}
+
+
+.delete-button a{
+    color: white; 
+    text-decoration: none;
+}
+
+.delete-button:hover{
+    background-color: #222222;
+}

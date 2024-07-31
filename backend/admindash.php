@@ -78,7 +78,7 @@ if (isset($_POST['log_admin'])) {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
       $_SESSION['show_popup'] = true; //set popup flag
-  	  header('location: ../admin/admin-home.php');
+  	  header('location: ../admin/admin-appointment.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
