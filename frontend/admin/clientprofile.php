@@ -1,5 +1,6 @@
 <?php 
 
+$clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +46,29 @@
                         <div class="delete-btn">
                             <button class="delete-button"><a href="">DELETE</a></button>
                         </div>
+                </div>
+
+                <div class="client-table-container">
+        
+                    <table class="client-table">
+                        <thead>
+                            <tr>
+                                <th class="left"></th>
+                                <th >ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th class="right"></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                 include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/adminclient.php'); 
+
+                            ?>                
+                            </tbody>
+                        </table>
                 </div>
 
 </body>
