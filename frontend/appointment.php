@@ -1,4 +1,5 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/adminappointments.php'); ?>
+<?php include 'C:/xampp/htdocs/Project/BUZZ-COLLECTIVE/backend/adminappointments.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,9 +102,25 @@
             </div>
 
             <div class="form-group datetime">
-                <label for="appointment_time">Time</label>
-                <input type="time" id="appointment-time" name="appointment_time" required>
-            </div>
+                <label for="appointment_time">Appointment Time:</label>
+                <select id="appointment-time" name="appointment_time" required>
+                <?php
+                    $start = new DateTime('08:00');
+                    $end = new DateTime('18:00');
+
+                    $interval = new DateInterval('PT30M');
+                    $period = new DatePeriod($start, $interval, $end);
+
+                    foreach ($period as $time) {
+                        $endInterval = clone $time;
+                        $endInterval->add($interval);
+                        if ($endInterval <= $end) {
+                            echo "<option value=\"" . $time->format('H:i') . " - " . $endInterval->format('H:i') . "\">" . $time->format('H:i') . " - " . $endInterval->format('H:i') . "</option>";
+                        }
+                    }
+                ?>
+                    </select>
+                </div>
 
             <div class="form-group button-group">
                 <button type="submit">Submit</button>
