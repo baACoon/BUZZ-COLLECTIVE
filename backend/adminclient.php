@@ -1,11 +1,5 @@
 <?php 
-// Connection to database 
 session_start();
-
-// Initializing variables
-$username = "";
-$email    = "";
-$errors = array(); 
 
 // Connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
@@ -20,22 +14,17 @@ $result = $db->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td><input type='checkbox' name='select'></td>
-                <td>{$row['id']}<br></td>
-                <td>
-                     {$row['username']}<br>
-                </td>
-                <td>
-                     {$row['email']}<br>
-                </td>
-                <td>
-                    {$row['password']}<br>
-                </td>
+        echo "<tr id='client-row-{$row['id']}'>
+                <td><input type='checkbox' name='ids[]' value='{$row['id']}'></td>
+                <td>{$row['id']}</td>
+                <td>{$row['username']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['password']}</td>
               </tr>";
     }
 } else {
     echo "<tr><td colspan='5'>No records found.</td></tr>";
 }
 
+mysqli_close($db);
 ?>
