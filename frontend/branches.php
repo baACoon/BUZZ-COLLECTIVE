@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="design/branches.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,9 +89,9 @@
                 <h3>BUZZ & COLLECTIVES</h3>
                 <ul>
                     <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="#">Be a Buzzing Barber</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Services</a></li>
+                    <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                    <li><a href="branches.php">Branches</a></li>
+                    <li><a href="services.php">Services</a></li>
                 </ul>
             </div>
 
