@@ -22,7 +22,7 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
                 <li><a href="services.php">Services</a></li>
                 <li><a href="admin-aboutus.php">About Us</a></li>
                 <li><a href="news.php">News</a></li>
-                <li><a href="branches.php">Branches</a></li>
+                <li><a href="admin-branches.php">Branches</a></li>
                 <li><a href="clientprofile.php">Client Profile</a></li>
                 <li><a href="settings.php">Settings</a></li>
             </ul>
