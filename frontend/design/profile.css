@@ -23,7 +23,7 @@ body {
 .sidebar nav ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .sidebar nav ul li {
@@ -42,9 +42,22 @@ body {
 .sidebar nav ul li a:focus{
     color: #f73201;
     padding-left: 10px;
+    font-weight: bold;
+   
 }
 
+/* back button  */
+.back-button i{
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
 
+.back-button i:hover{
+    color: #f73201;   
+}
+
+/* profile image */
 .profile-img{
     width: 150px;
     height: 150px;
@@ -59,6 +72,59 @@ body {
     margin-left: 7em;
     font-size: 44px;
 }
+
+.profile h5{
+    color: black;
+    margin-left: 20.7em;
+    font-size: 15px;
+    margin-top: -2em;
+    font-weight: 400;
+
+}
+
+/* customer name */
+.customer-name{
+    font-size: 13px;
+    text-align: center;
+}
+
+
+
+/* customer info */
+.customer-info form{
+    margin-top: 10em;
+    margin-left: -17em;
+}
+
+
+.client-username {
+    margin-left: 3em;
+    color: rgb(99, 99, 99);
+}
+
+.client-email{
+    margin-left: 5.4em;
+    color: rgb(99, 99, 99);
+}
+
+.update-button{
+    color: #f73201;
+    
+     
+}
+
+
+/* profile pic button */
+.remove-button{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.pic-button{
+    margin-top: 20em;
+    margin-left: -23.4em;
+}
+
 
 
 

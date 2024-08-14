@@ -9,17 +9,28 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
 //customer data
-$sql = "SELECT username FROM users WHERE id = 1"; // Fetching customer with id = 1
-$result = $db->query($sql);
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// SQL to fetch the user
+$sql = "SELECT id, username FROM users WHERE email = ? AND password = ?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("ss", $email, $password);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Output data of each row
-    while($row = $result->fetch_assoc()) {
-        $customerName = $row["username"];
-    }
+    $row = $result->fetch_assoc();
+    $_SESSION['user_id'] = $row['id'];
+    $_SESSION['username'] = $row['username'];
+
+    header("Location: myprofile.php"); // Redirect to profile page after login
+    exit();
 } else {
-    echo "0 results";
+    echo "Invalid email or password.";
 }
+
+$stmt->close();
 $db->close();
 
 ?>

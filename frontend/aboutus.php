@@ -111,7 +111,7 @@
       </div>
     </section>
 
-    <button class="barbers-button"><a href="register.php">BOOK AN APPOINTMENT </a></button> <br>
+    <button class="barbers-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
 
     
     <script src="script.js"></script>
