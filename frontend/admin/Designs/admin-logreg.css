@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: url('../images/buzzmebg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 27, 27, 0.863); /* Black color opacity */
+    z-index: -1;
+}
+
+#buzz-img {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.login-container, .login-container2 {
+    background: none; /* Remove background */
+    padding: 0;
+    max-width: 400px;
+    width: 100%;
+    text-align: center; /* Center align form content */
+    z-index: 2;
+}
+
+.login-form, .login-form2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align form elements */
+}
+
+.login-form h4, .login-form2 h4 {
+    margin: 10px 0;
+    font-weight: 600;
+    text-align: left; /* Aligns the h4 text to the left */
+    width: 100%; /* Ensures it takes up the full width */
+    max-width: 300px; /* Matches the width of the input fields */
+    color: #ffffff;
+}
+
+.login-form input, .login-form2 input {
+    padding: 10px;
+    margin-bottom: 5px; /* Reduce gap between inputs */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px; /* Set a max-width for inputs */
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.login-form input::placeholder, .login-form2 input::placeholder {
+    font-family: 'Montserrat', sans-serif; /* Ensures placeholder uses Montserrat */
+    font-size: 16px; /* Adjust the size to match the input text */
+    color: #aaa; /* Optional: change placeholder text color */
+}
+
+.login-form a, .login-form2 a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 5px; /* Small gap between inputs and links */
+    margin-bottom: 5px; /* Small gap between links and button */
+}
+
+.login-form .forgotpassword{
+    font-style: italic;
+    font-weight: normal;
+}
+
+.login-form button, .login-form2 button {
+    padding: 10px;
+    background-color: #E43A19;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px; /* Slight gap above the button */
+    max-width: 200px; /* Set a max-width for the button */
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover, .login-form2 button:hover {
+    background-color: #7c200e;
+}
+
+.login-form a:hover, .login-form2 a:hover{
+    color: #fd2c02;
+}
+
+@media (max-width: 768px) {
+    .login-container, .login-container2 {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container, .login-container2 {
+        max-width: 90%;
+    }
+
+    .login-form h4, .login-form2 h4 {
+        font-size: 14px;
+    }
+
+    .login-form input, .login-form2 input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .login-form button, .login-form2 button {
+        padding: 8px;
+        font-size: 16px;
+    }
+}
