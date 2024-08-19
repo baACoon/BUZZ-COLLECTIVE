@@ -9,6 +9,8 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Designs/adminclientprof.css">
     <title>Client Profile</title>
+
+
 </head>
 <body>
     <aside class="sidebar">
@@ -41,12 +43,12 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
             <button class="view-button"><a href="">VIEW</a></button>
         </div>
         <div class="delete-btn">
-            <button class="delete-button" type="submit" form="delete-form">DELETE</button>
+            <button class="delete-button" id="delete-btn" type="button">DELETE</button>
         </div>
     </div>
 
     <div class="client-table-container">
-        <form id="delete-form" action="/BUZZ-COLLECTIVE/backend/delete_client.php" method="post">
+        <form id="delete-form">
             <table class="client-table">
                 <thead>
                     <tr>
@@ -65,7 +67,35 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
         </form>
     </div>
 
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2 id="popup-message"></h2>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
     <script>
+        document.getElementById('delete-btn').addEventListener('click', function() {
+            var form = document.getElementById('delete-form');
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/BUZZ-COLLECTIVE/backend/delete_client.php', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('popup-message').innerText = response.message;
+                    document.getElementById('popup').style.display = 'flex';
+                }
+            };
+            xhr.send(formData);
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            location.reload();
+        }
+
         // Select or Deselect all checkboxes
         document.getElementById('select-all').addEventListener('click', function() {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');

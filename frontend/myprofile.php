@@ -5,8 +5,6 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
 // Check if the user is logged in
-
-
 $username = $_SESSION['username'];
 
 // Fetch the user's email and profile image from the database
@@ -28,6 +26,8 @@ if ($stmt) {
 }
 
 // Handle the profile image upload
+$notification = ''; // Initialize notification message
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
         $target_dir = "uploads/";
@@ -42,31 +42,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Check if image file is a valid image
         $check = getimagesize($_FILES["profile_image"]["tmp_name"]);
         if ($check !== false) {
-            echo "File is an image.";
+            $uploadOk = 1;
         } else {
-            echo "File is not an image.";
+            $notification = "File is not an image.";
             $uploadOk = 0;
         }
 
         // Check file size (5MB max)
         if ($_FILES["profile_image"]["size"] > 5000000) {
-            echo "Sorry, your file is too large.";
+            $notification = "Sorry, your file is too large.";
             $uploadOk = 0;
         }
 
         // Allow certain file formats
         if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $notification = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            $notification = $notification ?: "Sorry, your file was not uploaded.";
         } else {
             if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file)) {
-                echo "The file " . htmlspecialchars(basename($_FILES["profile_image"]["name"])) . " has been uploaded.";
-
                 // Update the database with the new file path
                 $sql = "UPDATE users SET profile_image = ? WHERE username = ?";
                 $stmt = $db->prepare($sql);
@@ -74,14 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     $stmt->close();
+                    $notification = "The file " . htmlspecialchars(basename($_FILES["profile_image"]["name"])) . " has been uploaded.";
                 } else {
-                    echo "Error preparing SQL statement.";
+                    $notification = "Error preparing SQL statement.";
                 }
 
                 // Update the $profile_image variable to display the new image
                 $profile_image = $target_file;
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $notification = "Sorry, there was an error uploading your file.";
             }
         }
     } elseif (isset($_POST['remove_image'])) {
@@ -92,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $stmt->close();
+            $notification = "Profile image removed successfully.";
         }
 
         // Optionally, delete the old image file from the server
@@ -101,26 +101,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Set the profile image back to the default
         $profile_image = 'design/image/default-placeholder.png';
-    } else {
-        echo "No file was uploaded.";
+    } elseif (isset($_POST['update_email'])) {
+        // Handle the email update
+        $new_email = $_POST['email'];
+        if (filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+            $sql = "UPDATE users SET email = ? WHERE username = ?";
+            $stmt = $db->prepare($sql);
+            if ($stmt) {
+                $stmt->bind_param("ss", $new_email, $username);
+                $stmt->execute();
+                $stmt->close();
+                $email = $new_email; // Update email variable for display
+                $notification = "Email updated successfully.";
+            } else {
+                $notification = "Error preparing SQL statement.";
+            }
+        } else {
+            $notification = "Invalid email format.";
+        }
     }
 }
 
 $db->close();
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="design/profile.css">
+    <link rel="stylesheet" href="design/profilepopup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
+    
 </head>
 <body>
+    <?php if ($notification) : ?>
+        <div id="notification-popup" class="notification-popup">
+            <p><?php echo htmlspecialchars($notification); ?></p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+        <div id="overlay" class="overlay"></div>
+    <?php endif; ?>
+
     <aside class="sidebar">
         <div class="profile-container">
             <div class="back-button"><a href="home.php"><i class="fa-solid fa-arrow-left"></i></a></div>
@@ -130,7 +154,7 @@ $db->close();
         <nav>
             <ul>
                 <li><a href="myprofile.php">My Profile</a></li>
-                <li><a href="#">See History</a></li>
+                <li><a href="history.php">See History</a></li>
                 <li><a href="#">Change Password</a></li>
                 <li><a href="login.php">Logout</a></li>
             </ul>
@@ -146,7 +170,8 @@ $db->close();
         <form action="myprofile.php" method="post" enctype="multipart/form-data">
             <h4>Username: <span class="client-username"><?php echo htmlspecialchars($username); ?></span></h4>
             <h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?></span></h4>
-            <input type="submit" value="Update Email" class="update-button">
+            <input type="email" name="email" placeholder="New Email (optional)">
+            <input type="submit" name="update_email" value="Update Email" class="update-button">
             <label for="profile-image-input" class="upload-button">Upload Profile Image</label>
             <input type="file" name="profile_image" id="profile-image-input" style="display: none;">
             <br>
@@ -176,6 +201,13 @@ $db->close();
             // Update the profile image to default on click
             profileImg.src = defaultImage;
         });
+
+        function closePopup() {
+            document.getElementById('notification-popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+
     </script>
 </body>
 </html>

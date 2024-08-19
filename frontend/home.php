@@ -5,6 +5,30 @@ if (!isset($_SESSION['username'])) {
     header('location: login.php');
     exit();
 }
+
+$username = $_SESSION['username'];
+
+// Database connection
+$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+
+// Fetch the user's profile image from the database
+$profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
+
+$sql = "SELECT profile_image FROM users WHERE username = ?";
+$stmt = $db->prepare($sql);
+if ($stmt) {
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->bind_result($profile_image_path);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($profile_image_path) {
+        $profile_image = $profile_image_path; // Use the saved image if available
+    }
+}
+
+$db->close();
 ?>
 
 
@@ -22,30 +46,33 @@ if (!isset($_SESSION['username'])) {
     <title>Buzz & Collective | Home</title>
 </head>
 <body>
-        <header id="mainheader">
-            <div class="logo">
-                <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="aboutus.php">About Us</a>
-                        <ul class="submenu">
-                            <li><a href="aboutus.php">Buzz & Collectives</a></li>
-                            <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="branches.php">Branches</a></li>
-                    <li><a href="services.php">Services</a></li>
-                    <li><a class="usericon" href="#"><i class="fa-solid fa-user"></i></a>
-                        <ul class="submenu">
-                            <li><a href="myprofile.php">My Profile</a></li>
-                            <li><a href="login.php">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+    <header id="mainheader">
+        <div class="logo">
+            <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="aboutus.php">About Us</a>
+                    <ul class="submenu">
+                        <li><a href="aboutus.php">Buzz & Collectives</a></li>
+                        <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                    </ul>
+                </li>
+                <li><a href="branches.php">Branches</a></li>
+                <li><a href="services.php">Services</a></li>
+                <li>
+                    <a class="usericon" href="#">
+                        <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="User Profile Image" class="profile-img-header">
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="myprofile.php">My Profile</a></li>
+                        <li><a href="login.php">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
             <?php if (isset($_SESSION['show_popup'])) : ?>
                 <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>

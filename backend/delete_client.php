@@ -9,21 +9,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
         if (!$db) {
-            die("Database connection failed: " . mysqli_connect_error());
+            echo json_encode(['status' => 'error', 'message' => 'Database connection failed: ' . mysqli_connect_error()]);
+            exit;
         }
 
         $sql = "DELETE FROM users WHERE id IN ($idString)";
         if (mysqli_query($db, $sql)) {
-            echo "Clients deleted successfully.";
+            echo json_encode(['status' => 'success', 'message' => 'Clients deleted successfully.']);
         } else {
-            echo "Failed to delete clients: " . mysqli_error($db); // Add mysqli_error for more details
+            echo json_encode(['status' => 'error', 'message' => 'Failed to delete clients: ' . mysqli_error($db)]);
         }
 
         mysqli_close($db);
     } else {
-        echo "No client IDs received.";
+        echo json_encode(['status' => 'error', 'message' => 'No client IDs received.']);
     }
 } else {
-    echo "Invalid request method.";
+    echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);
 }
 ?>
