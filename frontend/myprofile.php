@@ -169,9 +169,9 @@ $db->close();
     <div class="customer-info">
         <form action="myprofile.php" method="post" enctype="multipart/form-data">
             <h4>Username: <span class="client-username"><?php echo htmlspecialchars($username); ?></span></h4>
-            <h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?></span></h4>
+            <div class="email-container"><h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?> </span></h4><a href="" class="change-btn">change</a></div>
             <input type="email" name="email" placeholder="New Email (optional)">
-            <input type="submit" name="update_email" value="Update Email" class="update-button">
+            <input type="submit" name="update_email" value="Update Email" class="update-button"><br>
             <label for="profile-image-input" class="upload-button">Upload Profile Image</label>
             <input type="file" name="profile_image" id="profile-image-input" style="display: none;">
             <br>

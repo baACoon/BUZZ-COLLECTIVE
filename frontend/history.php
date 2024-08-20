@@ -32,7 +32,7 @@ $db->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="design/profile.css">
+    <link rel="stylesheet" href="design/history.css">
     <link rel="stylesheet" href="design/profilepopup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
@@ -60,6 +60,12 @@ $db->close();
 
     <div class="history">
         <h1>HISTORY</h1>
+    </div>
+
+    <br>
+
+    <div class="welcome">
+        <p>Welcome, <span class="cstmr-name"><?php echo $_SESSION['username']; ?>!</span></p>
     </div>
 
 

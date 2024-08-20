@@ -82,6 +82,14 @@ body {
 
 }
 
+.profile-img-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
 /* customer name */
 .customer-name{
     font-size: 13px;
@@ -96,7 +104,7 @@ body {
     margin-left: -17em;
 }
 
-
+/* client email */
 .client-username {
     margin-left: 3em;
     color: rgb(99, 99, 99);
@@ -108,10 +116,20 @@ body {
 }
 
 .update-button{
-    color: #f73201;
-    
-     
+    color: #f73201;  
 }
+
+.email-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.change-btn{
+    margin-left: 1em;
+}
+/*upload button */
+
 
 
 /* profile pic button */
