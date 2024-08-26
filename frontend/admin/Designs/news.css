@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #F5F5F5;
+    color: #000000;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 999;
+}
+
+.sidebar .logo img {
+    margin-top: -70px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: -60px;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #222222;
+    padding-left: 10px;
+}
+
+/* News Style */
+.news-content {
+    padding: 20px;
+    margin: 20px;
+    margin-left: 300px;
+    margin-top: 30px;
+    text-align: left;
+    position: relative;
+}
+
+.news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.news-header h1 {
+    margin: 0;
+    font-size: 2rem;
+
+}
+
+/* Add button */
+.news-button {
+    padding: 10px 20px;
+    background-color: #4BD37B;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.news-button:hover {
+    background-color: #2d7c49;
+}
+
+/* Default style for images */
+.news {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 20px;
+}
+
+.news img {
+    width: 100%; 
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    min-width: 200px;
+    max-width: 100%; 
+}
+.news img:hover {
+    transform: translateY(-5px);
+}
+
+/* Style for vertical images */
+.news.vertical {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.news.vertical img {
+    width: 100%; 
+    max-width: 300px; 
+}
+
+/* news form is hidden by default */
+#newsForm {
+    display: none;
+}
+
+/* Form (add and edit form) Style */
+.news-form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-form {
+    display: none; /* Hide both forms */
+    position: absolute; 
+    top: 20px;
+    right: 20px; 
+    z-index: 1000; 
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%; 
+    margin: 0; 
+}
+
+.news-form h2 {
+    margin-bottom: 20px;
+    color: black;
+}
+
+.news-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.news-form input[type="file"],
+.news-form input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.news-form button[type="submit"],
+.news-form button[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.news-form button[type="submit"] {
+    background-color: #E43A19;
+    font-weight: 500;
+}
+
+.news-form button[type="submit"]:hover {
+    background-color: #ff6e51;
+}
+
+.news-form button[type="button"] {
+    background-color: #e0e0e0;
+    color: black;
+    font-weight: 600;
+}
+
+.news-form button[type="button"]:hover {
+    background-color: #c0c0c0;
+}
+
+/* Media Query */ 
+@media (max-width: 768px) {
+    .news-header h1{
+        font-size: 1.5rem;
+    }
+    .news-button{
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+    .news{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .news img{
+        min-width: 170px;
+    }    
+    .news.vertical img{
+        max-width: 170px;
+    }
+}
+@media (max-width: 480px){
+    .news-header h1{
+        font-size: 1rem;
+    }
+    .news-button{
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    .news{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
