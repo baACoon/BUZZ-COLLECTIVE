@@ -4,20 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Home</title>
-    <link rel="stylesheet" href="Designs/adminbranches.css">
+    <link rel="stylesheet" href="Designs/admin-home.css">
     <script src="script.js" defer></script>
     <script src="branches.js"></script>
 </head>
 <body>
-    <h5> SAGLET LANG eto muna links</h5>
-    <ul>
-                        <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-                        <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                        <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
-                        <li><a href="admin-aboutus.php">About Us</a></li>
-                        <li><a href="news.php">News</a></li>
-                        <li><a href="admin-branches.php">Branches</a></li>
-                        <li><a href="clientprofile.php">Client Profile</a></li>
-                        <li><a href="settings.php">Settings</a></li>
-                    </ul>
+    <div id="home-logo">
+        <img src="images/BUZZ-White2.png" alt="Buzz Logo">
+    </div>
+    <div class="home-container">
+        <div class="home-selection">
+            <ul>
+                <li>
+                    <a href="admin-appointment.php">
+                        <p><i class="fa-solid fa-book" style="color: #ffffff;"></i> Appointment Bookings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-barber.php">
+                        <p><i class="fa-solid fa-scissors" style="color: #ffffff;"></i> Barbers' Schedule</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="services.php">
+                        <p><i class="fa-solid fa-concierge-bell" style="color: #ffffff;"></i> Services</p>
+                    </a>   
+                </li>
+                <li>
+                    <a href="admin-aboutus.php">
+                        <p><i class="fa-solid fa-info-circle" style="color: #ffffff;"></i> About Us</p>
+                    </a>
+                </li>
+                <li>    
+                    <a href="news.php">
+                        <p><i class="fa-solid fa-newspaper" style="color: #ffffff;"></i> News</p>
+                    </a>   
+                </li>
+                <li>
+                    <a href="admin-branches.php">
+                        <p><i class="fa-solid fa-map-marker-alt" style="color: #ffffff;"></i> Branches</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="clientprofile.php">
+                        <p><i class="fa-solid fa-user" style="color: #ffffff;"></i> Client Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="settings.php">
+                        <p><i class="fa-solid fa-cog" style="color: #ffffff;"></i> Settings</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <li>
+            <a href="admin_log.php">
+                <p>Logout</p>
+            </a>
+        </li>
+    </div>
 </body>
