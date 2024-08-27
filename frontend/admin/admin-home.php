@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Home</title>
-    <link rel="stylesheet" href="Designs/admin-home.css">
+    <link rel="stylesheet" href="Designs/adminhomee.css">
     <script src="script.js" defer></script>
     <script src="branches.js"></script>
 </head>
@@ -57,10 +57,10 @@
                 </li>
             </ul>
         </div>
-        <li>
-            <a href="admin_log.php">
-                <p>Logout</p>
-            </a>
-        </li>
+        <div class="logout-button">
+        <a href="admin_log.php">
+            <p>Logout</p>
+        </a>
+    </div>
     </div>
 </body>
