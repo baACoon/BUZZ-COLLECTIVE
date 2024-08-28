@@ -18,8 +18,14 @@ body {
     padding-top: 20px;
     z-index: 1;
 }
+.sidebar .logo{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 17%;
+}
 .sidebar .logo img{
-    margin-top: -70px;
+    margin-top: 5%;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -28,7 +34,7 @@ body {
 .sidebar nav ul {
     list-style-type: none;
     padding: 0;
-    margin-top: -60px;
+    margin-top: 13%;
 }
 
 .sidebar nav ul li {
