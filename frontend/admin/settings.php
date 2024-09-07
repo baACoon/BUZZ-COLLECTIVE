@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if (isset($_SESSION['errors'])) {
+    foreach ($_SESSION['errors'] as $error) {
+        echo "<p style='color: red;'>$error</p>";
+    }
+    unset($_SESSION['errors']);
+}
+
+if (isset($_SESSION['success'])) {
+    echo "<p style='color: green;'>".$_SESSION['success']."</p>";
+    unset($_SESSION['success']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,5 +40,38 @@
             </ul>
         </nav>
     </aside>
+
+    <div class="settings-content">
+        <div class="settings-header">
+            <h1 id="settings-title">Settings</h1>
+        </div>
+
+        <div class="settings-btn" id="button-container">
+            <li><button class="addnew" id="add-new-btn">ADD NEW ADMINISTRATOR</button></li>
+            <li><button class="login"><a href="admin_log.php">LOGOUT</a></button></li>
+        </div>
+        
+        <div id="new-admin-container" style="display: none;">
+            <div id="new-admin-form">
+                <form method="POST" action="/BUZZ-COLLECTIVE/backend/save_admin.php">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" name="admin-username" placeholder="Username" required>
+                    
+                    <label for="admin-email">Email</label>
+                    <input type="email" id="admin-email" name="admin-email" placeholder="Email" required>
+
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" name="admin-password" placeholder="Password" required>
+
+                    <div class="form-buttons">
+                        <button type="submit" name="save_admin">SAVE</button>
+                        <button type="button" id="cancel-btn" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
 </body>
 </html>
