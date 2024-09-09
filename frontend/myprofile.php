@@ -129,12 +129,13 @@ $db->close();
 <html lang="en">
 <head>
     <link rel="stylesheet" href="design/profile.css">
+    <link rel="stylesheet" href="design/emailpopup.css"> 
     <link rel="stylesheet" href="design/profilepopup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
-    
+
 </head>
 <body>
     <?php if ($notification) : ?>
@@ -142,7 +143,7 @@ $db->close();
             <p><?php echo htmlspecialchars($notification); ?></p>
             <button onclick="closePopup()">OK</button>
         </div>
-        <div id="overlay" class="overlay"></div>
+        <div id="overlay" class="overlay show"></div>
     <?php endif; ?>
 
     <aside class="sidebar">
@@ -167,11 +168,12 @@ $db->close();
     </div>
 
     <div class="customer-info">
+        <h4>Username: <span class="client-username"><?php echo htmlspecialchars($username); ?></span></h4>
+        <div class="email-container">
+            <h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?> </span></h4>
+            <a href="#" class="change-btn">change</a>
+        </div>
         <form action="myprofile.php" method="post" enctype="multipart/form-data">
-            <h4>Username: <span class="client-username"><?php echo htmlspecialchars($username); ?></span></h4>
-            <div class="email-container"><h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?> </span></h4><a href="" class="change-btn">change</a></div>
-            <input type="email" name="email" placeholder="New Email (optional)">
-            <input type="submit" name="update_email" value="Update Email" class="update-button"><br>
             <label for="profile-image-input" class="upload-button">Upload Profile Image</label>
             <input type="file" name="profile_image" id="profile-image-input" style="display: none;">
             <br>
@@ -180,34 +182,61 @@ $db->close();
         </form>
     </div>
 
-    <script>
-        // JavaScript to handle the profile image input
-        const fileInput = document.getElementById('profile-image-input');
-        const profileImg = document.getElementById('profile-img');
-        const defaultImage = "design/image/default-placeholder.png";
+    <!-- Email Update Modal -->
+    <div id="email-modal" class="email-modal">
+        <div class="email-modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Update Email</h2>
+            <form action="myprofile.php" method="post">
+                <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
+                <button type="submit" name="update_email">Update</button>
+            </form>
+        </div>
+    </div>
 
-        fileInput.addEventListener('change', function() {
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    profileImg.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
+    <script>
+        // Get modal elements
+        var emailModal = document.getElementById("email-modal");
+        var overlay = document.querySelector(".overlay");
+
+        // Get open modal button
+        var changeBtn = document.querySelector(".change-btn");
+
+        // Get close button
+        var closeBtn = document.querySelector(".close-modal");
+
+        // Listen for open click
+        changeBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            emailModal.style.display = "block";
+            setTimeout(function() {
+                emailModal.classList.add("show");
+            }, 10);
+        });
+
+        // Listen for close click
+        closeBtn.addEventListener("click", function() {
+            emailModal.classList.remove("show");
+            setTimeout(function() {
+                emailModal.style.display = "none";
+            }, 300);
+        });
+
+        // Close modal if outside click
+        window.addEventListener("click", function(event) {
+            if (event.target == emailModal) {
+                emailModal.classList.remove("show");
+                setTimeout(function() {
+                    emailModal.style.display = "none";
+                }, 300);
             }
         });
 
-        document.getElementById('remove-image-button').addEventListener('click', function() {
-            // Update the profile image to default on click
-            profileImg.src = defaultImage;
-        });
-
+        // Close notification popup
         function closePopup() {
-            document.getElementById('notification-popup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
+            document.getElementById("notification-popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
         }
-
-
     </script>
 </body>
 </html>

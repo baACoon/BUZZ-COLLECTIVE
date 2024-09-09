@@ -99,9 +99,13 @@ body {
 
 
 /* customer info */
-.customer-info form{
+.customer-info{
     margin-top: 10em;
     margin-left: -17em;
+}
+.customer-info form{
+    margin-top: 5em;
+    margin-left: 1px;
 }
 
 /* client email */
@@ -127,9 +131,57 @@ body {
 
 .change-btn{
     margin-left: 1em;
+    text-decoration: none;
+    color: #f73201; /* Set your preferred color */
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.change-btn::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #030303; /* Set the underline color */
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.change-btn:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 /*upload button */
+.upload-button{
+    text-decoration: none;
+    color: #000; /* Set your preferred color */
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
 
+.upload-button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f73201; /* Set the underline color */
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.upload-button:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 
 
 /* profile pic button */
