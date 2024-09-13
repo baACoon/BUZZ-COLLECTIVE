@@ -1,135 +1,44 @@
-<?php include 'C:/xampp/htdocs/Project/BUZZ-COLLECTIVE/backend/adminappointments.php' ?>
-
+<?php require_once '../frontend/calendar.php';
+      require_once '../backend/adminappointments.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="design/appointment.css">
+    <link rel="stylesheet" href="../frontend/design/landingappointment.css">
+    <link rel="stylesheet" href="../frontend/design/appointment.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Appointment Form</title>
+    <title>Date</title>
 
 </head>
 <body>
-    <div id="buzz-img">
-        <img src="design/image/buzz.png" alt="">
-    </div>
-
-    <div id="appointment-form">
-        <h2>Buzz & Collective Appointment Form</h2>
+    <div class="bg-container" >
+        <div id="buzz-img">
+            <img src="design/image/buzz.png" alt="">
+        </div>
+        <div id="appointment-form">
+             <h2>Buzz & Collective Appointment Form</h2>
+        </div>
+        <h6>SELECT BRANCH</h6>
+        <div class="row">
+            <div class="coloumnn">
+                <?php
+                     $dateComponents = getdate();
+                     if(isset($_GET['month']) && isset($_GET['year'])){
+                         $month = $_GET['month']; 			     
+                         $year = $_GET['year'];
+                     }else{
+                         $month = $dateComponents['mon']; 			     
+                         $year = $dateComponents['year'];
+                     }
+                    echo build_calendar($month,$year);
+                ?>
+            </div>
+        </div>
     </div>
     
-    <div class="form-container">
-        <form method="POST" action="appointment.php"> 
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first_name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last_name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone_num" required>
-            </div>
-
-            <h2 class="select">Select Services</h2>
-
-            <div class="form-group services">
-                <label><input type="checkbox" name="services[]" value="haircut"> Haircut</label>
-                <label><input type="checkbox" name="services[]" value="kiddie_haircut"> Kiddie Haircut</label>
-                <label><input type="checkbox" name="services[]" value="haircut_shave"> Haircut and Shave</label>
-                <label><input type="checkbox" name="services[]" value="hair_art"> Hair Art</label>
-                <label><input type="checkbox" name="services[]" value="haircut_perm"> Haircut and Perm</label>
-                <label><input type="checkbox" name="services[]" value="hair_color"> Hair Color</label>
-                <label><input type="checkbox" name="services[]" value="hair_color_haircut"> Hair Color and Haircut</label>
-                <label><input type="checkbox" name="services[]" value="scalp_treatment"> Scalp Treatment</label>
-                <label><input type="checkbox" name="services[]" value="scalp_treatment_haircut"> Scalp Treatment and Haircut</label>
-                <label><input type="checkbox" name="services[]" value="shave_sculpting"> Shave and Sculpting</label>
-            </div>
-
-            <h2 class="select">Stylist</h2>
-            <div id="stylist">
-                <div class="stylist-item">
-                    <img src="design/image/barber5.jpg" alt="Stylist">
-                    <p>Adi</p>
-                    <input type="radio" name="barber" value="Adi">
-                </div>
-
-                <div class="stylist-item">
-                    <img src="design/image/barber4.jpg" alt="Stylist">
-                    <p>Ben</p>
-                    <input type="radio" name="barber" value="Ben">
-                </div>
-
-                <div class="stylist-item">
-                    <img src="design/image/Barber 3.jpg" alt="Stylist">
-                    <p>Charlie</p>
-                    <input type="radio" name="barber" value="Charlie">
-                </div>
-
-                <div class="stylist-item">
-                    <img src="design/image/barber 2.jpg" alt="Stylist">
-                    <p>David</p>
-                    <input type="radio" name="barber" value="David">
-                </div>
-
-                <div class="stylist-item">
-                    <img src="design/image/Barber1.jpg" alt="Stylist">
-                    <p>Edward</p>
-                    <input type="radio" name="barber" value="Edward">
-                </div>
-            </div>
-
-            <div class="recos">
-                <input type="checkbox" id="recommended-barber" name="barber" value="Recommended Barber">
-                <label for="recommended-barber">Recommended Barber</label>
-            </div>
-
-            <h2 class="select">Set Date and Time</h2>
-            <div class="form-group datetime">
-                <label for="appointment_date">Date</label>
-                <input type="date" id="appointment-date" name="appointment_date" required>
-            </div>
-
-            <div class="form-group datetime">
-                <label for="appointment_time">Appointment Time:</label>
-                <select id="appointment-time" name="appointment_time" required>
-                <?php
-                    $start = new DateTime('08:00');
-                    $end = new DateTime('18:00');
-
-                    $interval = new DateInterval('PT30M');
-                    $period = new DatePeriod($start, $interval, $end);
-
-                    foreach ($period as $time) {
-                        $endInterval = clone $time;
-                        $endInterval->add($interval);
-                        if ($endInterval <= $end) {
-                            echo "<option value=\"" . $time->format('H:i') . " - " . $endInterval->format('H:i') . "\">" . $time->format('H:i') . " - " . $endInterval->format('H:i') . "</option>";
-                        }
-                    }
-                ?>
-                    </select>
-                </div>
-
-            <div class="form-group button-group">
-                <button type="submit">Submit</button>
-            </div>
-
-            <div class="form-group button-group">
-                <button type="button" onclick="window.location.href='home.php'">Cancel</button>
-            </div>
-        </form>
-    </div>
 </body>
+
 </html>
+
