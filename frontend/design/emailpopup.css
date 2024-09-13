@@ -1,3 +1,4 @@
+
 .email-modal {
     display: none; 
     position: fixed; 
@@ -8,6 +9,10 @@
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.email-modal-content h2{
+    margin-left: 115px;
 }
 
 .email-modal-content {
@@ -24,6 +29,10 @@
 
 .email-modal.show .email-modal-content {
     opacity: 1;
+}
+
+.email-modal-content form{
+    margin-top: 50px;
 }
 
 .close-modal {
@@ -55,4 +64,29 @@
 
 .overlay.show {
     display: block;
+}
+
+#email{
+    width: 50%;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+/*update email button */
+.update-email-button{
+    background-color: color;
+    color: white;
+    background-color: #E43A19; 
+    font-size: 12px;
+    padding: 7px 10px;
+    border: none; 
+    border-radius: 30px; 
+    cursor: pointer; 
+    margin-top: 2em;
+    margin-left: 150px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
+}
+
+.update-email-button:hover{
+    background-color: #222;
 }

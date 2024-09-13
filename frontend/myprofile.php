@@ -7,16 +7,17 @@ $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 // Check if the user is logged in
 $username = $_SESSION['username'];
 
-// Fetch the user's email and profile image from the database
+// Fetch the user's email, name, and profile image from the database
 $email = '';
+$name = ''; // Initialize name
 $profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
 
-$sql = "SELECT email, profile_image FROM users WHERE username = ?";
+$sql = "SELECT email, name, profile_image FROM users WHERE username = ?";
 $stmt = $db->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("s", $username);
     $stmt->execute();
-    $stmt->bind_result($email, $profile_image_path);
+    $stmt->bind_result($email, $name, $profile_image_path);
     $stmt->fetch();
     $stmt->close();
 
@@ -25,10 +26,11 @@ if ($stmt) {
     }
 }
 
-// Handle the profile image upload
+// Handle the profile image upload and name/email updates
 $notification = ''; // Initialize notification message
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Handle profile image upload
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
         $target_dir = "uploads/";
         if (!is_dir($target_dir)) {
@@ -72,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     $stmt->close();
-                    $notification = "The file " . htmlspecialchars(basename($_FILES["profile_image"]["name"])) . " has been uploaded.";
+                    $notification = "The image has been uploaded.";
                 } else {
                     $notification = "Error preparing SQL statement.";
                 }
@@ -83,8 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $notification = "Sorry, there was an error uploading your file.";
             }
         }
-    } elseif (isset($_POST['remove_image'])) {
-        // Handle the image removal
+    }
+
+    // Handle image removal
+    elseif (isset($_POST['remove_image'])) {
         $sql = "UPDATE users SET profile_image = NULL WHERE username = ?";
         $stmt = $db->prepare($sql);
         if ($stmt) {
@@ -101,8 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Set the profile image back to the default
         $profile_image = 'design/image/default-placeholder.png';
-    } elseif (isset($_POST['update_email'])) {
-        // Handle the email update
+    }
+
+    // Handle the email update
+    elseif (isset($_POST['update_email'])) {
         $new_email = $_POST['email'];
         if (filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
             $sql = "UPDATE users SET email = ? WHERE username = ?";
@@ -120,6 +126,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $notification = "Invalid email format.";
         }
     }
+
+    // Handle the name update
+    elseif (isset($_POST['update_name'])) {
+        $new_name = trim($_POST['name']);
+        if (!empty($new_name)) {
+            $sql = "UPDATE users SET name = ? WHERE username = ?";
+            $stmt = $db->prepare($sql);
+            if ($stmt) {
+                $stmt->bind_param("ss", $new_name, $username);
+                $stmt->execute();
+                $stmt->close();
+                $name = $new_name; // Update name variable for display
+                $notification = "Name updated successfully.";
+            } else {
+                $notification = "Error preparing SQL statement.";
+            }
+        } else {
+            $notification = "Name cannot be empty.";
+        }
+    }
+
+    // Handle name removal
+    elseif (isset($_POST['remove_name'])) {
+        $sql = "UPDATE users SET name = NULL WHERE username = ?";
+        $stmt = $db->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->close();
+            $name = ''; // Reset name variable for display
+            $notification = "Name removed successfully.";
+        } else {
+            $notification = "Error preparing SQL statement.";
+        }
+    }
 }
 
 $db->close();
@@ -134,7 +175,7 @@ $db->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>Buzz & Collective | My Profile</title>
 
 </head>
 <body>
@@ -162,39 +203,65 @@ $db->close();
         </nav>
     </aside>
 
-    <div class="profile">
-        <h1>MY PROFILE</h1>
-        <h5>Manage and protect your account</h5>
-    </div>
-
-    <div class="customer-info">
-        <h4>Username: <span class="client-username"><?php echo htmlspecialchars($username); ?></span></h4>
-        <div class="email-container">
-            <h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?> </span></h4>
-            <a href="#" class="change-btn">change</a>
+    <div class="profile-wrapper">
+        <div class="profile">
+            <h1>MY PROFILE</h1>
+            <h5>Manage and protect your account</h5>
         </div>
-        <form action="myprofile.php" method="post" enctype="multipart/form-data">
-            <label for="profile-image-input" class="upload-button">Upload Profile Image</label>
-            <input type="file" name="profile_image" id="profile-image-input" style="display: none;">
-            <br>
-            <button type="submit" name="remove_image" id="remove-image-button" class="remove-button">Remove Image</button>
-            <button type="submit" name="save_image" id="save-image-button" class="save-button">Save Image</button>
-        </form>
-    </div>
 
-    <!-- Email Update Modal -->
-    <div id="email-modal" class="email-modal">
-        <div class="email-modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Update Email</h2>
-            <form action="myprofile.php" method="post">
-                <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
-                <button type="submit" name="update_email">Update</button>
+        <!--customer info -->
+        <div class="customer-info">
+            <h4>Username: <span class="client-username"><?php echo htmlspecialchars($username); ?></span></h4>
+            
+            <div class="email-container">
+                <h4>Email: <span class="client-email"><?php echo htmlspecialchars($email); ?> </span></h4>
+                <a href="#" class="change-btn">change</a>
+            </div>
+
+
+            <!--EMAIL POPUP -->
+                <div id="email-modal" class="email-modal">
+                    <div class="email-modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2>Update Email</h2>
+                        <form action="myprofile.php" method="post">
+                            <label for="email">New Email:</label>
+                            <input type="email" name="email" id="email" placeholder="Enter new email" required>
+                            <input type="submit" name="update_email" value="Update Email" class="update-email-button">
+                        </form>
+                    </div>
+                </div>
+            <div id="overlay" class="overlay"></div>
+            
+            <div class="custname">
+                <form action="myprofile.php" method="post">
+                    <h4>Name: <input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>" class="name-input" placeholder="Enter your name"></h4>
+                    <button type="submit" name="update_name" class="save-name-button">Save Name</button>
+                    <button type="submit" name="remove_name" class="remove-name-button">Remove Name</button>
+                </form>
+            </div>
+
+            <form action="myprofile.php" method="post" enctype="multipart/form-data" id="profile-image-form">
+                <label for="profile-image-input" class="upload-button">Upload Profile Image</label>
+                <input type="file" name="profile_image" id="profile-image-input" style="display: none;">
+                <br>
+                <button type="submit" name="remove_image" class="remove-image-button">Remove Image</button>
             </form>
         </div>
     </div>
 
     <script>
+        // Auto-submit form when a new profile image is selected
+        document.getElementById('profile-image-input').addEventListener('change', function() {
+            document.getElementById('profile-image-form').submit();
+        });
+
+        // Close notification popup
+        function closePopup() {
+            document.getElementById("notification-popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+
         // Get modal elements
         var emailModal = document.getElementById("email-modal");
         var overlay = document.querySelector(".overlay");
@@ -224,19 +291,13 @@ $db->close();
 
         // Close modal if outside click
         window.addEventListener("click", function(event) {
-            if (event.target == emailModal) {
+            if (event.target === emailModal) {
                 emailModal.classList.remove("show");
                 setTimeout(function() {
                     emailModal.style.display = "none";
                 }, 300);
             }
         });
-
-        // Close notification popup
-        function closePopup() {
-            document.getElementById("notification-popup").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
     </script>
 </body>
 </html>
