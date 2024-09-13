@@ -77,6 +77,18 @@ body{
 
 
 
+h6{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px ;
+    top: 10em;
+    height: 8px;
+    color: #FFFFFF;
+    background-color: yellow;
+}
+
+
 table {
     width:100%;
     border-collapse: separate;
@@ -98,12 +110,13 @@ tr td h4{
     font-size: 0.7em;
     padding:2px;
 }
+
 .row {
     position:relative;
     margin-left:250px;
     margin-right:250px;
     border-radius: 8px;
-    top:10em;
+    top:5em;
     background-color:rgb(255, 255, 255);
 
 }

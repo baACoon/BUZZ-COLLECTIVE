@@ -20,7 +20,6 @@
         <div id="appointment-form">
              <h2>Buzz & Collective Appointment Form</h2>
         </div>
-        <h6>SELECT BRANCH</h6>
         <div class="row">
             <div class="coloumnn">
                 <?php
@@ -38,6 +37,8 @@
         </div>
     </div>
     
+
+   
 </body>
 
 </html>

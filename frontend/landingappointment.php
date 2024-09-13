@@ -14,7 +14,7 @@
 <body>
     <div class="bg-container" >
         <div id="buzz-img">
-            <img src="public/buzz.png" alt="">
+            <img src="design/image/buzz.png" alt="">
         </div>
     
         <div id="appointment-form">
@@ -25,8 +25,8 @@
         <a href="../frontend/appointment.php">
             <div  class="mainbranch" id="branches">
                 <img src="public/location.png">
-                <span class="branch-name"> Main Branch</span>
-                <div class="branch-location">Imus Cavite</div>
+                <span id="branch-name"> Main Branch</span>
+                <div id="branch-location">Imus Cavite</div>
             </div>
         </a>
 

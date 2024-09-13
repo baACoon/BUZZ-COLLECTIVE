@@ -48,15 +48,11 @@ function timeslots($duration, $cleanup, $start, $end){
   <body>
   <div class="bg-container" >
         <div id="buzz-img">
-            <img src="public/buzz.png" alt="">
+            <img src="design/image/buzz.png" alt="">
         </div>
         <div id="appointment-form">
              <h2>Buzz & Collective Appointment Form</h2>
         </div>
-        <h6>SELECT BRANCH</h6>
-
-        <h1 class="text-center">Choose your Time Availability</h1>
-    <hr>
 
     <div class="row">
         <div class="receipt">
@@ -99,40 +95,43 @@ function timeslots($duration, $cleanup, $start, $end){
                 </div>
 
                 <h2 class="select">Stylist</h2>
-                <div id="stylist">
-                    <div class="stylist-item">
-                        <img src="design/image/barber5.jpg" alt="Stylist">
-                        <p>Adi</p>
-                        <input type="radio" name="barber" value="Adi">
+                <div class="barber-selection">
+                    <div class="barber-header">
+                        <span>Barber Selection</span>
+                        <label for="available-barber">Available Barber</label>
+                        <input type="checkbox" id="available-barber" onclick="filterBarbers()">
                     </div>
 
-                    <div class="stylist-item">
-                        <img src="design/image/barber4.jpg" alt="Stylist">
-                        <p>Ben</p>
-                        <input type="radio" name="barber" value="Ben">
-                    </div>
+                    <div id="babers">
+                            <div class="barber-item" data-available="true">
+                                <input type="radio" name="barber" value="Andre">
+                                <p>Andre</p>
+                            </div>
 
-                    <div class="stylist-item">
-                        <img src="design/image/Barber 3.jpg" alt="Stylist">
-                        <p>Charlie</p>
-                        <input type="radio" name="barber" value="Charlie">
-                    </div>
+                            <div class="barber-item" data-available="false">
+                                <input type="radio" name="barber" value="Lucas" disabled>
+                                <p>Lucas <span class="status">Unavailable</span></p>
+                            </div>
 
-                    <div class="stylist-item">
-                        <img src="design/image/barber 2.jpg" alt="Stylist">
-                        <p>David</p>
-                        <input type="radio" name="barber" value="David">
-                    </div>
+                            <div class="barber-item" data-available="true">
+                                <input type="radio" name="barber" value="Nene">
+                                <p>Nene</p>
+                            </div>
 
-                    <div class="stylist-item">
-                        <img src="design/image/Barber1.jpg" alt="Stylist">
-                        <p>Edward</p>
-                        <input type="radio" name="barber" value="Edward">
+                            <div class="barber-item" data-available="false">
+                                <input type="radio" name="barber" value="Baby" disabled>
+                                <p>Baby <span class="status">Unavailable</span></p>
+                            </div>
+
+                            <div class="barber-item" data-available="false">
+                                <input type="radio" name="barber" value="Andre Jr." disabled>
+                                <p>Andre Jr. <span class="status">Unavailable</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                
                 <div class="form-group">
+                    <div class="timeslot">
                     <label for="timeslot">Select Time Slot:</label>
                     <select name="timeslot" id="timeslot" class="form-control" required>
                         <option value="">--Select Time Slot--</option>
@@ -148,9 +147,10 @@ function timeslots($duration, $cleanup, $start, $end){
                             }
                         ?>
                     </select>
+                    </div>
                 </div>
                 <div class="form-group pull-right">
-                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                    <button class="proceed" type="submit" name="submit">Proceed</button>
                 </div>
             </form>
         </div>
@@ -164,6 +164,21 @@ function timeslots($duration, $cleanup, $start, $end){
             $("#timeslot").val(timeslot);
             $("#myModal").modal("show");
         })
+
+        function filterBarbers() {
+        const isChecked = document.getElementById('available-barber').checked;
+        const barberItems = document.querySelectorAll('.barber-item');
+
+        barberItems.forEach(item => {
+            const isAvailable = item.getAttribute('data-available') === "true";
+            if (isChecked && !isAvailable) {
+                item.style.display = 'none'; // Hide unavailable barbers
+            } else {
+                item.style.display = 'flex'; // Show all barbers when unchecked
+            }
+        });
+    }
+
     </script>
 </body>
 

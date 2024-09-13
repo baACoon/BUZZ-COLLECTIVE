@@ -30,20 +30,14 @@ body{
     flex-wrap: wrap;
 }
 
-
-.col-md-12 {
+.appointment-form{
     display: flex;
+    justify-content: center;
+    align-items: center;
     height:100%;
     width:100%;
     flex-wrap: wrap;
-    margin-right: 100px;
-    margin-left: 100px;
-}
-
-.appointment-form{
-    height: 100%;
-    width:  100%;
-
+    position: absolute;
 }
 
 
@@ -105,24 +99,70 @@ body{
     width: 20px;
     height: 17px;
 }
+.barber-selection {
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    width: 210%;
 
-#stylist {
-    max-height: 300px; 
-    overflow-y: auto; 
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    
 }
 
-.stylist-item {
+.barber-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    margin-bottom: 10px;
+    background-color: aqua;
 }
 
-.stylist-item img {
-    width: 50px; 
-    height: 50px;
-    object-fit: cover;
+.barber-header label {
+    margin-right: 5px;
+}
+
+.barbers{
+    background-color: aqua;
+    height: 100%;
+    width:100%;
+}
+/* Available barber*/
+.barber-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    background-color: yellow;
+}
+
+.barber-item input[type="radio"] {
+    margin-right: 10px;
+}
+.barber-item .status {
+    color: gray;
+}
+
+.barber-item[data-available="false"] {
+    background-color: #f2f2f2;
+    color: #999;
+}
+
+.timeslot label{
+    height: auto;
+    width: auto;
+    background-color: aqua;
+}
+.timeslot label{
+    background-color: cadetblue;
+    display: flex;
+    position: fixed;
+    top: 30em;
+}
+.timeslot #timeslot{
+    display: flex;
+    position: fixed;
+    top: 30em;
+}
+.proceed{
+    background-color: chartreuse;
+    display: flex;
+    position: fixed;
+    top:40em;
 }
