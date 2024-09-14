@@ -5,6 +5,12 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
 // Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    // If not logged in, redirect to login page
+    header('Location: login.php');
+    exit();
+}
+
 $username = $_SESSION['username'];
 
 // Fetch the user's email, name, and profile image from the database
@@ -197,8 +203,8 @@ $db->close();
             <ul>
                 <li><a href="myprofile.php">My Profile</a></li>
                 <li><a href="history.php">See History</a></li>
-                <li><a href="#">Change Password</a></li>
-                <li><a href="login.php">Logout</a></li>
+                <li><a href="changepass.php">Change Password</a></li>
+                <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
             </ul>
         </nav>
     </aside>
@@ -298,6 +304,7 @@ $db->close();
                 }, 300);
             }
         });
+
     </script>
 </body>
 </html>

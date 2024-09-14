@@ -25,6 +25,8 @@
     <?php endforeach ?>
   </div>
 
+
+
   <script> //JS to hide the error prompt message
 	document.addEventListener('DOMContentLoaded', function() {
 		var errorContainer = document.querySelector('.error-container');

@@ -1,4 +1,4 @@
-<?php include 'C:/xampp/htdocs/Project/BUZZ-COLLECTIVE/backend/adminappointments.php' ?>
+<?php include '../backend/adminappointments.php' ?>
 
 <?php
 

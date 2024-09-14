@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    // If not logged in, redirect to login page
+    header('Location: login.php');
+    exit();
+}
+
 $username = $_SESSION['username'];
 
 // Database connection
@@ -59,7 +66,7 @@ $db->close();
                     </a>
                     <ul class="submenu">
                         <li><a href="myprofile.php">My Profile</a></li>
-                        <li><a href="login.php">Logout</a></li>
+                        <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
                     </ul>
                 </li>
             </ul>

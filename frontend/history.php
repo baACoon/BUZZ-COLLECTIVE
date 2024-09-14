@@ -52,8 +52,8 @@ $db->close();
             <ul>
                 <li><a href="myprofile.php">My Profile</a></li>
                 <li><a href="history.php">See History</a></li>
-                <li><a href="#">Change Password</a></li>
-                <li><a href="login.php">Logout</a></li>
+                <li><a href="changepass.php">Change Password</a></li>
+                <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
             </ul>
         </nav>
     </aside>

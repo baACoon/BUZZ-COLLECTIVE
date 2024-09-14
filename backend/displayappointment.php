@@ -27,8 +27,8 @@ if ($result->num_rows > 0) {
                     <strong>Stylist:</strong> {$row['barber']}
                 </td>
                 <td>
-                    <strong>Date:</strong> {$row['appointment_date']}<br>
-                    <strong>Time:</strong> {$row['appointment_time']}
+                    <strong>Date:</strong> {$row['date']}<br>
+                    <strong>Time:</strong> {$row['timeslot']}
                 </td>
               </tr>";
     }
