@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: url('../design/image/buzzeme.jpg') no-repeat center center fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Allows vertical alignment */
+    align-items: center;   /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 27, 27, 0.91);
+    position: fixed;
+    z-index: -1;
+}
+
+.appointment-form {
+    color: #ffffff;
+    text-align: center; 
+    margin-top: 5%; /* Ensure no extra top margin */
+    padding: 0; /* Remove any padding if not needed */
+}
+
+.appointment-fields {
+    width: 40%;
+    margin: 0 auto; /* Centers the form horizontally */
+    min-height: 400px; /* Adjust as needed */
+    padding: 1rem; /* Optional: adds padding around the form */
+    border-radius: 5px; /* Optional: rounds the corners */
+    color: #ffffff;
+}
+
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    font-size: 1rem;
+}
+
+.services-container {
+    width: 100%;
+    max-width: 800px; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0 1rem; /* Adds padding on the sides */
+    background: #ffffff;
+    border-radius: 5px; 
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Adds spacing between columns and rows */
+}
+
+.services div {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+    width: calc(50% - 0.5rem); 
+    width: 48%;
+    margin-bottom: 0.5rem; /* Adds spacing between rows */
+}
+
+
+.services input[type="radio"] {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    transform: scale(1.5);
+}
+
+.services label {
+    color: black; 
+    font-size: 1rem; /* Adjust font size if needed */
+}
+
+.note-text {
+    color: #898989; /* Color for the NOTE text */
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: -6%;
+}
+.proceed-btn {
+    width: 30%;
+    margin: 5%;
+    padding: 1rem;
+    background-color: #E43A19;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+
+.proceed-btn:hover {
+    background-color: rgb(255, 77, 64);
+}
+
+
+.validation-message {
+    color: red;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 1rem;
+    display: none; /* Initially hidden */
+}

@@ -22,13 +22,28 @@
         </div>
         <h6>SELECT BRANCH</h6>
 
-        <a href="../frontend/appointment.php">
-            <div  class="mainbranch" id="branches">
-                <img src="public/location.png">
-                <span id="branch-name"> Main Branch</span>
-                <div id="branch-location">Imus Cavite</div>
+        <div class="landingapp-container">
+            <div class="landingapp-selection">
+                <ul>
+                    <li>
+                        <a href="../frontend/appointment.php">
+                            <img src="design/image/location.png" class="location" alt="">
+                            <p>Main Branch</p>
+                            <span>Imus, Cavite</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../frontend/appointment.php">
+                            <img src="design/image/location.png" class="location" alt="">
+                            <p>Salitran Branch</p>
+                            <span>Dasmarinas, Cavite</span>
+                        </a>
+                    </li>
+
+                </ul>
             </div>
-        </a>
+        </div>
 
 
 

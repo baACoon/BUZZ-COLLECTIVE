@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: url('../design/image/buzzeme.jpg') no-repeat center center fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Allows vertical alignment */
+    align-items: center;   /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 27, 27, 0.91);
+    position: fixed;
+    z-index: -1;
+}
+
+.confirmation-form {
+    color: #ffffff;
+    text-align: center; 
+    margin-top: 5%; /* Ensure no extra top margin */
+    padding: 0; /* Remove any padding if not needed */
+}
+
+
+
+
+.confirmation-container{
+    width: 45%;
+    max-width: 500px; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0 1rem; /* Adds padding on the sides */
+    background: #ffffff;
+    border-radius: 10px; 
+}
+
+
+.confirmation-details {
+    margin: 6%;
+}
+
+.confirmation-details p {  
+    display: flex;
+    justify-content: space-between; /* Space between label and value */
+    margin: 14px 0; /* Margin between rows */
+    font-weight: 400;
+}
+
+
+.confirmation-details strong {
+    text-align: left; /* Align text to the right */
+    min-width: 210px /* Set a minimum width for alignment */
+}
+
+.service-fee {
+    display: flex;
+    flex-direction: column; /* Ensures content is stacked vertically */
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Centers the text inside */
+}
+
+.confirmation-buttons {
+    text-align: center; /* Center align buttons */
+    margin-top: 20px; /* Add some space above the buttons */
+}
+
+.confirmation-buttons form {
+    display: inline-block; /* Keep forms in-line */
+    margin: 0 10px; /* Space between buttons */
+}
+
+.confirm-btn {
+    background-color: #E43A19; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px;
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer */
+    border-radius: 50%; /* Add rounded corners */
+}
+
+.confirm-btn:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+
+
+.confirmation-buttons button {
+    padding: 10px 20px; /* Same padding for "Back" button */
+    font-size: 16px; /* Same font size */
+    border-radius: 5px; /* Same border-radius */
+}
