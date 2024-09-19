@@ -131,7 +131,7 @@ function timeslots($duration, $cleanup, $start, $end){
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="timeslot">
+                    <div class="time-selection">
                     <label for="timeslot">Select Time Slot:</label>
                     <select name="timeslot" id="timeslot" class="form-control" required>
                         <option value="">--Select Time Slot--</option>
@@ -149,9 +149,8 @@ function timeslots($duration, $cleanup, $start, $end){
                     </select>
                     </div>
                 </div>
-                <div class="form-group pull-right">
-                    <button class="proceed" type="submit" name="submit">Proceed</button>
-                </div>
+    
+                <button class="proceed" type="submit" name="submit">Proceed</button>
             </form>
         </div>
     </div>

@@ -144,25 +144,52 @@ body{
     color: #999;
 }
 
-.timeslot label{
-    height: auto;
-    width: auto;
-    background-color: aqua;
-}
-.timeslot label{
-    background-color: cadetblue;
+/* Styling for Time Selection */
+.time-selection {
     display: flex;
-    position: fixed;
-    top: 30em;
+    position: relative;
+    top:68em;
+    left: 7em;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350%;
+    margin: 20px auto;
 }
-.timeslot #timeslot{
-    display: flex;
-    position: fixed;
-    top: 30em;
+
+.time-selection label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
 }
+
+.time-selection select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+
 .proceed{
-    background-color: chartreuse;
-    display: flex;
-    position: fixed;
-    top:40em;
+    position: relative;
+    top:95em;
+    left: 7em;
+    background-color: #E43A19; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    width: 31%;
+    height: 5%;
+    border-radius: 8px;
 }
