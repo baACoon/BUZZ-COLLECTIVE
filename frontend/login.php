@@ -6,6 +6,7 @@
 <html>
 <head>
   <title>Buzz & Collective - log in</title>
+  <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
   <link rel="stylesheet" type="text/css" href="design/login.css">
 </head>
 <body>

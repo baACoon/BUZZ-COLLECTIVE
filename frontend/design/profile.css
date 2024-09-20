@@ -185,12 +185,13 @@ body {
 }
 
 .change-btn{
-    margin-right: 33em;
+    margin-right: 25em;
     text-decoration: none;
-    color: #f73201; /* Set your preferred color */
-    position: relative;
+    color: #f73201; 
+    position: relative ;
     display: inline-block;
     cursor: pointer;
+   
 }
 
 .change-btn::after{
