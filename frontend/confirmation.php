@@ -1,45 +1,77 @@
 <?php
 session_start(); // Start the session
 
+// Database connection
+$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
+
+// Ensure the connection was successful
+if ($mysqli->connect_error) {
+    die("Database connection failed: " . $mysqli->connect_error);
+}
 
 // Retrieve form data
-$_SESSION['form_data'] = array(
-    'first-name' => htmlspecialchars($_POST['first-name']),
-    'last-name' => htmlspecialchars($_POST['last-name']),
-    'email' => htmlspecialchars($_POST['email']),
-    'phone' => htmlspecialchars($_POST['phone']),
-    'service' => htmlspecialchars($_POST['service']),
-    'barber' => htmlspecialchars($_POST['barber']),
-    'appointment-time' => htmlspecialchars($_POST['appointment-time']),
-    'selected-date' => htmlspecialchars($_POST['selected-date'])
-);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Store form data in session
+    $_SESSION['form_data'] = array(
+        'first-name' => htmlspecialchars($_POST['first_name']),
+        'last-name' => htmlspecialchars($_POST['last_name']),
+        'email' => htmlspecialchars($_POST['email']),
+        'phone' => htmlspecialchars($_POST['phone_num']),
+        'service' => htmlspecialchars($_POST['services']),
+        'barber' => htmlspecialchars($_POST['barber']),
+        'timeslot' => htmlspecialchars($_POST['timeslot']),
+        'selected-date' => htmlspecialchars($_POST['date'])
+    );
 
-// Define fees for each service
-$serviceFees = array(
-    'haircut' => 250,
-    'hair-color' => 650,
-    'kiddie-haircut' => 350,
-    'hair-color-and-haircut' => 750,
-    'haircut-and-shave' => 350,
-    'scalp-treatment' => 750,
-    'hair-art' => 300,
-    'scalp-treatment-and-haircut' => 250,
-    'haircut-perm' => 1300,
-    'shave-and-sculpting' => 200
-);
+    // Define fees for each service
+    $serviceFees = array(
+        'haircut' => 250,
+        'hair-color' => 650,
+        'kiddie-haircut' => 350,
+        'hair-color-and-haircut' => 750,
+        'haircut-and-shave' => 350,
+        'scalp-treatment' => 750,
+        'hair-art' => 300,
+        'scalp-treatment-and-haircut' => 250,
+        'haircut-perm' => 1300,
+        'shave-and-sculpting' => 200
+    );
 
-// Appointment fee
-$appointmentFee = 150;
+    // Appointment fee
+    $appointmentFee = 150;
 
-// Get the fee for the selected service
-$serviceFee = $serviceFees[$_SESSION['form_data']['service']] ?? 0;
+    // Get the fee for the selected service
+    $serviceFee = $serviceFees[$_SESSION['form_data']['service']] ?? 0;
 
-// Calculate total payment
-$totalPayment = $serviceFee + $appointmentFee;
+    // Calculate total payment
+    $totalPayment = $serviceFee + $appointmentFee;
 
-// Format the appointment date and time separately
-$date = (new DateTime($_SESSION['form_data']['selected-date']))->format('Y-m-d');
-$time = (new DateTime($_SESSION['form_data']['appointment-time']))->format('H:i:s');
+    // Format the appointment date and time separately
+    $date = (new DateTime($_SESSION['form_data']['selected-date']))->format('Y-m-d');
+    $time = (new DateTime($_SESSION['form_data']['timeslot']))->format('H:i:s');
+
+    // Check if the timeslot is already booked
+    $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ?");
+    $stmt->bind_param('ss', $date, $time);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<div class='alert alert-danger'>This timeslot is already booked.</div>";
+    } else {
+        // Insert the booking into the database
+        $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssssss', $_SESSION['form_data']['first-name'], $_SESSION['form_data']['last-name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone'], $_SESSION['form_data']['service'], $_SESSION['form_data']['barber'], $date, $time);
+        
+        if ($stmt->execute()) {
+            echo "<div class='alert alert-success'>Booking successful!</div>";
+        } else {
+            echo "<div class='alert alert-danger'>There was an error processing your booking. Please try again.</div>";
+        }
+    }
+    $stmt->close();
+    $mysqli->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +80,6 @@ $time = (new DateTime($_SESSION['form_data']['appointment-time']))->format('H:i:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../frontend/design/confirmation.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
     <title>Buzz & Collective - Confirmation</title>
 </head>
 <body>
@@ -69,16 +99,13 @@ $time = (new DateTime($_SESSION['form_data']['appointment-time']))->format('H:i:
             <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone']; ?></strong></p>
             <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['service']); ?></strong></p>
             <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
-            <p class="service-fee"><strong> Service Fee: <?php echo number_format($serviceFee, 0); ?></strong></p>
-           
+            <p class="service-fee"><strong>Service Fee: <?php echo number_format($serviceFee, 0); ?></strong></p>
+            <p class="total-fee"><strong>Total Payment: <?php echo number_format($totalPayment, 0); ?></strong></p>
         </div>
 
         <div class="confirmation-buttons">
-            <form method="POST" action="payment.php">
-                <button class="confirm-btn" type="submit">Confirm</button>
-                <input type="hidden" name="service_fee" value="<?php echo $serviceFee; ?>">
-                <input type="hidden" name="appointment_fee" value="<?php echo $appointmentFee; ?>">
-                <input type="hidden" name="total_payment" value="<?php echo $totalPayment; ?>">
+            <form method="POST" action="">
+                <button class="confirm-btn" type="submit">Confirm Appointment</button>
             </form>
             <form method="POST" action="appointmentform.php">
                 <button type="submit">Back</button>
@@ -87,3 +114,4 @@ $time = (new DateTime($_SESSION['form_data']['appointment-time']))->format('H:i:
     </div>
 </body>
 </html>
+9

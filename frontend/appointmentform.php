@@ -3,6 +3,7 @@ session_start(); // Start the session
 
 // Retrieve form data from session if available
 $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
+
 ?>
 
 <!DOCTYPE html>

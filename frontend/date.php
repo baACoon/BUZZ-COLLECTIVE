@@ -59,7 +59,7 @@ function timeslots($duration, $cleanup, $start, $end){
             <?php echo isset($msg) ? $msg : ""; ?>
         </div>
         <div class="appointment-form">
-            <form action="" method="post">
+            <form action="confirmation.php" method="post">
                 
                 <!-- The rest of the form remains the same, including First Name, Last Name, Email, Phone Number, and Submit button -->
                 <div class="form-group">
