@@ -9,18 +9,20 @@ if ($mysqli->connect_error) {
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
+
+
 // Retrieve form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Store form data in session
     $_SESSION['form_data'] = array(
-        'first-name' => htmlspecialchars($_POST['first_name']),
-        'last-name' => htmlspecialchars($_POST['last_name']),
+        'first_name' => htmlspecialchars($_POST['first_name']),
+        'last_name' => htmlspecialchars($_POST['last_name']),
         'email' => htmlspecialchars($_POST['email']),
-        'phone' => htmlspecialchars($_POST['phone_num']),
-        'service' => htmlspecialchars($_POST['services']),
+        'phone_num' => htmlspecialchars($_POST['phone_num']),
+        'services' => htmlspecialchars($_POST['services']),
         'barber' => htmlspecialchars($_POST['barber']),
         'timeslot' => htmlspecialchars($_POST['timeslot']),
-        'selected-date' => htmlspecialchars($_POST['date'])
+        'date' => htmlspecialchars($_POST['date'])
     );
 
     // Define fees for each service
@@ -41,14 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $appointmentFee = 150;
 
     // Get the fee for the selected service
-    $serviceFee = $serviceFees[$_SESSION['form_data']['service']] ?? 0;
+    $serviceFee = $serviceFees[$_SESSION['form_data']['services']] ?? 0;
 
     // Calculate total payment
     $totalPayment = $serviceFee + $appointmentFee;
 
     // Format the appointment date and time separately
-    $date = (new DateTime($_SESSION['form_data']['selected-date']))->format('Y-m-d');
-    $time = (new DateTime($_SESSION['form_data']['timeslot']))->format('H:i:s');
+    $date = (new DateTime($_SESSION['form_data']['date']))->format('Y-m-d');
+    $time = (new DateTime($_SESSION['form_data']['timeslot']))->format('H:iA');
 
     // Check if the timeslot is already booked
     $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ?");
@@ -58,10 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         echo "<div class='alert alert-danger'>This timeslot is already booked.</div>";
+       
     } else {
         // Insert the booking into the database
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssssssss', $_SESSION['form_data']['first-name'], $_SESSION['form_data']['last-name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone'], $_SESSION['form_data']['service'], $_SESSION['form_data']['barber'], $date, $time);
+        $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
         
         if ($stmt->execute()) {
             echo "<div class='alert alert-success'>Booking successful!</div>";
@@ -93,18 +96,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>BRANCH <strong>MAIN BRANCH</strong></p>
             <p>DATE <strong><?php echo $date; ?></strong></p>
             <p>TIME <strong><?php echo $time; ?></strong></p>
-            <p>FIRST NAME <strong><?php echo $_SESSION['form_data']['first-name']; ?></strong></p>
-            <p>LAST NAME <strong><?php echo $_SESSION['form_data']['last-name']; ?></strong></p>
+            <p>FIRST NAME <strong><?php echo $_SESSION['form_data']['first_name']; ?></strong></p>
+            <p>LAST NAME <strong><?php echo $_SESSION['form_data']['last_name']; ?></strong></p>
             <p>EMAIL <strong><?php echo $_SESSION['form_data']['email']; ?></strong></p>
-            <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone']; ?></strong></p>
-            <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['service']); ?></strong></p>
+            <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
+            <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
             <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
             <p class="service-fee"><strong>Service Fee: <?php echo number_format($serviceFee, 0); ?></strong></p>
             <p class="total-fee"><strong>Total Payment: <?php echo number_format($totalPayment, 0); ?></strong></p>
         </div>
 
         <div class="confirmation-buttons">
-            <form method="POST" action="">
+            <form method="POST" action="receipt.php">
                 <button class="confirm-btn" type="submit">Confirm Appointment</button>
             </form>
             <form method="POST" action="appointmentform.php">
@@ -114,4 +117,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </body>
 </html>
-9

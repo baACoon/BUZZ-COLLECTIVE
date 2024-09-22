@@ -100,7 +100,7 @@ function build_calendar($month, $year) {
              $calendar.="<td><h4>$currentDay</h4> <button class='unavailable'>N/A</button>";
          }else{
             //$calendar.="<td class='$today'><h4>$currentDay</h4> <button class='available' onclick='openModal(\"$date\")'>Book</button>";
-             $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='date.php?date=".$date."' class='available'>Book</a>";
+             $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='appointment.php?date=".$date."' class='available'>Book</a>";
              /*$calendar .= "<td class='$today'>
                             <h4>$currentDay</h4>
                             <button type='button' class='btn btn-primary book-date' data-date='".$date."'>

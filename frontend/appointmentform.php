@@ -1,5 +1,4 @@
 <?php
-session_start(); // Start the session
 
 // Retrieve form data from session if available
 $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
@@ -26,17 +25,17 @@ $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
     <form class="appointment-fields" id="appointmentForm" method="POST" action="confirmation.php">
         <div class="form-section">
             <h3>PERSONAL INFORMATION</h3>
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="First Name" value="<?php echo htmlspecialchars($formData['first-name'] ?? ''); ?>">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($formData['first_name'] ?? ''); ?>">
 
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Last Name" value="<?php echo htmlspecialchars($formData['last-name'] ?? ''); ?>">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" value="<?php echo htmlspecialchars($formData['last_name'] ?? ''); ?>">
 
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($formData['email'] ?? ''); ?>">
 
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Phone Number" value="<?php echo htmlspecialchars($formData['phone'] ?? ''); ?>">
+            <label for="phone_num">Phone Number </label>
+            <input type="tel" id="phone_num" name="phone_num" placeholder="Phone Number (ex. 09*********)" pattern="((^(\+)(\d){12}$)|(^\d{11}$))" value="<?php echo htmlspecialchars($formData['phone_num'] ?? ''); ?>">
         </div>
 
         <div class="form-section">
@@ -47,8 +46,8 @@ $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
                     <?php 
                     $services = array('haircut', 'hair-color', 'kiddie-haircut', 'hair-color-and-haircut', 'haircut-and-shave', 'scalp-treatment', 'hair-art', 'scalp-treatment-and-haircut', 'haircut-perm', 'shave-and-sculpting');
                     foreach ($services as $service) {
-                        $checked = ($formData['service'] ?? '') === $service ? 'checked' : '';
-                        echo "<div><input type='radio' id='$service' name='service' value='$service' $checked><label for='$service'>" . ucfirst(str_replace('-', ' ', $service)) . "</label></div>";
+                        $checked = ($formData['services'] ?? '') === $service ? 'checked' : '';
+                        echo "<div><input type='radio' id='$service' name='services' value='$service' $checked><label for='$service'>" . ucfirst(str_replace('-', ' ', $service)) . "</label></div>";
                     }
                     ?>
                 </div>
@@ -75,33 +74,34 @@ $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
             Please fill out all fields and select a service and a barber before proceeding.
         </div>
 
-        <input type="hidden" id="appointment-time" name="appointment-time" value="">
-        <input type="hidden" id="selected-date" name="selected-date" value="">
+        <input type="hidden" id="timeslot" name="timeslot" value="">
+        <input type="hidden" id="date" name="date" value="">
         <button type="submit" class="proceed-btn">PROCEED</button>
     </form>
 
     <script>
         document.getElementById('appointmentForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission behavior
-            
-            const firstName = document.getElementById('first-name').value.trim();
-            const lastName = document.getElementById('last-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const service = document.querySelector('input[name="service"]:checked');
-            const barber = document.getElementById('barber').value.trim();
+        const firstName = document.getElementById('first_name').value.trim();
+        const lastName = document.getElementById('last_name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone_num').value.trim();
+        const services = document.querySelector('input[name="services"]:checked');
+        const barber = document.getElementById('barber').value.trim();
+        const timeslot = document.getElementById('timeslot').value.trim();
+        const selectedDate = document.getElementById('date').value.trim();
 
-            if (!firstName || !lastName || !email || !phone || !service || !barber) {
+        if (!firstName || !lastName || !email || !phone || !service || !barber || !timeslot || !selectedDate) {
                 document.getElementById('validationMessage').style.display = 'block';
             } else {
                 document.getElementById('validationMessage').style.display = 'none';
                 // Set hidden input values
-                document.getElementById('appointment-time').value = document.getElementById('appointment-time').value;
-                document.getElementById('selected-date').value = document.getElementById('selected-date').value;
+                document.getElementById('timeslot').value = document.getElementById('timeslot').value;
+                document.getElementById('date').value = document.getElementById('date').value;
                 // Submit form
                 event.currentTarget.submit();
             }
-        });
+    });
+
     </script>
 </body>
 </html>

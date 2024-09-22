@@ -1,5 +1,41 @@
 <?php require_once '../frontend/calendar.php'; ?>
 <?php require_once '../backend/adminappointments.php'; ?>
+
+<?php $date = require_once '../frontend/calendar.php';
+     $bookings = include '../backend/adminappointments.php';
+     if (!is_array($bookings)) {
+         $bookings = array(); // ensure $bookings is an array
+     }
+?>
+<?php
+
+$duration = 60;
+$cleanup = 0;
+$start = "09:00";
+$end = "21:00";
+
+function timeslots($duration, $cleanup, $start, $end){
+    $start = new DateTime($start);
+    $end = new DateTime($end);
+    $interval = new DateInterval("PT".$duration."M");
+    $cleanupInterval = new DateInterval("PT".$cleanup."M");
+    $slots = array();
+
+    for ($intStart = $start; $intStart<$end; $intStart->add($interval)->add($cleanupInterval)){
+        $endPeriod = clone $intStart;
+        $endPeriod->add($interval);
+        if($endPeriod>$end){
+            break;
+        }
+
+        $slots[] = $intStart->format("H:iA")."-".$endPeriod->format("H:iA");
+    }
+
+    return $slots;
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,6 +119,7 @@
         <div id="appointment-form">
              <h2>Buzz & Collective Appointment Form</h2>
         </div>
+        <form action="appointmentform.php" method="POST">
         <div class="row">
             <div class="coloumnn">
                 <?php
@@ -102,20 +139,18 @@
         <!-- Time Selection Form -->
         <div class="row">
             <div class="time-selection">
-                <form action="appointmentform.php" method="POST">
-                    <label for="appointment-time">Select Time</label>
-                    <select name="appointment-time" id="appointment-time">
-                        <?php
-                        // Start and end times
-                        $start_time = strtotime("08:00 AM");
-                        $end_time = strtotime("08:00 PM");
-
-                        // Loop through each time slot (1 hour increment)
-                        for ($time = $start_time; $time < $end_time; $time = strtotime('+1 hour', $time)) {
-                            $start = date("g:i A", $time);
-                            $end = date("g:i A", strtotime('+1 hour', $time));
-                            echo "<option value='{$start} - {$end}'>{$start} - {$end}</option>";
-                        }
+                    <label for="timeslot">Select Time</label>
+                    <select name="timeslot" id="timeslot">
+                    <?php 
+                            $timeslots = timeslots($duration, $cleanup, $start, $end);
+                            foreach($timeslots as $ts) {
+                                // If the timeslot is booked, disable the option
+                                if (in_array($ts, $bookings)) {
+                                    echo '<option value="'.$ts.'" disabled>'.$ts.' (Booked)</option>';
+                                } else {
+                                    echo '<option value="'.$ts.'">'.$ts.'</option>';
+                                }
+                            }
                         ?>
                     </select>
 
@@ -123,14 +158,15 @@
 
     
                     <button type="submit" class="submit-btn">Proceed</button>
-                </form>
+                
             </div>
         </div>
+        </form>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const timeSelect = document.getElementById('appointment-time');
+            const timeSelect = document.getElementById('timeslot');
             const submitBtn = document.querySelector('.submit-btn');
 
             // Mock data for unavailable times (e.g., from server) 

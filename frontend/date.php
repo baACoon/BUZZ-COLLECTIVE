@@ -6,7 +6,7 @@
 ?>
 <?php
 
-$duration = 30;
+$duration = 60;
 $cleanup = 0;
 $start = "09:00";
 $end = "21:00";
@@ -58,8 +58,9 @@ function timeslots($duration, $cleanup, $start, $end){
         <div class="receipt">
             <?php echo isset($msg) ? $msg : ""; ?>
         </div>
+        
         <div class="appointment-form">
-            <form action="confirmation.php" method="post">
+            <form id="appointmentForm.php"action="confirmation.php" method="post">
                 
                 <!-- The rest of the form remains the same, including First Name, Last Name, Email, Phone Number, and Submit button -->
                 <div class="form-group">
@@ -177,6 +178,28 @@ function timeslots($duration, $cleanup, $start, $end){
             }
         });
     }
+
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            
+            const firstName = document.getElementById('first_name').value.trim();
+            const lastName = document.getElementById('last_name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone_num').value.trim();
+            const service = document.querySelector('input[name="service"]:checked');
+            const barber = document.getElementById('barber').value.trim();
+
+            if (!firstName || !lastName || !email || !phone || !service || !barber) {
+                document.getElementById('validationMessage').style.display = 'block';
+            } else {
+                document.getElementById('validationMessage').style.display = 'none';
+                // Set hidden input values
+                document.getElementById('timeslot').value = document.getElementById('timeslot').value;
+                document.getElementById('selected-date').value = document.getElementById('selected-date').value;
+                // Submit form
+                event.currentTarget.submit();
+            }
+        });
 
     </script>
 </body>

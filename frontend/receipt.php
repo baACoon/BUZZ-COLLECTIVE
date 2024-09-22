@@ -16,8 +16,8 @@ $amountPaid = $appointmentFee;
 $amountDue = $totalPayment - $amountPaid;
 
 // Format the appointment date and time separately
-$date = (new DateTime($formData['selected-date'] ?? ''))->format('Y-m-d'); // Format date as 'YYYY-MM-DD'
-$time = (new DateTime($formData['appointment-time'] ?? ''))->format('H:i:s'); // Format time as 'HH:MM:SS'
+$date = (new DateTime($_SESSION['form_data']['date']))->format('Y-m-d');
+$time = (new DateTime($_SESSION['form_data']['timeslot']))->format('H:iA');
 
 ?>
 
@@ -44,12 +44,12 @@ $time = (new DateTime($formData['appointment-time'] ?? ''))->format('H:i:s'); //
             <p>BRANCH <strong>MAIN BRANCH</strong></p>
             <p>DATE <strong><?php echo $date; ?></strong></p>
             <p>TIME <strong><?php echo $time; ?></strong></p>
-            <p>FIRST NAME <strong><?php echo htmlspecialchars($formData['first-name'] ?? ''); ?></strong></p>
-            <p>LAST NAME <strong><?php echo htmlspecialchars($formData['last-name'] ?? ''); ?></strong></p>
-            <p>EMAIL <strong><?php echo htmlspecialchars($formData['email'] ?? ''); ?></strong></p>
-            <p>CONTACT NUMBER <strong><?php echo htmlspecialchars($formData['phone'] ?? ''); ?></strong></p>
-            <p>SERVICE <strong><?php echo ucfirst(htmlspecialchars($formData['service'] ?? '')); ?></strong></p>
-            <p>BARBER <strong><?php echo ucfirst(htmlspecialchars($formData['barber'] ?? '')); ?></strong></p>
+            <p>FIRST NAME <strong><?php echo $_SESSION['form_data']['first_name']; ?></strong></p>
+            <p>LAST NAME <strong><?php echo $_SESSION['form_data']['last_name']; ?></strong></p>
+            <p>EMAIL <strong><?php echo $_SESSION['form_data']['email']; ?></strong></p>
+            <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
+            <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
+            <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
             <hr>
             <p class="service-fee">Service Fee <strong><?php echo number_format($serviceFee, 0); ?></strong></p>
             <p class="appointment-fee">Appointment Fee <strong><?php echo number_format($appointmentFee, 0); ?></strong>  </p>
