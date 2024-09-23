@@ -38,7 +38,6 @@ if ($stmt) {
 $db->close();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +48,7 @@ $db->close();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="frontend/usericon.js" defer></script>
+    
     <title>Buzz & Collective | Home</title>
 </head>
 <body>
@@ -80,7 +79,6 @@ $db->close();
             </ul>
         </nav>
     </header>
-
             <?php if (isset($_SESSION['show_popup'])) : ?>
                 <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
                 <div class="pop-background" id="popBackground">
@@ -97,10 +95,7 @@ $db->close();
                 background.style.display = 'none';
             }
         </script>
-        
-
             <div class="bgimage">
-
             </div>
             <div class="v79368">
                 <span class="day">OPEN MONDAY - SUNDAY</span> <br>
@@ -108,7 +103,6 @@ $db->close();
                 <button class="appntmnt-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
                 <span class="text">We also accepts walk-ins!</span>             
             </div>
-
             <!-- NEWS SELECTION -->
             <section class="body-cont">
 
@@ -117,62 +111,36 @@ $db->close();
                 <div class="image2"></div>
 
             </section>
-
             <!-- Barbers' Availability Section -->
-
             <section class="barber-selection">
-                        <!-- Barbers' IMAGE -->
+                <!-- Barbers' IMAGE -->
                 <div class="barber-sched-img">
                     <img src="design/image/SCHEDULE.png" alt="">
                 </div>
-                        <!-- Barbers' MONTHS -->
+                <!-- Barbers' MONTHS -->
                 <span class="barber-months">(APRIL 22 - 28, 2024)</span>
-                        <!-- Barbers' DROPDOWN -->
+                <!-- Barbers' DROPDOWN -->
                 <div class="barber-dropdown">
                     <select id="location" name="Branch">
                         <option value="Imus branch">Imus Branch</option>
                         <option value="Salitran">Salitran Branch</option>
                     </select>
                 </div>
-                        <!-- Barbers' DAYS -->
-                <span class="barber-days">
-                    <h1>MONDAY</h1>
-                    <h1>TUESDAY</h1>
-                    <h1>WEDNESDAY</h1>
-                    <h1>THURSDAY</h1>
-                    <h1>FRIDAY</h1>
-                    <h1>SATURDAY</h1>
-                    <h1>SUNDAY</h1>
-                </span>
-                        
-                        <!-- Barbers' NAMES  -->
-                <span class="barber-names">
-                    <h1>PAU, KEVS, JAMES, JEMEL</h1>
-                    <h1>PAU, KEVS, JAMES, JEMEL</h1>
-                    <h1>PAU, KEVS, JAMES, XAP</h1>
-                    <h1>VIEN, PAU, THOMAS, JEMEL</h1>
-                    <h1>VIEN, PAU, KEVS, XAP</h1>
-                    <h1>VIEN, JAMES, DARY, JAMEL</h1>
-                    <h1>VIEN, KEVS, JAMES, DARYL</h1>
+                <!-- Barbers' DAYS and Availability Section -->
+                <div id="date-range"></div>
+                <div id="availability"></div> <!-- Dito for displaying lang din db to client side and vice versa-->
 
-                </span>
-
-                    <button class="barber-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
+                <button class="barber-button"><a href="appointment.php">BOOK AN APPOINTMENT</a></button><br>
             </section>
-
-            
               <!-- BUZZIN  -->
-            <section class="buzzin-barber"> 
+            <section class="buzzin-barber" id="buzzbarber"> 
                 <h1>BE A BUZZIN' BARBER!</h1>
-                <div class="buzzin-img">
+                <div class="buzzin-img" id="buzzimg">
                     <img src="design/image/stockphotos5.png" alt="">
                 </div>
                 <h2>SERVE THE COMMUNITY WITH SOME FRESH LOOKS!</h2>
                 <a href="">More Info</a>
-
             </section>
-
-
             <footer>
                 <div class="footer-content">
                     <div class="footer-left">
@@ -191,7 +159,6 @@ $db->close();
                                 <p><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 0995 451 5631</p>
                             </address>
                     </div>
-
                     <div class="footer-right">
                         <h3>BUZZ & COLLECTIVES</h3>
                         <ul>
@@ -201,8 +168,6 @@ $db->close();
                             <li><a href="#">Services</a></li>
                         </ul>
                     </div>
-
-
                     <div class="social-media">
                         <a href="https://www.instagram.com/buzzncollective?igsh=NTk4eTR5dHBzMThi"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a>
                         <a href="https://www.facebook.com/buzzncollective"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></a>
@@ -210,6 +175,97 @@ $db->close();
                     </div>
                 </div>
             </footer>
-        
+
+            <!--SCRIPT TO SA PAG DISPLAY NG BARBER SA HOME-->
+            <script> //note: hindi functionable yung (April 22 chuchu)
+                document.addEventListener('DOMContentLoaded', function() {
+                const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+                const urlParams = new URLSearchParams(window.location.search);
+                const startDate = urlParams.get('start_date') || '';
+                const endDate = urlParams.get('end_date') || '';
+
+                // Fetch availability data from the server
+                fetch(`fetch_availability.php`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const availabilityDiv = document.getElementById('availability');
+
+                        if (data.length > 0) {
+                            // Initialization sa barbers by day 
+                            const availableBarbersByDay = {
+                                'Monday': [],
+                                'Tuesday': [],
+                                'Wednesday': [],
+                                'Thursday': [],
+                                'Friday': []
+                            };
+
+                            // Iterate over the fetched data and group barbers by day
+                            data.forEach(entry => {
+                                const dayName = daysOfWeek[new Date(entry.date).getDay() - 1];                                                  // Get the day of the week
+                                if (dayName && entry.is_available) {                                                                            // Ensure barber is available and day is within Monday to Friday
+                                    availableBarbersByDay[dayName].push(entry.barber_name);
+                                }
+                            });
+
+                            // Build the HTML for each day with up to 6 barbers per day
+                            let html = '';
+                            daysOfWeek.forEach(day => {
+                                html += `<div class="day-row"><strong>${day}:</strong><br><div class="barbers-row">`;
+
+                                // Display up to 6 barbers for the current day
+                                const barbers = availableBarbersByDay[day].slice(0, 6);
+                                if (barbers.length > 0) {
+                                    barbers.forEach(barber => {
+                                        html += `<span class="barber">${barber}</span>`;
+                                    });
+                                } else {
+                                    html += `<span class="no-barbers">No barbers available</span>`;
+                                }
+
+                                html += '</div></div><br>';
+                            });
+
+                            availabilityDiv.innerHTML = html; // Insert the generated HTML into the DOM
+                        } else {
+                            availabilityDiv.textContent = "No availability data found for the current week.";
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching availability data:', error);
+                        document.getElementById('availability').textContent = "Failed to load availability data.";
+                    });
+            });
+
+            </script>
+
+
+        <!-- CSS TO SA BARBERS Availability (Dito mo nalang siguro iadjust yung design. Baka kasi magulo sa back e^^) -->
+            <style> 
+                .day-row {
+                    top:3em;
+                margin-bottom: 20px;
+            }
+
+            .barbers-row {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr); /* 6 columns for 6 barbers */
+                gap: 10px;
+            }
+
+            .barber {
+                padding: 5px;
+                background-color: #f0f0f0;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .no-barbers {
+                grid-column: span 6; /* Take up the entire row if no barbers */
+                text-align: center;
+                font-style: italic;
+            }
+
+            </style>
 </body>
 </html>
