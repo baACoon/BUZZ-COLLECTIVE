@@ -9,8 +9,6 @@ if ($mysqli->connect_error) {
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
-
-
 // Retrieve form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Store form data in session
@@ -19,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'last_name' => htmlspecialchars($_POST['last_name']),
         'email' => htmlspecialchars($_POST['email']),
         'phone_num' => htmlspecialchars($_POST['phone_num']),
-        'services' => htmlspecialchars($_POST['services']),
+        'services' => htmlspecialchars($_POST['services']), // Make sure 'services' is correct
         'barber' => htmlspecialchars($_POST['barber']),
         'timeslot' => htmlspecialchars($_POST['timeslot']),
         'date' => htmlspecialchars($_POST['date'])
@@ -43,10 +41,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $appointmentFee = 150;
 
     // Get the fee for the selected service
-    $serviceFee = $serviceFees[$_SESSION['form_data']['services']] ?? 0;
+    $serviceKey = $_SESSION['form_data']['services']; // Store the service key properly
+    $serviceFee = isset($serviceFees[$serviceKey]) ? $serviceFees[$serviceKey] : 0;
+
+    // Check if service fee is found
+    if ($serviceFee == 0) {
+        echo "<div class='alert alert-danger'>Service not found or invalid service selected.</div>";
+    }
 
     // Calculate total payment
     $totalPayment = $serviceFee + $appointmentFee;
+
+    // Store the payment data in session for later use in receipt.php
+    $_SESSION['payment_data'] = array(
+        'service_fee' => $serviceFee,
+        'appointment_fee' => $appointmentFee,
+        'total_payment' => $totalPayment
+    );
 
     // Format the appointment date and time separately
     $date = (new DateTime($_SESSION['form_data']['date']))->format('Y-m-d');
@@ -60,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         echo "<div class='alert alert-danger'>This timeslot is already booked.</div>";
-       
     } else {
         // Insert the booking into the database
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
