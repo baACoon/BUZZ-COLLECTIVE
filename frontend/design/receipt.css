@@ -41,23 +41,54 @@ body::before {
     border-radius: 10px; 
     
 }
-
-.receipt-details{
-    margin: 6%;
-}
-.receipt-details h3{
+.confirmation-container {
     display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center;
+    justify-content: space-between; /* Creates space between the two columns */
+    align-items: flex-start; 
+    width: 80%; /* Adjust width as necessary to make sure both columns fit */
+    max-width: 1200px; /* Ensure container doesn't get too wide on large screens */
+    padding: 20px;
+    margin-top: 50px; /* Adds a bit of margin from the top */
+    
 }
-.receipt-details p{
+
+.receipt-container {
+    width: 48%; /* Both columns have the same width and leave a bit of space */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    align-items: flex-start; 
+}
+
+.confirmation-message {
+   color: white;
+    text-align: left; /* Center align the message text */
+}
+.confirmation-message a{
+    text-decoration: none;
+    color: white;
+}
+.confirmation-message  h1{
+    width: 50%;
+    text-transform: uppercase;
+    align-items: flex-start;
+}
+.confirmation-message p{
+    width: 65%;
+}
+
+.receipt-details h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.receipt-details p {
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
-    margin: 14px 0;
-    font-weight: 400;
 }
-.receipt-details strong{
-    text-align: left;
-    min-width: 210px;
+
+.receipt-details strong {
+    text-align: right;
 }

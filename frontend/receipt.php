@@ -38,25 +38,41 @@ $time = (new DateTime($_SESSION['form_data']['timeslot']))->format('H:iA');
         <p>MAIN BRANCH</p>
     </div>
 
-    <div class="receipt-container">
-        <div class="receipt-details">
-            <h3>SUMMARY</h3>
-            <p>BRANCH <strong>MAIN BRANCH</strong></p>
-            <p>DATE <strong><?php echo $date; ?></strong></p>
-            <p>TIME <strong><?php echo $time; ?></strong></p>
-            <p>FIRST NAME <strong><?php echo $_SESSION['form_data']['first_name']; ?></strong></p>
-            <p>LAST NAME <strong><?php echo $_SESSION['form_data']['last_name']; ?></strong></p>
-            <p>EMAIL <strong><?php echo $_SESSION['form_data']['email']; ?></strong></p>
-            <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
-            <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
-            <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
-            <hr>
-            <p class="service-fee">Service Fee <strong><?php echo number_format($serviceFee, 0); ?></strong></p>
-            <p class="appointment-fee">Appointment Fee <strong><?php echo number_format($appointmentFee, 0); ?></strong>  </p>
-            <hr>
-            <p class="amount-paid">Amount Paid  <strong><?php echo number_format($amountPaid, 0); ?></strong></p>
-            <p class="amount-due">AMOUNT DUE  <strong><?php echo number_format($amountDue, 0); ?></strong></p>
+    <div class="confirmation-container">
+        <div class="confirmation-message">
+            <h3><a href="home.php">HOME</a></3>
+            <h1>Appointment Succesful</h1>
+            <p>You will be notified via email and sms a day before your appointment schedule.</p>
+            <p>For no show on your appointed day, you will be re-scheduled.</p>
+            <p>For cancellatiom, contact us via email at buzzcollective@gmail.com</p>
         </div>
+
+            <div class="receipt-container">
+                <div class="receipt-details">
+                    <h3>SUMMARY</h3>
+                    <p>BRANCH <strong>MAIN BRANCH</strong></p>
+                    <p>DATE <strong><?php echo $date; ?></strong></p>
+                    <p>TIME <strong><?php echo $time; ?></strong></p>
+                    <p>FIRST NAME <strong><?php echo $_SESSION['form_data']['first_name']; ?></strong></p>
+                    <p>LAST NAME <strong><?php echo $_SESSION['form_data']['last_name']; ?></strong></p>
+                    <p>EMAIL <strong><?php echo $_SESSION['form_data']['email']; ?></strong></p>
+                    <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
+                    <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
+                    <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
+                    <hr>
+                    <p class="service-fee">Service Fee <strong><?php echo number_format($serviceFee, 0); ?></strong></p>
+                    <p class="appointment-fee">Appointment Fee <strong><?php echo number_format($appointmentFee, 0); ?></strong>  </p>
+                    <hr>
+                    <p class="amount-paid">Amount Paid  <strong><?php echo number_format($amountPaid, 0); ?></strong></p>
+                    <p class="amount-due">AMOUNT DUE  <strong><?php echo number_format($amountDue, 0); ?></strong></p>
+                </div>
+            </div>
+
+
+
+
     </div>
+
+   
 </body>
 </html>
