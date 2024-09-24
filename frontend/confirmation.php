@@ -1,30 +1,27 @@
 <?php
-session_start(); // Start the session
+session_start();                                                                                                                        // Start the session
 
-// Database connection
-$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
+$mysqli = new mysqli('localhost', 'root', '', 'barbershop');                                    // Database connection
 
-// Ensure the connection was successful
-if ($mysqli->connect_error) {
+
+if ($mysqli->connect_error) {                                                                                                           // Ensure the connection was successful
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
-// Retrieve form data
+                                                                                                                                        // Retrieve form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Store form data in session
-    $_SESSION['form_data'] = array(
+    $_SESSION['form_data'] = array(                                                                                                      // Store form data in session
         'first_name' => htmlspecialchars($_POST['first_name']),
         'last_name' => htmlspecialchars($_POST['last_name']),
         'email' => htmlspecialchars($_POST['email']),
         'phone_num' => htmlspecialchars($_POST['phone_num']),
-        'services' => htmlspecialchars($_POST['services']), // Make sure 'services' is correct
+        'services' => htmlspecialchars($_POST['services']),                                                                     // Make sure 'services' is correct
         'barber' => htmlspecialchars($_POST['barber']),
         'timeslot' => htmlspecialchars($_POST['timeslot']),
         'date' => htmlspecialchars($_POST['date'])
     );
 
-    // Define fees for each service
-    $serviceFees = array(
+    $serviceFees = array(                                                                                                               // Define fees for each service
         'haircut' => 250,
         'hair-color' => 650,
         'kiddie-haircut' => 350,
@@ -37,43 +34,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'shave-and-sculpting' => 200
     );
 
-    // Appointment fee
-    $appointmentFee = 150;
+    $appointmentFee = 150;                                                                                                               // Appointment fee
 
-    // Get the fee for the selected service
-    $serviceKey = $_SESSION['form_data']['services']; // Store the service key properly
+                                                                                                                                            // Get the fee for the selected service
+    $serviceKey = $_SESSION['form_data']['services'];                                                                                      // Store the service key properly
     $serviceFee = isset($serviceFees[$serviceKey]) ? $serviceFees[$serviceKey] : 0;
 
-    // Check if service fee is found
-    if ($serviceFee == 0) {
+    
+    if ($serviceFee == 0) {                                                                                                                     // Check if service fee is found
         echo "<div class='alert alert-danger'>Service not found or invalid service selected.</div>";
     }
 
-    // Calculate total payment
-    $totalPayment = $serviceFee + $appointmentFee;
+        
+    $totalPayment = $serviceFee + $appointmentFee;                                                                                              // Check if service fee is found
 
-    // Store the payment data in session for later use in receipt.php
     $_SESSION['payment_data'] = array(
         'service_fee' => $serviceFee,
         'appointment_fee' => $appointmentFee,
         'total_payment' => $totalPayment
     );
 
-    // Format the appointment date and time separately
-    $date = (new DateTime($_SESSION['form_data']['date']))->format('Y-m-d');
-    $time = (new DateTime($_SESSION['form_data']['timeslot']))->format('H:iA');
-
-    // Check if the timeslot is already booked
+    
+    $date = isset($_POST['date']) ? htmlspecialchars($_POST['date']) : '';
+    $time = isset($_POST['timeslot']) ? htmlspecialchars($_POST['timeslot']) : '';
+   
     $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ?");
     $stmt->bind_param('ss', $date, $time);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0) {                                                                                                                                         // Check if the timeslot is already booked
         echo "<div class='alert alert-danger'>This timeslot is already booked.</div>";
-    } else {
-        // Insert the booking into the database
-        $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    } else {                                                                                                                                                                                                            
+        $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");                                                                                                                                // Insert the booking into the database
         $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
         
         if ($stmt->execute()) {

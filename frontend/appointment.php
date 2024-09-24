@@ -28,7 +28,7 @@ function timeslots($duration, $cleanup, $start, $end){
             break;
         }
 
-        $slots[] = $intStart->format("H:iA")."-".$endPeriod->format("H:iA");
+        $slots[] = $intStart->format("h:i A")."-".$endPeriod->format("h:i A");
     }
 
     return $slots;
@@ -119,7 +119,7 @@ function timeslots($duration, $cleanup, $start, $end){
         <div id="appointment-form">
              <h2>Buzz & Collective Appointment Form</h2>
         </div>
-        <form action="appointmentform.php" method="POST">
+        <form action="appointmentform.php"id="appointmentForm" method="GET">
         <div class="row">
             <div class="coloumnn">
                 <?php
@@ -155,9 +155,10 @@ function timeslots($duration, $cleanup, $start, $end){
                     </select>
 
                     <input type="hidden" name="selected-date" value="<?php echo isset($_GET['date']) ? htmlspecialchars($_GET['date']) : ''; ?>">
+                   <!--<input type="submit" id="selected-timeslot" name="selected-timeslot">-->
 
     
-                    <button type="submit" class="submit-btn">Proceed</button>
+                    <button type="submit" id="selected-timeslot"class="submit-btn" name="selected-timeslot">Proceed</button>
                 
             </div>
         </div>
@@ -179,9 +180,13 @@ function timeslots($duration, $cleanup, $start, $end){
                 return !unavailableTimes.includes(time);
             }
 
-            timeSelect.addEventListener('change', function() {
-                const selectedTime = timeSelect.value;
-                if (selectedTime && isTimeAvailable(selectedTime)) {
+            document.getElementById('timeslot').addEventListener('change', function(event) {
+            const selectedTime = this.value;
+            console.log("Selected Time for Submission:", selectedTime); // Debugging purpose
+
+            // Set hidden input field for timeslot (optional if form directly uses 'timeslot')
+            document.getElementById('selected-timeslot').value = selectedTime;
+            if (selectedTime && isTimeAvailable(selectedTime)) {
                     submitBtn.classList.add('active');
                     submitBtn.classList.remove('unavailable');
                     submitBtn.disabled = false;
@@ -190,8 +195,10 @@ function timeslots($duration, $cleanup, $start, $end){
                     submitBtn.classList.add('unavailable');
                     submitBtn.disabled = true;
                 }
-            });
+            // Proceed with form submission
+            event.currentTarget.submit();
         });
+    });
     </script>
 </body>
 </html>

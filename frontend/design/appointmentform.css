@@ -73,23 +73,15 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     width: 100%;
     max-width: 800px; /* Adjust width as needed */
     margin: 0 auto; /* Centers the container horizontally */
-    padding: 0 1rem; /* Adds padding on the sides */
+    padding: 1em 1rem; /* Adds padding on the sides */
     background: #ffffff;
     border-radius: 5px; 
 }
 
-.services {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem; /* Adds spacing between columns and rows */
-}
 
 .services div {
     display: flex;
-    align-items: center; /* Aligns items vertically centered */
-    width: calc(50% - 0.5rem); 
-    width: 48%;
-    margin-bottom: 0.5rem; /* Adds spacing between rows */
+    align-items: flex-start;
 }
 
 
@@ -102,6 +94,7 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 .services label {
     color: black; 
     font-size: 1rem; /* Adjust font size if needed */
+    display: block;
 }
 
 .note-text {
@@ -136,3 +129,39 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     margin-top: 1rem;
     display: none; /* Initially hidden */
 }
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0; /* Adds padding for better spacing */
+}
+.service-info{
+    display: flex;
+    align-items: center;
+}
+.service-info label{
+    font-size: 1rem;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+.service-details{
+    display: flex;
+    align-items: flex-end;
+}
+.appointment-fields .service-fee {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: auto;
+}
+
+.appointment-fields .service-description {
+    font-size: 0.7em; /* Adjust font for readability */
+    color: #666666;
+    margin-left: 35px; /* Align descriptions with the services */
+    font-style: italic;
+    text-align: right;
+    margin-left: auto;
+    white-space: nowrap;
+}                        
