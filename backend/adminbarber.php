@@ -25,5 +25,5 @@ if ($result->num_rows > 0) {
 }
 $mysqli->close();
 
-$daysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
+$daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 ?>
