@@ -30,6 +30,9 @@ if ($stmt) {
 }
 
 $db->close();
+
+// Load services data
+$services = json_decode(file_get_contents('../frontend/admin/data/services.json'), true);
 ?>
 
 <!DOCTYPE html>
@@ -77,88 +80,26 @@ $db->close();
         <h3>All Branches</h3>
     </div>
 
-    <div class="container">
-        <div class="service-details">
-            <h3>HAIRCUT</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 250</p>
-            </div>
-    </div>
+    <div class="services-logo">
+    <img src="design/image/SERVICE-transparent.png" alt="">
+    <h3>All Branches</h3>
+</div>
 
-    <div class="container">
-        <div class="service-details">
-            <h3>KIDDIE HAIRCUT</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 350</p>
+    <?php foreach ($services as $service) : ?>
+        <div class="container">
+            <div class="service-details">
+                <h3><?= htmlspecialchars($service['name']); ?></h3>
+                <?php if (!empty($service['with'])) : ?>
+                    <p><?= htmlspecialchars($service['with']); ?></p>
+                <?php endif; ?>
+                <p class="price">PHP <?= number_format($service['fee']); ?></p>
             </div>
-    </div>
-    
-    <div class="container">
-        <div class="service-details">
-            <h3>HAIRCUT AND SHAVE</h3>
-            <p>(WITH SHAMPOO, SHAVING CREAM, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 350</p>
-            </div>
-    </div>
-
-    <div class="container">
-        <div class="service-details">
-            <h3>HAIR ART</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 300</p>
-            </div>
-    </div>
-
-    <div class="container">
-        <div class="service-details">
-            <h3>HAIRCUT AND PERM</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 1300</p>
-            </div>
-    </div>
-
-    <div class="container">
-        <div class="service-details">
-            <h3>HAIR COLOR</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 650</p>
-            </div>
-    </div>
-    
-    <div class="container">
-        <div class="service-details">
-            <h3>HAIR COLOR AND HAIRCUT</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 750</p>
-            </div>
-    </div>
-
-    <div class="container">
-        <div class="service-details">
-            <h3>SCALP TREATMENT</h3>
-            <p class="price">PHP 750</p>
-            </div>
-    </div>
-
-    <div class="container">
-        <div class="service-details">
-            <h3>SCALP TREATMENT AND HAIRCUT</h3>
-            <p>(WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION)</p>
-            <p class="price">PHP 250</p>
-            </div>
-    </div>
-
-    <div class="container">
-        <div class="service-details">
-            <h3>SHAVE AND SCULPTING</h3>
-            <p class="price">PHP 200</p>
-            </div>
-    </div>
+        </div>
+    <?php endforeach; ?>
 
     <div class="button-container">
         <button class="bookus-button"><a href="appointment.php">Book Now</a></button>
     </div>
-    
 
     <footer>
         <div class="footer-content">

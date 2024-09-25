@@ -2,8 +2,71 @@
     {
         "id": "",
         "name": "Haircut",
-        "with": "David",
-        "price_terms": "250",
+        "with": "shampo",
+        "price_terms": "280",
+        "fee": "100"
+    },
+    {
+        "id": "",
+        "name": "Kiddie Haircut",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "280",
+        "fee": "350"
+    },
+    {
+        "id": "",
+        "name": "Haircut and Shave",
+        "with": "WITH SHAMPOO, SHAVING CREAM, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
+        "fee": "350"
+    },
+    {
+        "id": "",
+        "name": "Hair Art",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
+        "fee": "300"
+    },
+    {
+        "id": "",
+        "name": "Haircut and Perm",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
+        "fee": "1300"
+    },
+    {
+        "id": "",
+        "name": "Hair Color",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "mama",
+        "fee": "650"
+    },
+    {
+        "id": "",
+        "name": "Hair Color and Haircut",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
+        "fee": "1750"
+    },
+    {
+        "id": "",
+        "name": "Scalp Treatment",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
+        "fee": "750"
+    },
+    {
+        "id": "",
+        "name": "Scalp treatment and Haircut",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
         "fee": "250"
+    },
+    {
+        "id": "",
+        "name": "Shave and Sculping",
+        "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
+        "price_terms": "",
+        "fee": "200"
     }
 ]

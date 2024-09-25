@@ -60,66 +60,66 @@ body {
 .content {
     text-align: left;
     margin: 20px;
-    margin-left: 300px;
+    margin-left: 100px;
     margin-top: 50px;
+    display: flex;
+    gap: 20px;
 }
 
 h1 {
     margin-bottom: 20px;
 }
-.content h3{
+
+h3 {
     margin-bottom: 20px;
-
 }
-.subheading h3{
-    position: absolute;
-    right: 440px;
-    top: 110px;
 
+.subheading h3 {
+    margin-left: 20px;
 }
+
+.services-list {
+    width: 300px;
+}
+
 .services-list ul {
     list-style: none;
     padding: 0;
-    position: inherit;
-    width: 400px;
-    height: 400px;
-    left: 200px;
-    top: 70px;
-    background: #BFBFBF;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .services-list ul li {
-    padding: 10px;
+    padding: 15px 10px;
     cursor: pointer;
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 300px;
-    top: 150px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 30px;
-    /* or 208% */
-    color: #222222;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-.services-list ul li:hover {
-    background: #f0f0f0;
+.services-list ul li:hover,
+.services-list ul li.active {
+    background: #ddd;
+    color: #333;
+}
+
+.services-list ul li:last-child {
+    border-bottom: none;
 }
 
 .service-details {
-    position: absolute;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 400px;
-    height: 400px;
-    left: 800px;
-    top: 150px;
+    width: 350px;
+    min-height: 300px;
+    background-color: #ffffff;
 }
 
-.service-details h2 {
+.service-details h3 {
     margin-bottom: 10px;
 }
 
@@ -129,7 +129,7 @@ h1 {
 }
 
 .service-details button {
-    margin-right: 10px;
+    margin-top: 20px;
     padding: 10px 15px;
     background: #007BFF;
     color: #fff;
@@ -143,58 +143,6 @@ h1 {
     background: #0056b3;
 }
 
-.edit-form {
-    position: absolute;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 400px;
-    height: 400px;
-    left: 800px;
-    top: 150px;
-}
-
-.edit-form h2 {
-    margin-bottom: 10px;
-}
-
-.edit-form form label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-.edit-form form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.edit-form form button {
-    margin-right: 10px;
-    padding: 10px 15px;
-    background: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.edit-form form button:hover {
-    background: #218838;
-}
-
-#success-message {
-    margin-top: 20px;
-    padding: 20px;
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-}
-
 .add-new-service {
     background-color: #4CAF50;
     color: white;
@@ -202,13 +150,10 @@ h1 {
     padding: 10px;
     cursor: pointer;
     width: 100%;
-}
-s
-.add-new-service:hover {
-    background-color: #45a049;
+    margin-top: 15px;
+    border-radius: 5px;
 }
 
-button {
-    padding: 10px;
-    margin: 5px;
+.add-new-service:hover {
+    background-color: #45a049;
 }
