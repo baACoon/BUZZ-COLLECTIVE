@@ -1,5 +1,5 @@
 <?php
-session_start();                                                                                                                        // Start the session
+session_start();                        
 
 $mysqli = new mysqli('localhost', 'root', '', 'barbershop');                                    // Database connection
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
     if ($serviceFee == 0) {                                                                                                                     // Check if service fee is found
-        echo "<div class='alert alert-danger'>Service not found or invalid service selected.</div>";
+        echo "<div class='alert'>Service not found or invalid service selected.</div>";
     }
 
         
@@ -64,20 +64,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {                                                                                                                                         // Check if the timeslot is already booked
-        echo "<div class='alert alert-danger'>This timeslot is already booked.</div>";
+        echo "<div class='prompt'>This timeslot is already booked.</div>";
     } else {                                                                                                                                                                                                            
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");                                                                                                                                // Insert the booking into the database
         $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
         
         if ($stmt->execute()) {
-            echo "<div class='alert alert-success'>Booking successful!</div>";
+            echo "<div class='prompt' >Please Confirm the details!</div>";
         } else {
-            echo "<div class='alert alert-danger'>There was an error processing your booking. Please try again.</div>";
+            echo "<div class='prompt'>There was an error processing your booking. Please try again.</div>";
         }
     }
     $stmt->close();
     $mysqli->close();
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -88,6 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../frontend/design/confirmation.css">
     <title>Buzz & Collective - Confirmation</title>
 </head>
+<style>
+    
+</style>
+
 <body>
     <div class="confirmation-form">
         <h2>Buzz & Collective Appointment Form</h2>
@@ -113,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form method="POST" action="receipt.php">
                 <button class="confirm-btn" type="submit">Confirm Appointment</button>
             </form>
-            <form method="POST" action="appointmentform.php">
+            <form method="POST" action="landingappointment.php">
                 <button type="submit">Back</button>
             </form>
         </div>

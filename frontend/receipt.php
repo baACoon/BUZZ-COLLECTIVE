@@ -16,8 +16,8 @@ $amountPaid = $appointmentFee;
 $amountDue = $totalPayment - $amountPaid;
 
 // Format the appointment date and time separately
-$date = isset($_POST['selected-date']) ? htmlspecialchars($_POST['selected-date']) : '';
-$time = isset($_POST['selected-timeslot']) ? htmlspecialchars($_POST['selected-timeslot']) : '';
+$date = $_SESSION['form_data']['date'] ?? '';
+$time = $_SESSION['form_data']['timeslot'] ?? '';
 
 ?>
 

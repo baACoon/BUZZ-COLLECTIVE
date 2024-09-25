@@ -94,7 +94,28 @@ body::before {
     background-color: darkred; /* Darker red on hover */
 }
 
+.prompt {
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333; /* Dark text color */
+    padding: 15px; /* Padding around the text */
+    margin: 10px 0; /* Margin above and below */
+    border-radius: 5px; /* Rounded corners */
+    font-family: Arial, sans-serif; /* Font style */
+    font-size: 16px; /* Font size */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
+}
 
+.alert {
+    background-color: #f8d7da; /* Light red background for error messages */
+    color: #721c24; /* Dark red text color */
+    border: 1px solid #f5c6cb; /* Light red border */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 .confirmation-buttons button {
     padding: 10px 20px; /* Same padding for "Back" button */
