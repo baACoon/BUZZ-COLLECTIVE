@@ -57,46 +57,53 @@ body {
     padding-left: 10px;
 }
 
-.content {
+/* SERVICES */
+.services-header {
+    padding: 20px;
+    margin-left: 300px;
+    margin-top: 30px;
     text-align: left;
-    margin: 20px;
-    margin-left: 100px;
-    margin-top: 50px;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+}
+.services-header h1{
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2; 
 }
 
-h1 {
-    margin-bottom: 20px;
+.content {
+    padding: 20px;
+    margin: 20px 0;
+    margin-left: 300px;
+    margin-top: 30px;
+    text-align: left;
+    display: flex; 
+    gap: 20px; /* Add space between services list and information */
+    justify-content: flex-start;
+    align-items: flex-start; 
 }
 
-h3 {
-    margin-bottom: 20px;
-}
-
-.subheading h3 {
-    margin-left: 20px;
-}
 
 .services-list {
     width: 300px;
 }
 
+.services-list h3,
+.subheading h3{
+    margin-top: -35px; 
+    margin-bottom: 15px; 
+}
+
 .services-list ul {
     list-style: none;
     padding: 0;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-height: 400px;
-    overflow-y: auto;
 }
 
 .services-list ul li {
-    padding: 15px 10px;
+    padding: 2px;
     cursor: pointer;
     font-size: 18px;
-    border-bottom: 1px solid #ddd;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -110,28 +117,56 @@ h3 {
     border-bottom: none;
 }
 
+.service-details-container {
+    flex-grow: 1; /* Take up the remaining available space */
+    margin-top: 10px; /* Remove any unwanted top margin */
+}
+
+
 .service-details {
+    width:  500%;
+    max-width: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    min-height: 300px;
+}
+
+
+.service-details, .edit-form {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 350px;
-    min-height: 300px;
     background-color: #ffffff;
+    min-width: 250px; /* Ensure it doesn’t shrink too much */
+    max-width: 300px; /* Limit max width for readability */
 }
 
-.service-details h3 {
+
+.service-details h3,
+.edit-form h2 {
     margin-bottom: 10px;
 }
 
-.service-details p {
+.service-details p, .edit-form label {
     margin: 5px 0;
     padding: 5px;
+}
+
+.service-details p {
+    display: flex;
+    align-items: baseline;
+}
+
+
+.service-details span {
+    margin-left: 10px; /* Optional: add margin for the span itself */
 }
 
 .service-details button {
     margin-top: 20px;
     padding: 10px 15px;
-    background: #007BFF;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -144,16 +179,118 @@ h3 {
 }
 
 .add-new-service {
-    background-color: #4CAF50;
+    background-color: #4BD37B;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     width: 100%;
     margin-top: 15px;
-    border-radius: 5px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 .add-new-service:hover {
-    background-color: #45a049;
+    background-color: rgb(61, 146, 65);
 }
+
+#edit-button{
+    background-color: #6961D9;
+    text-transform: uppercase;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+}
+#edit-button:hover{
+    background-color: #837aff;
+}
+#delete-button{
+    background-color: #E43A19;
+    text-transform: uppercase;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+}
+
+#delete-button:hover{
+    background-color: #E43A19;
+}
+
+.edit-form {
+    display: none; /* Hidden by default */
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around content */
+    margin-top: 20px; /* Space above the form */
+}
+
+/* Style for the form header */
+.edit-form h2 {
+    margin-bottom: 20px; 
+    font-size: 24px; 
+}
+
+/* Style for form labels */
+.edit-form label {
+    display: block; 
+    font-weight: bold; 
+}
+
+/* Style for form inputs */
+.edit-form input[type="text"] {
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 15px; /* Space below inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    font-size: 16px;
+}
+
+input.italic {
+    font-style: italic; 
+}
+
+.save-btn{
+    background-color: #E43A19;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px 15px;    
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-left: 10px; 
+
+}
+.save-btn:hover {
+    background-color: #d63714; /* A slightly darker shade of red */
+    color: white; /* Ensure the text color remains white on hover */
+}
+
+.cancel-btn {
+    color: #000; /* Dark text color for visibility */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cancel-btn:hover {
+    color: rgb(50, 50, 50); /* Change text color to white on hover for contrast */
+}
+
+input::placeholder {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+    color: #000; /* Optional: change color if needed */
+}
+
