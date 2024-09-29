@@ -202,7 +202,7 @@ $db->close();
 
                             // Iterate over the fetched data and group barbers by day
                             data.forEach(entry => {
-                                const dayName = daysOfWeek[new Date(entry.date).getDay() - 1];                                                  // Get the day of the week
+                                const dayName = daysOfWeek[new Date(entry.date).getDay()-1];                                                  // Get the day of the week
                                 if (dayName && entry.is_available) {                                                                            // Ensure barber is available and day is within Monday to Friday
                                     availableBarbersByDay[dayName].push(entry.barber_name);
                                 }
@@ -242,9 +242,13 @@ $db->close();
 
         <!-- CSS TO SA BARBERS Availability (Dito mo nalang siguro iadjust yung design. Baka kasi magulo sa back e^^) -->
             <style> 
+            .availability{
+                z-index: 1;
+            }
                 .day-row {
-                    top:3em;
+                top:10em;
                 margin-bottom: 20px;
+                background-color: aqua;
             }
 
             .barbers-row {

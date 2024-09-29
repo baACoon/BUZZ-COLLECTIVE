@@ -39,6 +39,15 @@ $time = $_SESSION['form_data']['timeslot'] ?? '';
         <p>MAIN BRANCH</p>
     </div>
 
+    <div class="confirmation-container">
+        <div class="confirmation-message">
+            <h3><a href="home.php">HOME</a></3>
+            <h1>Appointment Succesful</h1>
+            <p>You will be notified via email a day before your appointment schedule.</p>
+            <p>For no show on your appointed day, you will be re-scheduled.</p>
+            <p>For cancellation, contact us via email at buzzcollective@gmail.com</p>
+    </div>
+
     <div class="receipt-container">
         <div class="receipt-details">
             <h3>SUMMARY</h3>

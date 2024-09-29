@@ -21,7 +21,7 @@
             <input type="password" placeholder="Password" name="password" required>
             
             <div style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                <a class="forgotpassword" href="#">Forgot Password</a>
+                <!--<a class="forgotpassword" href="#">Forgot Password</a>-->
                 <a href="admin_reg.php">Sign Up</a>
             </div>
             

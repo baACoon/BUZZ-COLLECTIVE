@@ -225,6 +225,7 @@
 
 /* barber IMAGE */
 .barber-sched-img img{ 
+    z-index: 2;
     width: auto;
     height: 88vh;
     margin-top: -50px;
