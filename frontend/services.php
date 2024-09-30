@@ -90,10 +90,6 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
                     </ul>
                 </div>
 
-            </div>
-    </nav>
-
-
     <div class="services-logo">
     <img src="design/image/SERVICE-transparent.png" alt="">
     <h3>All Branches</h3>
