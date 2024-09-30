@@ -39,28 +39,71 @@ unset($_SESSION['appointments']);
                     <option value="Complete">Complete</option>
                     <option value="Noshow">No show</option>
                 </select>
+                
+                <div class="delete-btn">
+                    <button class="delete-button" id="delete-btn" type="button">DELETE</button>
+                </div>
         </div>
+
+           
 
     <div class="appointments-table-container">
         <h2>Appointments List</h2>
-        <table class="appointments-table">
-            <thead>
-                <tr>
-                    <th class="left"></th>
-                    <th >ID</th>
-                    <th>Booking Data</th>
-                    <th>Services</th>
-                    <th>Booking Date & Time</th>
-                    <th class="right">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php 
-            include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/displayappointment.php'); 
-
-            ?>                
-            </tbody>
-        </table>
+        <form id="delete-form">
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th class="left"><input type="checkbox" id="select-all"></th>
+                        <th >ID</th>
+                        <th>Booking Data</th>
+                        <th>Services</th>
+                        <th>Booking Date & Time</th>
+                        <th class="right">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/displayappointment.php'); 
+                ?>                
+                </tbody>
+            </table>
+        </form>
     </div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2 id="popup-message"></h2>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+    <script>
+            document.getElementById('delete-btn').addEventListener('click', function() {
+            var form = document.getElementById('delete-form');
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/BUZZ-COLLECTIVE/backend/delete_appointment.php', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('popup-message').innerText = response.message;
+                    document.getElementById('popup').style.display = 'flex';
+                }
+            };
+            xhr.send(formData);
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            location.reload();
+        }
+
+        // Select or Deselect all checkboxes
+        document.getElementById('select-all').addEventListener('click', function() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = this.checked;
+            }, this);
+        });
+    </script>
 </body>
 </html>

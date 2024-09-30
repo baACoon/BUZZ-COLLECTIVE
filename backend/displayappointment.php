@@ -14,7 +14,7 @@ $result = $db->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>
-                <td><input type='checkbox' name='select'></td>
+                <td><input type='checkbox' name='appointments[]' value='{$row['appointment_id']}'></td>
                 <td>{$row['appointment_id']}<br></td>
                 <td>
                     <strong>First Name:</strong> {$row['first_name']}<br>
