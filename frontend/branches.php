@@ -1,14 +1,14 @@
 <?php
-session_start();
 
-// Check if the user is logged in
+
+/* Check if the user is logged in
 if (!isset($_SESSION['username'])) {
     // If not logged in, redirect to login page
     header('Location: login.php');
     exit();
 }
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username'];*/
 
 // Database connection
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
@@ -30,6 +30,8 @@ if ($stmt) {
     }
 }
 
+// Load services data
+$branchesFile = json_decode(file_get_contents('../frontend/admin/data/branches.json'), true);
 $db->close();
 ?>
 <!DOCTYPE html>
@@ -89,36 +91,42 @@ $db->close();
     </nav>
     <button class="bookus-button"><a href="appointment.php">Book Now</a></button>
 
-    <div class="containter">
+    <div class="container">
         <div class="buzz-logo">
+            <!-- Main Branch -->
             <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
             <div class="branch">
                 <h3>Main Branch</h3>
                 <a href="https://www.google.com/maps/place/Buzz+%26+Collective/@14.4412671,120.9296644,13z/data=!4m20!1m13!4m12!1m4!2m2!1d121.0417152!2d14.49984!4e1!1m6!1m2!1s0x3397d3fd93f7bdc5:0x776c208c818a1b77!2sbuzz+and+collective!2m2!1d120.9390436!2d14.4256597!3m5!1s0x3397d3fd93f7bdc5:0x776c208c818a1b77!8m2!3d14.4256826!4d120.9390514!16s%2Fg%2F11qb5sx_vm?entry=ttu">
                     <p>89 Nueno Ave, Imus Cavite, Imus, Philippines, 4103</p>
                 </a>
-                
             </div>
         </div>
 
         <div class="otherbranch">
-            <p>Other Branches</p>
+        <p>Other Branches</p>
         </div>
 
+        <!-- Other Branches -->
         <div class="buzz-logo">
-            <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
-            <div class="branch">
-                <h3>Salitran Branch</h3>
-                <a href="https://www.waze.com/live-map/directions/r.v.v.-88-commercial-center-salitran-dasmarinas?to=place.w.79233168.792593819.11719108">
-                    <p>RVV-88 Commercial Center Jose Abad Santos Ave. Salitran 2, Dasmarinas City Cavite</p>
-                </a>
-            </div>
+            <!-- Loop through the branches -->
+            <?php foreach ($branchesFile as $branch): ?>
+                <div class="branches">
+                    <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
+                    <div>
+                        <h3><?php echo htmlspecialchars($branch['branchName']); ?></h3>
+                        <p><?php echo htmlspecialchars($branch['branchLocation']); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
 
+        <!-- More Soon section -->
         <div class="more-soon">
             <p>More Soon</p>
         </div>
     </div>
+
    
 
     <footer>

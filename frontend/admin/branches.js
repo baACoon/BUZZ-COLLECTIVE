@@ -25,6 +25,24 @@ function hideForm() {
 }
 
 function saveBranch() {
+    const branchId = document.getElementById('branchId').value;
+    const branchName = document.getElementById('branchName').value;
+    const branchLocation = document.getElementById('branchLocation').value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "admin-branches.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert(xhr.responseText); // Handle the response here
+            location.reload(); // Reload page to update displayed branches
+        }
+    };
+    xhr.send(`branchId=${branchId}&branchName=${branchName}&branchLocation=${branchLocation}`);
+}
+
+
+/*function saveBranch() {
     // Get form values
     const branchId = document.getElementById('branchId').value;
     const branchName = document.getElementById('branchName').value;
@@ -48,4 +66,4 @@ function saveBranch() {
 
     // Hide the form
     hideForm();
-}
+}*/

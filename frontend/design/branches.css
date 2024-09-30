@@ -200,54 +200,61 @@ nav{
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.buzz-logo {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
+  padding: 20px;
+  text-align: center;
 }
 
-.buzz-logo img{
-    height: 150px;
-    width: 150px;   
-    margin-left: 250px;
+/* Styling the entire branches container */
+.buzz-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Styling for the branch details section */
+.branches {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Adjust based on your design */
+  margin-bottom: 20px;
+}
+
+.branches img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.branches h3, .branches p {
+  margin: 0;
+  text-align: left;
+}
+
+.branches h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.branches p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.more-soon {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.buzz-logo img {
+    max-width: 100px;
     margin-right: 20px;
 }
-.branch {
-    display: flex;
-    flex-direction: column; /* Stack the h3 and p vertically */
-}
-
-.branch h3{
-    font-style: italic;
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.branch p{
-    font-size: 19px;
-}
-
-.branch a{
-    text-decoration: none;
-    color: #333;
-}
-
-.otherbranch p {
-    margin-left: 280px;
-    font-size: 20px;
-}
-
-.more-soon{
-    font-size: 20px;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 100px;
-}
-
-
 /* FOOTER */
 
 footer {
