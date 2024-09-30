@@ -36,6 +36,10 @@ $db->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="design/about.css">
     <link rel="stylesheet" href="design/barbersinfo.css">
     <link rel="stylesheet" href="design/founders_info.css">
@@ -43,36 +47,51 @@ $db->close();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>About us</title>
 </head>
 <body>
-    <header id="mainheader">
-        <div class="logo">
-            <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="aboutus.php">About Us</a>
-                    <ul class="submenu">
-                        <li><a href="aboutus.php">Buzz & Collectives</a></li>
-                        <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+		        <a href="landingpage.php"><img src="design/image/BUZZ-Black.png"></a>
+	        </div>
+                <div class="nav-links">
+                    <div class="sidebar-logo">
+                        <a href="home.php">
+                            <img src="design/image/BUZZ-Black.png">
+                        </a>
+                        <i class='bx bx-x' ></i>
+                    </div>
+                    <ul class="links">
+                        <li><a href="home.php">HOME</a></li>
+                        <li>
+                            <a href="#">ABOUT US</a>
+                            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                            <ul class="htmlCss-sub-menu sub-menu">
+                                <li><a href="aboutus.php">Buzz & Collectives</a></li>
+                                <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="branches.php">BRANCHES</a></li>
+                            <li><a href="services.php">SERVICES</a></li>
+                            <li>
+                                <a class="usericon" href="myprofile.php">
+                                    <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="User Profile Image" class="profile-img-header">
+                                    <i class='bx bxs-chevron-down htmlcss-arrow profile-arrow'></i> <!-- Arrow icon same as ABOUT US -->
+                                </a>
+                                <ul class="htmlCss-sub-menu profile-sub-menu">
+                                    <li><a href="myprofile.php">My Profile</a></li>
+                                    <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
+                                </ul>
+                            </li>
                     </ul>
-                </li>
-                <li><a href="branches.php">Branches</a></li>
-                <li><a href="services.php">Services</a></li>
-                <li>
-                    <a class="usericon" href="#">
-                        <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="User Profile Image" class="profile-img-header">
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="myprofile.php">My Profile</a></li>
-                        <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                </div>
+
+            </div>
+    </nav>
+
 
     <div id="body-container">
         <img src="design/image/buzz.png" class="logo-body" alt="">
@@ -151,18 +170,7 @@ $db->close();
 
     <button class="barbers-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
 
-    
-    <script src="script.js"></script>
-    <script>
-      jQuery(document).ready(function ($) {
-        $(".slider-img").on("click", function () {
-          $(".slider-img").removeClass("active");
-          $(this).addClass("active");
-        });
-      });
-    </script>
 
-   
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -186,9 +194,9 @@ $db->close();
                 <h3>BUZZ & COLLECTIVES</h3>
                 <ul>
                     <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="#">Be a Buzzing Barber</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Services</a></li>
+                    <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                    <li><a href="branches.php">Branches</a></li>
+                    <li><a href="services.php">Services</a></li>
                 </ul>
             </div>
 
@@ -200,6 +208,19 @@ $db->close();
             </div>
         </div>
     </footer>
-    <script src="scripts.js"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="landingscript.js"></script>
+    <script src="script.js"></script>
+    <script>
+      jQuery(document).ready(function ($) {
+        $(".slider-img").on("click", function () {
+          $(".slider-img").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+    </script>
+
 </body>
 </html>

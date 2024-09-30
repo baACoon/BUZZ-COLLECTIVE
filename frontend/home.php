@@ -41,6 +41,10 @@ $db->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="design/home.css">
     <link rel="stylesheet" href="design/popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,37 +52,52 @@ $db->close();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Buzz & Collective | Home</title>
 </head>
 <body>
-    <header id="mainheader">
-        <div class="logo">
-            <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="aboutus.php">About Us</a>
-                    <ul class="submenu">
-                        <li><a href="aboutus.php">Buzz & Collectives</a></li>
-                        <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+		        <a href="landingpage.php"><img src="design/image/BUZZ-Black.png"></a>
+	        </div>
+                <div class="nav-links">
+                    <div class="sidebar-logo">
+                        <a href="home.php">
+                            <img src="design/image/BUZZ-Black.png">
+                        </a>
+                        <i class='bx bx-x' ></i>
+                    </div>
+                    <ul class="links">
+                        <li><a href="home.php">HOME</a></li>
+                        <li>
+                            <a href="#">ABOUT US</a>
+                            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                            <ul class="htmlCss-sub-menu sub-menu">
+                                <li><a href="aboutus.php">Buzz & Collectives</a></li>
+                                <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                            </ul>
+                        </li>
+                            <li><a href="branches.php">BRANCHES</a></li>
+                            <li><a href="services.php">SERVICES</a></li>
+                            <li>
+                                <a class="usericon" href="myprofile.php">
+                                    <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="User Profile Image" class="profile-img-header">
+                                    <i class='bx bxs-chevron-down htmlcss-arrow profile-arrow'></i> <!-- Arrow icon same as ABOUT US -->
+                                </a>
+                                <ul class="htmlCss-sub-menu profile-sub-menu">
+                                    <li><a href="myprofile.php">My Profile</a></li>
+                                    <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
+                                </ul>
+                            </li>
                     </ul>
-                </li>
-                <li><a href="branches.php">Branches</a></li>
-                <li><a href="services.php">Services</a></li>
-                <li>
-                    <a class="usericon" href="#">
-                        <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="User Profile Image" class="profile-img-header">
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="myprofile.php">My Profile</a></li>
-                        <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                </div>
+
+            </div>
+    </nav>
+
+
             <?php if (isset($_SESSION['show_popup'])) : ?>
                 <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
                 <div class="pop-background" id="popBackground">
@@ -163,9 +182,9 @@ $db->close();
                         <h3>BUZZ & COLLECTIVES</h3>
                         <ul>
                             <li><a href="aboutus.php">About Us</a></li>
-                            <li><a href="#">Be a Buzzing Barber</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Services</a></li>
+                            <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                            <li><a href="branches.php">Branches</a></li>
+                            <li><a href="services.php">Services</a></li>
                         </ul>
                     </div>
                     <div class="social-media">
@@ -176,6 +195,8 @@ $db->close();
                 </div>
             </footer>
 
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            <script src="landingscript.js"></script>
             <!--SCRIPT TO SA PAG DISPLAY NG BARBER SA HOME-->
             <script> //note: hindi functionable yung (April 22 chuchu)
                 document.addEventListener('DOMContentLoaded', function() {
@@ -245,23 +266,27 @@ $db->close();
             .availability{
                 z-index: 1;
             }
-                .day-row {
-                top:10em;
+            .day-row {
+                position: relative;
+                top:17em;
                 margin-bottom: 20px;
-                background-color: aqua;
+                margin-left: 10em;
+                text-transform: uppercase;
+
             }
 
             .barbers-row {
                 display: grid;
                 grid-template-columns: repeat(6, 1fr); /* 6 columns for 6 barbers */
-                gap: 10px;
+                gap: 5px;
+                margin-left: 10em;
+                margin-top: -1.6em;
             }
 
             .barber {
                 padding: 5px;
-                background-color: #f0f0f0;
-                border-radius: 5px;
                 text-align: center;
+
             }
 
             .no-barbers {

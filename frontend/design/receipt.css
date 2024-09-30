@@ -7,11 +7,13 @@ body {
     background: url('../design/image/buzzeme.jpg') no-repeat center center fixed;
     background-color: rgba(0, 0, 0, 0.5);
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh; 
     display: flex;
-    flex-direction: column; /* Allows vertical alignment */
-    align-items: center;   /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    position: relative; 
+    overflow: visible; 
 }
 
 body::before {
@@ -29,53 +31,46 @@ body::before {
 .confirmation-form {
     color: #ffffff;
     text-align: center; 
-    margin-top: 10%; 
+    margin-top: 5%; 
     padding: 0; 
-}
-.receipt-container{
-    width: 45%;
-    max-width: 500px; 
-    margin: 0 auto; /* Centers the container horizontally */
-    padding: 0 1rem; /* Adds padding on the sides */
-    background: #ffffff;
-    border-radius: 10px; 
-    
-}
-.confirmation-container {
-    display: flex;
-    justify-content: space-between; /* Creates space between the two columns */
-    align-items: flex-start; 
-    width: 80%; /* Adjust width as necessary to make sure both columns fit */
-    max-width: 1200px; /* Ensure container doesn't get too wide on large screens */
-    padding: 20px;
-    margin-top: 50px; /* Adds a bit of margin from the top */
-    
-}
+}  
 
-.receipt-container {
-    width: 48%; /* Both columns have the same width and leave a bit of space */
-    padding: 20px;
-    background-color: #ffffff; /* White background */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+.confirmation-section {
+    display: flex;
+    justify-content: space-between; 
     align-items: flex-start; 
+    width: 80%; 
+    max-width: 1200px; 
 }
 
 .confirmation-message {
-   color: white;
-    text-align: left; /* Center align the message text */
+    color: white;
+    text-align: left;
+    width: 40%; 
+    max-width: 600px;
+    margin-right: 20px;
+    margin-top: 5%;
+
 }
-.confirmation-message a{
+
+.receipt-container {
+    width: 48%;
+    max-width: 500px; /* Optional max width */
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+    margin-bottom: 10px;
+}
+
+.confirmation-message a {
     text-decoration: none;
     color: white;
 }
-.confirmation-message  h1{
-    width: 50%;
+
+.confirmation-message h1 {
     text-transform: uppercase;
-    align-items: flex-start;
-}
-.confirmation-message p{
-    width: 65%;
 }
 
 .receipt-details h3 {
@@ -91,4 +86,34 @@ body::before {
 
 .receipt-details strong {
     text-align: right;
+}
+
+
+.confirmation-buttons {
+    text-align: center; /* Center align buttons */
+    margin-top: 20px; /* Add some space above the buttons */
+}
+
+.confirmation-buttons form {
+    display: inline-block; /* Keep forms in-line */
+    margin: 0 10px; /* Space between buttons */
+}
+
+.confirm-btn {
+    background-color: #E43A19; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px;
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.confirm-btn:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+.confirmation-buttons button {
+    padding: 10px 20px; /* Same padding for "Back" button */
+    font-size: 16px; /* Same font size */
+    border-radius: 5px; /* Same border-radius */
 }
