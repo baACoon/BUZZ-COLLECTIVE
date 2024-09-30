@@ -68,10 +68,12 @@ body {
 
 
 #crud-btn {
-    margin-top: 8em;
+    display: flex;
+    position: relative;
+    margin-top: 5em;
     display: flex;
     gap: 10px; /* Space between buttons */
-    
+    left: 10em;
 }
 
 /* Popup styles */
@@ -198,9 +200,8 @@ body {
 
 .client-table-container {
     background-color: white;
-    padding: 20px;
     border-radius: 8px;
-    margin-top: 230px;
+    margin-top: 40px;
     margin-left: 21em;
     position: absolute;
 

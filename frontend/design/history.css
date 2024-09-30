@@ -92,3 +92,36 @@ body {
 .cstmr-name{
     font-weight: 700;
 }
+
+
+.client-history{
+    position: relative;
+    top: 18em;
+    right: 18em;
+}
+.client-history table {
+    width: 100%;
+    /*border-collapse: collapse;*/
+    border-radius: 0px 30px;
+    font-size: 1.0em;
+    text-align: left;
+}
+.client-history th, td {
+    padding: 12px 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+thead tr {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tbody tr:hover {
+    background-color: #ddd;
+}
+tbody td {
+    text-align: center;
+}

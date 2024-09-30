@@ -24,7 +24,8 @@ if ($stmt) {
         $profile_image = $profile_image_path; // Use the saved image if available
     }
 }
-
+$sql = "SELECT appointment_id, first_name, last_name, services, date, timeslot, barber FROM appointments ORDER BY appointment_id DESC";
+$result = $db->query($sql);
 
 $db->close();
 ?>
@@ -39,7 +40,7 @@ $db->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective | History</title>
-    
+
 </head>
 <body>
 
@@ -68,7 +69,37 @@ $db->close();
     <div class="welcome">
         <p>Welcome, <span class="cstmr-name"><?php echo $_SESSION['username']; ?>!</span></p>
     </div>
-
+        <div class="client-history">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Barber</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($result->num_rows > 0) {
+                        // Output each row of data
+                        while($row = $result->fetch_assoc()) { ?>
+                            <tr>
+                                <td><?php echo $row['appointment_id']; ?></td>
+                                <td><?php echo $row['services']; ?></td>
+                                <td><?php echo date('F j, Y', strtotime($row['date'])); ?></td>
+                                <td><?php echo date('g:i a', strtotime($row['timeslot'])); ?></td>
+                                <td><?php echo $row['barber']; ?></td>
+                            </tr>
+                    <?php }
+                    } else { ?>
+                        <tr>
+                            <td colspan="6">No records found.</td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
 
     <script>
         // JavaScript to handle the profile image input
