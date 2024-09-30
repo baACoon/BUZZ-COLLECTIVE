@@ -1,24 +1,56 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
-// Retrieve form data from session
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';  
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php'; 
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';       
+
+
+
 $formData = $_SESSION['form_data'] ?? array();
 
-// Retrieve details
 $serviceFee = $_SESSION['payment_data']['service_fee'] ?? 0;
 $appointmentFee = $_SESSION['payment_data']['appointment_fee'] ?? 0;
 $totalPayment = $_SESSION['payment_data']['total_payment'] ?? 0;
 
-// Calculate amount paid (in this example, the appointment fee is paid)
 $amountPaid = $appointmentFee;
 
-// Calculate amount due
 $amountDue = $totalPayment - $amountPaid;
 
-// Format the appointment date and time separately
 $date = $_SESSION['form_data']['date'] ?? '';
 $time = $_SESSION['form_data']['timeslot'] ?? '';
 
+$mail = new PHPMailer(true);
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';                                                                                                                                                                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'buzzincollective@gmail.com';                                                                                                                                                       // SMTP username
+    $mail->Password   = 'nwpeckxgsmpbimlb';                                                                                                                                                                 // SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
+ 
+    
+    $mail->setFrom('buzzincollective@gmail.com', 'Buzz & Collective');
+    $mail->addAddress($_SESSION['form_data']['email']);                                                                                                                                                     // Client email
+ 
+                 
+    $mail->isHTML(true);                                                                                                                                                                                        // Content
+    $mail->Subject = 'Appointment Confirmation';
+    $mail->Body    = '<p>Dear ' . $_SESSION['form_data']['first_name'] . ' ' . $_SESSION['form_data']['last_name'] . ',</p>'
+        . '<p>Your appointment has been confirmed for ' . $date . ' at ' . $time . '.</p>'
+        . '<p>Service: ' . ucfirst($_SESSION['form_data']['services']) . '</p>'
+        . '<p>Total Payment: ' . number_format($totalPayment, 0) . '</p>'
+        . '<p>Thank you for choosing Buzz & Collective!</p>';
+ 
+    $mail->send();
+       echo 'Confirmation email has been sent.';
+} catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
 
 
