@@ -101,19 +101,18 @@ $db->close();
                     <p>89 Nueno Ave, Imus Cavite, Imus, Philippines, 4103</p>
                 </a>
             </div>
-        </div>
+        </div>  
 
         <div class="otherbranch">
-        <p>Other Branches</p>
+            <h3 id="toggleBranches" style="cursor: pointer;">Other Branches</h3>
         </div>
 
-        <!-- Other Branches -->
-        <div class="buzz-logo">
-            <!-- Loop through the branches -->
+        <!-- Other Branches (Initially hidden) -->
+        <div id="otherBranches" style="display: none;">
             <?php foreach ($branchesFile as $branch): ?>
-                <div class="branches">
+                <div class="buzz-logo"> <!-- Add this wrapper to align correctly -->
                     <a href="#"><img src="design/image/BUZZ-Black.png" alt="Logo"></a>
-                    <div>
+                    <div class="branch">
                         <h3><?php echo htmlspecialchars($branch['branchName']); ?></h3>
                         <p><?php echo htmlspecialchars($branch['branchLocation']); ?></p>
                     </div>
@@ -121,11 +120,13 @@ $db->close();
             <?php endforeach; ?>
         </div>
 
+
         <!-- More Soon section -->
         <div class="more-soon">
             <p>More Soon</p>
         </div>
     </div>
+
 
    
 
@@ -167,5 +168,16 @@ $db->close();
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="landingscript.js"></script>
+    <script>
+        document.getElementById('toggleBranches').addEventListener('click', function() {
+            var otherBranches = document.getElementById('otherBranches');
+            if (otherBranches.style.display === "none") {
+                otherBranches.style.display = "block"; // Show the branches
+            } else {
+                otherBranches.style.display = "none"; // Hide the branches
+                this.textContent = "Other Branches"; // Change button text back
+            }
+        });
+    </script>
 </body>
 </html>

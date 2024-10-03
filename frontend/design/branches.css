@@ -96,54 +96,49 @@ nav{
     
   }
   
+.usericon {
+  font-size: 18px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+  
+.profile-img-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px; 
+}
+  
+/* Arrow styling for profile submenu */
+.arrow, .profile-arrow {
+  height: 100%;
+  width: 22px; 
+  line-height: 70px; 
+  text-align: center;
+  display: inline-block;
+  color: #333;
+  transition: all 0.3s ease;
+}
   
   
-  .usericon {
-    font-size: 18px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-  }
+.links li:hover .htmlcss-arrow,
+.links li:hover .js-arrow{
+  transform: rotate(180deg);
+}
   
-  .profile-img-header {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px; 
-  }
-  
-  
-  /* Arrow styling for profile submenu */
-  .arrow, .profile-arrow {
-    height: 100%;
-    width: 22px; 
-    line-height: 70px; 
-    text-align: center;
-    display: inline-block;
-    color: #333;
-    transition: all 0.3s ease;
-  }
-  
-  
-  
-  .links li:hover .htmlcss-arrow,
-  .links li:hover .js-arrow{
-    transform: rotate(180deg);
-    }
-  
-  
-  nav .navbar .links li .sub-menu {
-    position: absolute;
-    top: 70px; /* Adjust the top position to be consistent */
-    left: 0;   
-    line-height: 40px;
-    background: #F8F8F8;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 0 0 4px 4px;
-    display: none;
-    z-index: 2;
-  }
+nav .navbar .links li .sub-menu {
+  position: absolute;
+  top: 70px; /* Adjust the top position to be consistent */
+  left: 0;   
+  line-height: 40px;
+  background: #F8F8F8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 4px 4px;
+  display: none;
+  z-index: 2;
+}
   
   nav .navbar .links li .profile-sub-menu {
     position: absolute;
@@ -200,63 +195,65 @@ nav{
 }
 
 .container {
-  padding: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Styling the entire branches container */
 .buzz-logo {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+  display: flex;               
+  align-items: center;    
+  margin-bottom: 20px;      
+}
+
+/* Styling the image in the branches */
+.buzz-logo img {
+  height: 150px;           
+  width: 150px;            
+  margin-right: 20px;       
 }
 
 /* Styling for the branch details section */
-.branches {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 800px; /* Adjust based on your design */
-  margin-bottom: 20px;
+.branch {
+  display: flex;           
+  flex-direction: column;   
 }
 
-.branches img {
-  max-width: 100px;
-  margin-right: 20px;
-}
-
-.branches h3, .branches p {
-  margin: 0;
-  text-align: left;
-}
-
-.branches h3 {
-  font-size: 18px;
+/* Heading styling */
+.branch h3 {
+  font-style: italic;
+  font-size: 22px;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;   
 }
 
-.branches p {
-  font-size: 14px;
+/* Paragraph styling */
+.branch p {
+  font-size: 19px;
   line-height: 1.5;
-  color: #333;
+  color: #232323;
+  margin: 0;                
 }
 
+/* Anchor link styling */
+.branch a { 
+  text-decoration: none;   
+}
+
+/* More Soon section styling */
 .more-soon {
   margin-top: 20px;
-  font-size: 16px;
-  font-weight: bold;
+  margin-bottom: 5%;
+  font-size: 20px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 
-.buzz-logo img {
-    max-width: 100px;
-    margin-right: 20px;
-}
 /* FOOTER */
-
 footer {
     background-color: #222; 
     color: white;

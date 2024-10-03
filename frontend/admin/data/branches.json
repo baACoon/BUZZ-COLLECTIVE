@@ -23,5 +23,10 @@
         "branchId": "124125",
         "branchName": "Walk Away",
         "branchLocation": "Metro Manila"
+    },
+    "6": {
+        "branchId": "123",
+        "branchName": "Taguig",
+        "branchLocation": "BGC"
     }
 }
