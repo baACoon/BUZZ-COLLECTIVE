@@ -1,18 +1,27 @@
-[
-    {
+{
+    "0": {
         "branchId": "66fa82908e03b",
         "branchName": "Salitran Branch",
         "branchLocation": "RVV-88 Commercial Center, Jose Abad Santos Avenue, Salitran 2, Dasmarinas City, Cavite"
     },
-    {
+    "1": {
         "branchId": "",
         "branchName": "Main Branch",
         "branchLocation": "89 Nueno Avenue, Imus Cavite"
     },
-    {
-        "branchId": "444",
-        "branchName": "sasa",
-        "branchLocation": "sasa"
+    "3": {
+        "branchId": "12341",
+        "branchName": "Paranaque Branch",
+        "branchLocation": "Sto.Nino"
+    },
+    "4": {
+        "branchId": "1235123",
+        "branchName": "Angela's Crib",
+        "branchLocation": "Sampaloc Manila City"
+    },
+    "5": {
+        "branchId": "124125",
+        "branchName": "Walk Away",
+        "branchLocation": "Metro Manila"
     }
-    
-]
+}
