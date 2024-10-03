@@ -178,7 +178,9 @@ li:hover .arrow, li:hover .profile-arrow {
     flex-direction: column; /* Stack the image and h3 vertically */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
-    height: 80vh; /* Adjust as needed for your layout */
+    height: 70vh; /* Adjust as needed for your layout */
+    
+    
 }
 
 .services-logo img {
@@ -202,6 +204,7 @@ li:hover .arrow, li:hover .profile-arrow {
     box-shadow: 0 4px 8px rgba(22, 22, 22, 0.1);
     justify-content: center;
     cursor: pointer;
+    
 }
 .service-details h3{
     font-size: 22px;

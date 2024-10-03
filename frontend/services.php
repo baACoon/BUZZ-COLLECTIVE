@@ -89,12 +89,13 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
                             </li>
                     </ul>
                 </div>
+</div>
+</nav>
 
     <div class="services-logo">
-    <img src="design/image/SERVICE-transparent.png" alt="">
-    <h3>All Branches</h3>
-</div>
-
+        <img src="design/image/SERVICE-transparent.png" alt="">
+        <h3>All Branches</h3>
+    </div>  
     <?php foreach ($services as $service) : ?>
         <div class="container">
             <div class="service-details">
