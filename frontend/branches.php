@@ -119,12 +119,6 @@ $db->close();
                 </div>
             <?php endforeach; ?>
         </div>
-
-
-        <!-- More Soon section -->
-        <div class="more-soon">
-            <p>More Soon</p>
-        </div>
     </div>
 
 
