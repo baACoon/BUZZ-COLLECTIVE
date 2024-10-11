@@ -77,11 +77,11 @@ $db->close();
                             <li>
                                 <a class="usericon" href="myprofile.php">
                                     <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="User Profile Image" class="profile-img-header">
-                                    <i class='bx bxs-chevron-down htmlcss-arrow profile-arrow'></i> <!-- Arrow icon same as ABOUT US -->
+                                    <i class='bx bxs-chevron-down htmlcss-arrow profile-arrow'></i> 
                                 </a>
                                 <ul class="htmlCss-sub-menu profile-sub-menu">
                                     <li><a href="myprofile.php">My Profile</a></li>
-                                    <li><a href="../backend/logout.php">Logout</a></li> <!-- Link to Logout -->
+                                    <li><a href="../backend/logout.php">Logout</a></li> 
                                 </ul>
                             </li>
                     </ul>
@@ -105,6 +105,7 @@ $db->close();
 
         <div class="otherbranch">
             <h3 id="toggleBranches" style="cursor: pointer;">Other Branches</h3>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
         </div>
 
         <!-- Other Branches (Initially hidden) -->
