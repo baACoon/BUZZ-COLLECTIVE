@@ -1,24 +1,16 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    header('location: login.php');
-    exit();
-}
-
-// Check if the user is logged in
-if (!isset($_SESSION['username'])) {
-    // If not logged in, redirect to login page
-    header('Location: login.php');
-    exit();
-}
-
-$username = $_SESSION['username'];
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 
 // Database connection
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
-// Fetch the user's profile image from the database
+// Calculate the start (Monday) and end (Friday) of the current week
+$startDate = date('Y-m-d', strtotime('monday this week'));
+$endDate = date('Y-m-d', strtotime('friday this week'));
+
+
 $profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
 
 $sql = "SELECT profile_image FROM users WHERE username = ?";
@@ -136,8 +128,6 @@ $db->close();
                 <div class="barber-sched-img">
                     <img src="design/image/SCHEDULE.png" alt="">
                 </div>
-                <!-- Barbers' MONTHS -->
-                <span class="barber-months">(APRIL 22 - 28, 2024)</span>
                 <!-- Barbers' DROPDOWN -->
                 <div class="barber-dropdown">
                     <select id="location" name="Branch">
@@ -146,7 +136,9 @@ $db->close();
                     </select>
                 </div>
                 <!-- Barbers' DAYS and Availability Section -->
-                <div id="date-range"></div>
+                <div class="barber-months">
+                <h1 class="date">(<?php echo date('F j', strtotime($startDate)) . ' - ' . date('F j, Y', strtotime($endDate)); ?>)</h1>
+                </div>
                 <div id="availability"></div> <!-- Dito for displaying lang din db to client side and vice versa-->
 
                 <button class="barber-button"><a href="appointment.php">BOOK AN APPOINTMENT</a></button><br>
@@ -263,8 +255,9 @@ $db->close();
 
         <!-- CSS TO SA BARBERS Availability (Dito mo nalang siguro iadjust yung design. Baka kasi magulo sa back e^^) -->
             <style> 
-            .availability{
-                z-index: 1;
+            #availability{
+                position: relative;
+                top: 170px;
             }
             .day-row {
                 position: relative;
