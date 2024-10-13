@@ -231,3 +231,19 @@ select {
 .delete-button:hover{
     background-color: #222222;
 }
+
+.confirm-btn, .cancel-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.confirm-btn:hover, .cancel-btn:hover {
+    background-color: #45a049;
+}
+
+.cancel-btn {
+    background-color: #f44336; /* Red */
+}
