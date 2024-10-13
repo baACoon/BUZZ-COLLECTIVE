@@ -41,7 +41,8 @@ try {
     $mail->isHTML(true);                                                                                                                                                                                        // Content
     $mail->Subject = 'Appointment Confirmation';
     $mail->Body    = '<p>Dear ' . $_SESSION['form_data']['first_name'] . ' ' . $_SESSION['form_data']['last_name'] . ',</p>'
-        . '<p>Your appointment has been confirmed for ' . $date . ' at ' . $time . '.</p>'
+        . '<p>Your appointment for ' . $date . ' at ' . $time . ' is still pending. Wait until your payment is confirm. </p>'
+        . '<p>Check your email from time to time for confirmation of your appointment.</p>'
         . '<p>Service: ' . ucfirst($_SESSION['form_data']['services']) . '</p>'
         . '<p>Total Payment: ' . number_format($totalPayment, 0) . '</p>'
         . '<p>Thank you for choosing Buzz & Collective!</p>';
@@ -96,7 +97,7 @@ try {
                 <p class="appointment-fee">Appointment Fee <strong><?php echo number_format($appointmentFee, 0); ?></strong>  </p>
                 <hr>
                 <p class="amount-paid">Amount Paid  <strong><?php echo number_format($amountPaid, 0); ?></strong></p>
-                <p class="amount-due">AMOUNT DUE  <strong><?php echo number_format($amountDue, 0); ?></strong></p>
+                <p class="amount-due">Balance  <strong><?php echo number_format($amountDue, 0); ?></strong></p>
             </div>
             <div class="confirmation-buttons">
                 <form method="POST" action="appointment.php">

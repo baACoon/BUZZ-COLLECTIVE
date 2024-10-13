@@ -13,9 +13,7 @@ $_SESSION['payment_data'] = [
     'total_payment' => $totalPayment
 ];
 
-// Redirect to receipt.php after payment processing
-header('Location: receipt.php');
-exit;
+
 ?>
 
 

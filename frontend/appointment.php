@@ -50,65 +50,7 @@ function timeslots($duration, $cleanup, $start, $end){
     
     <style>
         /* Styling for Time Selection */
-        .time-selection {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 20px auto;
-        }
-
-        .time-selection label {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .time-selection select {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            color: #333;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .time-selection .submit-btn {
-            background-color: #cccccc;
-            color: #666;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: not-allowed;
-            transition: background-color 0.3s ease;
-        }
-
-        .time-selection .submit-btn.active {
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .time-selection .submit-btn:hover.active {
-            background-color: #0056b3;
-        }
-
-        .time-selection .submit-btn.unavailable {
-            background-color: #cccccc;
-            color: #666;
-            cursor: not-allowed;
-        }
+       
     </style>
 </head>
 <body>

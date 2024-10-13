@@ -78,8 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
     $mysqli->close();
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="confirmation-buttons">
-            <form method="POST" action="receipt.php">
+            <form method="POST" action="payment.php">
                 <button class="confirm-btn" type="submit">Confirm Appointment</button>
             </form>
             <form method="POST" action="landingappointment.php">
