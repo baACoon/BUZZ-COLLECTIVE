@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
@@ -11,32 +10,31 @@ if (!$db) {
 $sql = "SELECT * FROM appointments";
 $result = $db->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td><input type='checkbox' name='appointments[]' value='{$row['appointment_id']}'></td>
-                <td>{$row['appointment_id']}<br></td>
-                <td>
-                    <strong>First Name:</strong> {$row['first_name']}<br>
-                    <strong>Last Name:</strong> {$row['last_name']}<br>
-                    <strong>Email:</strong> {$row['email']}<br>
-                    <strong>Phone Number:</strong> {$row['phone_num']}
-                </td>
-                <td>
-                    <strong>Service:</strong> {$row['services']}<br>
-                    <strong>Stylist:</strong> {$row['barber']}
-                </td>
-                <td>
-                    <strong>Date:</strong> {$row['date']}<br>
-                    <strong>Time:</strong> {$row['timeslot']}
-                </td>
-              </tr>";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $appointmentId = $_POST['appointment_id'];
+    $status = $_POST['status'];
+
+    // Update the appointment status in the database
+    $sql = "UPDATE appointments SET status_id = ? WHERE appointment_id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param('si', $status, $appointmentId);
+
+    if ($stmt->execute()) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to update status']);
     }
-} else {
-    echo "<tr><td colspan='6'>No appointments found.</td></tr>";
+
+    $stmt->close();
+    $db->close();
 }
 
+$appointments = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $appointments[] = $row;
+    }
+}
 // Close connection
 $db->close();
-
 ?>
