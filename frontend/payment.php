@@ -13,9 +13,7 @@ $_SESSION['payment_data'] = [
     'total_payment' => $totalPayment
 ];
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,39 +33,46 @@ $_SESSION['payment_data'] = [
 
     <p class="payment-opt">PAYMENT OPTION</p>
 
-        <div class="payment-section">
-            <div class="payment-container">
-                <div class="payment-details">
-                    <h1><?php echo number_format($totalPayment, 0); ?></h1>
-                    <p>PHP</p>
-                    <h3>Full Payment</h3>
-                    <h5>(Service + Appointment Fee)</h5>
-                    <h5>Refund available</h5>
-
-                </div>
-            </div>
-
-            <div class="payment-container">
-                <div class="payment-details">
-                    <h1><?php echo number_format($appointmentFee, 0); ?></h1>
-                    <p>PHP</p>
-                    <h3>Appointment Fee</h3>
-
-                </div>
-            </div>
-        </div>  
-
-        <div class="mop">       
-            <p>MODE OF PAYMENT</p>
-            <div class="mop-container">
-                <div class="mop-gcash">
-                    <a href="receipt.php" target="_blank">
-                        <img src="../frontend/design/image/GCash_logo.svg.png" alt="GCash Logo">
-                    </a>
-                </div>
+    <div class="payment-section">
+        <div class="payment-container">
+            <div class="payment-details">
+                <h1><?php echo number_format($totalPayment, 0); ?></h1>
+                <p>PHP</p>
+                <h3>Full Payment</h3>
+                <h5>(Service + Appointment Fee)</h5>
+                <h5>Refund available</h5>
             </div>
         </div>
-    
+
+        <div class="payment-container">
+            <div class="payment-details">
+                <h1><?php echo number_format($appointmentFee, 0); ?></h1>
+                <p>PHP</p>
+                <h3>Appointment Fee</h3>
+            </div>
+        </div>
+    </div>  
+
+    <div class="mop">       
+        <p>MODE OF PAYMENT</p>
+        <div class="mop-container">
+            <div class="mop-gcash">
+                <a href="receipt.php" target="_blank">
+                    <img src="../frontend/design/image/GCash_logo.svg.png" alt="GCash Logo">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Upload Form -->
+    <div class="receipt-upload">
+        <h3>Upload Your GCash Receipt</h3>
+        <form action="upload_receipt.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="receipt" accept="image/*" required>
+            <input type="hidden" name="total_payment" value="<?php echo $totalPayment; ?>">
+            <input type="submit" value="Upload Receipt">
+        </form>
+    </div>
 
 </body>
 </html>
