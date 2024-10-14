@@ -461,3 +461,14 @@ footer {
       justify-content: flex-start; /* Align to the left */
     }
   }
+
+@media (max-width: 480px){
+    nav .navbar .nav-links{
+        max-width: 100%;
+    } 
+    .logo img {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+    }
+}

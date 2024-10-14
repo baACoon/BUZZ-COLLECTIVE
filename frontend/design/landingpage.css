@@ -728,16 +728,16 @@ nav{
       justify-content: center; 
       align-items: center;
       position: absolute;
-      bottom: 10%;
+      bottom: 25px;
       left: 0;
       right: 0;
   }
   
   .social-media a {
-      margin-right: 20px; 
+      margin-right: 40px; 
   }
   .social-media i {
-      font-size: 30px; /* Adjust icon size */
+      font-size: 35px; /* Adjust icon size */
   }
   
 
@@ -1003,6 +1003,13 @@ nav{
       font-size: 1rem; 
       padding: 10px 13px; 
     }
+    .footer-content {
+      flex-direction: column;
+    }
+
+    .footer-left, .footer-right {
+      margin: 20px 0;
+    }
   }
   
   @media (max-width:480px){
@@ -1147,17 +1154,7 @@ nav{
     .footer-left1 form button{
     padding: 18px;
     }
-    .social-media{
-        margin-left: 5%;
-        justify-content: left;
-        bottom: 1%;
-    }
-    .social-media i{
-      font-size: 20px;
-    }
-    .social-media a{
-      margin-right: 20px;
-    }
+    
     .footer-copyright{
       text-align: left;
       margin-left: -1%;
