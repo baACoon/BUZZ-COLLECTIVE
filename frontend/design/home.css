@@ -545,13 +545,13 @@ footer {
     justify-content: space-between; 
     position: relative; 
   }
-  
+
   .logo {
     order: 1; /* Ensure logo is on the left */
     display: flex;
     align-items: center;
   }
-  
+
   .navbar .bx-menu {
     order: 2; 
     font-size: 30px; 
@@ -559,7 +559,7 @@ footer {
     cursor: pointer; 
     display: block; 
   }
-  
+
   nav .navbar .nav-links {
     position: fixed;
     top: 0;
@@ -574,77 +574,111 @@ footer {
     transition: right 0.5s ease; 
     z-index: 1000;
   }
-  
+
   .navbar .nav-links.show {
     right: 0; /* Slide in from the right */
   }
-  
+
   .navbar .nav-links .sidebar-logo {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .sidebar-logo i,
   .navbar .bx-menu {
     font-size: 25px;
     color: #333;
   }
-    
-  /* General style for the close button */
-  .nav-links .bx-x {
-    cursor: pointer; 
-    font-size: 30px; 
-    color: #333;
-    transition: transform 0.3s ease; /* Smooth rotation transition */
-  }
   
-  /* Rotation effect on hover */
-  .nav-links .bx-x:hover {
-    transform: rotate(90deg); /* Rotate the icon on hover */
-  }
-  
+/* General style for the close button */
+.nav-links .bx-x {
+  cursor: pointer; 
+  font-size: 30px; 
+  color: #333;
+  transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+
+/* Rotation effect on hover */
+.nav-links .bx-x:hover {
+  transform: rotate(90deg); /* Rotate the icon on hover */
+}
+
   nav .navbar .links {
     display: block;
     margin-top: 20px;
   }
-  
+
   nav .navbar .links li {
     display: block;
   }
-  
-  nav .navbar .links li .sub-menu,
-  nav .navbar .links li .profile-sub-menu {
+
+  nav .navbar .links li .sub-menu {
     position: relative;
     top: 0;
     box-shadow: none;
     display: none;
   }
-  
-  nav .navbar .links li .sub-menu li,
-  nav .navbar .links li .profile-sub-menu li {
+
+  nav .navbar .links li .sub-menu li {
     border-bottom: none;
   }
-  
-  
+
+  .navbar .links li .sub-menu .more-sub-menu {
+    display: none;
+    position: relative;
+    left: 0;
+  }
+
+  .navbar .links li .sub-menu .more-sub-menu li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .links li:hover .htmlcss-arrow,
   .links li:hover .js-arrow {
     transform: rotate(0deg);
   }
-  
+
   .navbar .links li .sub-menu .more-sub-menu {
     display: none;
   }
-  
+
   .navbar .links li .sub-menu .more span {
     display: flex;
     align-items: center;
   }
-  
+
   .links li .sub-menu .more:hover .more-sub-menu {
     display: none;
   }
+}
+
+@media (max-width: 768px){
   .usericon {
-    justify-content: flex-start; /* Align to the left */
+    order: 4; /* Ensure the profile image is aligned with links */
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5px;
   }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-left, .footer-right {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 480px){
+  nav .navbar .nav-links{
+    max-width: 100%;
+      } 
+       .logo img {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+    }
 }

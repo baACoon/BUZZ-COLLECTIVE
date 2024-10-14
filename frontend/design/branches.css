@@ -174,7 +174,9 @@ nav .navbar .links li .sub-menu {
 .bookus-button{
     background-color: color;
     color: white;
-    margin-left: 1100px;
+    display: block; 
+    margin-left: auto;
+    margin-right: 10%;
     margin-top: 120px;
     background-color: #E43A19; 
     font-size: 20px;
@@ -186,7 +188,6 @@ nav .navbar .links li .sub-menu {
     border-radius: 30px; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
-
 }
 
 .bookus-button a{
@@ -243,6 +244,19 @@ nav .navbar .links li .sub-menu {
   text-decoration: none;   
 }
 
+.otherbranch {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Vertically center the arrow with the text */
+  justify-content: space-between; /* Adds space between text and arrow */
+  cursor: pointer; /* Change cursor to pointer when hovering */
+  margin-bottom: 10%;
+}
+
+.arrow {
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
+  margin-left: 10px; /* Add space between the text and arrow */
+}
+
 /* More Soon section styling */
 .more-soon {
   margin-top: 20px;
@@ -253,25 +267,23 @@ nav .navbar .links li .sub-menu {
 }
 
 
-/* FOOTER */
-footer {
-    background-color: #222; 
+  /* FOOTER */
+  footer {
+    background-color: #222222; 
     color: white;
     padding: 20px;
     position: relative;
 }
-
 .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 6%;
     align-items: flex-start;
 }
-
 .footer-logo{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     margin-top: 5px; 
 }
 
@@ -279,11 +291,10 @@ footer {
     margin: 5px;
 }
 
-.footer-left1 h2 {
-    color: white;
-}
-
-.footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
+.footer-left1 p, 
+.footer-left1 address, 
+.footer-left1 form, 
+.footer-left1{
     margin: 10px 0 20px;
 }
 
@@ -307,7 +318,7 @@ footer {
     border: none;
     border-radius: 5px 0 0 5px;
     flex: 1;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .footer-left1 form button {
@@ -339,32 +350,27 @@ footer {
 
 .social-media {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align items to the center vertically */
+    justify-content: center; 
+    align-items: center;
     position: absolute;
     bottom: 25px;
     left: 0;
     right: 0;
-    
 }
 
 .social-media a {
     margin-right: 40px; 
 }
-
 .social-media i {
     font-size: 35px; /* Adjust icon size */
 }
 
+
 @media (max-width: 1200px) {
-    #mainheader .logo img {
-        height: 50px;
-        margin-left: 10px;
-    }
 
     .bookus-button {
-        margin-left: auto;
-        margin-right: 20px;
+        margin-right: 10%;
+
     }
 }
 
@@ -394,13 +400,13 @@ footer {
       justify-content: space-between; 
       position: relative; 
     }
-    
+  
     .logo {
       order: 1; /* Ensure logo is on the left */
       display: flex;
       align-items: center;
     }
-    
+  
     .navbar .bx-menu {
       order: 2; 
       font-size: 30px; 
@@ -408,7 +414,7 @@ footer {
       cursor: pointer; 
       display: block; 
     }
-    
+  
     nav .navbar .nav-links {
       position: fixed;
       top: 0;
@@ -423,133 +429,93 @@ footer {
       transition: right 0.5s ease; 
       z-index: 1000;
     }
-    
+
     .navbar .nav-links.show {
       right: 0; /* Slide in from the right */
     }
-    
+  
     .navbar .nav-links .sidebar-logo {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    
+  
     .sidebar-logo i,
     .navbar .bx-menu {
       font-size: 25px;
       color: #333;
     }
-      
-    /* General style for the close button */
-    .nav-links .bx-x {
-      cursor: pointer; 
-      font-size: 30px; 
-      color: #333;
-      transition: transform 0.3s ease; /* Smooth rotation transition */
-    }
     
-    /* Rotation effect on hover */
-    .nav-links .bx-x:hover {
-      transform: rotate(90deg); /* Rotate the icon on hover */
-    }
-    
+  /* General style for the close button */
+  .nav-links .bx-x {
+    cursor: pointer; 
+    font-size: 30px; 
+    color: #333;
+    transition: transform 0.3s ease; /* Smooth rotation transition */
+  }
+  
+  /* Rotation effect on hover */
+  .nav-links .bx-x:hover {
+    transform: rotate(90deg); /* Rotate the icon on hover */
+  }
+  
     nav .navbar .links {
       display: block;
       margin-top: 20px;
     }
-    
+  
     nav .navbar .links li {
       display: block;
     }
-    
-    nav .navbar .links li .sub-menu,
-    nav .navbar .links li .profile-sub-menu {
+  
+    nav .navbar .links li .sub-menu {
       position: relative;
       top: 0;
       box-shadow: none;
       display: none;
     }
-    
-    nav .navbar .links li .sub-menu li,
-    nav .navbar .links li .profile-sub-menu li {
+  
+    nav .navbar .links li .sub-menu li {
       border-bottom: none;
     }
-    
-    
+  
+    .navbar .links li .sub-menu .more-sub-menu {
+      display: none;
+      position: relative;
+      left: 0;
+    }
+  
+    .navbar .links li .sub-menu .more-sub-menu li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
     .links li:hover .htmlcss-arrow,
     .links li:hover .js-arrow {
       transform: rotate(0deg);
     }
-    
+  
     .navbar .links li .sub-menu .more-sub-menu {
       display: none;
     }
-    
+  
     .navbar .links li .sub-menu .more span {
       display: flex;
       align-items: center;
     }
-    
+  
     .links li .sub-menu .more:hover .more-sub-menu {
       display: none;
-    }
-    .usericon {
-      justify-content: flex-start; /* Align to the left */
     }
   }
 
 /* Small screens (large phones, 600px and up) */
 @media (max-width: 768px) {
-    #mainheader {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-    }
-
-    #mainheader .logo img {
-        height: 40px;
-        margin: 0 auto;
-    }
-
-    #mainheader ul {
-        flex-direction: column;
-        margin-left: 0;
-        align-items: center;
-    }
-
-    #mainheader ul li {
-        margin: 5px 0;
-    }
-
-    .bookus-button {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-left, .footer-right {
-        margin: 20px 0;
-        text-align: center;
-    }
-
-    .footer-logo {
-        width: 200px;
-        height: 200px;
-    }
-
-    .social-media {
-        flex-direction: column;
-        bottom: 10px;
-    }
-
-    .social-media a {
-        margin-bottom: 10px;
-    }
+  .bookus-button{
+    padding: 12px 17px;
+    font-size: 15px;
+  }
 
     .branch h3, .branch p {
         font-size: 16px;
@@ -563,19 +529,35 @@ footer {
     .more-soon {
         font-size: 16px;
     }
+    .usericon {
+      order: 4; /* Ensure the profile image is aligned with links */
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 5px;
+    }
+
+    .footer-content {
+      flex-direction: column;
+    }
+
+    .footer-left, .footer-right {
+      margin: 20px 0;
+    }
 }
 
 /* Extra small screens (phones, 480px and down) */
 @media (max-width: 480px) {
-    #mainheader {
-        padding: 5px;
-    }
-
-    #mainheader .logo img {
-        height: 30px;
+  nav .navbar .nav-links{
+    max-width: 100%;
+      } 
+       .logo img {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
     }
 
     .bookus-button {
+      margin-right: 5%;
         padding: 10px 15px;
         font-size: 14px;
     }

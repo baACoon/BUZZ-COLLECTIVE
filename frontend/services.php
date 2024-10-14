@@ -52,7 +52,7 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
     <title>Services</title>
 </head>
 <body>
-<nav>
+    <nav>
         <div class="navbar">
             <i class='bx bx-menu'></i>
             <div class="logo">
@@ -89,8 +89,8 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
                             </li>
                     </ul>
                 </div>
-</div>
-</nav>
+        </div>
+    </nav>
 
     <div class="services-logo">
         <img src="design/image/SERVICE-transparent.png" alt="">
@@ -103,7 +103,7 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
                 <?php if (!empty($service['with'])) : ?>
                     <p><?= htmlspecialchars($service['with']); ?></p>
                 <?php endif; ?>
-                <p class="price">PHP <?= number_format($service['fee']); ?></p>
+                <h5 class="price">PHP <?= number_format($service['fee']); ?></h5>
             </div>
         </div>
     <?php endforeach; ?>
