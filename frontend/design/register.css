@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Base Styles */
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
@@ -8,13 +9,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 0 10px;
 }
 
 .signup-container {
     display: flex;
-    flex-wrap: wrap; /* Make sure content wraps on smaller screens */
+    flex-direction: row; /* Default to row layout for larger screens */
     width: 100%;
-    max-width: 800px; /* Maximum width for larger screens */
+    max-width: 800px;
     box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     overflow: hidden;
@@ -35,8 +37,8 @@ body {
     background-color: #222222;
     padding: 20px;
     color: #fff;
-    box-sizing: border-box; /* Ensures padding is considered in width calculation */
-    width: 100%; /* Full width for small screens */
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .signup-form-container h2 {
@@ -68,16 +70,8 @@ body {
     margin-top: 15px;
 }
 
-.signup-form-container button {
-    background-color: #E43A19;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
-    max-width: 200px;
-    margin-top: 15px;
-}
+/* Responsive Design Adjustments */
 
-/* RESPONSIVE DESIGN */
 /* Medium screens (tablets, small laptops) */
 @media (max-width: 1024px) {
     .signup-container {
@@ -89,16 +83,16 @@ body {
 /* Small screens (phones, portrait tablets) */
 @media (max-width: 768px) {
     .signup-container {
-        width: 100%;
         flex-direction: column;
-    }
-
-    .signup-form-container {
-        padding: 15px;
+        width: 100%;
     }
 
     .signup-image {
         height: 250px; /* Reduce the height of the image section */
+    }
+
+    .signup-form-container {
+        padding: 15px;
     }
 
     .signup-form input,
@@ -111,28 +105,25 @@ body {
 }
 
 /* Very small screens (phones) */
-@media (max-width: 370px) {
-    body {
-        display: block;
-        padding: 20px;
-    }
-
+@media (max-width: 375px) {
     .signup-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack the image and form vertically */
         width: 100%;
         box-shadow: none;
     }
 
     .signup-image {
-        height: 200px; /* Even smaller height for image section */
+        height: 200px; /* Smaller image for small screens */
     }
 
     .signup-form-container {
-        padding: 5px;
+        padding: 10px;
+        width: 100%; /* Ensure the form takes full width */
     }
 
-    .signup-form{
-        width: 50%;
+    .signup-form {
+        width: 90%; /* Ensure the form elements fill the container */
+        margin: 0 auto;
     }
 
     .signup-form input,
