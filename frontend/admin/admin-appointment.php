@@ -59,12 +59,13 @@ unset($_SESSION['appointments']);
                         <th>Services</th>
                         <th>Booking Date & Time</th>
                         <th>Status</th>
+                        <th>Payment</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/displayappointment.php');
-
+                    
                     // Assuming $appointments is the array of appointment data from the backend.
                     foreach ($appointments as $appointment) {
                         echo "
