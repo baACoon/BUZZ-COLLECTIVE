@@ -37,14 +37,16 @@ $db->close();
     <link rel="stylesheet" href="design/profilepopup.css">
     <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective | History</title>
 
 </head>
 <body>
-
+    <i class='bx bx-menu' id="menu-icon"></i>
     <aside class="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="profile-container">
             <div class="back-button"><a href="home.php"><i class="fa-solid fa-arrow-left"></i></a></div>
             <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="Profile Image" class="profile-img" id="profile-img">
@@ -60,15 +62,15 @@ $db->close();
         </nav>
     </aside>
 
-    <div class="history">
-        <h1>HISTORY</h1>
-    </div>
+    <div class="history-wrapper">
+        <div class="history">
+            <h1>HISTORY</h1>
+        </div>
+        <div class="welcome">
+            <p>Welcome, <span class="cstmr-name"><?php echo $_SESSION['username']; ?>!</span></p>
+        </div>
+        <br>
 
-    <br>
-
-    <div class="welcome">
-        <p>Welcome, <span class="cstmr-name"><?php echo $_SESSION['username']; ?>!</span></p>
-    </div>
         <div class="client-history">
             <table>
                 <thead>
@@ -101,7 +103,33 @@ $db->close();
             </table>
         </div>
 
+    </div>
+
+  
+ 
+
+    
+       
     <script>
+        // menu icon 
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
+        
         // JavaScript to handle the profile image input
         const fileInput = document.getElementById('profile-image-input');
         const profileImg = document.getElementById('profile-img');
@@ -123,6 +151,7 @@ $db->close();
             profileImg.src = defaultImage;
         });
 
+        
 
 
     </script>

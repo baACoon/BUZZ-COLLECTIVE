@@ -1,3 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 1;
+}
+
+i.bx-menu{
+    display: none;
+}
+#close-sidebar {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+#close-sidebar:hover{
+    color: #f73201;   
+    transform: rotate(90deg);
+}
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 70px;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar nav ul li a:hover, 
+.sidebar nav ul li a:active, 
+.sidebar nav ul li a:focus{
+    color: #f73201;
+    padding-left: 10px;
+    font-weight: bold;
+   
+}
+
+/* back button  */
+.back-button i{
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.back-button i:hover{
+    color: #f73201;   
+}
+
+/* profile image */
+.profile-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    margin-left: 3em;
+}
+
+
+.profile h1{
+    color: black;
+    margin-left: 1em;
+    font-size: 44px;
+}
+
+.profile h5{
+    color: black;
+    margin-left: 3em;
+    font-size: 15px;
+    margin-top: -2em;
+    font-weight: 400;
+    width: 50%;
+}
+
+.profile-img-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+
+/* customer name */
+.customer-name{
+    font-size: 13px;
+    text-align: center;
+}
+
 .pass-wrapper{
     width: 71%;
     margin: 20px auto; /* Centers the wrapper */
@@ -41,27 +158,136 @@
     display: block;
 }
 
+.pass-wrapper{
+    top: 30%;
+
+}
 .pass-wrapper label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: -15px;
     font-weight: bold;
 }
+
 .pass-wrapper input {
-    width: 100%;
-    padding: 10px;
+    width: 75%;
+    padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 .pass-wrapper button {
-    width: 100%;
-    padding: 10px;
+    width: 100% auto; 
+    padding: 12px 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 .pass-wrapper button:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 1200px){
+    .pass-wrapper{
+        width: 65%;
+        height: 80vh;
+
+    }
+}
+@media (max-width: 1024px){
+    .pass-wrapper{
+        width: 60%;
+        margin-left: 18em;
+        height: 90vh;
+    }
+}
+
+@media (max-width: 920px){
+    .pass-wrapper{
+        width: 57%;
+        margin-left: 17em;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 800px){
+    .pass-wrapper{
+        width: 55%;
+    }
+}
+
+@media (max-width: 768px){
+    .sidebar {
+        display: none; 
+    }
+    i.bx-menu {
+        display: block; /* Show menu icon on small screens */
+        cursor: pointer;
+        order: 2; 
+        font-size: 45px; 
+        color: #333; 
+        cursor: pointer; 
+        display: block; 
+        position: absolute;
+        left: 10%;
+        top: 5%;
+    }
+    /* Show the sidebar when the 'open' class is added */
+    .sidebar.open {
+        display: block; 
+        transition: transform 0.3s ease; 
+    }
+    .pass-wrapper{
+        width: 70%;
+        margin-left: 4em;
+        margin-right: 5px;
+        position: relative;
+        top: 12%;
+        height: 80vh;
+    }
+    .profile h1{
+        font-size: 40px;
+    }
+    
+}
+
+@media(max-width:480px){
+    i.bx-menu{
+        font-size: 35px;
+    }
+    .pass-wrapper{
+        width: 85%;
+        margin-left: 1em;
+        margin-right: 1px;
+        position: relative;
+        top: 10%;
+        height: 75vh;
+    }
+    .customer-info{
+        padding-left: 1em;
+
+    }
+    .name-input{
+        width: 70%;
+    }
+    .sidebar nav ul{
+        margin-top: 50px;
+    }
+    .profile-img{
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin: 20px auto; 
+    }
+    .profile h1{
+        margin-left: 0.2em;
+        font-size: 25px;
+    }
+    .profile h5{
+        width: 80%;
+        margin-top: 1em;
+        margin-left: 0.3em;
+    }
 }

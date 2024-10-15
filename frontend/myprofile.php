@@ -180,6 +180,7 @@ $db->close();
     <link rel="stylesheet" href="design/profilepopup.css">
     <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective | My Profile</title>
@@ -194,7 +195,9 @@ $db->close();
         <div id="overlay" class="overlay show"></div>
     <?php endif; ?>
 
-    <aside class="sidebar">
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="profile-container">
             <div class="back-button"><a href="home.php"><i class="fa-solid fa-arrow-left"></i></a></div>
             <img src="<?php echo htmlspecialchars($profile_image); ?>" alt="Profile Image" class="profile-img" id="profile-img">
@@ -306,6 +309,24 @@ $db->close();
             }
         });
 
+        // menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
     </script>
 </body>
 </html>
