@@ -1,10 +1,10 @@
 <?php
+session_start();
 
 // Retrieve form data from session if available
 $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
 $selectedTime = isset($_GET['selected-timeslot']) ? htmlspecialchars($_GET['selected-timeslot']) : '';
 $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected-date']) : '';
-
 ?>
 
 <!DOCTYPE html>
@@ -28,16 +28,16 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
         <div class="form-section">
             <h3>PERSONAL INFORMATION</h3>
             <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($formData['first_name'] ?? ''); ?>">
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($formData['first_name'] ?? ''); ?>" required>
 
             <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Last Name" value="<?php echo htmlspecialchars($formData['last_name'] ?? ''); ?>">
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" value="<?php echo htmlspecialchars($formData['last_name'] ?? ''); ?>" required>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($formData['email'] ?? ''); ?>">
+            <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($formData['email'] ?? ''); ?>" required>
 
             <label for="phone_num">Phone Number </label>
-            <input type="tel" id="phone_num" name="phone_num" placeholder="Phone Number (ex. 09*********)" pattern="((^(\+)(\d){12}$)|(^\d{11}$))" value="<?php echo htmlspecialchars($formData['phone_num'] ?? ''); ?>">
+            <input type="tel" id="phone_num" name="phone_num" placeholder="Phone Number (ex. 09*********)" pattern="((^(\+)(\d){12}$)|(^\d{11}$))" value="<?php echo htmlspecialchars($formData['phone_num'] ?? ''); ?>" required>
         </div>
 
         <div class="form-section">
@@ -64,14 +64,13 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
                         $checked = ($formData['services'] ?? '') === $service ? 'checked' : '';
                         echo "<div class='service-item'>
                         <div class='service-info'>
-                                <input type='radio' id='$service' name='services' value='$service' $checked>
+                                <input type='radio' id='$service' name='services' value='$service' $checked required>
                                 <label for='$service'>" . ucfirst(str_replace('-', ' ', $service)) . "</label>
                                 </div>
                         <div class='service-details'>
                                 <span class='service-fee'>₱" . $data['fee'] . "</span>
                                 <div class='service-description'>" . $data['description'] . "</div>
                                 </div>
-                                
                             </div>";
                     }
                     ?>
@@ -80,58 +79,95 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
         </div>
 
         <div class="form-section">
-            <label for="barber">Barber</label>
-            <select id="barber" name="barber">
-                <option value="">Select Barber</option>
-                <?php 
-                $barbers = array('andre', 'drey', 'jeremy', 'donie', 'vien');
-                foreach ($barbers as $barber) {
-                    $selected = ($formData['barber'] ?? '') === $barber ? 'selected' : '';
-                    echo "<option value='$barber' $selected>" . ucfirst($barber) . "</option>";
-                }
-                ?>
-            </select>
+            <label for="barber">Barber 
+                <span class="tooltip"><i class="fa-light fa-circle-question"></i>
+                    <span class="tooltiptext"><em>Check the available barber for the week in the homepage.</em></span>
+                </span>
+            </label>
+            <div id="barber-container">
+                <!-- Barber options will be populated dynamically -->
+            </div>
         </div>
 
         <p class="note-text">NOTE: Only barbers available for your scheduled date and time are visible.</p>
 
-        <div class="validation-message" id="validationMessage">
+        <div class="validation-message" id="validationMessage" style="display: none;">
             Please fill out all fields and select a service and a barber before proceeding.
         </div>
 
         <input type="hidden" id="timeslot" name="timeslot" value="<?php echo $selectedTime; ?>">
-        <input type="hidden" id="date" name="date" value="<?php echo $selectedDate?>">
+        <input type="hidden" id="date" name="date" value="<?php echo $selectedDate; ?>">
         <button type="submit" class="proceed-btn">PROCEED</button>
     </form>
-
-    <script>
-        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
-        const firstName = document.getElementById('first_name').value.trim();
-        const lastName = document.getElementById('last_name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone_num').value.trim();
-        const services = document.querySelector('input[name="services"]:checked');
-        const barber = document.getElementById('barber').value.trim();
-        const selectedDate = document.getElementById('date').value.trim();
-        const timeslot = document.getElementById('timeslot').value.trim();
+    <script src="../frontend/js/form.js"></script> 
+    </body>
+    <style>
         
-        const selectedTimeSlot = timeslot ? timeslot.value.trim() : '';
-        console.log("Selected Time Slot:", selectedTimeSlot);
-        console.log("Selected Date:", selectedDate);
-        document.getElementById('timeslot').value = selectedTimeSlot;
+        /* Barber item container */
+        .barber-item {
+            display: flex;                
+            align-items: center;         
+            padding: 8px;               
+            margin: 5px 0;              
+            border: 1px solid #ddd;     
+            border-radius: 5px;         
+            transition: background-color 0.3s; 
+            cursor: pointer;             
+            background-color: #fff;
+        }
 
-        if (!firstName || !lastName || !email || !phone || !service || !barber || !timeslot || !selectedDate) {
-                document.getElementById('validationMessage').style.display = 'block';
-            } else {
-                document.getElementById('validationMessage').style.display = 'none';
-                // Set hidden input values
-                document.getElementById('timeslot').value = selectedTimeSlot;
-                document.getElementById('date').value = selectedDate;
-                // Submit form
-                event.currentTarget.submit();
-            }
-    });
+        /* Radio button */
+        .barber-item input[type="radio"] {
+            margin-right: 10px;          
+            cursor: pointer;             
+        }
 
-    </script>
+        /* Label styling */
+        .barber-item label {
+            font-size: 16px;             
+            color: #333;                 
+        }
+
+        /* Hover effect */
+        .barber-item:hover {
+            background-color: orangered;  
+        }
+
+        /* Selected state for radio button */
+        .barber-item input[type="radio"]:checked + label {
+            font-weight: bold;          
+            color: black;             
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px; 
+            background-color: #555; 
+            color: #fff; 
+            text-align: center; 
+            border-radius: 5px; 
+            padding: 5px; 
+            position: absolute;
+            z-index: 1; 
+            bottom: 100%; 
+            left: 50%;
+            margin-left: -60px; 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible; 
+            opacity: 1; 
+        }
+
+    </style>
 </body>
 </html>

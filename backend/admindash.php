@@ -51,7 +51,7 @@ if (isset($_POST['reg_admin'])) {
 
   	$query = "INSERT INTO admin (username, email, password) VALUES('$username', '$email', '$password')";
   	$result = mysqli_query($db, $query);
-  	$_SESSION['username'] = $username;
+  	$_SESSION['admin_username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
     $_SESSION['show_popup'] = true; //set popup flag
   	header('location:../admin/admin-home.php');
@@ -75,7 +75,7 @@ if (isset($_POST['log_admin'])) {
   	$query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['username'] = $username;
+  	  $_SESSION['admin_username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
       $_SESSION['show_popup'] = true; //set popup flag
   	  header('location: ../admin/admin-home.php');

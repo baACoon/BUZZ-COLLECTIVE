@@ -5,7 +5,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-
 // Fetch barber names
 $barbers = ['Drey', 'Vien', 'Andro', 'Lili', 'Rego'];
 
