@@ -149,6 +149,6 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="landingscript.js"></script>
+    <script src="../frontend/js/landingscript.js"></script>
 </body>
 </html>
