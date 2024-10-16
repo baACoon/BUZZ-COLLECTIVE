@@ -54,17 +54,17 @@ $_SESSION['payment_data'] = [
     </div>  
 
     <div class="mop">       
-        <p>MODE OF PAYMENT</p>
+        <p style="color: white;">MODE OF PAYMENT</p>
         <div class="mop-container">
             <div class="mop-gcash">
-                <a href="receipt.php" target="_blank">
+                <a href="upload_receipt.php" target="_blank">
                     <img src="../frontend/design/image/GCash_logo.svg.png" alt="GCash Logo">
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Receipt Upload Form -->
+    <!-- Receipt Upload Form 
     <div class="receipt-upload">
         <h3>Upload Your GCash Receipt</h3>
         <form action="upload_receipt.php" method="POST" enctype="multipart/form-data">
@@ -72,7 +72,7 @@ $_SESSION['payment_data'] = [
             <input type="hidden" name="total_payment" value="<?php echo $totalPayment; ?>">
             <input type="submit" value="Upload Receipt">
         </form>
-    </div>
+    </div> -->
 
 </body>
 </html>

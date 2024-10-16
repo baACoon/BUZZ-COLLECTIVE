@@ -93,18 +93,18 @@ try {
                 <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
                 <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
                 <hr>
-                <p class="service-fee">Service Fee <strong><?php echo number_format($serviceFee, 0); ?></strong></p>
-                <p class="appointment-fee">Appointment Fee <strong><?php echo number_format($appointmentFee, 0); ?></strong>  </p>
+                <p class="service-fee">Service Fee <break><?php echo number_format($serviceFee, 0); ?></break></p>
+                <p class="appointment-fee">Appointment Fee <break><?php echo number_format($appointmentFee, 0); ?></break> </p>
                 <hr>
-                <p class="amount-paid">Amount Paid  <strong><?php echo number_format($amountPaid, 0); ?></strong></p>
-                <p class="amount-due">Balance  <strong><?php echo number_format($amountDue, 0); ?></strong></p>
+                <p class="amount-paid">Amount Paid  <break><?php echo number_format($amountPaid, 0); ?></break></p>
+                <p class="amount-due"><strong>AMOUNT DUE</strong><strong><?php echo number_format($amountDue, 0); ?></strong></p>
             </div>
             <div class="confirmation-buttons">
                 <form method="POST" action="appointment.php">
-                    <button class="confirm-btn" type="submit">Book again</button>
+                    <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Book again</button>
                 </form>
                 <form method="POST" action="home.php">
-                    <button type="submit">Home</button>
+                    <button type="submit" style="font-family: 'Montserrat', sans-serif; border: none; cursor: pointer;">Home</button>
                 </form>
             </div>
                 
