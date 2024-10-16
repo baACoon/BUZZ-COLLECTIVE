@@ -9,9 +9,9 @@ body {
     background-size: cover;
     height: 100vh;
     display: flex;
-    flex-direction: column; /* Allows vertical alignment */
-    align-items: center;   /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center; 
 }
 
 body::before {
@@ -29,7 +29,7 @@ body::before {
 .confirmation-form {
     color: #ffffff;
     text-align: center; 
-    margin-bottom: 2rem; /* Space between the heading and the form */
+    margin-bottom: 2rem; 
 }
 
 .payment-opt{
@@ -49,20 +49,20 @@ body::before {
 }
 
 
-.payment-container {
-    flex: 1; /* Make both containers the same width */
+/*.payment-container {
+     Make both containers the same width 
     padding: 15px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center; /* Center the text inside the container */
-}
+    
+    text-align: center; /* Center the text inside the container 
+}*/
 
 .payment-details h1{
     font-size: 2.2rem;
     font-weight: 750;
     margin: 0;
-    display: inline-block; /* Ensure it stays on the same line as p */
+    display: inline-block; 
 }
 
 .payment-details p {
@@ -90,21 +90,80 @@ body::before {
 }
 
 .mop p {
-    font-size: 16px; /* Adjust the font size as needed */
-    margin-bottom: 10px; /* Adds some space below the heading */
+    font-size: 16px;
+    margin-bottom: 10px; 
 }
 
 .mop-container {
     display: flex;
-    align-items: center; /* Vertically centers the image inside the container */
-    justify-content: flex-start; /* Ensures the content stays aligned to the left */
-    padding: 10px; /* Adds some padding around the container */
-    background-color: #ffffff; /* Optional background color */
-    border-radius: 8px; /* Optional rounded corners */
-    width: fit-content; /* Ensures container adjusts to content width */
+    align-items: center; 
+    justify-content: flex-start; 
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: fit-content;
 }
 
 .mop-gcash img {
     width: 100px; 
     height: auto;
+}
+
+.payment-container {
+    flex: 1; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #ddd;  
+    border-radius: 8px;   
+    padding: 20px;
+    text-align: center;  
+}
+
+.payment-container.active {
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.mop-gcash {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mop-gcash img {
+    width: 150px;
+}
+
+.custom-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.custom-popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.terms-container {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.terms-container input {
+    margin-right: 10px;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }

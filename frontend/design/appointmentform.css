@@ -101,7 +101,7 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     color: #898989; /* Color for the NOTE text */
     font-size: 0.9rem;
     font-style: italic;
-    margin-top: -6%;
+    margin-top: -20px;
 }
 .proceed-btn {
     width: 30%;
@@ -164,4 +164,5 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     text-align: right;
     margin-left: auto;
     white-space: nowrap;
-}                        
+}              
+

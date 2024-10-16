@@ -1,20 +1,3 @@
-<?php
-session_start(); // Start the session
-
-// Retrieve payment details from the POST request
-$serviceFee = $_POST['service_fee'] ?? 0;
-$appointmentFee = $_POST['appointment_fee'] ?? 0;
-$totalPayment = $_POST['total_payment'] ?? 0;
-
-// Store payment data in session
-$_SESSION['payment_data'] = [
-    'service_fee' => $serviceFee,
-    'appointment_fee' => $appointmentFee,
-    'total_payment' => $totalPayment
-];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +5,7 @@ $_SESSION['payment_data'] = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../frontend/design/payment.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <title>Buzz & Collective - Payment</title>
 </head>
 <body>
@@ -34,45 +17,124 @@ $_SESSION['payment_data'] = [
     <p class="payment-opt">PAYMENT OPTION</p>
 
     <div class="payment-section">
-        <div class="payment-container">
-            <div class="payment-details">
-                <h1><?php echo number_format($totalPayment, 0); ?></h1>
-                <p>PHP</p>
-                <h3>Full Payment</h3>
-                <h5>(Service + Appointment Fee)</h5>
-                <h5>Refund available</h5>
-            </div>
+        <div class="payment-container" id="fullPayment">
+            <h1>400</h1>
+            <p>PHP</p>
+            <h3>Full Payment</h3>
+            <h5>(Service + Appointment Fee)</h5>
+            <h5>Refund available</h5>
         </div>
 
-        <div class="payment-container">
-            <div class="payment-details">
-                <h1><?php echo number_format($appointmentFee, 0); ?></h1>
-                <p>PHP</p>
-                <h3>Appointment Fee</h3>
-            </div>
+        <div class="payment-container" id="appointmentFee">
+            <h1>150</h1>
+            <p>PHP</p>
+            <h3>Appointment Fee</h3>
         </div>
-    </div>  
+    </div>
 
-    <div class="mop">       
+    <!-- Terms and Conditions Section -->
+    <div class="terms-container">
+        <label>
+            <input type="checkbox" id="termsCheckbox">
+            I agree to the <a href="#" target="_blank">terms and conditions</a>.
+        </label>
+    </div>
+
+
+    <div class="mop">
         <p style="color: white;">MODE OF PAYMENT</p>
         <div class="mop-container">
             <div class="mop-gcash">
-                <a href="upload_receipt.php" target="_blank">
+                <!-- GCash button will be disabled initially -->
+                <button id="gcashButton" class="disabled" disabled>
                     <img src="../frontend/design/image/GCash_logo.svg.png" alt="GCash Logo">
-                </a>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Receipt Upload Form 
-    <div class="receipt-upload">
-        <h3>Upload Your GCash Receipt</h3>
-        <form action="upload_receipt.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="receipt" accept="image/*" required>
-            <input type="hidden" name="total_payment" value="<?php echo $totalPayment; ?>">
-            <input type="submit" value="Upload Receipt">
-        </form>
-    </div> -->
+    <!-- Custom popup for GCash -->
+    <div class="custom-popup" id="gcashPopup">
+        <span class="close-btn" id="closePopup">X</span>
+        <div class="gcash-container">
+            <p>SEND TO</p>
+            <h3>0960 520 5411</h3>
+            <img src="../frontend/design/image/QRGacsh.jpg" alt="GCASH QR Code">
+        </div>
+        <div class="receipt-upload">
+            <h4>UPLOAD GCASH RECEIPT</h4>
+            <form id="receiptForm" method="POST" enctype="multipart/form-data">
+                <label class="file-label">
+                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
+                    <span id="file-label-text">Choose file</span>
+                </label>
+                <input type="submit" value="Upload Receipt">
+            </form>
+        </div>
+    </div>
 
+    <script>
+        // Disable GCash button on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var gcashButton = document.getElementById('gcashButton');
+            gcashButton.disabled = true; // Make sure it's disabled by default
+        });
+
+        // Toggle payment option
+        document.getElementById('fullPayment').addEventListener('click', function() {
+            toggleActive('fullPayment');
+        });
+
+        document.getElementById('appointmentFee').addEventListener('click', function() {
+            toggleActive('appointmentFee');
+        });
+
+        function toggleActive(containerId) {
+            var containers = document.querySelectorAll('.payment-container');
+            containers.forEach(container => container.classList.remove('active'));
+            document.getElementById(containerId).classList.add('active');
+        }
+
+        // GCash popup logic
+        var gcashButton = document.getElementById('gcashButton');
+        var gcashPopup = document.getElementById('gcashPopup');
+        var closePopup = document.getElementById('closePopup');
+
+        gcashButton.addEventListener('click', function() {
+            gcashPopup.style.display = 'block';
+        });
+
+        closePopup.addEventListener('click', function() {
+            gcashPopup.style.display = 'none';
+        });
+
+        // File input label update
+        function updateFileName(input) {
+            var fileName = input.files[0].name;
+            document.getElementById('file-label-text').textContent = fileName;
+        }
+
+        // Receipt form submit
+        document.getElementById('receiptForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate file upload success
+            alert('Receipt uploaded successfully!');
+            gcashPopup.style.display = 'none';
+            window.location.href = 'receipt.php'; // Redirect to the receipt page
+        });
+
+        // Enable GCash button when terms are agreed
+        var termsCheckbox = document.getElementById('termsCheckbox');
+        termsCheckbox.addEventListener('change', function() {
+            var gcashButton = document.getElementById('gcashButton');
+            if (termsCheckbox.checked) {
+                gcashButton.classList.remove('disabled');
+                gcashButton.disabled = false;
+            } else {
+                gcashButton.classList.add('disabled');
+                gcashButton.disabled = true;
+            }
+        });
+    </script>
 </body>
 </html>
