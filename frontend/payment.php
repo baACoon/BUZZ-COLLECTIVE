@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../frontend/design/payment.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Buzz & Collective - Payment</title>
 </head>
 <body>
@@ -55,20 +56,23 @@
 
     <!-- Custom popup for GCash -->
     <div class="custom-popup" id="gcashPopup">
-        <span class="close-btn" id="closePopup">X</span>
+        <i class='bx bx-x' id="closePopup"></i> <!-- Add this line for the close button -->
+        <h2>UPLOAD SCREENSHOT</h2>
         <div class="gcash-container">
-            <p>SEND TO</p>
-            <h3>0960 520 5411</h3>
+            <div class="gcash-text">
+                <p>SEND TO</p>
+                <h3>0960 520 5411</h3>
+            </div>
             <img src="../frontend/design/image/QRGacsh.jpg" alt="GCASH QR Code">
         </div>
         <div class="receipt-upload">
-            <h4>UPLOAD GCASH RECEIPT</h4>
+            <!-- <h4>UPLOAD GCASH RECEIPT</h4> -->
             <form id="receiptForm" method="POST" enctype="multipart/form-data">
                 <label class="file-label">
                     <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
-                    <span id="file-label-text">Choose file</span>
+                    <span id="file-label-text">UPLOAD RECEIPT</span>
                 </label>
-                <input type="submit" value="Upload Receipt">
+                <button type="submit" class="submit-button">SUBMIT</button>
             </form>
         </div>
     </div>
@@ -91,8 +95,14 @@
 
         function toggleActive(containerId) {
             var containers = document.querySelectorAll('.payment-container');
-            containers.forEach(container => container.classList.remove('active'));
-            document.getElementById(containerId).classList.add('active');
+            containers.forEach(container => {
+                container.classList.remove('active');
+                container.style.color = ''; // Reset color
+            });
+            
+            var activeContainer = document.getElementById(containerId);
+            activeContainer.classList.add('active');
+            activeContainer.style.color = 'black'; // Change text color to black
         }
 
         // GCash popup logic
