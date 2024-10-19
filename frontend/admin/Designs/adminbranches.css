@@ -188,6 +188,22 @@ body {
     background-color: #555;
 }
 
+/* Delete Button Styles */
+.delete-button {
+    background-color: #FF5C5C; /* Soft red background */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #D32F2F; /* Darker red on hover */
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .box-container {
