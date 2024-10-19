@@ -85,19 +85,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
         <div class="box-container">
             <!-- Existing branches will be dynamically populated here -->
             <?php foreach ($branches as $branch): ?>
-            <div class="branch">
-                <a href="#"><img src="../admin/images/BUZZ-Black.png" alt="Logo"></a>
-                <div>
-                    <h3><?php echo htmlspecialchars($branch['branchName']); ?></h3>
-                    <p><?php echo htmlspecialchars($branch['branchLocation']); ?></p>
-
+                <div class="branch">
+                    <a href="#"><img src="../admin/images/BUZZ-Black.png" alt="Logo"></a>
+                    <div class="branch-content">
+                        <h3><?php echo htmlspecialchars($branch['branchName']); ?></h3>
+                        <p><?php echo htmlspecialchars($branch['branchLocation']); ?></p>
+                    </div>
                     <!-- Delete button -->
-                    <form method="post" action="" onsubmit="return confirm('Are you sure you want to delete this branch?');">
+                    <form method="post" action="" onsubmit="return confirm('Are you sure you want to delete this branch?');" class="delete-button-container">
                         <input type="hidden" name="deleteBranchId" value="<?php echo $branch['branchId']; ?>">
-                        <button type="submit" class="delete-button">Delete</button>
+                        <button type="submit" class="delete-button">DELETE</button>
                     </form>
                 </div>
-            </div>
+
             <?php endforeach; ?>
 
             <!-- Add Branch Button -->
