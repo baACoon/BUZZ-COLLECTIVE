@@ -46,7 +46,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h2>Terms and Conditions for Appointmenr Scheduling</h2>
+            <h2>Terms and Conditions for Appointment Scheduling</h2>
         </div>
         <div class="modal-body" >
         <p>1. General Appointment Scheduling
@@ -87,7 +87,7 @@
             By booking an appointment through our website, you acknowledge and agree to these terms and conditions.</p>
         </div>
         <div class="modal-footer">
-        <h3>I agree</h3>
+            <button class="agree">I agree</button>
         </div>
     </div>
     </div>
@@ -204,6 +204,7 @@
 
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
+            var button = document.getElementsByClassName("agree")[0];
 
             // When the user clicks the link, open the modal
             termsLink.onclick = function(event) {
@@ -214,6 +215,17 @@
             // When the user clicks on <span> (x), close the modal
             span.onclick = function() {
                 modal.style.display = "none"; // Hide the modal
+            }
+            button.onclick = function() {
+                termsCheckbox.checked = true;
+                modal.style.display = "none"; // Hide the modal
+                if (termsCheckbox.checked) {
+                    gcashButton.classList.remove('disabled');
+                    gcashButton.disabled = false;
+                    } else {
+                        gcashButton.classList.add('disabled');
+                        gcashButton.disabled = true;
+                    }
             }
 
             // When the user clicks anywhere outside of the modal, close it
