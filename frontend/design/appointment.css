@@ -9,9 +9,9 @@ body {
     background-size: cover;
     height: 100vh;
     display: flex;
-    flex-direction: column; /* Allows vertical alignment */
-    align-items: center;   /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
+    flex-direction: column; 
+    align-items: center;  
+    justify-content: center; 
 }
 
 body::before {
@@ -25,7 +25,6 @@ body::before {
     position: fixed;
     z-index: -1;
 }
-
 
 @media only screen and(max-width : 500px),
     (min-device-width : 802px)and(max-device-width:1020px) {
@@ -270,6 +269,22 @@ tr td h4{
     background-color: #cccccc;
     color: #666;
     cursor: not-allowed;
+}
+
+
+
+#appointment-form {
+    color: #ffffff;
+    text-align: center; 
+    padding: 0; 
+}
+
+#appointment-form p{
+    display: flex;
+    position: absolute;
+    top: 13em;
+    justify-content: center;
+    align-items: center;
 }
 
 

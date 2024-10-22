@@ -47,11 +47,6 @@ function timeslots($duration, $cleanup, $start, $end){
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Date and Time</title>
-    
-    <style>
-        /* Styling for Time Selection */
-       
-    </style>
 </head>
 <body>
     <div class="bg-container">
@@ -59,7 +54,8 @@ function timeslots($duration, $cleanup, $start, $end){
             <img src="design/image/buzz.png" alt="">
         </div>
         <div id="appointment-form">
-             <h2>Buzz & Collective Appointment Form</h2>
+             <h2>Buzz & Collective Appointment Form</h2> <br>
+             <p>Main Branch</p>
         </div>
         <form action="appointmentform.php"id="appointmentForm" method="GET">
         <div class="row">

@@ -4,7 +4,7 @@ session_start();
 // Retrieve form data from session if available
 $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
 $selectedTime = isset($_GET['selected-timeslot']) ? htmlspecialchars($_GET['selected-timeslot']) : '';
-$selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected-date']) : '';
+$selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected-date']): '';
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +19,11 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
     <title>Buzz & Collective - Appointment Form</title>
 </head>
 <body>
-    <div class="appointment-form">
-        <h2>Buzz & Collective Appointment Form</h2>
-        <p>MAIN BRANCH</p>
-    </div>
+        <div class="appointment-form">
+                <h2>Buzz & Collective Appointment Form</h2>
+                <p>Main Branch</p>
+        </div>
+
 
     <form class="appointment-fields" id="appointmentForm" method="POST" action="confirmation.php">
         <div class="form-section">

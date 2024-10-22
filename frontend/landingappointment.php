@@ -34,13 +34,15 @@
                     </li>
 
                     <li>
-                        <a href="../frontend/appointment.php">
-                            <img src="design/image/location.png" class="location" alt="">
-                            <p>Salitran Branch</p>
-                            <span>Dasmarinas, Cavite</span>
-                        </a>
+                        <div class="disabled" >
+                            <a href="../frontend/appointment.php">
+                                <img src="design/image/location.png" class="location" alt="">
+                                <p><em>Salitran Branch</em></p>
+                                <span><em>Dasmarinas, Cavite</em></span>
+                                <p><em><strong>SOON</strong></em></p>
+                            </a>
+                        </div>
                     </li>
-
                 </ul>
             </div>
         </div>
