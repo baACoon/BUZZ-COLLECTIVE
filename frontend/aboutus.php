@@ -122,51 +122,154 @@ $db->close();
 
      <!-- BARBERS INFO SELECTION -->
      <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
-     <section class="slider-container">
-      <div class="slider-images">
-        <div class="slider-img">
-          <img src="design/image/Barber1.jpg" alt="1" />
-          <h1>Andre</h1>
-          <div class="details">
-            <h2>Andre</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img">
-          <img src="design/image/barber 2.jpg" alt="2" />
-          <h1>Drey</h1>
-          <div class="details">
-            <h2>Drey</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img">
-          <img src="design/image/Barber 3.jpg" alt="3" />
-          <h1>Jeremy</h1>
-          <div class="details">
-            <h2>Jeremy</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img active">
-          <img src="design/image/barber4.jpg" alt="4" />
-          <h1>Donie</h1>
-          <div class="details">
-            <h2>Donie</h2>
-            <p>MANG BARBER</p>
-          </div>
-        </div>
-        <div class="slider-img">
-          <img src="design/image/barber5.jpg" alt="5" />
-          <h1>Vien</h1>
-          <div class="details">
-            <h2>Vien</h2>
-            <p>MANG BARBER</p>
-          </div>
+    <div class="carousel">
+
+        <div class="list">
+
+            <div class="item" style="background-image: url(design/image/andre.jpg);">
+                <div class="content">
+                    <div class="title">Julius Andre</div>
+                    <div class="name">Gumba</div>
+                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url(design/image/kevin.jpg);">
+                
+                <div class="content">
+                    <div class="title">Kevin </div>
+                    <div class="name">Nuestro</div>
+                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(design/image/donie.jpg);">
+                
+                <div class="content">
+                    <div class="title">Donie</div>
+                    <div class="name">Alonte</div>
+                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(design/image/johnpaulo.jpg);">
+                
+                <div class="content">
+                    <div class="title">John Paulo </div>
+                    <div class="name">Torrijos</div>
+                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(design/image/vien.jpg);">
+                
+                <div class="content">
+                    <div class="title">Vien Regulacion </div>
+                    <div class="name">Gerona</div>
+                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
+                    <div class="btn">
+                        <button>See More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
-      </div>
-    </section>
+        <!--next prev button-->
+        <div class="arrows">
+            <button class="prev"><</button>
+            <button class="next">></button>
+        </div>
+
+
+        <!-- time running -->
+        <div class="timeRunning"></div>
+
+    </div>
+    <script>
+                    var nextBtn = document.querySelector('.next'),
+                prevBtn = document.querySelector('.prev'),
+                carousel = document.querySelector('.carousel'),
+                list = document.querySelector('.list'), 
+                item = document.querySelectorAll('.item'),
+                runningTime = document.querySelector('.carousel .timeRunning') 
+
+            let timeRunning = 3000 
+            let timeAutoNext = 7000
+
+            nextBtn.onclick = function(){
+                showSlider('next')
+            }
+
+            prevBtn.onclick = function(){
+                showSlider('prev')
+            }
+
+            let runTimeOut 
+
+            let runNextAuto = setTimeout(() => {
+                nextBtn.click()
+            }, timeAutoNext)
+
+
+            function resetTimeAnimation() {
+                runningTime.style.animation = 'none'
+                runningTime.offsetHeight /* trigger reflow */
+                runningTime.style.animation = null 
+                runningTime.style.animation = 'runningTime 7s linear 1 forwards'
+            }
+
+
+            function showSlider(type) {
+                let sliderItemsDom = list.querySelectorAll('.carousel .list .item')
+                if(type === 'next'){
+                    list.appendChild(sliderItemsDom[0])
+                    carousel.classList.add('next')
+                } else{
+                    list.prepend(sliderItemsDom[sliderItemsDom.length - 1])
+                    carousel.classList.add('prev')
+                }
+
+                clearTimeout(runTimeOut)
+
+                runTimeOut = setTimeout( () => {
+                    carousel.classList.remove('next')
+                    carousel.classList.remove('prev')
+                }, timeRunning)
+
+
+                clearTimeout(runNextAuto)
+                runNextAuto = setTimeout(() => {
+                    nextBtn.click()
+                }, timeAutoNext)
+
+                resetTimeAnimation() // Reset the running time animation
+            }
+
+            // Start the initial animation 
+            resetTimeAnimation()
+    </script>
 
     <button class="barbers-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
 

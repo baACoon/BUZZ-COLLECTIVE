@@ -6,6 +6,13 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+// Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    // If not logged in, redirect to login page
+    header('Location: login.php');
+    exit();
+}
+
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 
 // Database connection
