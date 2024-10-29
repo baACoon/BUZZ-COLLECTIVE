@@ -161,12 +161,13 @@ h5 span {
   animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
+
 .content .des{
   margin-top: 10px;
   margin-bottom: 20px;
   font-size: 18px;
   margin-left: 5px;
-
+  text-shadow: 3px 4px 4px rgba(53, 53, 52, 0.8);
   opacity: 0;
   animation: animate 1s ease-in-out 0.9s 1 forwards;
 }
@@ -262,7 +263,6 @@ h5 span {
   position: absolute;
   width: 0%;
   height: 4px;
-  background-color: #E43A19;
   left: 0;
   top: 0;
   animation: runningTime 7s linear 1 forwards;

@@ -128,12 +128,15 @@ $db->close();
 
             <div class="item" style="background-image: url(design/image/andre.jpg);">
                 <div class="content">
-                    <div class="title">Julius Andre</div>
+                    <div class="title">Andre</div>
                     <div class="name">Gumba</div>
-                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
-                    <div class="btn">
-                        <button>See More</button>
-                        <button>Subscribe</button>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">22</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>Head Barber Stylist | 2020 - present
+                                Head of Production  | 2023 - 2024
+                                Social Media Manager | 2021 - 2022
+                                Barber for 7 years and counting</span>
                     </div>
                 </div>
             </div>
@@ -143,10 +146,10 @@ $db->close();
                 <div class="content">
                     <div class="title">Kevin </div>
                     <div class="name">Nuestro</div>
-                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
-                    <div class="btn">
-                        <button>See More</button>
-                        <button>Subscribe</button>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">##</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>Barber | 20[##] - 20[##]</span>
                     </div>
                 </div>
 
@@ -157,10 +160,13 @@ $db->close();
                 <div class="content">
                     <div class="title">Donie</div>
                     <div class="name">Alonte</div>
-                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
-                    <div class="btn">
-                        <button>See More</button>
-                        <button>Subscribe</button>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">22</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>Head Barber Stylist | 2020 - present
+                                Head of Production  | 2023 - 2024
+                                Social Media Manager | 2021 - 2022
+                                Barber for 7 years and counting</span>
                     </div>
                 </div>
 
@@ -169,12 +175,13 @@ $db->close();
             <div class="item" style="background-image: url(design/image/johnpaulo.jpg);">
                 
                 <div class="content">
-                    <div class="title">John Paulo </div>
+                    <div class="title">Paulo </div>
                     <div class="name">Torrijos</div>
-                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
-                    <div class="btn">
-                        <button>See More</button>
-                        <button>Subscribe</button>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">23</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>6-7 years
+                        Barber | 2017 - present</span>
                     </div>
                 </div>
 
@@ -183,12 +190,45 @@ $db->close();
             <div class="item" style="background-image: url(design/image/vien.jpg);">
                 
                 <div class="content">
-                    <div class="title">Vien Regulacion </div>
+                    <div class="title">Vien</div>
                     <div class="name">Gerona</div>
-                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
-                    <div class="btn">
-                        <button>See More</button>
-                        <button>Subscribe</button>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">##</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>Barber | 20[##] - 20[##]</span>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(design/image/akiraaa.jpg);">
+                
+                <div class="content">
+                    <div class="title">Akira</div>
+                    <div class="name">Gata</div>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">26</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>Business owner | 2017 - present</span>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="item" style="background-image: url(design/image/monti.jpg);">
+                
+                <div class="content">
+                    <div class="title">Monti</div>
+                    <div class="name">Comia</div>
+                    <div class="des">
+                        <h4>Age: <span style="font-weight: 400">27</span></h4>
+                        <h4>Work / Position / Years of Experience: </h4>
+                        <span>Business Owner | 2022 - present
+                            Photographer | 2023 - present
+                            Multimedia Artist | 2018 - present</span>
+
                     </div>
                 </div>
 
