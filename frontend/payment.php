@@ -1,3 +1,75 @@
+<?php
+$target_dir = "uploads/";  // Folder to store uploaded images
+
+// Check if form was submitted and file is uploaded
+if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["error"] == 0) {
+
+    $target_file = $target_dir . basename($_FILES["receipt"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // Check if the file is an actual image
+    $check = getimagesize($_FILES["receipt"]["tmp_name"]);
+    if ($check === false) {
+        // Don't echo anything here, instead store the error message in a variable
+        $error = "File is not an image.";
+    }
+
+    // Check if the file already exists
+    if (file_exists($target_file)) {
+        $error = "Sorry, file already exists.";
+    }
+
+    // Check file size (limit to 5MB)
+    if ($_FILES["receipt"]["size"] > 5000000) {
+        $error = "Sorry, your file is too large.";
+    }
+
+    // Allow certain file formats (JPEG, PNG, JPG, GIF)
+    if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
+        $error = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    }
+
+    // Try to move the uploaded file to the target folder
+    if (move_uploaded_file($_FILES["receipt"]["tmp_name"], $target_file)) {
+        // Save the file information in the database
+        $conn = new mysqli("localhost", "root", "", "barbershop");  // Make sure credentials are correct
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $image_name = basename($_FILES["receipt"]["name"]);
+        $sql = "INSERT INTO payments (receipt, receipt_path) VALUES ('$image_name', '$target_file')";
+
+        if ($conn->query($sql) === TRUE) {
+            // Redirect to receipt.php after successful upload
+            header("Location: receipt.php");
+            exit(); // Ensure no further code is executed after the redirect
+        } else {
+            $error = "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    } else {
+        $error = "Sorry, there was an error uploading your file.";
+    }
+
+    // If there's an error, display it
+    if (isset($error)) {
+        echo $error;
+    }
+
+} else {
+    if (isset($_POST["submit"])) {
+        // Check for specific file upload error
+        if (isset($_FILES["receipt"]["error"])) {
+            echo "Error during file upload: " . $_FILES["receipt"]["error"];
+        } else {
+            echo "No file was uploaded or there was an error with the upload.";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,7 +194,7 @@
                     <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
                     <span id="file-label-text">UPLOAD RECEIPT</span>
                 </label>
-                <button type="submit" class="submit-button">SUBMIT</button>
+                <button type="submit" name="submit"class="submit-button">SUBMIT</button>
             </form>
         </div>
     </div>
@@ -168,7 +240,7 @@
             gcashPopup.style.display = 'none';
         });
 
-        // File input label update
+       // File input label update
         function updateFileName(input) {
             var fileName = input.files[0].name;
             document.getElementById('file-label-text').textContent = fileName;
@@ -176,13 +248,8 @@
 
         // Receipt form submit
         document.getElementById('receiptForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Simulate file upload success
-            alert('Receipt uploaded successfully!');
-            gcashPopup.style.display = 'none';
-            window.location.href = 'receipt.php'; // Redirect to the receipt page
+            // The form will be submitted normally, and PHP will handle the redirect
         });
-
         // Enable GCash button when terms are agreed
         var termsCheckbox = document.getElementById('termsCheckbox');
         termsCheckbox.addEventListener('change', function() {

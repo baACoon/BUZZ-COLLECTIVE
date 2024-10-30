@@ -2,6 +2,16 @@
 session_start();
 $appointments = isset($_SESSION['appointments']) ? $_SESSION['appointments'] : [];
 unset($_SESSION['appointments']);
+
+// Path to your branches.json file
+$json_file = $_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/frontend/admin/data/branches.json';
+
+// Get the contents of the JSON file
+$json_data = file_get_contents($json_file);
+
+// Decode the JSON data into a PHP array
+$branches = json_decode($json_data, true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,21 +62,46 @@ unset($_SESSION['appointments']);
                         <tr>
                             <th class="left"><input type="checkbox" id="select-all"></th>
                             <th>ID</th>
+                            <th>Branch</th>
+                            <th>Date & Time</th>
                             <th>Booking Data</th>
                             <th>Services</th>
-                            <th>Booking Date & Time</th>
+                            <th>Payment Option</th>
+                            <th>Reciept</th>
+                            <th>Payment Status</th>
                             <th>Status</th>
-                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/displayappointment.php');
+                        
                         foreach ($appointments as $appointment) {
+        
+                            $receipt_link = isset($appointment['receipt_path']) && !empty($appointment['receipt_path']) 
+                            ? "<a href='{$appointment['receipt_path']}' target='_blank'>View Receipt</a>" 
+                            : 'No Receipt Uploaded';                        
+                            $branch_name = 'Main Branch';
+                            // Iterate through the JSON branches to find a matching branchName
+                            foreach ($branches as $key => $branch) {
+                                if ($branch['branchName'] == $branch_name) {
+                                    $branch_location = $branch['branchLocation'];
+                                    break; // Exit loop once the branch is found
+                                }
+                            }
+                        
                             echo "
                             <tr data-appointment-id='{$appointment['appointment_id']}'>
                                 <td><input type='checkbox' name='appointments[]' value='{$appointment['appointment_id']}'></td>
                                 <td>{$appointment['appointment_id']}<br></td>
+                                 <td>
+                                    <strong>Branch Name:</strong> {$branch_name}<br>
+                                    
+                                </td> 
+                                <td>
+                                    <strong>Date:</strong> {$appointment['date']}<br>
+                                    <strong>Time:</strong> {$appointment['timeslot']}
+                                </td>
                                 <td>
                                     <strong>First Name:</strong> {$appointment['first_name']}<br>
                                     <strong>Last Name:</strong> {$appointment['last_name']}<br>
@@ -77,14 +112,11 @@ unset($_SESSION['appointments']);
                                     <strong>Service:</strong> {$appointment['services']}<br>
                                     <strong>Stylist:</strong> {$appointment['barber']}
                                 </td>
-                                <td>
-                                    <strong>Date:</strong> {$appointment['date']}<br>
-                                    <strong>Time:</strong> {$appointment['timeslot']}
-                                </td>
-                                <td>{$appointment['status_name']}</td>
+                                 <td>{$appointment['status_name']}</td>
+                                  <td>{$receipt_link}</td>
                             </tr>";
                         }
-                        ?>
+                            ?>
                     </tbody>
                 </table>
             </form>

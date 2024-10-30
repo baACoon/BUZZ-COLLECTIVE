@@ -1,6 +1,8 @@
 <?php
 $mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 
+$selected_branch = isset($_SESSION['selected_branch']) ? $_SESSION['selected_branch'] : null;
+
 
 if(isset($_GET['date'])){
     $date = $_GET['date'];

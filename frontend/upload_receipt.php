@@ -1,77 +1,87 @@
 <?php
-session_start();
+$target_dir = "uploads/receipts/";  // Folder to store uploaded images
 
-// Check if the form is submitted
-$uploadMessage = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if a file is uploaded
-    if (isset($_FILES['receipt']) && $_FILES['receipt']['error'] === UPLOAD_ERR_OK) {
-        $receipt = $_FILES['receipt'];
+// Check if form was submitted and file is uploaded
+if (isset($_POST["submit"]) && isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
 
-        // Define the directory to save the uploaded receipts
-        $uploadDir = 'uploads/';
-        $uploadFile = $uploadDir . basename($receipt['name']);
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // Move the uploaded file to the designated directory
-        if (move_uploaded_file($receipt['tmp_name'], $uploadFile)) {
-            $uploadMessage = "Receipt uploaded successfully!";
-            // You could add database saving logic here if needed
-        } else {
-            $uploadMessage = "There was an error uploading your receipt.";
+    // Check if the file is an actual image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check === false) {
+        echo "File is not an image.";
+        exit();
+    }
+
+    // Check if the file already exists
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        exit();
+    }
+
+    // Check file size (limit to 5MB)
+    if ($_FILES["image"]["size"] > 5000000) {
+        echo "Sorry, your file is too large.";
+        exit();
+    }
+
+    // Allow certain file formats (JPEG, PNG, JPG, GIF)
+    if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        exit();
+    }
+
+    // Try to move the uploaded file to the target folder
+    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        // Save the file information in the database
+        $conn = new mysqli("localhost", "root", "", "barbershop");  // Make sure credentials are correct
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
         }
+
+        $image_name = basename($_FILES["image"]["name"]);
+        $sql = "INSERT INTO payments (receipt, receipt_path) VALUES ('$image_name', '$target_file')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "The file " . htmlspecialchars($image_name) . " has been uploaded and saved to the database.";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
     } else {
-        $uploadMessage = "No receipt uploaded or there was an upload error.";
+        echo "Sorry, there was an error uploading your file.";
+    }
+
+} else {
+    if (isset($_POST["submit"])) {
+        // Check for specific file upload error
+        if (isset($_FILES["image"]["error"])) {
+            echo "Error during file upload: " . $_FILES["image"]["error"];
+        } else {
+            echo "No file was uploaded or there was an error with the upload.";
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/design/uploadreciept.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-    <title>Buzz & Collective - GCASH Payment</title>
+    <title>Upload Receipt</title>
 </head>
 <body>
-    <div class="confirmation-form">
-        <h2>Buzz & Collective Confirmation</h2>
-        <p>MAIN BRANCH</p>
-    </div>
-
-    <div class="gcash-container">
-        <p>SEND TO</p>
-        <h3>0960 520 5411</h3>
-        <img src="../frontend/design/image/QRGacsh.jpg" alt="GCASH QR Code">
-    </div>
-
     <div class="receipt-upload">
-        <h4>UPLOAD GCASH RECEIPT</h4>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form id="receiptForm" action="upload_receipt.php" method="POST" enctype="multipart/form-data">
             <label class="file-label">
-                <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
-                <span id="file-label-text">Choose file</span>
+                <input type="file" name="image" accept="image/*" required>
+                <span id="file-label-text">UPLOAD RECEIPT</span>
             </label>
-            <a href="receipt.php">
-                <input type="submit" value="Upload Receipt">
-            </a>
-            
+            <button type="submit" name="submit" class="submit-button">SUBMIT</button>
         </form>
-        <div class="upload-message">
-            <?php if (!empty($uploadMessage)): ?>
-                <p><?php echo $uploadMessage; ?></p>
-            <?php endif; ?>
-        </div>
     </div>
-
-    <script>
-        function updateFileName(input) {
-            var fileName = input.files[0].name;
-            document.getElementById('file-label-text').textContent = fileName;
-        }
-    </script>
-
 </body>
 </html>
