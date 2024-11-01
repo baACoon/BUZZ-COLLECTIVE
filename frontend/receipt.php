@@ -9,15 +9,16 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';       
 
 
-
 $formData = $_SESSION['form_data'] ?? array();
 
 $serviceFee = $_SESSION['payment_data']['service_fee'] ?? 0;
 $appointmentFee = $_SESSION['payment_data']['appointment_fee'] ?? 0;
 $totalPayment = $_SESSION['payment_data']['total_payment'] ?? 0;
 
+/*// Get the payment option selected by the customer
+$paymentOption = $_SESSION['payment_data']['payment_option'] ?? 'Not specified';
+*/
 $amountPaid = $appointmentFee;
-
 $amountDue = $totalPayment - $amountPaid;
 
 $date = $_SESSION['form_data']['date'] ?? '';
@@ -48,7 +49,7 @@ try {
         . '<p>Thank you for choosing Buzz & Collective!</p>';
  
     $mail->send();
-       echo 'Confirmation email has been sent.';
+       echo '<div>Confirmation email has been sent.';
 } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -71,7 +72,6 @@ try {
         <p>MAIN BRANCH</p>
     </div>
    
-
     <div class="confirmation-section">
         <div class="confirmation-message">
             <h3><a href="home.php">HOME</a></h3>
@@ -92,12 +92,13 @@ try {
                 <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
                 <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
                 <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
+                <!-- <p>PAYMENT OPTION <strong><?php echo $paymentOption; ?></strong></p> Added Payment Option -->
                 <hr>
                 <p class="service-fee">Service Fee <break><?php echo number_format($serviceFee, 0); ?></break></p>
-                <p class="appointment-fee">Appointment Fee <break><?php echo number_format($appointmentFee, 0); ?></break> </p>
+                <p class="appointment-fee">Appointment Fee <break><?php echo number_format($appointmentFee, 0); ?></break></p>
                 <hr>
-                <p class="amount-paid">Amount Paid  <break><?php echo number_format($amountPaid, 0); ?></break></p>
-                <p class="amount-due"><strong>AMOUNT DUE</strong><strong><?php echo number_format($amountDue, 0); ?></strong></p>
+                <p class="amount-paid">Amount Paid <break><?php echo number_format($amountPaid, 0); ?></break></p>
+                <p class="amount-due"><strong>AMOUNT DUE</strong> <strong><?php echo number_format($amountDue, 0); ?></strong></p>
             </div>
             <div class="confirmation-buttons">
                 <form method="POST" action="appointment.php">
@@ -107,9 +108,7 @@ try {
                     <button type="submit" style="font-family: 'Montserrat', sans-serif; border: none; cursor: pointer;">Home</button>
                 </form>
             </div>
-                
+        </div>
     </div>
-
-
 </body>
 </html>
