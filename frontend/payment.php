@@ -1,92 +1,78 @@
 <?php
-$target_dir = $_SERVER['DOCUMENT_ROOT'] . "/BUZZ-COLLECTIVE/uploads/receipts/";
-if (!file_exists($target_dir)) {
-    mkdir($target_dir, 0755, true);
-}
-
-
-
-function isValidImage($file) {
-    $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-    $max_size = 5 * 1024 * 1024; // 5MB
-
-    if (!in_array($file['type'], $allowed_types)) {
-        return "Invalid file type. Only JPG, PNG & GIF files are allowed.";
-    }
-    if ($file['size'] > $max_size) {
-        return "File is too large. Maximum size is 5MB.";
-    }
-    return true;
-}
+$target_dir = "uploads/";  // Folder to store uploaded images
 
 // Check if form was submitted and file is uploaded
 if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["error"] == 0) {
 
-    try {
-        error_log("Form and file upload detected"); // Log to confirm form submission
-        if ($_FILES["receipt"]["error"] !== 0) {
-            throw new Exception("Error uploading file: " . $_FILES["receipt"]["error"]);
+    $target_file = $target_dir . basename($_FILES["receipt"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // Check if the file is an actual image
+    $check = getimagesize($_FILES["receipt"]["tmp_name"]);
+    if ($check === false) {
+        // Don't echo anything here, instead store the error message in a variable
+        $error = "File is not an image.";
+    }
+
+    // Check if the file already exists
+    if (file_exists($target_file)) {
+        $error = "Sorry, file already exists.";
+    }
+
+    // Check file size (limit to 5MB)
+    if ($_FILES["receipt"]["size"] > 5000000) {
+        $error = "Sorry, your file is too large.";
+    }
+
+    // Allow certain file formats (JPEG, PNG, JPG, GIF)
+    if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
+        $error = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    }
+
+    // Try to move the uploaded file to the target folder
+    if (move_uploaded_file($_FILES["receipt"]["tmp_name"], $target_file)) {
+        // Save the file information in the database
+        $conn = new mysqli("localhost", "root", "", "barbershop");  // Make sure credentials are correct
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
         }
 
-        // Validate image
-        error_log("Image validation starting");
-        $validation_result = isValidImage($_FILES["receipt"]);
-        if ($validation_result !== true) {
-            throw new Exception($validation_result);
+        $image_name = basename($_FILES["receipt"]["name"]);
+        $appointment_id = intval($_POST["appointment_id"]);
+        $sql = "INSERT INTO appointments (receipt, receipt_path) VALUES ('$image_name', '$target_file')";
+
+        if ($conn->query($sql) === TRUE) {
+            // Redirect to receipt.php after successful upload
+            header("Location: receipt.php");
+            exit(); // Ensure no further code is executed after the redirect
+        } else {
+            $error = "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        // Generate unique filename
-        error_log("Generating filename");
-        $filename = uniqid() . '_' . basename($_FILES["receipt"]["name"]);
-        $target_file = $target_dir . $filename;
-        $web_path = "/BUZZ-COLLECTIVE/uploads/receipts/" . $filename;
+        $conn->close();
+    } else {
+        $error = "Sorry, there was an error uploading your file.";
+    }
 
-        // Move uploaded file
-        if (!move_uploaded_file($_FILES["receipt"]["tmp_name"], $target_file)) {
-            throw new Exception("Failed to move uploaded file.");
+    // If there's an error, display it
+    if (isset($error)) {
+        echo $error;
+    }
+
+} else {
+    if (isset($_POST["submit"])) {
+        // Check for specific file upload error
+        if (isset($_FILES["receipt"]["error"])) {
+            echo "Error during file upload: " . $_FILES["receipt"]["error"];
+        } else {
+            echo "No file was uploaded or there was an error with the upload.";
         }
-
-        // Connect to database
-        error_log("Connecting to the database");
-        $db = new mysqli("localhost", "root", "", "barbershop");
-        if ($db->connect_error) {
-            throw new Exception("Database connection failed: " . $db->connect_error);
-        }
-
-        // Get appointment ID
-        $appointment_id = isset($_POST['appointment_id']) ? (int)$_POST['appointment_id'] : null;
-        if (!$appointment_id) {
-            throw new Exception("No appointment ID provided.");
-        }
-
-        // Insert payment record
-        error_log("Inserting payment record");
-        $stmt = $db->prepare("INSERT INTO payments (appointment_id, receipt, receipt_path) VALUES (?, ?, ?)");
-        $stmt->bind_param("iss", $appointment_id, $filename, $web_path);
-
-        if (!$stmt->execute()) {
-            throw new Exception("Failed to save payment record: " . $stmt->error);
-        }
-
-        // Update appointment status
-        error_log("Updating appointment status");
-        $update_stmt = $db->prepare("UPDATE appointments SET payment_status = 'Paid' WHERE appointment_id = ?");
-        $update_stmt->bind_param("i", $appointment_id);
-        $update_stmt->execute();
-
-        $db->close();
-
-        error_log("Redirecting to receipt.php");
-        header("Location: receipt.php");
-        exit(); // Ensure no further code is executed after the redirect
-
-    } catch (Exception $e) {
-        $error = $e->getMessage();
-        error_log("Payment processing error: " . $error);
     }
 }
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -206,9 +192,10 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
         </div>
         <div class="receipt-upload">
             <!-- <h4>UPLOAD GCASH RECEIPT</h4> -->
-            <form id="receiptForm" method="POST" action="receipt.php" enctype="multipart/form-data">
+            <form id="receiptForm" method="POST" enctype="multipart/form-data">
                 <label class="file-label">
                     <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
+                    <input type="hidden" name="appointment_id" value="<?php echo $appointment_id; ?>">  <!-- Replace with the actual ID -->
                     <span id="file-label-text">UPLOAD RECEIPT</span>
                 </label>
                 <button type="submit" name="submit"class="submit-button">SUBMIT</button>
@@ -217,16 +204,12 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
     </div>
 
     <script>
-        let selectedOption = null;
-
-        function selectPaymentOption(option) {
-            selectedOption = option;
-            document.getElementById('gcashButton').disabled = !document.getElementById('termsCheckbox').checked;
-        }
-
-        document.getElementById('termsCheckbox').addEventListener('change', function () {
-            document.getElementById('gcashButton').disabled = !this.checked;
+        // Disable GCash button on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var gcashButton = document.getElementById('gcashButton');
+            gcashButton.disabled = true; // Make sure it's disabled by default
         });
+
         // Toggle payment option
         document.getElementById('fullPayment').addEventListener('click', function() {
             toggleActive('fullPayment');
@@ -235,6 +218,7 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
         document.getElementById('appointmentFee').addEventListener('click', function() {
             toggleActive('appointmentFee');
         });
+
         function toggleActive(containerId) {
             var containers = document.querySelectorAll('.payment-container');
             containers.forEach(container => {
@@ -246,19 +230,6 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
             activeContainer.classList.add('active');
             activeContainer.style.color = 'black'; // Change text color to black
         }
-
-        function openGcashPopup() {
-            document.getElementById('gcashPopup').style.display = 'block';
-        }
-
-        function closeGcashPopup() {
-            document.getElementById('gcashPopup').style.display = 'none';
-        }
-        // Disable GCash button on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            var gcashButton = document.getElementById('gcashButton');
-            gcashButton.disabled = true; // Make sure it's disabled by default
-        });
 
         // GCash popup logic
         var gcashButton = document.getElementById('gcashButton');

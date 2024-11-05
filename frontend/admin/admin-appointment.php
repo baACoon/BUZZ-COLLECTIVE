@@ -77,23 +77,19 @@ $branches = json_decode($json_data, true);
                         include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/displayappointment.php');
                         
                         foreach ($appointments as $appointment) {
-                            // Debug log
-                            error_log("Processing appointment: " . print_r($appointment, true));
         
-                            $receipt_link = 'No Receipt Uploaded';
-                            if (isset($appointment['receipt_path']) && !empty($appointment['receipt_path'])) {
-                                // Construct the correct path
-                                $receipt_url = '/BUZZ-COLLECTIVE/uploads/receipts/' . basename($appointment['receipt_path']);
-                                error_log("Receipt URL constructed: " . $receipt_url);
-                                
-                                $receipt_link = "
-                                    <a href='{$receipt_url}' target='_blank' class='btn btn-primary btn-sm'>
-                                        View Receipt
-                                    </a>";
+                            $receipt_link = isset($appointment['receipt_path']) && !empty($appointment['receipt_path']) 
+                            ? "<a href='{$appointment['receipt_path']}' target='_blank'>View Receipt</a>" 
+                            : 'No Receipt Uploaded';                        
+                            $branch_name = 'Main Branch';
+                            // Iterate through the JSON branches to find a matching branchName
+                            foreach ($branches as $key => $branch) {
+                                if ($branch['branchName'] == $branch_name) {
+                                    $branch_location = $branch['branchLocation'];
+                                    break; // Exit loop once the branch is found
+                                }
                             }
-                            
-                            $branch_name = isset($appointment['branch_name']) ? $appointment['branch_name'] : 'Main Branch';
-                            
+                        
                             // Display appointment data
                             echo "
                             <tr data-appointment-id='{$appointment['appointment_id']}'>
@@ -116,13 +112,14 @@ $branches = json_decode($json_data, true);
                                     <strong>Service:</strong> {$appointment['services']}<br>
                                     <strong>Stylist:</strong> {$appointment['barber']}
                                 </td>
-                                <td>{$appointment['payment_option']}</td>
+                                <td>" . (isset($appointment['payment_option']) ? $appointment['payment_option'] : 'N/A') . "</td>
                                 <td>{$receipt_link}</td>
-                                <td>{$appointment['payment_status']}</td>
+                                <td>" . (isset($appointment['payment_status']) ? $appointment['payment_status'] : 'N/A') . "</td>
                                 <td>{$appointment['status_name']}</td>
                             </tr>";
+
                         }
-                        ?>
+                            ?>
                     </tbody>
                 </table>
             </form>
