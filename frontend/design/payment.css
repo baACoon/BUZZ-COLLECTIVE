@@ -282,3 +282,9 @@ body::before {
 .submit-button:hover {
     background-color: #ff522f; 
 }
+
+.file-info {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}

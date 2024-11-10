@@ -1,72 +1,71 @@
 <?php
-$target_dir = "uploads/";  // Folder to store uploaded images
+session_start();
 
-// Check if form was submitted and file is uploaded
-if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["error"] == 0) {
+$mysqli = new mysqli("localhost", "root", "", "barbershop");
+if($mysqli->connect_error){
+    die("Database connection failed: " . $mysqli->connect_error);
+}
 
-    $target_file = $target_dir . basename($_FILES["receipt"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Check if the file is an actual image
-    $check = getimagesize($_FILES["receipt"]["tmp_name"]);
-    if ($check === false) {
-        // Don't echo anything here, instead store the error message in a variable
-        $error = "File is not an image.";
+if(isset($_POST['payment_option'])){
+    $paymentOption = $_POST['payment_option'];
+    $_SESSION['payment_data']['payment_option'] = $paymentOption;
+
+    if ($paymentOption == 'Full Payment'){
+        $_SESSION['payment_data']['amount_paid'] = $_SESSION['payment_data']['service_fee'] + $_SESSION['payment_data']['appointment_fee'];    
+        $_SESSION['payment_data']['balance'] = 0;
+    }else{
+        $_SESSION['payment_data']['amount_paid'] = $_SESSION['payment_data']['appointment_fee'];
+        $_SESSION['payment_data']['balance'] = $_SESSION['payment_data']['service_fee']; 
+    }
+}
+
+
+$uploadMessage ='';
+$uploadError = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
+    $target_dir = "uploads/receipts";  
+
+    if(!file_exists($target_dir)){
+        mkdir($target_dir,0777,true);
     }
 
-    // Check if the file already exists
-    if (file_exists($target_file)) {
-        $error = "Sorry, file already exists.";
-    }
+    $originalFileName = $_FILES['receipt']['name'];
+    $fileExtension = strtolower(pathinfo($_FILES['receipt']['name'], PATHINFO_EXTENSION));
+    $newFileName = uniqid('receipt_', true) . '.' . $fileExtension;
+    $targetFile = $target_dir . $newFileName;
+    
+    $allowedTypes = array('jpg','jpeg','png','pdf');
 
-    // Check file size (limit to 5MB)
-    if ($_FILES["receipt"]["size"] > 5000000) {
-        $error = "Sorry, your file is too large.";
-    }
+    if (!in_array($fileExtension, $allowedTypes)){
+        $uploadError = "Only JPG, JPEG, PNG, and PDF files are allowed.";
+    }elseif ($_FILES['receipt']['size'] > 5000000){
+        $uploadError = "Your file is too large. Maximum size is 5MB.";
+    }else{
+        if (move_uploaded_file($_FILES["receipt"]["tmp_name"], $targetFile)) {
+            if (isset($_SESSION['form_data']['appointment_id'])) {
+                $appointmentId = $_SESSION['form_data']['appointment_id'];
+                $_SESSION['payment_data']['original_filename'] = $originalFileName;
+                $_SESSION['payment_data']['receipt_filename'] = $newFileName;
+                $_SESSION['payment_data']['receipt_path'] = $targetFile;
 
-    // Allow certain file formats (JPEG, PNG, JPG, GIF)
-    if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
-        $error = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    }
+                $stmt = $mysqli->prepare("UPDATE appointments SET receipt = ?, receipt_path = ? WHERE appointment_id = ?");
+                $stmt->bind_param('ssi', $newFileName, $targetFile, $appointmentId);
 
-    // Try to move the uploaded file to the target folder
-    if (move_uploaded_file($_FILES["receipt"]["tmp_name"], $target_file)) {
-        // Save the file information in the database
-        $conn = new mysqli("localhost", "root", "", "barbershop");  // Make sure credentials are correct
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $image_name = basename($_FILES["receipt"]["name"]);
-        $appointment_id = intval($_POST["appointment_id"]);
-        $sql = "INSERT INTO appointments (receipt, receipt_path) VALUES ('$image_name', '$target_file')";
-
-        if ($conn->query($sql) === TRUE) {
-            // Redirect to receipt.php after successful upload
-            header("Location: receipt.php");
-            exit(); // Ensure no further code is executed after the redirect
-        } else {
-            $error = "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        $conn->close();
-    } else {
-        $error = "Sorry, there was an error uploading your file.";
-    }
-
-    // If there's an error, display it
-    if (isset($error)) {
-        echo $error;
-    }
-
-} else {
-    if (isset($_POST["submit"])) {
-        // Check for specific file upload error
-        if (isset($_FILES["receipt"]["error"])) {
-            echo "Error during file upload: " . $_FILES["receipt"]["error"];
-        } else {
-            echo "No file was uploaded or there was an error with the upload.";
+                if($stmt->execute()){
+                    $uploadMessage = "Payment receipt uploaded successfully!";
+                    header("Location: receipt.php");
+                    exit();
+                }else{
+                    $uploadError = "Database update failed: " . $mysqli->error;
+                }
+                $stmt->close();
+            }else{
+                $uploadError = "Appointment ID missing. Please confirm your appointment details first.";
+            }
+        }else{
+            $uploadError = "There was an error uploading your file.";
         }
     }
 }
@@ -93,23 +92,35 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
 
     <p class="payment-opt">PAYMENT OPTION</p>
 
-    <div class="payment-section">
-        <div class="payment-container" id="fullPayment">
-            <h1>400</h1>
-            <p>PHP</p>
-            <h3>Full Payment</h3>
-            <h5>(Service + Appointment Fee)</h5>
-            <h5>Refund available</h5>
-        </div>
+    <form method="POST" action="payment.php">
+        <div class="payment-section">
+            <div class="payment-container" id="fullPayment">
+                <h4>Full Payment</h4>
+                <p>Service Fee: ₱<?php echo number_format($_SESSION['payment_data']['service_fee'], 2); ?></p>
+                <p>Appointment Fee: ₱<?php echo number_format($_SESSION['payment_data']['appointment_fee'], 2); ?></p>
+                <p class="total">Total Payment: ₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?></p>
+                <h5>(Service + Appointment Fee)</h5>
+                <h5>Refund available</h5>
+                <input type="radio" name="payment_option" value="Full Payment" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Full Payment') echo 'checked'; ?> />
+            </div>
 
-        <div class="payment-container" id="appointmentFee">
-            <h1>150</h1>
-            <p>PHP</p>
-            <h3>Appointment Fee</h3>
+            <div class="payment-container" id="appointmentFee">
+                <h1>150</h1>
+                <p>PHP</p>
+                <h3>Appointment Fee</h3>
+                <input type="radio" name="payment_option" value="Appointment Fee" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Appointment Fee') echo 'checked'; ?> />
+            </div>
         </div>
-    </div>
+    </form>
+    <?php if ($uploadError): ?>
+        <div class="error-message"><?php echo $uploadError; ?></div>
+    <?php endif; ?>
+            
+    <?php if ($uploadMessage): ?>
+        <div class="success-message"><?php echo $uploadMessage; ?></div>
+    <?php endif; ?>
 
-    <!-- Terms and Conditions Section -->
+
     <div class="terms-container">
         <label>
             <input type="checkbox" id="termsCheckbox">
@@ -179,8 +190,8 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
         </div>
     </div>
 
-    <!-- Custom popup for GCash -->
-    <div class="custom-popup" id="gcashPopup">
+     <!-- Custom popup for GCash -->
+     <div class="custom-popup" id="gcashPopup">
         <i class='bx bx-x' id="closePopup"></i> <!-- Add this line for the close button -->
         <h2>UPLOAD SCREENSHOT</h2>
         <div class="gcash-container">
@@ -192,10 +203,10 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
         </div>
         <div class="receipt-upload">
             <!-- <h4>UPLOAD GCASH RECEIPT</h4> -->
-            <form id="receiptForm" method="POST" enctype="multipart/form-data">
+            <form action="payment.php" id="receiptForm" method="POST" enctype="multipart/form-data">
                 <label class="file-label">
-                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
-                    <input type="hidden" name="appointment_id" value="<?php echo $appointment_id; ?>">  <!-- Replace with the actual ID -->
+                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)"> <br>
+                    <p class="file-info">Accepted formats: JPG, JPEG, PNG, PDF (Max size: 5MB)</p>
                     <span id="file-label-text">UPLOAD RECEIPT</span>
                 </label>
                 <button type="submit" name="submit"class="submit-button">SUBMIT</button>
@@ -203,109 +214,7 @@ if (isset($_POST["submit"]) && isset($_FILES["receipt"]) && $_FILES["receipt"]["
         </div>
     </div>
 
-    <script>
-        // Disable GCash button on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            var gcashButton = document.getElementById('gcashButton');
-            gcashButton.disabled = true; // Make sure it's disabled by default
-        });
+        <script src="../frontend/js/payment.js"></script>
 
-        // Toggle payment option
-        document.getElementById('fullPayment').addEventListener('click', function() {
-            toggleActive('fullPayment');
-        });
-
-        document.getElementById('appointmentFee').addEventListener('click', function() {
-            toggleActive('appointmentFee');
-        });
-
-        function toggleActive(containerId) {
-            var containers = document.querySelectorAll('.payment-container');
-            containers.forEach(container => {
-                container.classList.remove('active');
-                container.style.color = ''; // Reset color
-            });
-            
-            var activeContainer = document.getElementById(containerId);
-            activeContainer.classList.add('active');
-            activeContainer.style.color = 'black'; // Change text color to black
-        }
-
-        // GCash popup logic
-        var gcashButton = document.getElementById('gcashButton');
-        var gcashPopup = document.getElementById('gcashPopup');
-        var closePopup = document.getElementById('closePopup');
-
-        gcashButton.addEventListener('click', function() {
-            gcashPopup.style.display = 'block';
-        });
-
-        closePopup.addEventListener('click', function() {
-            gcashPopup.style.display = 'none';
-        });
-
-       // File input label update
-        function updateFileName(input) {
-            var fileName = input.files[0].name;
-            document.getElementById('file-label-text').textContent = fileName;
-        }
-
-        // Receipt form submit
-        document.getElementById('receiptForm').addEventListener('submit', function(e) {
-            // The form will be submitted normally, and PHP will handle the redirect
-        });
-        // Enable GCash button when terms are agreed
-        var termsCheckbox = document.getElementById('termsCheckbox');
-        termsCheckbox.addEventListener('change', function() {
-            var gcashButton = document.getElementById('gcashButton');
-            if (termsCheckbox.checked) {
-                gcashButton.classList.remove('disabled');
-                gcashButton.disabled = false;
-            } else {
-                gcashButton.classList.add('disabled');
-                gcashButton.disabled = true;
-            }
-        });
-        document.addEventListener("DOMContentLoaded", function() {
-        // Get the modal
-            var modal = document.getElementById("myModal");
-
-            // Get the link that opens the modal
-            var termsLink = document.getElementById("termslink");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            var button = document.getElementsByClassName("agree")[0];
-
-            // When the user clicks the link, open the modal
-            termsLink.onclick = function(event) {
-                event.preventDefault(); // Prevent default anchor behavior
-                modal.style.display = "block"; // Show the modal
-            }
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none"; // Hide the modal
-            }
-            button.onclick = function() {
-                termsCheckbox.checked = true;
-                modal.style.display = "none"; // Hide the modal
-                if (termsCheckbox.checked) {
-                    gcashButton.classList.remove('disabled');
-                    gcashButton.disabled = false;
-                    } else {
-                        gcashButton.classList.add('disabled');
-                        gcashButton.disabled = true;
-                    }
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none"; // Hide the modal
-                }
-            }
-        });
-    </script>
 </body>
 </html>

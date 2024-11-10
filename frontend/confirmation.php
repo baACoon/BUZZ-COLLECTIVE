@@ -63,14 +63,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {                                                                                                                                         // Check if the timeslot is already booked
+    if ($result->num_rows > 0) {
         echo "<div class='prompt'>This timeslot is already booked.</div>";
-    } else {                                                                                                                                                                                                            
-        $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");                                                                                                                                // Insert the booking into the database
+    } else {
+        $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
         
         if ($stmt->execute()) {
-            echo "<div class='prompt' >Please Confirm the details!</div>";
+            $_SESSION['form_data']['appointment_id'] = $mysqli->insert_id; // Store appointment_id
+            $_SESSION['form_data']['date'] = $date;
+            $_SESSION['form_data']['email'] = $_SESSION['form_data']['email']; // Email is already stored
+            
+            echo "<div class='prompt'>Please Confirm the details!</div>";
         } else {
             echo "<div class='prompt'>There was an error processing your booking. Please try again.</div>";
         }

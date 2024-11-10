@@ -8,21 +8,33 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php'; 
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';       
 
-
 $formData = $_SESSION['form_data'] ?? array();
-
 $serviceFee = $_SESSION['payment_data']['service_fee'] ?? 0;
 $appointmentFee = $_SESSION['payment_data']['appointment_fee'] ?? 0;
 $totalPayment = $_SESSION['payment_data']['total_payment'] ?? 0;
 
-/*// Get the payment option selected by the customer
-$paymentOption = $_SESSION['payment_data']['payment_option'] ?? 'Not specified';
-*/
+$totalPayment = $serviceFee + $appointmentFee;
 $amountPaid = $appointmentFee;
 $amountDue = $totalPayment - $amountPaid;
+$balance = $totalPayment - $amountPaid;
 
 $date = $_SESSION['form_data']['date'] ?? '';
 $time = $_SESSION['form_data']['timeslot'] ?? '';
+
+$paymentOption = $_SESSION['payment_data']['payment_option'] ?? 'Not specified';
+$amountPaid = $_SESSION['payment_data']['amount_paid'] ?? 0;
+$balance = $_SESSION['payment_data']['balance'] ?? 0;
+$originalFilename = $_SESSION['payment_data']['original_filename'] ?? '';
+
+// Adjust amount based on payment option
+if ($paymentOption == 'Full Payment') {
+    $amountPaid = $totalPayment; // Full payment
+    $amountDue = 0; // Amount due is zero
+} else {
+    $amountPaid = $appointmentFee; // Appointment fee paid
+    $amountDue = $totalPayment - $amountPaid; // Remaining amount
+}
+
 
 $mail = new PHPMailer(true);
 try {
@@ -33,28 +45,24 @@ try {
     $mail->Password   = 'nwpeckxgsmpbimlb';                                                                                                                                                                 // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
- 
-    
+
     $mail->setFrom('buzzincollective@gmail.com', 'Buzz & Collective');
     $mail->addAddress($_SESSION['form_data']['email']);                                                                                                                                                     // Client email
- 
-                 
+
     $mail->isHTML(true);                                                                                                                                                                                        // Content
     $mail->Subject = 'Appointment Confirmation';
     $mail->Body    = '<p>Dear ' . $_SESSION['form_data']['first_name'] . ' ' . $_SESSION['form_data']['last_name'] . ',</p>'
-        . '<p>Your appointment for ' . $date . ' at ' . $time . ' is still pending. Wait until your payment is confirm. </p>'
+        . '<p>Your appointment for ' . $date . ' at ' . $time . ' is still pending. Wait until your payment is confirmed. </p>'
         . '<p>Check your email from time to time for confirmation of your appointment.</p>'
         . '<p>Service: ' . ucfirst($_SESSION['form_data']['services']) . '</p>'
         . '<p>Total Payment: ' . number_format($totalPayment, 0) . '</p>'
         . '<p>Thank you for choosing Buzz & Collective!</p>';
- 
+
     $mail->send();
-       echo '<div>Confirmation email has been sent.';
 } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,14 +100,39 @@ try {
                 <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
                 <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
                 <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
-                <!-- <p>PAYMENT OPTION <strong><?php echo $paymentOption; ?></strong></p> Added Payment Option -->
+                <p>PAYMENT OPTION <strong><?php echo htmlspecialchars($paymentOption); ?></strong></p>
                 <hr>
-                <p class="service-fee">Service Fee <break><?php echo number_format($serviceFee, 0); ?></break></p>
-                <p class="appointment-fee">Appointment Fee <break><?php echo number_format($appointmentFee, 0); ?></break></p>
+                <p class="service-fee">Service Fee <break>₱<?php echo number_format($serviceFee, 0); ?></break></p>
+                <p class="appointment-fee">Appointment Fee <break>₱<?php echo number_format($appointmentFee, 0); ?></break></p>
                 <hr>
-                <p class="amount-paid">Amount Paid <break><?php echo number_format($amountPaid, 0); ?></break></p>
-                <p class="amount-due"><strong>AMOUNT DUE</strong> <strong><?php echo number_format($amountDue, 0); ?></strong></p>
+                <p class="amount-paid">Amount Paid <break>₱<?php echo number_format($amountPaid, 0); ?></break></p>
+                <?php if ($balance > 0): ?>
+                    <p class="balance"><strong>BALANCE</strong> <strong>₱<?php echo number_format($balance, 0); ?></strong></p>
+                <?php else: ?>
+                    <p class="balance"><strong>Paid in Full</strong></p>
+                <?php endif; ?>
+
             </div>
+
+            <div class="receipt-image">
+                <h3>Receipt Image</h3>
+                <?php if (!empty($originalFilename)): ?>
+                    <p>Uploaded File: <?php echo htmlspecialchars($originalFilename); ?></p>
+                    <?php 
+                    $fileExtension = strtolower(pathinfo($originalFilename, PATHINFO_EXTENSION));
+                    /*if (in_array($fileExtension, ['jpg', 'jpeg', 'png'])) {
+                        $receiptPath = $_SESSION['payment_data']['receipt_path'] ?? '';
+                        if (!empty($receiptPath)) {
+                            echo "<img src='" . htmlspecialchars($receiptPath) . "' alt='Receipt' style='max-width: 100%; height: auto;'/>";
+                        }
+                    }*/
+                    ?>
+                <?php else: ?>
+                    <p>No receipt image uploaded.</p>
+                <?php endif; ?>
+            </div>
+
+
             <div class="confirmation-buttons">
                 <form method="POST" action="appointment.php">
                     <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Book again</button>
