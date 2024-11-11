@@ -8,32 +8,17 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php'; 
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';       
 
-$formData = $_SESSION['form_data'] ?? array();
+// Fetch values from session
 $serviceFee = $_SESSION['payment_data']['service_fee'] ?? 0;
 $appointmentFee = $_SESSION['payment_data']['appointment_fee'] ?? 0;
-$totalPayment = $_SESSION['payment_data']['total_payment'] ?? 0;
-
-$totalPayment = $serviceFee + $appointmentFee;
-$amountPaid = $appointmentFee;
-$amountDue = $totalPayment - $amountPaid;
-$balance = $totalPayment - $amountPaid;
+$totalPayment = $_SESSION['payment_data']['total_payment'] ?? ($serviceFee + $appointmentFee);
+$amountPaid = $_SESSION['payment_data']['amount_paid'] ?? 0;
+$balance = $_SESSION['payment_data']['balance'] ?? ($totalPayment - $amountPaid);
+$paymentOption = $_SESSION['payment_data']['payment_option'] ?? 'Not Specified';
 
 $date = $_SESSION['form_data']['date'] ?? '';
 $time = $_SESSION['form_data']['timeslot'] ?? '';
-
-$paymentOption = $_SESSION['payment_data']['payment_option'] ?? 'Not specified';
-$amountPaid = $_SESSION['payment_data']['amount_paid'] ?? 0;
-$balance = $_SESSION['payment_data']['balance'] ?? 0;
 $originalFilename = $_SESSION['payment_data']['original_filename'] ?? '';
-
-// Adjust amount based on payment option
-if ($paymentOption == 'Full Payment') {
-    $amountPaid = $totalPayment; // Full payment
-    $amountDue = 0; // Amount due is zero
-} else {
-    $amountPaid = $appointmentFee; // Appointment fee paid
-    $amountDue = $totalPayment - $amountPaid; // Remaining amount
-}
 
 
 $mail = new PHPMailer(true);
@@ -102,15 +87,17 @@ try {
                 <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
                 <p>PAYMENT OPTION <strong><?php echo htmlspecialchars($paymentOption); ?></strong></p>
                 <hr>
-                <p class="service-fee">Service Fee <break>₱<?php echo number_format($serviceFee, 0); ?></break></p>
-                <p class="appointment-fee">Appointment Fee <break>₱<?php echo number_format($appointmentFee, 0); ?></break></p>
+                <p>Service Fee: ₱<?php echo number_format($serviceFee, 2); ?></p>
+                <p>Appointment Fee: ₱<?php echo number_format($appointmentFee, 2); ?></p>
                 <hr>
-                <p class="amount-paid">Amount Paid <break>₱<?php echo number_format($amountPaid, 0); ?></break></p>
+                <p>Amount Paid: ₱<?php echo number_format($amountPaid, 2); ?></p>
                 <?php if ($balance > 0): ?>
-                    <p class="balance"><strong>BALANCE</strong> <strong>₱<?php echo number_format($balance, 0); ?></strong></p>
+                    <p class="balance"><strong>Balance Due:</strong> ₱<?php echo number_format($balance, 2); ?></p>
                 <?php else: ?>
                     <p class="balance"><strong>Paid in Full</strong></p>
                 <?php endif; ?>
+
+
 
             </div>
 

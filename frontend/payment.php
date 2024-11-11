@@ -6,17 +6,23 @@ if($mysqli->connect_error){
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
+// Retrieve the service and appointment fees if they are not already set
+$_SESSION['payment_data']['service_fee'] = $_SESSION['payment_data']['service_fee'] ?? 1000; // Example service fee
+$_SESSION['payment_data']['appointment_fee'] = $_SESSION['payment_data']['appointment_fee'] ?? 150; // Appointment fee
+$totalPayment = $_SESSION['payment_data']['service_fee'] + $_SESSION['payment_data']['appointment_fee'];
+$_SESSION['payment_data']['total_payment'] = $totalPayment;
 
+// Handle payment option selection
 if(isset($_POST['payment_option'])){
     $paymentOption = $_POST['payment_option'];
     $_SESSION['payment_data']['payment_option'] = $paymentOption;
 
     if ($paymentOption == 'Full Payment'){
-        $_SESSION['payment_data']['amount_paid'] = $_SESSION['payment_data']['service_fee'] + $_SESSION['payment_data']['appointment_fee'];    
+        $_SESSION['payment_data']['amount_paid'] = $totalPayment;
         $_SESSION['payment_data']['balance'] = 0;
-    }else{
+    } else {
         $_SESSION['payment_data']['amount_paid'] = $_SESSION['payment_data']['appointment_fee'];
-        $_SESSION['payment_data']['balance'] = $_SESSION['payment_data']['service_fee']; 
+        $_SESSION['payment_data']['balance'] = $_SESSION['payment_data']['service_fee'];
     }
 }
 
