@@ -101,14 +101,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
                 <p class="total">Total Payment: ₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?></p>
                 <h5>(Service + Appointment Fee)</h5>
                 <h5>Refund available</h5>
-                <input type="radio" name="payment_option" value="Full Payment" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Full Payment') echo 'checked'; ?> />
+                <input name="payment_option" value="Full Payment" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Full Payment') echo 'checked'; ?> />
             </div>
 
             <div class="payment-container" id="appointmentFee">
                 <h1>150</h1>
                 <p>PHP</p>
                 <h3>Appointment Fee</h3>
-                <input type="radio" name="payment_option" value="Appointment Fee" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Appointment Fee') echo 'checked'; ?> />
+                <input name="payment_option" value="Appointment Fee" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Appointment Fee') echo 'checked'; ?> />
             </div>
         </div>
     </form>
