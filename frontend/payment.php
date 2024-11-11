@@ -77,13 +77,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/design/payment.css">
+    <link rel="stylesheet" href="../frontend/design/payment.css?">
     <link rel="stylesheet" href="../frontend/design/terms.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Buzz & Collective - Payment</title>
 </head>
+<style>
+    
+</style>
 <body>
     <div class="confirmation-form">
         <h2>Buzz & Collective Confirmation</h2>
@@ -95,19 +98,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
     <form method="POST" action="payment.php">
         <div class="payment-section">
             <div class="payment-container" id="fullPayment">
-                <h4>Full Payment</h4>
-                <p>Service Fee: ₱<?php echo number_format($_SESSION['payment_data']['service_fee'], 2); ?></p>
-                <p>Appointment Fee: ₱<?php echo number_format($_SESSION['payment_data']['appointment_fee'], 2); ?></p>
-                <p class="total">Total Payment: ₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?></p>
+                <h3>Full Payment</h3>
+                <h1 class="total">₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?>
                 <h5>(Service + Appointment Fee)</h5>
-                <h5>Refund available</h5>
+            
                 <input name="payment_option" value="Full Payment" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Full Payment') echo 'checked'; ?> />
             </div>
 
             <div class="payment-container" id="appointmentFee">
-                <h1>150</h1>
-                <p>PHP</p>
                 <h3>Appointment Fee</h3>
+                <h1>₱150.00</h1>
                 <input name="payment_option" value="Appointment Fee" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Appointment Fee') echo 'checked'; ?> />
             </div>
         </div>
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
     <div class="terms-container">
         <label>
             <input type="checkbox" id="termsCheckbox">
-            I agree to the <a href="" id="termslink">terms and conditions</a>.
+            I agree to the <a href="" id="termslink">TERMS AND CONDITIONS</a>.
         </label>
     </div>
     <div id="myModal" class="modal" style="display:none;">
