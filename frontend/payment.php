@@ -31,7 +31,7 @@ $uploadMessage ='';
 $uploadError = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
-    $target_dir = "uploads/receipts";  
+    $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/frontend/uploads/receipts/';  
 
     if(!file_exists($target_dir)){
         mkdir($target_dir,0777,true);

@@ -78,9 +78,9 @@ $branches = json_decode($json_data, true);
                         
                         foreach ($appointments as $appointment) {
         
-                            $receipt_link = isset($appointment['receipt_path']) && !empty($appointment['receipt_path']) 
-                            ? "<a href='{$appointment['receipt_path']}' target='_blank'>View Receipt</a>" 
-                            : 'No Receipt Uploaded';                        
+                            $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
+                                ? "<a href='/BUZZ-COLLECTIVE/frontend/uploads/receipts/{$appointment['receipt']}' target='_blank'>View Receipt</a>" 
+                                : 'No Receipt Uploaded';                        
                             $branch_name = 'Main Branch';
                             // Iterate through the JSON branches to find a matching branchName
                             foreach ($branches as $key => $branch) {
@@ -112,9 +112,9 @@ $branches = json_decode($json_data, true);
                                     <strong>Service:</strong> {$appointment['services']}<br>
                                     <strong>Stylist:</strong> {$appointment['barber']}
                                 </td>
-                                <td>{$appointment['payment_option']}</td>
+                                 <td>" . (isset($appointment['payment_option']) ? $appointment['payment_option'] : 'N/A') . "</td>
                                 <td>{$receipt_link}</td>
-                                <td>{$appointment['payment_status']}</td>
+                                <td>" . (isset($appointment['payment_status']) ? $appointment['payment_status'] : 'N/A') . "</td>
                                 <td>{$appointment['status_name']}</td>
                             </tr>";
 
