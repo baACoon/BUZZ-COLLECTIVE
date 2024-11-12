@@ -112,9 +112,9 @@ $branches = json_decode($json_data, true);
                                     <strong>Service:</strong> {$appointment['services']}<br>
                                     <strong>Stylist:</strong> {$appointment['barber']}
                                 </td>
-                                <td>" . (isset($appointment['payment_option']) ? $appointment['payment_option'] : 'N/A') . "</td>
+                                <td>{$appointment['payment_option']}</td>
                                 <td>{$receipt_link}</td>
-                                <td>" . (isset($appointment['payment_status']) ? $appointment['payment_status'] : 'N/A') . "</td>
+                                <td>{$appointment['payment_status']}</td>
                                 <td>{$appointment['status_name']}</td>
                             </tr>";
 
