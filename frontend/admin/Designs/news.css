@@ -13,6 +13,7 @@ body {
 }
 
 .sidebar {
+    display: block;
     position: fixed;
     top: 0;
     width: 250px;
@@ -21,6 +22,26 @@ body {
     color: white;
     padding-top: 20px;
     z-index: 999;
+}
+
+i.bx-menu{
+    display: none;
+}
+
+#close-sidebar {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+
+#close-sidebar:hover{
+    color: #f73201;   
+    transform: rotate(90deg);
 }
 .sidebar .logo{
     display: flex;
@@ -55,6 +76,16 @@ body {
 .sidebar nav ul li a:hover {
     background-color: #222222;
     padding-left: 10px;
+}
+
+/* back button  */
+.back-button i{
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+.back-button i:hover{
+    color: #f73201;   
 }
 
 /* News Style */
@@ -209,6 +240,39 @@ body {
 
 /* Media Query */ 
 @media (max-width: 768px) {
+    .sidebar {
+        display: none; 
+    }
+    .sidebar .logo img {
+        margin-top: 15%;
+        max-height: 100px;
+        width: auto; 
+    }
+    .sidebar nav ul {
+        margin-top: 10%; 
+    }
+
+    i.bx-menu {
+        display: block; 
+        cursor: pointer;
+        order: 2; 
+        font-size: 45px; 
+        color: #333; 
+        cursor: pointer; 
+        display: block; 
+        position: absolute;
+        left: 10%;
+        top: 5%;
+    }
+    /* Show the sidebar when the 'open' class is added */
+    .sidebar.open {
+        display: block; 
+        transition: transform 0.3s ease; 
+    }
+    .news-content {
+        margin-left: 50px;
+        margin-top: 100px;
+    }
     .news-header h1{
         font-size: 1.5rem;
     }
@@ -227,8 +291,11 @@ body {
     }
 }
 @media (max-width: 480px){
-    .news-header h1{
-        font-size: 1rem;
+    i.bx-menu{
+        font-size: 35px;
+    }
+    .news-content {
+        margin-left: 30px;
     }
     .news-button{
         padding: 10px 15px;

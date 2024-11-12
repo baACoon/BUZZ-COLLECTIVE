@@ -60,10 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Services</title>
     <link rel="stylesheet" href="../admin/Designs/adminbranches.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <aside class="sidebar">
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
             <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
         </div>
@@ -128,6 +132,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     </div>
 
     <script>
+        // menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
         function showForm() {
             document.getElementById('branchForm').style.display = 'block';
             document.getElementById('branchId').value = '';

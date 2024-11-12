@@ -8,12 +8,14 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Designs/adminclientprof.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Client Profile</title>
-
-
 </head>
 <body>
-    <aside class="sidebar">
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
             <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
         </div>
@@ -32,7 +34,7 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
     </aside>
 
     <div class="clntprfl">
-        <h1>Client Profile</h1>
+        <h1>CLIENT PROFILE</h1>
     </div>
 
     <div id="crud-btn">
@@ -75,6 +77,25 @@ $clients = isset($_SESSION['users']) ? $_SESSION['users'] : [];
     </div>
 
     <script>
+        // menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
+        
         document.getElementById('delete-btn').addEventListener('click', function() {
             var form = document.getElementById('delete-form');
             var formData = new FormData(form);

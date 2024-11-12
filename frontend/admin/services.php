@@ -42,10 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Services</title>
     <link rel="stylesheet" href="Designs/services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="scripts.js"></script>
 </head>
 <body>
-    <aside class="sidebar">
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
             <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
         </div>
@@ -79,9 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <div class="subheading">
-            <h3>Information</h3>
             <div class="service-details-container">
             <div class="service-details">
+                <h4><strong>Information</strong></h4>
                 <p><strong>Service Name:</strong> <span  id="service-name"></span>  </p>
                 <p><strong>ID:</strong> <span id="service-id"></span></p>
                 <p><strong>With:</strong> <span id="service-with"></span></p>
@@ -111,8 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
     </div>
-
-
    
     <script>
         let services = <?php echo json_encode($services); ?>;
@@ -136,38 +138,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 document.getElementById('service-price-terms').innerText = service.price_terms;
                 document.getElementById('service-fee').innerText = service.fee;
 
-                 // Show the service details and hide the edit form
+                // Show the service details and hide the edit form
                 showServiceDetails();
                 document.getElementById('edit-form').style.display = 'none';
 
+                // Make the service details visible and centered on smaller screens
+                const serviceDetails = document.querySelector('.service-details');
+                if (window.innerWidth <= 768) {
+                    serviceDetails.style.display = 'block';
+                }
+
+                // Add bold styling to the selected service item
                 const serviceItems = document.querySelectorAll('.service-item');
-                    serviceItems.forEach(item => {
+                serviceItems.forEach(item => {
                     if (item.innerText === service.name) {
                         item.classList.add('bold'); // Add bold class
                     } else {
                         item.classList.remove('bold'); // Remove bold class
                     }
-                    });
+                });
             }
         }
 
+        // Hide service details when clicking outside of it on smaller screens
+        document.addEventListener('click', (event) => {
+            const serviceDetails = document.querySelector('.service-details');
+            if (window.innerWidth <= 768 && serviceDetails.style.display === 'block') {
+                if (!serviceDetails.contains(event.target) && !event.target.closest('.service-item')) {
+                    serviceDetails.style.display = 'none';
+                }
+            }
+        });
+
         function openAddForm() {
-            document.getElementById('edit-form').style.display = 'block';
+            const editForm = document.getElementById('edit-form');
+            editForm.style.display = 'block';
             document.getElementById('edit-id').value = '';
             document.getElementById('edit-name').value = '';
             document.getElementById('edit-with').value = '';
             document.getElementById('edit-price-terms').value = '';
             document.getElementById('edit-fee').value = '';
-
-            // Change the form heading to "Add Service"
             document.querySelector('#edit-form h2').innerText = 'Add Service';
 
-            // Hide the service details when adding a new service
-            hideServiceDetails();
-        }
+            hideServiceDetails(); // Hide details while form is open
 
+            // Center form on smaller screens
+            if (window.innerWidth <= 768) {
+                document.body.classList.add('form-open');
+            }
+        }
         function openEditForm() {
-            document.getElementById('edit-form').style.display = 'block';
+            const editForm = document.getElementById('edit-form');
+            editForm.style.display = 'block';
+
             const id = document.getElementById('service-id').innerText;
             const service = services.find(s => s.id === id);
             if (service) {
@@ -176,20 +199,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 document.getElementById('edit-with').value = service.with;
                 document.getElementById('edit-price-terms').value = service.price_terms;
                 document.getElementById('edit-fee').value = service.fee;
-
-                // Change the form heading to "Edit Service"
                 document.querySelector('#edit-form h2').innerText = 'Edit Service';
 
-                // Hide the service details when editing a service
-                hideServiceDetails();
+                hideServiceDetails(); // Hide details while form is open
+
+                // Center form on smaller screens
+                if (window.innerWidth <= 768) {
+                    document.body.classList.add('form-open');
+                }
             }
         }
-
-        function closeEditForm() {
+        function closeForm() {
             document.getElementById('edit-form').style.display = 'none';
-
-            // Optionally show service details after closing the form
-            showServiceDetails();
+            document.body.classList.remove('form-open'); // Restore visibility
+            showServiceDetails(); // Optionally show details when form is closed
         }
 
         function saveService() {
@@ -272,6 +295,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById('service-price-terms').innerText = '';
             document.getElementById('service-fee').innerText = '';
         }
+
+            // menu icon
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuIcon = document.getElementById('menu-icon');
+                const sidebar = document.querySelector('.sidebar');
+                const closeSidebar = document.getElementById('close-sidebar');
+
+                // Add click event to the menu icon
+                menuIcon.addEventListener('click', function() {
+                    sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                    closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+                });
+
+                // Add click event to the close button
+                closeSidebar.addEventListener('click', function() {
+                    sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                    closeSidebar.style.display = 'none'; // Hide close button
+                });
+            });
+
+            // Function to toggle visibility of service details on small screens
+            function toggleServiceDetails() {
+                const serviceDetails = document.querySelector('.service-details');
+                if (window.innerWidth < 768) {
+                    serviceDetails.style.display = 'none'; // Hide initially on small screens
+                }
+
+                // Show details when a service item is clicked
+                const serviceItems = document.querySelectorAll('.service-item');
+                serviceItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        serviceDetails.style.display = 'block';
+                    });
+                });
+            }
+
+            // Call toggleServiceDetails on load and resize
+            window.addEventListener('load', toggleServiceDetails);
+            window.addEventListener('resize', toggleServiceDetails);
 
         </script>
 </body>

@@ -28,6 +28,7 @@ body::before {
 
 
 #home-logo {
+    margin-top: 10px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -114,5 +115,32 @@ body::before {
     color: #E43A19
 }
 
+@media (max-width: 768px) {
+    #home-logo {
+        margin-top: 10px;
+    }
+    .home-selection ul {
+        grid-template-columns: repeat(3, 150px); 
 
+    }
+}
+@media (max-width: 480px){
+    #home-logo {
+        margin-top: 160px;
+    }
+    .home-selection ul {
+        grid-template-columns: repeat(2, 150px); 
 
+    }
+}
+@media (max-width: 380px) {
+      #home-logo {
+        margin-top: 300px; 
+    }
+    
+    #home-logo img {
+        width: 120px;
+        height: auto;
+    }
+}
+ 

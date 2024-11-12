@@ -8,11 +8,13 @@
 }
 
 body {
+    margin: 0;
     background: #F5F5F5;
     color: #000000;
 }
 
 .sidebar {
+    display: block;
     position: fixed;
     top: 0;
     width: 250px;
@@ -20,7 +22,24 @@ body {
     background-color: #222222;
     color: white;
     padding-top: 20px;
-    z-index: 999;
+    z-index: 1;
+}
+i.bx-menu{
+    display: none;
+}
+#close-sidebar {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+#close-sidebar:hover{
+    color: #f73201;   
+    transform: rotate(90deg);
 }
 .sidebar .logo{
     display: flex;
@@ -57,6 +76,16 @@ body {
     padding-left: 10px;
 }
 
+/* back button  */
+.back-button i{
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+.back-button i:hover{
+    color: #f73201;   
+}
+
 /* SERVICES */
 .services-header {
     padding: 20px;
@@ -82,6 +111,7 @@ body {
     gap: 20px; /* Add space between services list and information */
     justify-content: flex-start;
     align-items: flex-start; 
+
 }
 
 
@@ -294,3 +324,90 @@ input::placeholder {
     color: #000; /* Optional: change color if needed */
 }
 
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; 
+    }
+   
+    .sidebar .logo img {
+        margin-top: 15%;
+        max-height: 100px;
+        width: auto; 
+    }
+    .sidebar nav ul {
+        margin-top: 10%; 
+    }
+
+    i.bx-menu {
+        display: block; 
+        cursor: pointer;
+        order: 2; 
+        font-size: 45px; 
+        color: #333; 
+        cursor: pointer; 
+        display: block; 
+        position: absolute;
+        left: 10%;
+        top: 5%;
+    }
+    /* Show the sidebar when the 'open' class is added */
+    .sidebar.open {
+        display: block; 
+        transition: transform 0.3s ease; 
+    }
+    .services-header {
+        margin-left: 50px;
+        margin-top: 100px;
+    }
+    .services-header h1 {
+        font-size: 1.5rem;
+    }
+    .content {
+        margin-left: 50px;
+    }
+
+    .service-details {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%; 
+        z-index: 1000; /* Bring it to the front */
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .service-details-container {
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+    }
+    .edit-form {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%; /* Adjust width for mobile */
+        max-width: 400px; /* Limit max width */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+        z-index: 1000; /* Ensure form appears above other elements */
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+    i.bx-menu{
+        font-size: 35px;
+    }
+    .services-header {
+        margin-left: 30px;
+    }
+    .content {
+        margin-left: 30px;
+    }
+
+
+}
