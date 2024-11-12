@@ -8,8 +8,8 @@
       border-radius: 5px; /* Rounded corners for the error container */
       margin-bottom: 275px; /* Margin at the bottom of the error container */
 	  position: absolute;
-	  font-weight: 100;
-	  font-size: small;
+	  font-weight: 400;
+	  font-size: 10px;
 	  margin-right: 275px;
 	  margin-left: 50px;
 	}

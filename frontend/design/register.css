@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-/* Base Styles */
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
-    background-color: #f0f0f0;
+    background-color: #363636;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,127 +13,142 @@ body {
 
 .signup-container {
     display: flex;
-    flex-direction: row; /* Default to row layout for larger screens */
+    flex-direction: row;
     width: 100%;
-    max-width: 800px;
-    box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    max-width: 900px;
+    background: #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     overflow: hidden;
 }
 
 .signup-image {
-    flex: 1;
-    background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(141, 141, 141, 0.4)), url('image/buzz&collectives.jpg') no-repeat center center;
+    background: linear-gradient(to left, rgba(0,0,0,0.8500000238418579), rgba(141, 141, 141, 0.4)), url('image/WEL-white.png') no-repeat center center;
     background-size: cover;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 .signup-form-container {
     flex: 1;
+    padding: 30px 20px;
+    background-color: #222222;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #222222;
-    padding: 20px;
-    color: #fff;
-    box-sizing: border-box;
-    width: 100%;
+    text-align: center;
 }
 
 .signup-form-container h2 {
     margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.signup-form h4 {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 10px 0 5px;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    color: #ffffff;
 }
 
 .signup-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    max-width: 350px;
 }
 
 .signup-form input {
-    padding: 10px;
-    margin: 10px 0;
+    max-width: 400px;
     width: 100%;
-    max-width: 250px;
+    padding: 12px;
+    margin-bottom: 15px;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     background-color: #f5f5f5;
-}
+    font-size: 16px;
+} 
 
 .signup-form input[type="submit"] {
     background-color: #E43A19;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
-    width: 100%;
-    max-width: 200px;
-    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
-/* Responsive Design Adjustments */
-
-/* Medium screens (tablets, small laptops) */
-@media (max-width: 1024px) {
-    .signup-container {
-        width: 90%;
-        flex-direction: column; /* Stack items vertically */
-    }
+.signup-form input[type="submit"]:hover {
+    background-color: #7c200e;
 }
 
-/* Small screens (phones, portrait tablets) */
+.signup-form-container h3 {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.signup-form-container a {
+    color: #E43A19;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-form-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .signup-container {
         flex-direction: column;
-        width: 100%;
+        max-width: 90%;
     }
 
     .signup-image {
-        height: 250px; /* Reduce the height of the image section */
+        height: 250px;
     }
 
     .signup-form-container {
-        padding: 15px;
+        padding: 20px;
     }
 
-    .signup-form input,
-    .signup-form input[type="submit"],
-    .signup-form-container button {
-        width: 80%;
-        max-width: none;
-        margin-left: 10%;
+    .signup-form input {
+        font-size: 14px;
+    }
+
+    .signup-form-container h2 {
+        font-size: 24px;
     }
 }
 
-/* Very small screens (phones) */
-@media (max-width: 375px) {
-    .signup-container {
-        flex-direction: column; /* Stack the image and form vertically */
-        width: 100%;
-        box-shadow: none;
-    }
-
-    .signup-image {
-        height: 200px; /* Smaller image for small screens */
-    }
-
-    .signup-form-container {
-        padding: 10px;
-        width: 100%; /* Ensure the form takes full width */
-    }
-
+@media (max-width: 480px) {
     .signup-form {
-        width: 90%; /* Ensure the form elements fill the container */
-        margin: 0 auto;
+        padding: 20px;
     }
 
     .signup-form input,
-    .signup-form input[type="submit"],
-    .signup-form-container button {
-        width: 90%;
-        margin-left: 5%;
+    .signup-form input[type="submit"] {
+        width: 100%;
+        max-width: 90%;
     }
 
-    h2, h3, h4 {
-        text-align: center;
-        font-size: 14px;
+    .signup-form-container h2 {
+        font-size: 24px;
+    }
+
+    .signup-image {
+        height: 200px;
+        max-width: 200px;
     }
 }

@@ -14,15 +14,15 @@
     </div>
     <div class="login-container2">
         <form class="login-form2" method="POST" action="admin_reg.php" >
-                <h4>Username</h4>
-                <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>" required>
-                <h4>Email</h4>
-                <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
-                <h4>Password</h4>
-                <input type="password" name="password_1" placeholder="Password" required>
-                <h4>Confirm Password</h4>
-                <input type="password" name="password_2" placeholder="Confirm Password" required>
-                <button type="submit" name="reg_admin">Sign Up</button>
+                <h4>USERNAME</h4>
+                <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>" required style="font-family:'Montserrat', sans-serif;">
+                <h4>EMAIL</h4>
+                <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required style="font-family:'Montserrat', sans-serif;">
+                <h4>PASSWORD</h4>
+                <input type="password" name="password_1" placeholder="Password" required style="font-family:'Montserrat', sans-serif;">
+                <h4>CONFIRM PASSWORD</h4>
+                <input type="password" name="password_2" placeholder="Confirm Password" required style="font-family:'Montserrat', sans-serif;">
+                <button type="submit" name="reg_admin" style="font-family:'Montserrat', sans-serif;">Sign Up</button>
                 <a href="admin_log.php">Login</a>
         </form>
     </div>

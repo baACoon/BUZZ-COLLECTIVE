@@ -15,17 +15,17 @@
     </div>
     <div class="login-container">
         <form class="login-form" method="post" action="admin_log.php">
-            <h4>Username</h4>
-            <input type="text" placeholder="Email" name="username" required>
-            <h4>Password</h4>
-            <input type="password" placeholder="Password" name="password" required>
+            <h4>USERNAME</h4>
+            <input type="text" placeholder="Username" name="username" required style="font-family:'Montserrat', sans-serif;">
+            <h4>PASSWORD</h4>
+            <input type="password" placeholder="Password" name="password" required style="font-family:'Montserrat', sans-serif;">
             
             <div style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
                 <!--<a class="forgotpassword" href="#">Forgot Password</a>-->
                 <a href="admin_reg.php">Sign Up</a>
             </div>
             
-            <button type="submit" name="log_admin">Proceed</button>
+            <button type="submit" name="log_admin" style="font-family:'Montserrat', sans-serif;">Login</button>
         </form>
     </div>
  
