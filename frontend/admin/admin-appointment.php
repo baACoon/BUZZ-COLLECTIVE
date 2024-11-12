@@ -51,7 +51,6 @@ $branches = json_decode($json_data, true);
                 <button class="delete-button" id="delete-btn" type="button">DELETE</button>
                 <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
                 <button type="button" class="confirm-btn" id="confirm-btn">Confirm</button>
-                <button type="button" class="paid-btn" id="paid-btn">Paid</button>
             </div>
         </div>
 
@@ -80,20 +79,19 @@ $branches = json_decode($json_data, true);
                         foreach ($appointments as $appointment) {
         
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                                ? "<a href='/BUZZ-COLLECTIVE/frontend/uploads/receipts/{$appointment['receipt']}' target='_blank'>View Receipt</a>" 
-                                : 'No Receipt Uploaded';                        
+                            ? "<a href='#' onclick=\"showReceiptModal('/BUZZ-COLLECTIVE/frontend/uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
+                            : 'No Receipt Uploaded';
+
                             $branch_name = 'Main Branch';
-                            // Iterate through the JSON branches to find a matching branchName
                             foreach ($branches as $key => $branch) {
                                 if ($branch['branchName'] == $branch_name) {
                                     $branch_location = $branch['branchLocation'];
-                                    break; // Exit loop once the branch is found
+                                    break; 
                                 }
                             }
-                            $payment_status = isset($appointment['payment_status']) ? $appointment['payment_status'] : 'N/A';
-                            $payment_display = ($payment_status === 'Paid') ? 'Paid' : 'Unpaid';  
-                        
-                            // Display appointment data
+                            $payment_status = isset($appointment['payment_status_name']) ? $appointment['payment_status_name'] : 'N/A';
+                            $payment_display = ($payment_status === 'Paid') ? 'Paid' : 'Unpaid'; 
+                    
                             echo "
                             <tr data-appointment-id='{$appointment['appointment_id']}'>
                                 <td><input type='checkbox' name='appointments[]' value='{$appointment['appointment_id']}'></td>
@@ -128,6 +126,14 @@ $branches = json_decode($json_data, true);
             </form>
         </div>
 
+        <!-- Receipt Modal -->
+        <div id="receiptModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeReceiptModal()">&times;</span>
+                <img id="receiptImage" src="" alt="Receipt Image" style="width: 100%; max-height: 80vh;">
+            </div>
+        </div>
+
         <div class="popup" id="popup">
             <div class="popup-content">
                 <h2 id="popup-message"></h2>
@@ -135,6 +141,7 @@ $branches = json_decode($json_data, true);
             </div>
         </div>
     </div>
+
 
     <script>
         // Select or Deselect all checkboxes
@@ -239,45 +246,17 @@ $branches = json_decode($json_data, true);
             }
         });
         
-        //status button
-        document.getElementById('paid-btn').addEventListener('click', function() {
-            var selectedAppointments = getSelectedAppointments();
-            if (selectedAppointments.length > 0) {
-                var formData = new FormData();
-                selectedAppointments.forEach(function(appointmentId) {
-                    formData.append('appointments[]', appointmentId);
-                });
+        function showReceiptModal(imageUrl) {
+            document.getElementById('receiptImage').src = imageUrl;
+            // Show the modal
+            document.getElementById('receiptModal').style.display = 'block';
+        }
 
-                fetch('/BUZZ-COLLECTIVE/backend/payment_status.php', { 
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById('popup-message').innerText = 'Bayad na siya!';
-                        document.getElementById('popup').style.display = 'flex';
-                    } else {
-                        document.getElementById('popup-message').innerText = 'May mali sa resibo.';
-                        document.getElementById('popup').style.display = 'flex';
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('popup-message').innerText = 'May mali sa resibo: ' + error.message;
-                    document.getElementById('popup').style.display = 'flex';
-                });
-            } else {
-                document.getElementById('popup-message').innerText = 'Pili ka muna ng appointment na imamark mo as paid.';
-                document.getElementById('popup').style.display = 'flex';
-            }
-        });
-            // Function to get selected appointments
-            function getSelectedAppointments() {
-                var selectedAppointments = [];
-                document.querySelectorAll('input[name="appointments[]"]:checked').forEach(function(checkbox) {
-                    selectedAppointments.push(checkbox.value);
-                });
-                return selectedAppointments;
-            }
+        function closeReceiptModal() {
+            // Hide the modal
+            document.getElementById('receiptModal').style.display = 'none';
+            document.getElementById('receiptImage').src = '';
+        }
 
         // Status dropdown change event handler
         var statusDropdown = document.getElementById('status');
