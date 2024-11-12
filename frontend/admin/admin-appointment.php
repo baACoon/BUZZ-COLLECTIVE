@@ -51,6 +51,7 @@ $branches = json_decode($json_data, true);
                 <button class="delete-button" id="delete-btn" type="button">DELETE</button>
                 <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
                 <button type="button" class="confirm-btn" id="confirm-btn">Confirm</button>
+                <button type="button" class="paid-btn" id="paid-btn">Paid</button>
             </div>
         </div>
 
@@ -89,6 +90,8 @@ $branches = json_decode($json_data, true);
                                     break; // Exit loop once the branch is found
                                 }
                             }
+                            $payment_status = isset($appointment['payment_status']) ? $appointment['payment_status'] : 'N/A';
+                            $payment_display = ($payment_status === 'Paid') ? 'Paid' : 'Unpaid';  
                         
                             // Display appointment data
                             echo "
@@ -114,7 +117,7 @@ $branches = json_decode($json_data, true);
                                 </td>
                                  <td>" . (isset($appointment['payment_option']) ? $appointment['payment_option'] : 'N/A') . "</td>
                                 <td>{$receipt_link}</td>
-                                <td>" . (isset($appointment['payment_status']) ? $appointment['payment_status'] : 'N/A') . "</td>
+                                <td>{$payment_display}</td>                                
                                 <td>{$appointment['status_name']}</td>
                             </tr>";
 
@@ -232,6 +235,38 @@ $branches = json_decode($json_data, true);
                 });
             } else {
                 document.getElementById('popup-message').innerText = 'Please select an appointment to cancel.';
+                document.getElementById('popup').style.display = 'flex';
+            }
+        });
+        
+        //status button
+        document.getElementById('paid-btn').addEventListener('click', function() {
+            var selectedAppointments = getSelectedAppointments();
+            if (selectedAppointments.length > 0) {
+                var formData = new FormData();
+                selectedAppointments.forEach(function(appointmentId) {
+                    formData.append('appointments[]', appointmentId);
+                });
+
+                fetch('/BUZZ-COLLECTIVE/backend/payment_status.php', { 
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('popup-message').innerText = 'Bayad na siya!';
+                        document.getElementById('popup').style.display = 'flex';
+                    } else {
+                        document.getElementById('popup-message').innerText = 'May mali sa resibo.';
+                        document.getElementById('popup').style.display = 'flex';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('popup-message').innerText = 'May mali sa resibo: ' + error.message;
+                    document.getElementById('popup').style.display = 'flex';
+                });
+            } else {
+                document.getElementById('popup-message').innerText = 'Pili ka muna ng appointment na imamark mo as paid.';
                 document.getElementById('popup').style.display = 'flex';
             }
         });
