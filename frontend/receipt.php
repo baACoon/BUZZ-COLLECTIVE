@@ -8,13 +8,46 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php'; 
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';       
 
+$mysqli = new mysqli("localhost", "root", "", "barbershop");
+if ($mysqli->connect_error) {
+    die("Database connection failed: " . $mysqli->connect_error);
+}
+
+$appointmentId = $_SESSION['form_data']['appointment_id'];
+$paymentOptionName = "Not specified";
+if ($appointmentId) {
+  
+    $query = "SELECT a.payment_option_id, po.option_name 
+              FROM appointments a 
+              JOIN payment_options po ON a.payment_option_id = po.id 
+              WHERE a.appointment_id = ?";
+    $stmt = $mysqli->prepare($query);
+    if ($stmt) {
+        $stmt->bind_param("i", $appointmentId);
+        $stmt->execute();
+        $stmt->bind_result($paymentOptionId, $paymentOptionName);
+        if ($stmt->fetch()) {
+            if ($paymentOptionId == 1) {
+                $paymentOptionName = "Appointment Fee";
+            } elseif ($paymentOptionId == 2) {
+                $paymentOptionName = "Full Payment";
+            }
+        } else {
+            echo "No results found for appointment ID: $appointmentId";
+        }
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $mysqli->error;
+    }
+} else {
+    echo "Appointment ID not set in session.";
+}
 // Fetch values from session
 $serviceFee = $_SESSION['payment_data']['service_fee'] ?? 0;
 $appointmentFee = $_SESSION['payment_data']['appointment_fee'] ?? 0;
 $totalPayment = $_SESSION['payment_data']['total_payment'] ?? ($serviceFee + $appointmentFee);
 $amountPaid = $_SESSION['payment_data']['amount_paid'] ?? 0;
 $balance = $_SESSION['payment_data']['balance'] ?? ($totalPayment - $amountPaid);
-$paymentOption = $_SESSION['payment_data']['payment_option'] ?? 'Not Specified';
 
 $date = $_SESSION['form_data']['date'] ?? '';
 $time = $_SESSION['form_data']['timeslot'] ?? '';
@@ -85,10 +118,10 @@ try {
                 <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
                 <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
                 <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
-                <p>PAYMENT OPTION <strong><?php echo htmlspecialchars($paymentOption); ?></strong></p>
                 <hr>
                 <p>Service Fee: ₱<?php echo number_format($serviceFee, 2); ?></p>
                 <p>Appointment Fee: ₱<?php echo number_format($appointmentFee, 2); ?></p>
+                <p>PAYMENT OPTION: <strong><?php echo htmlspecialchars($paymentOptionName); ?></strong></p>
                 <hr>
                 <p>Amount Paid: ₱<?php echo number_format($amountPaid, 2); ?></p>
                 <?php if ($balance > 0): ?>
@@ -96,11 +129,7 @@ try {
                 <?php else: ?>
                     <p class="balance"><strong>Paid in Full</strong></p>
                 <?php endif; ?>
-
-
-
             </div>
-
             <div class="receipt-image">
                 <h3>Receipt Image</h3>
                 <?php if (!empty($originalFilename)): ?>
@@ -118,8 +147,6 @@ try {
                     <p>No receipt image uploaded.</p>
                 <?php endif; ?>
             </div>
-
-
             <div class="confirmation-buttons">
                 <form method="POST" action="appointment.php">
                     <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Book again</button>

@@ -6,25 +6,48 @@ if($mysqli->connect_error){
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
-// Retrieve the service and appointment fees if they are not already set
-$_SESSION['payment_data']['service_fee'] = $_SESSION['payment_data']['service_fee'] ?? 1000; // Example service fee
-$_SESSION['payment_data']['appointment_fee'] = $_SESSION['payment_data']['appointment_fee'] ?? 150; // Appointment fee
-$totalPayment = $_SESSION['payment_data']['service_fee'] + $_SESSION['payment_data']['appointment_fee'];
-$_SESSION['payment_data']['total_payment'] = $totalPayment;
+if (isset($_POST['payment_option'])) {
+    $paymentOptionId = (int)$_POST['payment_option'];
+    $_SESSION['payment_data']['payment_option_id'] = $paymentOptionId;
 
-// Handle payment option selection
-if(isset($_POST['payment_option'])){
-    $paymentOption = $_POST['payment_option'];
-    $_SESSION['payment_data']['payment_option'] = $paymentOption;
+    // Query the payment_options table to get the payment_option_name based on payment_option_id
+    $query = "SELECT option_name FROM payment_options WHERE id = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("i", $paymentOptionId);
+    $stmt->execute();
+    $stmt->bind_result($paymentOptionName);
+    $stmt->fetch();
+    $stmt->close();
 
-    if ($paymentOption == 'Full Payment'){
-        $_SESSION['payment_data']['amount_paid'] = $totalPayment;
+ 
+    $_SESSION['payment_data']['payment_option_name'] = $paymentOptionName;
+    if ($paymentOptionId == 2) { // Full Payment
+        $_SESSION['payment_data']['amount_paid'] = $_SESSION['payment_data']['total_payment'];
         $_SESSION['payment_data']['balance'] = 0;
-    } else {
+    } else { // Appointment Fee
         $_SESSION['payment_data']['amount_paid'] = $_SESSION['payment_data']['appointment_fee'];
         $_SESSION['payment_data']['balance'] = $_SESSION['payment_data']['service_fee'];
     }
 }
+
+// Update the appointment in the database if payment option is set
+if (isset($_SESSION['payment_data']['payment_option_id'])) {
+    $appointmentId = $_SESSION['form_data']['appointment_id'];
+    $paymentOptionId = $_SESSION['payment_data']['payment_option_id'];
+    $paymentOptionName = $_SESSION['payment_data']['payment_option_name'];
+
+    $appointmentQuery = "UPDATE appointments SET payment_option_name = ?, payment_option_id = ? WHERE appointment_id = ?";
+    $appointmentStmt = $mysqli->prepare($appointmentQuery);
+    $appointmentStmt->bind_param("sii", $paymentOptionName, $paymentOptionId, $appointmentId);
+    $appointmentStmt->execute();
+    $appointmentStmt->close();
+}
+
+// Retrieve the service and appointment fees if they are not already set
+$_SESSION['payment_data']['service_fee'] = $_SESSION['payment_data']['service_fee'] ?? 1000; 
+$_SESSION['payment_data']['appointment_fee'] = $_SESSION['payment_data']['appointment_fee'] ?? 150; 
+$totalPayment = $_SESSION['payment_data']['service_fee'] + $_SESSION['payment_data']['appointment_fee'];
+$_SESSION['payment_data']['total_payment'] = $totalPayment;
 
 
 $uploadMessage ='';
@@ -102,22 +125,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
     <p class="payment-opt">PAYMENT OPTION</p>
 
     <form method="POST" action="payment.php">
-        <div class="payment-section">
             <div class="payment-container" id="fullPayment">
-                <h3>Full Payment</h3>
-                <h1 class="total">₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?>
-                <h5>(Service + Appointment Fee)</h5>
-            
-                <input name="payment_option" value="Full Payment" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Full Payment') echo 'checked'; ?> />
+                <button type="submit" name="payment_option" value="2" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
+                    && $_SESSION['payment_data']['payment_option_id'] == 2) echo 'checked'; ?>>
+                    <h3>Full Payment</h3>
+                    <h1 class="total">₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?></h1>
+                    <h5>(Service + Appointment Fee)</h5>
+                </button>
             </div>
 
             <div class="payment-container" id="appointmentFee">
-                <h3>Appointment Fee</h3>
-                <h1>₱150.00</h1>
-                <input name="payment_option" value="Appointment Fee" <?php if (isset($_SESSION['payment_data']['payment_option']) && $_SESSION['payment_data']['payment_option'] == 'Appointment Fee') echo 'checked'; ?> />
-            </div>
+                <button type="submit" name="payment_option" value="1" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
+                    && $_SESSION['payment_data']['payment_option_id'] == 1) echo 'checked'; ?>>
+                    <h3>Appointment Fee</h3>
+                    <h1>₱150.00</h1>
+            </button>
         </div>
     </form>
+
     <?php if ($uploadError): ?>
         <div class="error-message"><?php echo $uploadError; ?></div>
     <?php endif; ?>
