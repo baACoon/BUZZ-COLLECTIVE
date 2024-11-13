@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -97,8 +97,6 @@ nav{
     
   }
   
-  
-  
   .usericon {
     font-size: 18px;
     display: flex; 
@@ -114,7 +112,6 @@ nav{
     margin-right: 10px; 
   }
   
-  
   /* Arrow styling for profile submenu */
   .arrow, .profile-arrow {
     height: 100%;
@@ -126,13 +123,10 @@ nav{
     transition: all 0.3s ease;
   }
   
-  
-  
   .links li:hover .htmlcss-arrow,
   .links li:hover .js-arrow{
     transform: rotate(180deg);
     }
-  
   
   nav .navbar .links li .sub-menu {
     position: absolute;
@@ -177,319 +171,241 @@ nav{
   .navbar .bx-menu{
     display: none;
     }
-  
-  .bgimage{
-      background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 180vh;
-      overflow: hidden;
+
+  /* CONTENT */
+  .hiring-cover {
+    height: 300px;
+    background: url('../design/image/haircut13.jpg') no-repeat center/cover rgba(32, 32, 32, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically */
+    text-align: center;
+    color: white;
   }
   
-
-.hiring-cover{
-    width: 100%;
-    height: 448px;
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/haircut13.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity: 1;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-}
-
-
-.v_9018{
+  .v_9018 {
+    background-color: #fff;
     width: 80%;
-    height: 100px;
-    background: rgba(255, 255, 255, 1);
-    opacity: 1;
-    position: relative;
+    max-width: 900px;
+    margin-top: 75px;
     top: 10em;
     left: 8.5em;
-    overflow: hidden;
-    position: absolute
-}
-
-.v_9018 h1{
-    color: #222222;
-    text-align: center;
+    
+  }
+  
+  .v_9018 h1 {
+    font-size: 3.75rem;
+    color: #0e0e0e;
     font-weight: 900;
-    font-size: 60px;
-    margin-top: 10px;
-}
+    margin: 5px; /* Remove default margin */
+  }
+  
+  .overview {
+    padding: 15px 20px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .overview h1{
+    font-size: larger;
+  }
+  
+  .overview h2 {
+    font-weight: 400;
+    color: #fff;
+    margin: 0; /* Keep tight spacing */
+    font-size: 1.0rem;
+    line-height: 1.5;
+  }
 
-.overview{
-    width: 947px;
-    color: rgba(255, 255, 255, 1);
-    position: absolute;
-    top: 20em;
-    left: 12em;
-    font-weight: Regular;
-    text-align: center;
-}
+  .description {
+    display: flex;
+    justify-content: center; /* Centers the entire row horizontally */
+    flex-wrap: wrap; /* Allows wrapping if screen size changes */
+    gap: 0; /* Removes gaps between boxes */
+    padding: 0 20px; /* Padding around the description section */
+    text-align: center; /* Centers text within the boxes */
+  }
+  
+  .description > div {
+    flex: 1; /* Ensures equal space for all boxes */
+    max-width: 900px; /* Limits max width for better spacing */
+    padding: 20px 20px;
+    box-sizing: border-box; /* Ensures padding is included in width */
+    background-color: white; /* Default background for key-respo */
+    color: black; /* Default text color */
+    
+  }
+  
+  .description .quali,
+  .description .offer {
+    background-color: black; /* Black background for quali and offer */
+    color: white; /* White font color for readability */
+  }
+  
+  .description h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .description ul {
+    list-style-type: disc; /* Keeps bullet points */
+    text-align: left; /* Aligns bullet points to the left */
+    margin-left: 20px; /* Indentation for bullets */
+    font-size: 1rem;
+    color: inherit; /* Inherits font color based on the box background */
+  }
+  
+  .description ul li {
+    margin: 5px 0; /* Adds space between list items */
+  }
+  
+  .key-respo, .quali, .offer {
+    flex: 1;
+    min-height: 200px;
+    min-width: 300px;
+  }
 
-.overview h2{
-    font-weight: 200;
-    font-size: 20px;
-    margin-top: 5px;
-}
-
-.overview h1{
-    font-size: 20px;
-}
-
-.key-respo{
-    width: 450px;
-    height: 365px;
-    background: rgb(255, 255, 255);
-    position: absolute;
-    top: 28em;
-    left: 0px;
-    overflow: hidden;
-}
-
-.key-respo h1{
-    width: 392px;
-    color: rgba(34, 34, 34, 1);
-    position: relative;
-    top: 10px;
-    left: 1em;
-    font-weight: 500;
-    font-size: 25px;
-    text-align: center;
-}
-
-.key-respo ul{
-    width: 385px;
-    color: rgba(34, 34, 34, 1);
-    position: absolute;
-    top: 55px;
-    left: 3em;
-    font-weight: Regular;
-    font-size: 18px;
+  .how2apply {
+    display: flex;
+    justify-content: space-between; /* Distribute elements horizontally */
+    align-items: center; /* Align items at the top */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 20px; /* Adds space between boxes */
+    padding: 20px;
     text-align: left;
-}
-
-.key-respo li{
-    margin-top: 6px;
-}
-
-.quali{
-    width: 450px;
-    height: 365px;
-    background: rgba(34, 34, 34, 1);
-    opacity: 1;
-    position: absolute;
-    top: 28em;
-    left: 450px;
-    overflow: hidden;
-}
-
-.quali h1{
-    width: 392px;
-    color: rgba(255, 255, 255, 1);
-    position: relative;
-    top: 10px;
-    left: 1em;
-    font-weight: 500;
+  }
+  
+  .apply {
+    max-width: 700px; /* Limits width to 500px */
+    width: 100%; /* Makes it responsive */
     font-size: 25px;
-    text-align: center;
-}
+    background-color: #f9f9f9; /* Subtle background for readability */
+    padding: 15px;
+  }
 
-.quali ul{
-    width: 385px;
-    color: rgb(255, 255, 255);
-    position: absolute;
-    top: 55px;
-    left: 3em;
-    font-weight: Regular;
-    font-size: 18px;
-    text-align: left;
-}
-
-.quali li{
-    margin-top: 15px;
-}
-
-.offer{
-    width: 443px;
-    height: 365px;
-    background: #222222;
-    opacity: 1;
-    position: absolute;
-    top: 28em;
-    left: 900px;
-    overflow: hidden;
-}
-
-.offer h1{
-    width: 392px;
-    color: rgba(255, 255, 255, 1);
-    position: relative;
-    top: 10px;
-    left: 1em;
-    font-weight: 500;
-    font-size: 25px;
-    text-align: center;
-}
-
-.offer ul{
-    width: 385px;
-    color: rgb(255, 255, 255);
-    position: absolute;
-    top: 55px;
-    left: 3em;
-    font-weight: Regular;
-    font-size: 18px;
-    text-align: left;
-}
-
-.offer li{
-    margin-top: 15px;
-}
-
-.apply {
-    width: 500px;
-    position: absolute;
-    top: 33em;
-    left: 120px;
-    font-size: 25px;
-    text-align: left;
-}
-
-.apply h1{
+  .apply h1 {
     font-weight: bolder;
     color: black;
-}
-
-.apply p{
+  }
+  
+  .apply p {
     font-size: 16px;
     margin-top: 5px;
-}
-
-.v_123{
-    width: 271px;
+  }
+  
+  .v_123 {
+    max-width: 400px; /* Adjust max width */
+    width: 100%; /* Responsive width */
     color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 28em;
-    left: 30em;
     font-weight: 900;
     font-size: 30px;
     text-align: left;
+    background-color: #fff; /* Optional background to match overall design */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Similar elevation for consistency */
+  }
+
+ /* FOOTER */
+ footer {
+  background-color: #222222; 
+  color: white;
+  padding: 20px;
+  position: relative;
 }
-
-/* FOOTER */
-
-footer {
-    background-color: #222; 
-    color: white;
-    padding: 20px;
-    margin-top: 35em;
-    position: relative;
-}
-
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 6%;
+  align-items: flex-start;
 }
-
 .footer-logo{
-    width: 300px;
-    height: 300px;
-    margin-top: 5px; 
+  width: 200px;
+  height: 200px;
+  margin-top: 5px; 
 }
 
 .footer-left, .footer-left1, .footer-right{
-    margin: 5px;
+  margin: 5px;
 }
 
-.footer-left1 h2 {
-    color: white;
-}
-
-.footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
-    margin: 10px 0 20px;
+.footer-left1 p, 
+.footer-left1 address, 
+.footer-left1 form, 
+.footer-left1{
+  margin: 10px 0 20px;
 }
 
 .footer-left1 address p {
-    font-style: normal;
-    margin: 20px 0;
+  font-style: normal;
+  margin: 20px 0;
 }
 
 .footer-left1 address a{
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .footer-left1 form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .footer-left1 form input[type="email"] {
-    padding: 19px;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    flex: 1;
-    font-size: 18px;
+  padding: 19px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  flex: 1;
+  font-size: 1rem;
 }
 
 .footer-left1 form button {
-    padding: 22px;
-    background-color: #E43A19;
-    color: white;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
+  padding: 22px;
+  background-color: #E43A19;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 
 .footer-right ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .footer-right ul li {
-    margin: 30px 0;
+  margin: 30px 0;
 }
 
 .footer-right ul li a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .footer-right ul li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .social-media {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align items to the center vertically */
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
-    
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
 }
 
 .social-media a {
-    margin-right: 40px; 
+  margin-right: 40px; 
 }
-
 .social-media i {
-    font-size: 35px; /* Adjust icon size */
+  font-size: 35px; /* Adjust icon size */
 }
-
-
-
 
 @media (max-width:920px) {
     nav .navbar{
@@ -616,5 +532,8 @@ footer {
     }
     .usericon {
       justify-content: flex-start; /* Align to the left */
+    }
+    .v_9018 h1 {
+      font-size: 2.75rem;
     }
   }
