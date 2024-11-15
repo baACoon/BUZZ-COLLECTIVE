@@ -155,6 +155,18 @@ select {
     text-align: center;
 }
 
+.popup-content button{
+    background-color: #FF5C5C; /* Soft red background */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed;
@@ -182,4 +194,16 @@ select {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.view-receipt {
+    color:#121111; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s; /* Add transition for hover effect */
+}
+
+.view-receipt:hover {
+    color: #841a1a; /* Change text color on hover */
+    z-index: 1;
 }

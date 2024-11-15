@@ -113,8 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
             <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
             <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
-            <p class="service-fee"><strong>Service Fee: <?php echo number_format($serviceFee, 0); ?></strong></p>
-            <p class="total-fee"><strong>Total Payment: <?php echo number_format($totalPayment, 0); ?></strong></p>
+            <hr>
+            <p class="service-fee"><strong>Service Fee: ₱<?php echo number_format($serviceFee, 0); ?></strong></p>
+            <p class="total-fee"><strong>Total Payment: ₱<?php echo number_format($totalPayment, 0); ?></strong></p>
         </div>
 
         <div class="confirmation-buttons">

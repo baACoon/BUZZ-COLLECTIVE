@@ -211,14 +211,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
 
     <div class="mop">
         <p style="color: white;">MODE OF PAYMENT</p>
-        <div class="mop-container">
             <div class="mop-gcash">
                 <!-- GCash button will be disabled initially -->
                 <button id="gcashButton" class="disabled" disabled>
                     <img src="../frontend/design/image/GCash_logo.svg.png" alt="GCash Logo">
                 </button>
             </div>
-        </div>
     </div>
 
      <!-- Custom popup for GCash -->

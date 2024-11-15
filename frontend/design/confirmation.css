@@ -47,7 +47,9 @@ body::before {
 
 
 .confirmation-details {
-    margin: 6%;
+    margin-top: 6%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 
 .confirmation-details p {  
@@ -63,16 +65,10 @@ body::before {
     min-width: 210px /* Set a minimum width for alignment */
 }
 
-.service-fee {
-    display: flex;
-    flex-direction: column; /* Ensures content is stacked vertically */
-    align-items: center; /* Centers content horizontally */
-    text-align: center; /* Centers the text inside */
-}
-
 .confirmation-buttons {
     text-align: center; /* Center align buttons */
     margin-top: 20px; /* Add some space above the buttons */
+    margin-bottom: 6%;
 }
 
 .confirmation-buttons form {
