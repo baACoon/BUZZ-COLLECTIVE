@@ -24,7 +24,6 @@
                         <li><a href="admin-aboutus.php">About Us</a></li>
                         <li><a href="news.php">News</a></li>
                         <li><a href="admin-branches.php">Branches</a></li>
-                        <li><a href="clientprofile.php">Client Profile</a></li>
                         <li><a href="settings.php">Settings</a></li>
                         </ul>
                     </nav>

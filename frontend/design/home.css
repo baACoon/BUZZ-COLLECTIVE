@@ -292,21 +292,15 @@ li:hover .arrow, li:hover .profile-arrow {
     width: 425px;
     color: rgba(0, 0, 0, 1);
     position: absolute;
-    top: 6.5em;
-    left: 20em;
+    top: 7em;
+    left: 32em;
     font-weight: Bold;
-    font-size: 40px;
+    font-size: 25px;
     opacity: 1;
     text-align: center;
 }
 
-/* barber DROPDOWN */
-.barber-dropdown{
-    text-align: left;
-    margin: 20px;
-    margin-left: 55em;
-    margin-top: 5em;
-}
+
 
 /* barber DAYS */
 .barber-days{

@@ -140,13 +140,7 @@ $db->close();
                 <div class="barber-sched-img">
                     <img src="design/image/SCHEDULE.png" alt="">
                 </div>
-                <!-- Barbers' DROPDOWN -->
-                <div class="barber-dropdown">
-                    <select id="location" name="Branch">
-                        <option value="Imus branch">Imus Branch</option>
-                        <option value="Salitran">Salitran Branch</option>
-                    </select>
-                </div>
+
                 <!-- Barbers' DAYS and Availability Section -->
                 <div class="barber-months">
                 <h1 class="date">(<?php echo date('F j', strtotime($startDate)) . ' - ' . date('F j, Y', strtotime($endDate)); ?>)</h1>

@@ -56,11 +56,6 @@ if (!isset($_SESSION['admin_username'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="clientprofile.php">
-                        <p><i class="fa-solid fa-user" style="color: #cfcfcf;"></i> Client Profile</p>
-                    </a>
-                </li>
-                <li>
                     <a href="settings.php">
                         <p><i class="fa-solid fa-cog" style="color: #cfcfcf;"></i> Settings</p>
                     </a>
