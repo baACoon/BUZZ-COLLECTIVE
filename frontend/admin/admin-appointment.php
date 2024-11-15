@@ -91,6 +91,8 @@ $branches = json_decode($json_data, true);
                             }
                             $payment_status = isset($appointment['payment_status_name']) ? $appointment['payment_status_name'] : 'N/A';
                             $payment_display = ($payment_status === 'Paid') ? 'Paid' : 'Unpaid'; 
+
+                            $payment_option = isset($appointment['payment_option']) ? $appointment['payment_option'] : 'Not specified';
                     
                             echo "
                             <tr data-appointment-id='{$appointment['appointment_id']}'>
@@ -112,8 +114,7 @@ $branches = json_decode($json_data, true);
                                 <td>
                                     <strong>Service:</strong> {$appointment['services']}<br>
                                     <strong>Stylist:</strong> {$appointment['barber']}
-                                </td>
-                                 <td>" . (isset($appointment['payment_option']) ? $appointment['payment_option'] : 'N/A') . "</td>
+                                <td>{$payment_option}</td>
                                 <td>{$receipt_link}</td>
                                 <td>{$payment_display}</td>                                
                                 <td>{$appointment['status_name']}</td>
