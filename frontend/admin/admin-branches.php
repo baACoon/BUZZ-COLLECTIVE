@@ -65,7 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     <script src="script.js" defer></script>
 </head>
 <body>
-    <i class='bx bx-menu' id="menu-icon"></i>
+     <!-- Navbar for screens below 768px -->
+     <div class="mobile-navbar" id="mobile-navbar">
+        <div class="mobile-logo">
+            <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
+        </div>
+        <i class='bx bx-menu' id="menu-icon"></i>
+    </div>
+    
     <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">

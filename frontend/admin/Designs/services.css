@@ -8,7 +8,6 @@
 }
 
 body {
-    margin: 0;
     background: #F5F5F5;
     color: #000000;
 }
@@ -22,11 +21,19 @@ body {
     background-color: #222222;
     color: white;
     padding-top: 20px;
-    z-index: 1;
+    z-index: 999;
+    
 }
+
 i.bx-menu{
     display: none;
+    order: 2; 
+    font-size: 30px; 
+    color: #333; 
+    cursor: pointer; 
+    display: block; 
 }
+
 #close-sidebar {
     font-size: 30px;
     color: white;
@@ -37,10 +44,41 @@ i.bx-menu{
     cursor: pointer; 
     transition: transform 0.3s ease; 
 }
+
 #close-sidebar:hover{
     color: #f73201;   
     transform: rotate(90deg);
 }
+
+/* Mobile Navbar (for screens below 768px) */
+.mobile-navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #F8F8F8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.mobile-logo img {
+    max-height: 25vh;
+    max-width: 25vw;
+    margin: 1rem;
+}
+
+
 .sidebar .logo{
     display: flex;
     justify-content: center; 
@@ -327,10 +365,16 @@ input::placeholder {
 
 
 @media (max-width: 768px) {
+    .mobile-navbar {
+        display: flex;
+    }
     .sidebar {
         display: none; 
+        right: 0; /* Aligns sidebar to the right */
+        transform: translateX(100%); /* Initially hides the sidebar */
+        transition: transform 0.3s ease;
     }
-   
+
     .sidebar .logo img {
         margin-top: 15%;
         max-height: 100px;
@@ -343,19 +387,16 @@ input::placeholder {
     i.bx-menu {
         display: block; 
         cursor: pointer;
-        order: 2; 
-        font-size: 45px; 
+        font-size: 25px; 
         color: #333; 
-        cursor: pointer; 
-        display: block; 
         position: absolute;
-        left: 10%;
-        top: 5%;
+        right: 20px; /* Positioning to the right side */
+        top: 20px; /* Adjusts vertical positioning */
     }
     /* Show the sidebar when the 'open' class is added */
     .sidebar.open {
         display: block; 
-        transition: transform 0.3s ease; 
+        transform: translateX(0); /* Slide-in effect */
     }
     .services-header {
         margin-left: 50px;
