@@ -128,11 +128,46 @@ $db->close();
             </div>
             <!-- NEWS SELECTION -->
             <section class="body-cont">
-
                 <h1>NEWS AND DISCOUNTS</h1>
-                <div class="image1"></div>
-                <div class="image2"></div>
 
+                <?php
+                $newsFile = 'admin/data/news.json'; // Adjust path based on your directory structure
+
+                // Load the JSON file and handle errors gracefully
+                $news = [];
+                if (file_exists($newsFile)) {
+                    $newsContent = file_get_contents($newsFile);
+                    if ($newsContent !== false) {
+                        $news = json_decode($newsContent, true) ?? [];
+                    } else {
+                        echo "<p class='error'>Error: Unable to read the news file. Please try again later.</p>";
+                    }
+                } else {
+                    echo "<p class='error'>Error: News file not found. Please contact the administrator.</p>";
+                }
+
+                // Display the news if available
+                if (!empty($news)): ?>
+                    <div class="news-container">
+                        <?php foreach ($news as $item): ?>
+                            <div class="news-item">
+                                <div class="news-image">
+                                <div class="news-image">
+                                    <img src="<?= htmlspecialchars('admin/uploads/' . $item['poster']) ?>" 
+                                        alt="<?= htmlspecialchars($item['title']) ?>">
+                                </div>
+                                </div>
+                                <div class="news-details">
+                                    <h2><?= htmlspecialchars($item['title']) ?></h2>
+                                    <h3><?= htmlspecialchars($item['subtitle']) ?></h3>
+                                    <p><?= nl2br(htmlspecialchars($item['description'])) ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <p class="no-news">No news available at the moment. Stay tuned!</p>
+                <?php endif; ?>
             </section>
             <!-- Barbers' Availability Section -->
             <section class="barber-selection">
@@ -293,6 +328,48 @@ $db->close();
                 text-align: center;
                 font-style: italic;
             }
+            .news-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .news-item {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                overflow: hidden;
+                width: calc(33.33% - 20px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease;
+            }
+
+            .news-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .news-image img {
+                width: 100%;
+                height: auto;
+            }
+
+            .news-details {
+                padding: 10px;
+            }
+
+            .news-details h2, .news-details h3 {
+                margin: 0;
+            }
+
+            .news-details p {
+                margin-top: 10px;
+                color: #555;
+            }
+
+            .error, .no-news {
+                color: red;
+                font-style: italic;
+            }
+
 
             </style>
 </body>
