@@ -150,7 +150,7 @@ i.bx-menu{
 /* Add button */
 .news-button {
     padding: 10px 20px;
-    background-color: #4BD37B;
+    background-color:#f44336;
     color: white;
     border: none;
     border-radius: 14px;
@@ -160,7 +160,7 @@ i.bx-menu{
 }
 
 .news-button:hover {
-    background-color: #2d7c49;
+    background-color:#802822;
 }
 
 /* Default style for images */

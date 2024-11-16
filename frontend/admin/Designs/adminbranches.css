@@ -218,7 +218,7 @@ i.bx-menu{
 }
 
 .delete-button {
-    background-color: #FF5C5C; /* Soft red background */
+    background-color: #f44336; /* Soft red background */
     color: white;
     border: none;
     padding: 8px 16px;
@@ -229,7 +229,7 @@ i.bx-menu{
 }
 
 .delete-button:hover {
-    background-color: #D32F2F; /* Darker red on hover */
+    background-color: #854242; /* Darker red on hover */
 }
 
 /* Form container */

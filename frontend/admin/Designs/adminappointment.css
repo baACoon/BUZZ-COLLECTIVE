@@ -65,6 +65,7 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 select {
@@ -75,6 +76,7 @@ select {
     border-radius: 15px;
     background-color: #fff;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .delete-btn {
@@ -93,11 +95,11 @@ select {
 }
 
 .delete-button {
-    background-color: #e63946;
+    background-color: #000000;
 }
 
 .confirm-btn {
-    background-color: #4CAF50;
+    background-color: #f44336;
 }
 
 .cancel-btn {
@@ -156,7 +158,7 @@ select {
 }
 
 .popup-content button{
-    background-color: #FF5C5C; /* Soft red background */
+    background-color:#f44336; /* Soft red background */
     color: white;
     border: none;
     padding: 8px 16px;
@@ -180,18 +182,20 @@ select {
 
 .modal-content {
     position: relative;
+    top: 10%;
     margin: auto;
     padding: 20px;
     width: 80%;
     max-width: 600px;
     background-color: white;
+    border-radius: 8px;
 }
 
 .close-btn {
     position: absolute;
     top: 10px;
     right: 20px;
-    font-size: 24px;
+    font-size: 50px;
     font-weight: bold;
     cursor: pointer;
 }
