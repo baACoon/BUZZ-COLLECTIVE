@@ -29,7 +29,6 @@ body::before {
 .confirmation-form {
     color: #ffffff;
     text-align: center; 
-    margin-top: 5%; /* Ensure no extra top margin */
     padding: 0; /* Remove any padding if not needed */
 }
 
@@ -129,66 +128,74 @@ body::before {
     cursor: pointer;
 }
 
+/* Common styling for payment container */
 .payment-container {
-    flex: 1; /* Ensures equal width for all payment containers */
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
     text-align: center;
-    max-width: 250px; /* Fixed width */
-    height: 180px; /* Fixed height */
+    vertical-align: middle;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.payment-container button {
+    all: unset; /* Reset button styles */
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-content: center;
-}
-
-.payment-wrapper {
-    display: flex;
-    align-content: center; /* Center the containers horizontally */
-    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
-    gap: 20px; /* Space between the payment containers */
-}
-
-.payment-button {
-    width: 100%; /* Ensures button fills its container */
-    height: 180px;
-    background-color: transparent;
-    border: 2px solid #ffffff;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 15px;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.payment-button[data-selected="true"],
-.payment-button:hover {
-    background-color: #ffffff;
-    color: #1d1d1d;
+/* Text styling */
+.payment-container h3,
+.payment-container h1,
+.payment-container h5 {
+    margin: 0;
+    color: white;
+}
+.payment-container h3{
+    padding-bottom: 10px;
+}
+.payment-container h5{
+    font-weight: 500;
+}
+/* Hover effect */
+.payment-container:hover {
+    background-color: white;
+    border-color: #ff522f;
+    border-radius: 8px;
 }
 
-.payment-button h3,
-.payment-button h1,
-.payment-button h5 {
-    margin: 5px 0;
-    font-family: 'Montserrat', sans-serif;
+.payment-container:hover h3,
+.payment-container:hover h1,
+.payment-container:hover h5 {
+    color: black;
 }
 
-.payment-button h1 {
-    font-size: 2rem;
-    font-weight: bold;
+/* Styling for selected state */
+.payment-container button[checked],
+.payment-container button:focus {
+    background-color: white;
+    border-color: none;
+    border-radius: 8px;
 }
 
-.payment-button h3 {
-    font-size: 1.2rem;
-    font-weight: 400;
+.payment-container button[checked] h3,
+.payment-container button[checked] h1,
+.payment-container button[checked] h5,
+.payment-container button:focus h3,
+.payment-container button:focus h1,
+.payment-container button:focus h5 {
+    color: black;
 }
 
-.payment-button h5 {
-    font-size: 0.9rem;
-    font-weight: normal;
-}
-
-.payment-button:focus {
-    outline: none;
-}
 
 
 

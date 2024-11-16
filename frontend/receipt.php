@@ -151,7 +151,7 @@ try {
                     <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Book again</button>
                 </form>
                 <form method="POST" action="home.php">
-                    <button type="submit">Home</button>
+                    <button type="submit" style="font-family: 'Montserrat', sans-serif; border: none; background-color: #e0e0e0;">Home</button>
                 </form>
             </div>
         </div>
