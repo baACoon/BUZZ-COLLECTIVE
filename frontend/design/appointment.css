@@ -190,13 +190,17 @@ tr td h4{
 
 /*button*/
 .unavailable{
-    color: rgb(255, 254, 254);
-    background-color:rgb(204, 33, 33);
-    border:0.5px solid rgb(36, 35, 35);
+    
     border-radius: 10px;
     font-size: 10px;
     padding: 0.3px 7px 0.3px 7px;
 }
+.unavailable button{
+    color: rgb(255, 254, 254);
+    background-color:rgb(204, 33, 33);
+    border:0.5px solid rgb(36, 35, 35);
+}
+
 .available{
     color: rgb(255, 254, 254);
     background-color:rgb(26, 171, 43);
@@ -256,13 +260,13 @@ tr td h4{
 }
 
 .time-selection .submit-btn.active {
-    background-color: #007bff;
+    background-color:  #E43A19;
     color: #fff;
     cursor: pointer;
 }
 
 .time-selection .submit-btn:hover.active {
-    background-color: #0056b3;
+    background-color: rgb(255, 77, 64);
 }
 
 .time-selection .submit-btn.unavailable {
@@ -287,6 +291,19 @@ tr td h4{
     align-items: center;
 }
 
+/* Add this to your CSS file */
+.selected {
+    background-color: #E43A19;
+    color: white;
+}
+
+.selected h4 {
+    color: white;
+}
+
+.available {
+    text-decoration: none;
+}
 
 
 

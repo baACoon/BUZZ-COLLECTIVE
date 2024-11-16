@@ -58,21 +58,21 @@ function timeslots($duration, $cleanup, $start, $end){
              <p>Main Branch</p>
         </div>
         <form action="appointmentform.php"id="appointmentForm" method="GET">
-        <div class="row">
-            <div class="coloumnn">
-                <?php
-                     $dateComponents = getdate();
-                     if(isset($_GET['month']) && isset($_GET['year'])){
-                         $month = $_GET['month']; 			     
-                         $year = $_GET['year'];
-                     }else{
-                         $month = $dateComponents['mon']; 			     
-                         $year = $dateComponents['year'];
-                     }
-                    echo build_calendar($month,$year);
-                ?>
+            <div class="row">
+                <div class="coloumnn">
+                    <?php
+                        $dateComponents = getdate();
+                        if(isset($_GET['month']) && isset($_GET['year'])){
+                            $month = $_GET['month']; 			     
+                            $year = $_GET['year'];
+                        }else{
+                            $month = $dateComponents['mon']; 			     
+                            $year = $dateComponents['year'];
+                        }
+                        echo build_calendar($month,$year);
+                    ?>
+                </div>
             </div>
-        </div>
         
         <!-- Time Selection Form -->
         <div class="row">
@@ -104,27 +104,20 @@ function timeslots($duration, $cleanup, $start, $end){
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const timeSelect = document.getElementById('timeslot');
             const submitBtn = document.querySelector('.submit-btn');
-
-            // Mock data for unavailable times (e.g., from server) 
-            const unavailableTimes = [
-                '10:00 AM - 11:00 AM',
-                '02:00 PM - 03:00 PM'
-            ];
+            const unavailableTimes = ['10:00 AM - 11:00 AM', '02:00 PM - 03:00 PM']; // Mock data
 
             function isTimeAvailable(time) {
                 return !unavailableTimes.includes(time);
             }
 
-            document.getElementById('timeslot').addEventListener('change', function(event) {
-            const selectedTime = this.value;
-            console.log("Selected Time for Submission:", selectedTime); // Debugging purpose
-
-            // Set hidden input field for timeslot (optional if form directly uses 'timeslot')
-            document.getElementById('selected-timeslot').value = selectedTime;
-            if (selectedTime && isTimeAvailable(selectedTime)) {
+            // Event listener for changing time slot
+            document.getElementById('timeslot').addEventListener('change', function (event) {
+                const selectedTime = this.value;
+                document.getElementById('selected-timeslot').value = selectedTime;
+                if (selectedTime && isTimeAvailable(selectedTime)) {
                     submitBtn.classList.add('active');
                     submitBtn.classList.remove('unavailable');
                     submitBtn.disabled = false;
@@ -133,10 +126,26 @@ function timeslots($duration, $cleanup, $start, $end){
                     submitBtn.classList.add('unavailable');
                     submitBtn.disabled = true;
                 }
-            // Proceed with form submission
-            event.currentTarget.submit();
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const dateCells = document.querySelectorAll('td');
+
+                dateCells.forEach(cell => {
+                    cell.addEventListener('click', function () {
+                        // Remove 'selected' class from all cells
+                        dateCells.forEach(c => c.classList.remove('selected'));
+
+                        // Add 'selected' class to the clicked cell
+                        if (!this.classList.contains('unavailable')) {
+                            this.classList.add('selected');
+                        }
+                    });
+                });
+            });
+
         });
-    });
+
     </script>
 </body>
 </html>
