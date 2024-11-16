@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/design/payment.css?">
+    <link rel="stylesheet" href="../frontend/design/payment.css?v=101">
     <link rel="stylesheet" href="../frontend/design/terms.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -125,23 +125,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
     <p class="payment-opt">PAYMENT OPTION</p>
 
     <form method="POST" action="payment.php">
+        <div class="payment-wrapper">
             <div class="payment-container" id="fullPayment">
-                <button type="submit" name="payment_option" value="2" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
-                    && $_SESSION['payment_data']['payment_option_id'] == 2) echo 'checked'; ?>>
-                    <h3>Full Payment</h3>
+                <button type="submit" name="payment_option" value="2" class="payment-button" data-selected="<?php if (isset($_SESSION['payment_data']['payment_option_id']) && $_SESSION['payment_data']['payment_option_id'] == 2) echo 'true'; ?>">
+                    <h3>FULL PAYMENT</h3>
                     <h1 class="total">₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?></h1>
                     <h5>(Service + Appointment Fee)</h5>
                 </button>
             </div>
 
             <div class="payment-container" id="appointmentFee">
-                <button type="submit" name="payment_option" value="1" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
-                    && $_SESSION['payment_data']['payment_option_id'] == 1) echo 'checked'; ?>>
-                    <h3>Appointment Fee</h3>
+                <button type="submit" name="payment_option" value="1" 
+                    class="payment-button" 
+                    data-selected="<?php if (isset($_SESSION['payment_data']['payment_option_id']) && $_SESSION['payment_data']['payment_option_id'] == 1) echo 'true'; ?>">
+                    <h3>APPOINTMENT FEE</h3>
                     <h1>₱150.00</h1>
-            </button>
+                </button>
+            </div>
         </div>
     </form>
+
+
 
     <?php if ($uploadError): ?>
         <div class="error-message"><?php echo $uploadError; ?></div>
@@ -221,27 +225,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
 
      <!-- Custom popup for GCash -->
      <div class="custom-popup" id="gcashPopup">
-        <i class='bx bx-x' id="closePopup"></i> <!-- Add this line for the close button -->
+        <i class='bx bx-x' id="closePopup"></i> <!-- Close button -->
         <h2>UPLOAD SCREENSHOT</h2>
         <div class="gcash-container">
             <div class="gcash-text">
                 <p>SEND TO</p>
                 <h3>0960 520 5411</h3>
             </div>
-            <img src="../frontend/design/image/QRGacsh.jpg" alt="GCASH QR Code">
+            <div class="gcash-image">
+                <img src="../frontend/design/image/QRGacsh.jpg" alt="GCASH QR Code">
+                <p class="file-info">Accepted formats: JPG, JPEG, PNG, PDF (Max size: 5MB)</p> <!-- Moved here -->
+            </div>
         </div>
         <div class="receipt-upload">
-            <!-- <h4>UPLOAD GCASH RECEIPT</h4> -->
             <form action="payment.php" id="receiptForm" method="POST" enctype="multipart/form-data">
                 <label class="file-label">
-                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)"> <br>
-                    <p class="file-info">Accepted formats: JPG, JPEG, PNG, PDF (Max size: 5MB)</p>
+                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
                     <span id="file-label-text">UPLOAD RECEIPT</span>
                 </label>
-                <button type="submit" name="submit"class="submit-button">SUBMIT</button>
+                <button type="submit" name="submit" class="submit-button">SUBMIT</button>
             </form>
         </div>
     </div>
+
 
         <script src="../frontend/js/payment.js"></script>
 

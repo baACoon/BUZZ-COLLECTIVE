@@ -133,36 +133,114 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 .service-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px 0; /* Adds padding for better spacing */
+    align-items: flex-start; /* Keep items aligned at the top */
 }
 .service-info{
     display: flex;
     align-items: center;
+    padding: 10px 0;
 }
-.service-info label{
-    font-size: 1rem;
-    margin-left: 10px;
-    white-space: nowrap;
+.service-info label {
+    font-size: 1rem; /* Default font size for larger screens */
+    white-space: normal; /* Allow wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding: 5px 10px; /* Adds padding around the service name */
 }
-.service-details{
+.service-details {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column; /* Stack elements */
+    align-items: flex-start; /* Align to the left for smaller screens */
+    padding: 5px 10px; /* Add padding for better spacing */
 }
 .appointment-fields .service-fee {
     color: #000000;
     font-weight: bold;
     font-size: 1rem;
     margin-left: auto;
+    font-style: normal;
 }
 
-.appointment-fields .service-description {
-    font-size: 0.7em; /* Adjust font for readability */
+.appointment-fields {
+    font-size: 0.7rem; /* Adjust font for readability */
     color: #666666;
     margin-left: 35px; /* Align descriptions with the services */
     font-style: italic;
     text-align: right;
     margin-left: auto;
     white-space: nowrap;
-}              
+}
+
+.service-description {
+    font-size: 0.7rem; /* Default size for larger screens */
+    color: #666;
+    margin-left: 35px; /* Space between fee and description */
+    
+    padding: 5px 0; /* Padding for description text */
+    word-wrap: break-word; /* Ensure wrapping on small screens */
+}
+
+/* Media query for smaller screens (tablets and large phones) */
+@media (max-width: 500px) {
+    .appointment-fields {
+        width: 80%; /* Reduce form width on smaller screens */
+        padding: 1rem; /* Ensure proper padding */
+    }
+
+    .services-container {
+        max-width: 100%; /* Allow services container to fill smaller screens */
+        padding: 0.5rem;
+    }
+
+    .service-item {
+        flex-direction: column; /* Stack fee and description vertically */
+        align-items: flex-start; /* Align text to the left */
+
+    }
+    .service-info label {
+        font-size: 0.9rem; /* Slightly smaller font size */
+        padding: 8px; /* Adjust padding for readability */
+    }
+
+    .service-description {
+        font-size: 0.5rem; /* Slightly smaller description text */
+        padding: 8px 0; /* Adjust description padding */
+    }
+    
+    .service-details {
+        align-items: flex-start; /* Left-align the fee and description */
+        margin-top: 5px; /* Add spacing between items */
+    }
+
+    .proceed-btn {
+        width: 50%; /* Make button width more responsive */
+        font-size: 1rem;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], select {
+        font-size: 0.9rem; /* Slightly reduce font size for inputs */
+    }
+}
+
+/* Media query for very small screens (mobile phones) */
+@media (max-width: 340px) {
+    .appointment-fields {
+        width: 90%; /* Nearly full width on small devices */
+    }
+
+    .proceed-btn {
+        width: 70%; /* Make button larger for better usability */
+    }
+
+    .service-info label {
+        font-size: 0.8rem; /* Further reduce font size */
+        padding: 6px; /* Tighter padding */
+    }
+
+    .service-description {
+        font-size: 0.75rem; /* Smaller font for tight screens */
+        line-height: 1.2; /* Adjust line height for readability */
+    }
+}
 

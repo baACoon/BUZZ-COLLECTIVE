@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "<div class='prompt'>This timeslot is already booked.</div>";
+        echo "<div class='prompt' >THIS TIMESLOT IS ALREADY BOOKED.</div>";
     } else {
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['form_data']['date'] = $date;
             $_SESSION['form_data']['email'] = $_SESSION['form_data']['email']; // Email is already stored
             
-            echo "<div class='prompt'>Please Confirm the details!</div>";
+            echo "<div class='prompt'>PLEASE CONFIRM THE DETAILS!</div>";
         } else {
             echo "<div class='prompt'>There was an error processing your booking. Please try again.</div>";
         }
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/design/confirmation.css">
+    <link rel="stylesheet" href="../frontend/design/confirmation.css?v=101">
     <title>Buzz & Collective - Confirmation</title>
 </head>
 <style>
@@ -114,16 +114,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
             <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
             <hr>
-            <p class="service-fee"><strong>Service Fee: ₱<?php echo number_format($serviceFee, 0); ?></strong></p>
-            <p class="total-fee"><strong>Total Payment: ₱<?php echo number_format($totalPayment, 0); ?></strong></p>
+            <p class="service-fee" style="font-weight: bolder;">SERVICE FEE <strong>₱<?php echo number_format($serviceFee, 0); ?></strong></p>
+            <p class="total-fee" style="font-weight: bolder;">TOTAL PAYMENT: <strong>₱<?php echo number_format($totalPayment, 0); ?></strong></p>
         </div>
 
         <div class="confirmation-buttons">
             <form method="POST" action="payment.php">
-                <button class="confirm-btn" type="submit">Confirm Appointment</button>
+                <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Confirm Appointment</button>
             </form>
             <form method="POST" action="landingappointment.php">
-                <button type="submit">Back</button>
+                <button type="submit" style="font-family: 'Montserrat', sans-serif; border: none; background-color: #e2e2e2;">Back</button>
             </form>
         </div>
     </div>

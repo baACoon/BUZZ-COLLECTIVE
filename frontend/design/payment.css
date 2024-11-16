@@ -130,45 +130,67 @@ body::before {
 }
 
 .payment-container {
-    flex: 1;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    flex: 1; /* Ensures equal width for all payment containers */
     text-align: center;
     max-width: 250px; /* Fixed width */
     height: 180px; /* Fixed height */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-content: center;
 }
-.payment-container button{
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 25px;
-    text-align: center;
-    max-width: 250px; /* Fixed width */
-    height: 180px; /* Fixed height */
+
+.payment-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-content: center; /* Center the containers horizontally */
+    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+    gap: 20px; /* Space between the payment containers */
+}
+
+.payment-button {
+    width: 100%; /* Ensures button fills its container */
+    height: 180px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.payment-button[data-selected="true"],
+.payment-button:hover {
+    background-color: #ffffff;
+    color: #1d1d1d;
+}
+
+.payment-button h3,
+.payment-button h1,
+.payment-button h5 {
+    margin: 5px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.payment-button h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.payment-button h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.payment-button h5 {
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+.payment-button:focus {
+    outline: none;
 }
 
 
-.payment-container.active {
-    background-color: white;
-    border: 1px solid #000000;
-}
-.payment-container button.active {
-    background-color: white;
-    border: 1px solid #000000;
-}
-
-.payment-container input{
-    visibility: hidden;
-}
 
 .terms-container {
     text-align: center;
@@ -230,34 +252,43 @@ body::before {
     text-align: center;
     font-size: 1.5rem;
 }
+
 .gcash-container {
     display: flex;
-    align-items: center;   
-    justify-content: center;
-    gap: 20px;       
-    margin-bottom: 20px;        
+    flex-direction: column; /* Stack the text and image */
+    align-items: center;    /* Center align everything in the container */
+    gap: 20px;              /* Add spacing between the text and the image */
 }
 
 .gcash-text {
     display: flex;
-    flex-direction: column; /* Align p and h3 vertically */
-    text-align: center;   
-    margin: 0;
+    flex-direction: column; /* Stack the "SEND TO" and phone number */
+    align-items: center;    /* Center align the text */
+    text-align: center;
+    margin-bottom: 5px;
 }
+
 .gcash-text p,
 .gcash-text h3 {
-    margin: 5px;              
+    margin-bottom: 0px;              
     padding: 0;           
 }
 
-.gcash-container img {
-    max-width: 250px; 
-    height: auto;
-    width: auto;
-    border: 1px solid #000;
-    border-radius: 8px;     
-    padding: 1px;         
+.gcash-image {
+    display: flex;
+    flex-direction: column; /* Stack the image and text vertically */
+    align-items: center;    /* Center align image and text */
+    gap: 10px;              /* Add space between image and the "Accepted formats" text */
 }
+
+.gcash-container img {
+    max-width: 250px;
+    height: auto;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 1px;
+}
+
 .receipt-upload {
     margin-bottom: 4%;
 }
@@ -272,7 +303,7 @@ body::before {
 .file-label {
     display: flex;         
     align-items: center;   
-    margin-bottom: 10px;   
+    margin: 10px 10px;   
     justify-content: center;
     width: 100%; 
 }
@@ -284,7 +315,7 @@ body::before {
 .file-label span {
     padding: 10px 15px; 
     color: rgb(57, 57, 57);
-    border: 1px solid black; 
+    border: 1px solid rgb(75, 75, 75); 
     border-radius: 8px;
     cursor: pointer; 
     display: flex; 
@@ -294,25 +325,29 @@ body::before {
 }
 
 .submit-button {
-    padding: 12px 13px;
+    padding: 12px 15px;
     background-color: #E43A19;
-    color: white;      
+    color: white;  
+    border: none;    
     border-radius: 8px; 
     cursor: pointer;   
     display: flex; 
     align-items: center; 
     justify-content: center;
-    width: 58%; 
+    width: 60%; 
     font-size: 16px;
     letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .submit-button:hover {
     background-color: #ff522f; 
 }
 
+
 .file-info {
     font-size: 0.9em;
     color: #666;
-    margin-top: 5px;
+    text-align: center;
+    margin: 0; /* Ensure no extra margin around */
 }
