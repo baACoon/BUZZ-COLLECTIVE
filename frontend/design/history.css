@@ -95,7 +95,10 @@ i.bx-menu{
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-right: 1px;
     margin-left: 19em;
-
+    height: auto; /* Adjust automatically based on content */
+    min-height: 500px; /* Ensures a minimum height */
+    max-height: 600px; /* Optional: Restricts the maximum height */
+    overflow-y: auto; /* Adds a vertical scrollbar if content exceeds max height */
 }
 .history h1{
     color: black;

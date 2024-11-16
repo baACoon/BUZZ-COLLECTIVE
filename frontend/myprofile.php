@@ -195,7 +195,7 @@ $db->close();
         <div id="overlay" class="overlay show"></div>
     <?php endif; ?>
 
-    <i class='bx bx-menu' id="menu-icon"></i>
+    
     <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="profile-container">

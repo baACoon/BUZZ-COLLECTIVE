@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    font-style: normal;
     background: url('../design/image/buzzeme.jpg') no-repeat center center fixed;
     background-color: rgba(0, 0, 0, 0.5);
     background-size: cover;
@@ -30,6 +31,7 @@ body::before {
     color: #ffffff;
     text-align: center; 
     margin-top: 5%; /* Ensure no extra top margin */
+    max-width: 600px; /* Optional: limit the maximum width */
     padding: 0; /* Remove any padding if not needed */
 }
 
@@ -54,6 +56,7 @@ body::before {
 
 .form-section label {
     display: block;
+    margin-top: -0.4rem;
     margin-bottom: 0.5rem;
     font-size: 1rem;
     text-align: left;
@@ -89,7 +92,6 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     margin-right: 0.5rem;
     font-size: 1.5rem;
     transform: scale(1.5);
-    cursor: pointer;
 }
 
 .services label {
@@ -167,7 +169,6 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     font-size: 0.7rem; /* Adjust font for readability */
     color: #666666;
     margin-left: 35px; /* Align descriptions with the services */
-    font-style: italic;
     text-align: right;
     margin-left: auto;
     white-space: nowrap;
@@ -180,9 +181,9 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     
     padding: 5px 0; /* Padding for description text */
     word-wrap: break-word; /* Ensure wrapping on small screens */
+    word-break: break-word; /* Force word breaking for long words */
 }
 
-/* Barber item container */
 .barber-item {
     display: flex;                
     align-items: center;         
@@ -193,6 +194,8 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     transition: background-color 0.3s; 
     cursor: pointer;             
     background-color: #fff;
+    width: 100%;
+
 }
 
 /* Radio button */
@@ -204,7 +207,9 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 /* Label styling */
 .barber-item label {
     font-size: 16px;             
-    color: #333;                 
+    color: #333;       
+    margin-top: 0.3rem;
+
 }
 
 /* Hover effect */
@@ -226,7 +231,7 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 420px; 
+    width: 220px; 
     background-color: #555; 
     color: #fff; 
     text-align: center; 
@@ -248,66 +253,76 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 }
 
 
-/* Media query for smaller screens (tablets and large phones) */
+@media (max-width: 1024px) {
+    .appointment-fields {
+        width: 60%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .appointment-fields {
+        width: 70%;
+    }
+    .service-info label {
+        font-size: 0.9rem; /* Default font size for larger screens */
+    }
+    .appointment-fields, .service-fee {
+        font-size: 0.9rem;
+    }
+    .note-text {
+        font-size: 0.8rem;  /* Adjust the font size for smaller screens */
+        white-space: normal; /* Allow the text to wrap and break into multiple lines */
+        word-wrap: break-word; /* Ensure that long words break to fit within the container */
+    }
+}
 @media (max-width: 500px) {
     .appointment-fields {
-        width: 80%; /* Reduce form width on smaller screens */
-        padding: 1rem; /* Ensure proper padding */
-    }
-
-    .services-container {
-        max-width: 100%; /* Allow services container to fill smaller screens */
-        padding: 0.5rem;
-    }
-
-    .service-item {
-        flex-direction: column; /* Stack fee and description vertically */
-        align-items: flex-start; /* Align text to the left */
-
+        width: 80%;
+        margin-left: -6%; /* Adjust the left margin to shift it slightly left */
+        margin-right: 0;
     }
     .service-info label {
-        font-size: 0.9rem; /* Slightly smaller font size */
-        padding: 8px; /* Adjust padding for readability */
+        font-size: 0.8rem; /* Default font size for larger screens */
     }
-
     .service-description {
-        font-size: 0.5rem; /* Slightly smaller description text */
-        padding: 8px 0; /* Adjust description padding */
+        font-size: 0.5rem; 
+        margin-left: 15px; /* Reduce margin on smaller screens for better spacing */
     }
-    
-    .service-details {
-        align-items: flex-start; /* Left-align the fee and description */
-        margin-top: 5px; /* Add spacing between items */
-    }
-
-    .proceed-btn {
-        width: 50%; /* Make button width more responsive */
+}
+@media (max-width: 480px) {
+    .appointment-form {
         font-size: 1rem;
     }
-
-    input[type="text"], input[type="email"], input[type="tel"], select {
-        font-size: 0.9rem; /* Slightly reduce font size for inputs */
-    }
-}
-
-/* Media query for very small screens (mobile phones) */
-@media (max-width: 340px) {
     .appointment-fields {
-        width: 90%; /* Nearly full width on small devices */
+        width: 85%;
     }
-
+    .form-section h3 {
+        font-size: 1.1rem;
+    }
+    .form-section label {
+        font-size: 1rem;
+    }
+    .note-text {
+        font-size: 0.9rem;  /* Adjust the font size for smaller screens */
+        white-space: normal; /* Allow the text to wrap and break into multiple lines */
+        word-wrap: break-word; /* Ensure that long words break to fit within the container */
+    }
     .proceed-btn {
-        width: 70%; /* Make button larger for better usability */
-    }
-
-    .service-info label {
-        font-size: 0.8rem; /* Further reduce font size */
-        padding: 6px; /* Tighter padding */
-    }
-
-    .service-description {
-        font-size: 0.75rem; /* Smaller font for tight screens */
-        line-height: 1.2; /* Adjust line height for readability */
+        width: 40%;
+        font-size: 1rem;
     }
 }
 
+@media (max-width: 340px) {
+    .appointment-fields{ 
+        width: 90%;
+        margin-left: 1%;
+    }
+    .form-section label {
+        font-size: 0.9rem;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], select {
+        font-size: 0.9rem;
+    }
+}
