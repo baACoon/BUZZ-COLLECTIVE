@@ -5,15 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     gcashButton.disabled = true; // Make sure it's disabled by default
 });
 
-document.querySelectorAll('.payment-button').forEach(button => {
-    button.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent form submission on click
-        document.querySelectorAll('.payment-button').forEach(btn => btn.setAttribute('data-selected', 'false'));
-        this.setAttribute('data-selected', 'true');
-        this.closest('form').submit(); // Submit the form after setting the state
-    });
-});
-
 // Toggle payment option
 document.getElementById('fullPayment').addEventListener('click', function() {
     toggleActive('fullPayment');
@@ -34,6 +25,8 @@ function toggleActive(containerId) {
     activeContainer.classList.add('active');
     activeContainer.style.color = 'black'; // Change text color to black
 }
+
+
 
 // GCash popup logic
 var gcashButton = document.getElementById('gcashButton');

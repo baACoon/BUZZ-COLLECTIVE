@@ -125,24 +125,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
     <p class="payment-opt">PAYMENT OPTION</p>
 
     <form method="POST" action="payment.php">
-        <div class="payment-wrapper">
             <div class="payment-container" id="fullPayment">
-                <button type="submit" name="payment_option" value="2" class="payment-button" data-selected="<?php if (isset($_SESSION['payment_data']['payment_option_id']) && $_SESSION['payment_data']['payment_option_id'] == 2) echo 'true'; ?>">
-                    <h3>FULL PAYMENT</h3>
+                <button type="submit" name="payment_option" value="2" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
+                    && $_SESSION['payment_data']['payment_option_id'] == 2) echo 'checked'; ?>>
+                    <h3>Full Payment</h3>
                     <h1 class="total">₱<?php echo number_format($_SESSION['payment_data']['total_payment'], 2); ?></h1>
                     <h5>(Service + Appointment Fee)</h5>
                 </button>
             </div>
 
             <div class="payment-container" id="appointmentFee">
-                <button type="submit" name="payment_option" value="1" 
-                    class="payment-button" 
-                    data-selected="<?php if (isset($_SESSION['payment_data']['payment_option_id']) && $_SESSION['payment_data']['payment_option_id'] == 1) echo 'true'; ?>">
-                    <h3>APPOINTMENT FEE</h3>
+                <button type="submit" name="payment_option" value="1" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
+                    && $_SESSION['payment_data']['payment_option_id'] == 1) echo 'checked'; ?>>
+                    <h3>Appointment Fee</h3>
                     <h1>₱150.00</h1>
                 </button>
             </div>
-        </div>
     </form>
 
 
@@ -225,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
 
      <!-- Custom popup for GCash -->
      <div class="custom-popup" id="gcashPopup">
-        <i class='bx bx-x' id="closePopup"></i> <!-- Close button -->
+     <i class='bx bx-x' id="closePopup"></i> <!-- Add this line for the close button -->
         <h2>UPLOAD SCREENSHOT</h2>
         <div class="gcash-container">
             <div class="gcash-text">
@@ -238,12 +236,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
             </div>
         </div>
         <div class="receipt-upload">
+             <!-- <h4>UPLOAD GCASH RECEIPT</h4> -->
             <form action="payment.php" id="receiptForm" method="POST" enctype="multipart/form-data">
                 <label class="file-label">
-                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)">
+                    <input type="file" name="receipt" accept="image/*" required onchange="updateFileName(this)"> <br>
                     <span id="file-label-text">UPLOAD RECEIPT</span>
                 </label>
-                <button type="submit" name="submit" class="submit-button">SUBMIT</button>
+                <button type="submit" name="submit"class="submit-button">SUBMIT</button>
             </form>
         </div>
     </div>
