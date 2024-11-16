@@ -6,13 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - BUZZ Collective</title>
-    <link rel="stylesheet" href="Designs/admin-logreg.css">
+    <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
 </head>
 <body>
     <div id="buzz-img">
         <img src="images/BUZZ-White2.png" alt="">
     </div>
     <div class="login-container2">
+        <?php include('../errors.php'); ?>
         <form class="login-form2" method="POST" action="admin_reg.php" >
                 <h4>USERNAME</h4>
                 <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>" required style="font-family:'Montserrat', sans-serif;">

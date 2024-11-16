@@ -14,6 +14,7 @@
         <img src="images/BUZZ-White2.png" alt="">
     </div>
     <div class="login-container">
+        <?php include('../errors.php'); ?>
         <form class="login-form" method="post" action="admin_log.php">
             <h4>USERNAME</h4>
             <input type="text" placeholder="Username" name="username" required style="font-family:'Montserrat', sans-serif;">
