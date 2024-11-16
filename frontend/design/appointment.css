@@ -282,7 +282,7 @@ tr td h4{
 #appointment-form p{
     display: flex;
     position: absolute;
-    top: 13em;
+    top: 10%;
     justify-content: center;
     align-items: center;
 }

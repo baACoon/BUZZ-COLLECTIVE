@@ -119,15 +119,15 @@ try {
                 <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
                 <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
                 <hr>
-                <p>Service Fee: ₱<?php echo number_format($serviceFee, 2); ?></p>
-                <p>Appointment Fee: ₱<?php echo number_format($appointmentFee, 2); ?></p>
+                <p>Service Fee: <strong>₱<?php echo number_format($serviceFee, 2); ?></strong></p>
+                <p>Appointment Fee: <strong>₱<?php echo number_format($appointmentFee, 2); ?></strong></p>
                 <p>PAYMENT OPTION: <strong><?php echo htmlspecialchars($paymentOptionName); ?></strong></p>
                 <hr>
-                <p>Amount Paid: ₱<?php echo number_format($amountPaid, 2); ?></p>
+                <p>Amount Paid: <strong>₱<?php echo number_format($amountPaid, 2); ?></strong></p>
                 <?php if ($balance > 0): ?>
-                    <p class="balance"><strong>Balance Due:</strong> ₱<?php echo number_format($balance, 2); ?></p>
+                    <p class="balance">BALANCE: <strong>₱<?php echo number_format($balance, 2); ?></strong></p>
                 <?php else: ?>
-                    <p class="balance"><strong>Paid in Full</strong></p>
+                    <p><strong>Paid in Full</strong></p>
                 <?php endif; ?>
             </div>
             <div class="receipt-image">
@@ -135,7 +135,6 @@ try {
                 <?php if (!empty($originalFilename)): ?>
                     <p>Uploaded File: <?php echo htmlspecialchars($originalFilename); ?></p>
                     <?php 
-                    $fileExtension = strtolower(pathinfo($originalFilename, PATHINFO_EXTENSION));
                     /*if (in_array($fileExtension, ['jpg', 'jpeg', 'png'])) {
                         $receiptPath = $_SESSION['payment_data']['receipt_path'] ?? '';
                         if (!empty($receiptPath)) {
@@ -152,7 +151,7 @@ try {
                     <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Book again</button>
                 </form>
                 <form method="POST" action="home.php">
-                    <button type="submit" style="font-family: 'Montserrat', sans-serif; border: none; cursor: pointer;">Home</button>
+                    <button type="submit">Home</button>
                 </form>
             </div>
         </div>

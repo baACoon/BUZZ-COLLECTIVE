@@ -129,3 +129,37 @@ body::before {
     font-size: 16px; /* Same font size */
     border-radius: 5px; /* Same border-radius */
 }
+
+@media (max-width: 1024px) {
+    .confirmation-container {
+        width: 100%;
+    }
+} 
+
+
+@media (max-width: 768px) {
+    .confirmation-container {
+        width: 70%;
+    }
+} 
+
+@media (max-width: 480px) {
+
+    .confirmation-container {
+        width: 82%;
+    }
+    .confirmation-details {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .confirmation-details p {
+        font-size: 14px;
+    }
+    
+} 
+
+@media (max-width: 360px){
+    .confirmation-details strong {
+        min-width: 300px;
+    }
+}
