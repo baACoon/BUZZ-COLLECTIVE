@@ -110,8 +110,10 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #222222;
+    color: #f73201;
     padding-left: 10px;
+    transition: padding-left 0.2s ease;
+    font-weight: bold;
 }
 
 /* back button  */
@@ -150,7 +152,7 @@ i.bx-menu{
 /* Add button */
 .news-button {
     padding: 10px 20px;
-    background-color:#f44336;
+    background-color:#E43A19;
     color: white;
     border: none;
     border-radius: 14px;
@@ -160,7 +162,7 @@ i.bx-menu{
 }
 
 .news-button:hover {
-    background-color:#802822;
+    background-color:#222222;
 }
 
 /* Default style for images */
@@ -271,7 +273,7 @@ i.bx-menu{
 }
 
 .news-form button[type="button"]:hover {
-    background-color: #c0c0c0;
+    background-color: #222222;
 }
 
 /* Media Query */ 

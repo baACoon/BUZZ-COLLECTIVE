@@ -110,8 +110,9 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #222222;
+    color: #f73201; 
     padding-left: 10px;
+    font-weight: bold;
 }
 
 /* back button  */
@@ -162,7 +163,7 @@ select {
     margin: 10px;
 }
 .show-btn:hover{
-    background-color:#812922;
+    background-color: #222222;
 }
 .container {
     width: 70%;
@@ -317,7 +318,7 @@ select {
 }
 
 .save-btn:hover {
-    background-color:#7e251f;
+    background-color: #222222;
 }
 
 .edit-btn {
@@ -333,7 +334,7 @@ select {
 }
 
 .edit-btn:hover {
-    background-color:#8b0b02;
+    background-color: #222222;
 }
 
 @media (max-width: 1200px) {

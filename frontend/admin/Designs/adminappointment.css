@@ -30,14 +30,16 @@ body {
 }
 
 .sidebar .logo img {
+    margin-top: 5%;
     max-width: 100%;
     max-height: 110px;
+    object-fit: contain;
 }
 
 .sidebar nav ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 13%;
 }
 
 .sidebar nav ul li {
@@ -51,9 +53,10 @@ body {
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #333;
+    color: #f73201; 
     padding-left: 10px;
     transition: padding-left 0.2s ease;
+    font-weight: bold;
 }
 
 .content {
@@ -109,7 +112,7 @@ select {
 .delete-button:hover,
 .confirm-btn:hover,
 .cancel-btn:hover {
-    opacity: 0.9;
+    background-color: #222222;
 }
 
 .appointments-table-container {

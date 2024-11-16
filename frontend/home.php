@@ -153,7 +153,7 @@ $db->close();
                             <div class="news-item">
                                 <div class="news-image">
                                 <div class="news-image">
-                                    <img src="<?= htmlspecialchars('admin/uploads/' . $item['poster']) ?>" 
+                                        <img src="<?= htmlspecialchars( $item['poster'] ) ?>" 
                                         alt="<?= htmlspecialchars($item['title']) ?>">
                                 </div>
                                 </div>
@@ -162,7 +162,7 @@ $db->close();
                                     <h3><?= htmlspecialchars($item['subtitle']) ?></h3>
                                     <p><?= nl2br(htmlspecialchars($item['description'])) ?></p>
                                 </div>
-                            </div>
+                            </div>        
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>

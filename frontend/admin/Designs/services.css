@@ -110,8 +110,11 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #222222;
+    color: #f73201; 
     padding-left: 10px;
+    transition: padding-left 0.2s ease;
+    font-weight: bold;
+
 }
 
 /* back button  */
@@ -178,7 +181,7 @@ i.bx-menu{
 .services-list ul li:hover,
 .services-list ul li.active {
     background: #ddd;
-    color: #333;
+    color: #E43A19;
 }
 
 .services-list ul li:last-child {
@@ -247,7 +250,7 @@ i.bx-menu{
 }
 
 .add-new-service {
-    background-color: #4BD37B;
+    background-color: rgb(61, 146, 65);
     color: white;
     border: none;
     padding: 10px;
@@ -261,11 +264,11 @@ i.bx-menu{
 }
 
 .add-new-service:hover {
-    background-color: rgb(61, 146, 65);
+    background-color: #004418;
 }
 
 #edit-button{
-    background-color: #6961D9;
+    background-color: #473bf5;
     text-transform: uppercase;
     border-radius: 15px;
     font-size: 0.9rem;
@@ -274,7 +277,7 @@ i.bx-menu{
     padding: 10px 20px;
 }
 #edit-button:hover{
-    background-color: #837aff;
+    background-color: #0a0372;
 }
 #delete-button{
     background-color: #E43A19;
@@ -287,7 +290,7 @@ i.bx-menu{
 }
 
 #delete-button:hover{
-    background-color: #E43A19;
+    background-color: #222222;
 }
 
 .edit-form {

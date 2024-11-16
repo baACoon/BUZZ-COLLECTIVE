@@ -110,8 +110,10 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #222222;
+    color: #f73201; 
     padding-left: 10px;
+    transition: padding-left 0.2s ease;
+    font-weight: bold;
 }
 
 /* back button  */
@@ -172,7 +174,7 @@ i.bx-menu{
     font-weight: 450;
 }
 .settings-btn .addnew{
-    background-color: #4BD37B; 
+    background-color: rgb(61, 146, 65);
     color: white;
 }
 .settings-btn .login{
@@ -192,7 +194,7 @@ i.bx-menu{
     line-height: 1.5rem; 
 }
 .settings-btn button:hover {
-    opacity: 0.8;
+    background-color:  #222222;
 }
 #new-admin-container {
     display: none;
@@ -263,7 +265,7 @@ i.bx-menu{
 }
 
 .form-buttons button:hover {
-    opacity: 0.8;
+    background-color: #222222;
 }
 
 @media (max-width: 768px) {

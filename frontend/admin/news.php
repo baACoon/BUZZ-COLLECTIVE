@@ -1,10 +1,9 @@
-
 <?php
 $newsFile = 'data/news.json'; // Path to the JSON file
 
 // Ensure the JSON file exists
 if (!file_exists($newsFile)) {
-    file_put_contents($newsFile, json_encode([])); // Create empty JSON array if file doesn't exist
+    file_put_contents($newsFile, json_encode([])); // Create an empty JSON array if the file doesn't exist
 }
 
 // Get existing news from the JSON file
@@ -23,10 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Handle the uploaded poster file
             if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-                $posterPath = 'uploads/' . basename($_FILES['poster']['name']);
-                move_uploaded_file($_FILES['poster']['tmp_name'], $posterPath);
+                $uploadDir = 'uploads/';
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true); // Ensure upload directory exists
+                }
+                $posterPath = $uploadDir . basename($_FILES['poster']['name']);
+                if (move_uploaded_file($_FILES['poster']['tmp_name'], $posterPath)) {
+                    // File uploaded successfully
+                } else {
+                    $posterPath = ''; // If failed, set an empty path
+                }
             } else {
-                $posterPath = '';
+                $posterPath = ''; // No file uploaded or an error occurred
             }
 
             // Add the new news item
@@ -79,30 +86,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-     <!-- Navbar for screens below 768px -->
-     <div class="mobile-navbar" id="mobile-navbar">
+    <!-- Navbar for screens below 768px -->
+    <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
             <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
     <aside class="sidebar">
-            <div class="logo">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-                    <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                    <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
-                    <li><a href="admin-aboutus.php">About Us</a></li>
-                    <li><a href="news.php">News</a></li>
-                    <li><a href="admin-branches.php">Branches</a></li>
-                    <li><a href="clientprofile.php">Client Profile</a></li>
-                    <li><a href="settings.php">Settings</a></li>
-                </ul>
-            </nav>
-        </aside>
+        <div class="logo">
+            <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+                <li><a href="admin-barber.php">Barbers' Schedule</a></li>
+                <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
+                <li><a href="admin-aboutus.php">About Us</a></li>
+                <li><a href="news.php">News</a></li>
+                <li><a href="admin-branches.php">Branches</a></li>
+                <li><a href="clientprofile.php">Client Profile</a></li>
+                <li><a href="settings.php">Settings</a></li>
+            </ul>
+        </nav>
+    </aside>
     <div class="news-content">
         <div class="news-header">
             <h1>NEWS</h1>
@@ -155,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
         
     <script>
-    // Handle Add News button and form visibility
+        // Handle Add News button and form visibility
         document.getElementById('addButton').addEventListener('click', () => {
             document.getElementById('newsForm').style.display = 'block';
             document.getElementById('newsAction').value = 'add';
@@ -168,7 +175,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById('cancelButton').addEventListener('click', () => {
             document.getElementById('newsForm').style.display = 'none';
         });
-
 
         // Delete news
         function deleteNews(id) {
@@ -193,15 +199,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 form.submit();
             }
         }
-        // Edit news
-        function editNews(item) {
-            const news = JSON.parse(item);
+
+        // Handle Edit functionality
+        function editNews(newsItem) {
+            const item = JSON.parse(newsItem);
             document.getElementById('newsForm').style.display = 'block';
             document.getElementById('newsAction').value = 'edit';
-            document.getElementById('newsId').value = news.id;
-            document.getElementById('title').value = news.title;
-            document.getElementById('subtitle').value = news.subtitle;
-            document.getElementById('description').value = news.description;
+            document.getElementById('newsId').value = item.id;
+            document.getElementById('title').value = item.title;
+            document.getElementById('subtitle').value = item.subtitle;
+            document.getElementById('description').value = item.description;
         }
     </script>
 </body>

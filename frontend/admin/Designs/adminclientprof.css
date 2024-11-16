@@ -110,8 +110,9 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #222222;
+    color: #f73201;
     padding-left: 10px;
+    font-weight: bold;
 }
 
 /* back button  */
