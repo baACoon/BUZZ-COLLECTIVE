@@ -89,6 +89,7 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     margin-right: 0.5rem;
     font-size: 1.5rem;
     transform: scale(1.5);
+    cursor: pointer;
 }
 
 .services label {
@@ -180,6 +181,72 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     padding: 5px 0; /* Padding for description text */
     word-wrap: break-word; /* Ensure wrapping on small screens */
 }
+
+/* Barber item container */
+.barber-item {
+    display: flex;                
+    align-items: center;         
+    padding: 8px;               
+    margin: 5px 0;              
+    border: 1px solid #ddd;     
+    border-radius: 5px;         
+    transition: background-color 0.3s; 
+    cursor: pointer;             
+    background-color: #fff;
+}
+
+/* Radio button */
+.barber-item input[type="radio"] {
+    margin-right: 10px;          
+    cursor: pointer;             
+}
+
+/* Label styling */
+.barber-item label {
+    font-size: 16px;             
+    color: #333;                 
+}
+
+/* Hover effect */
+.barber-item:hover {
+    background-color: orangered;  
+}
+
+/* Selected state for radio button */
+.barber-item input[type="radio"]:checked + label {
+    font-weight: bold;          
+    color: black;             
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 420px; 
+    background-color: #555; 
+    color: #fff; 
+    text-align: center; 
+    border-radius: 5px; 
+    padding: 5px; 
+    position: absolute;
+    z-index: 1; 
+    bottom: 100%; 
+    left: 50%;
+    margin-left: -60px; 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+    font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible; 
+    opacity: 1; 
+}
+
 
 /* Media query for smaller screens (tablets and large phones) */
 @media (max-width: 500px) {

@@ -104,7 +104,12 @@ try {
             <h1>Appointment Successful</h1>
             <p>You will be notified via email a day before your appointment schedule.</p>
             <p>For no show on your appointed day, you will be re-scheduled.</p>
-            <p>For cancellation, contact us via email at buzzcollective@gmail.com</p>
+            <p>
+                For cancellation, contact us via email at 
+                <a href="mailto:buzzcollective@gmail.com" target="_blank" class="redirect-email">
+                    buzzcollective@gmail.com
+                </a>
+            </p>
         </div>
         <div class="receipt-container">
             <div class="receipt-details">

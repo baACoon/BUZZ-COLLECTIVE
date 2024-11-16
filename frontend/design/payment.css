@@ -207,14 +207,16 @@ body::before {
 
 }
 
-.terms-container input {
+.terms-container input #termsCheckbox {
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .terms-container a{
     text-decoration: underline;
     color: #ffffff;
 }
+
 
 .disabled {
     opacity: 0.5;

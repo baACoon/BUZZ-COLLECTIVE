@@ -128,6 +128,7 @@ body::before {
     padding: 10px 20px; /* Same padding for "Back" button */
     font-size: 16px; /* Same font size */
     border-radius: 5px; /* Same border-radius */
+    cursor: pointer;
 }
 
 @media (max-width: 1024px) {

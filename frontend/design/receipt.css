@@ -50,7 +50,6 @@ body::before {
     max-width: 600px;
     margin-right: 20px;
     margin-top: 5%;
-
 }
 
 .receipt-container {
@@ -121,4 +120,14 @@ body::before {
     padding: 10px 20px; /* Same padding for "Back" button */
     font-size: 16px; /* Same font size */
     border-radius: 5px; /* Same border-radius */
+    cursor: pointer;
+}
+.redirect-email {
+    color: #ffffff; /* Default blue color */
+    text-decoration: underline;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.redirect-email:hover {
+    color: #E43A19; /* Change color to orange on hover */
 }
