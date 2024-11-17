@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - About Us</title>
-    <link rel="stylesheet" href="Designs/aboutus.css">
+    <link rel="stylesheet" href="Designs/aboutus.css?v=901">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -116,35 +116,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <div class="aboutus-content">
-        <div class="aboutus-header">
-            <h1>About Us</h1>
-            <button class="aboutus-button" id="addButton">ADD</button>
-        </div>
+        <h1>ABOUT US <span class="barberspan">BARBERS</span></h1>
         
-        <div class="aboutus" id="aboutUsContainer">
+        <div class="aboutus-container" id="aboutUsContainer">
             <?php if (!empty($barbers)): ?>
                 <?php foreach ($barbers as $barber): ?>
-                    <div class="aboutus-item">
                         <div class="item-background" style="background-image: url('<?= htmlspecialchars($barber['backgroundImage']) ?>');"></div>
-                        <h2><?= htmlspecialchars($barber['title']) ?></h2>
-                        <h3><?= htmlspecialchars($barber['name']) ?></h3>
-                        <p>Age: <?= htmlspecialchars($barber['age']) ?></p>
-                        <p>Position: <?= htmlspecialchars($barber['position']) ?></p>
-                        <p>Experience: <?= htmlspecialchars($barber['experience']) ?></p>
-                        <form method="POST" style="display:inline;">
-                            <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="id" value="<?= htmlspecialchars($barber['id']) ?>">
-                            <button type="submit" class="delete-button">Delete</button>
-                        </form>
-                        <button class="edit-button" onclick="editBarber('<?= htmlspecialchars(json_encode($barber)) ?>')">Edit</button>
-                    </div>
+                        <div class="barber">
+                            <h2><?= htmlspecialchars($barber['title']) ?></h2>
+                            <h3><?= htmlspecialchars($barber['name']) ?></h3>
+                            <p>Age: <?= htmlspecialchars($barber['age']) ?></p>
+                            <p>Position: <?= htmlspecialchars($barber['position']) ?></p>
+                            <p>Experience: <?= htmlspecialchars($barber['experience']) ?></p>
+                            <!-- DELETE / EDIT BUTTON -->
+                            <div class="button-container">
+                                <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this branch?');" class="delete-button-container">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="<?= htmlspecialchars($barber['id']) ?>">
+                                    <button type="submit" class="delete-button">DELETE</button>
+                                </form>
+                            <button class="edit-button" onclick="editBarber('<?= htmlspecialchars(json_encode($barber)) ?>')">EDIT</button>
+                        </div>
+                        </div>
                 <?php endforeach; ?>
+                <div class="barber add-barber" id="addBarber" onclick="showForm()">
+                    <span>+</span>
+                </div>
             <?php else: ?>
                 <p>No barbers available.</p>
             <?php endif; ?>
         </div>
-
-        <div class="aboutus-form" id="aboutUsForm" style="display: none;">
+        <div class="barber aboutus-form" id="aboutUsForm" style="display: none;">
             <h2>ADD/EDIT BARBER</h2>
             <form method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="barberId">
@@ -167,9 +169,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <label for="experience">Experience</label>
                 <textarea id="experience" name="experience" required></textarea><br>
-
-                <button type="submit">SAVE</button>
-                <button type="button" id="cancelButton">Cancel</button>
+                
+                <div class="form-buttons">
+                    <button type="submit">SAVE</button>
+                    <button type="button" id="cancelButton" onclick="hideForm()">Cancel</button>
+                </div>
             </form>
         </div>
     </div>
@@ -182,6 +186,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         };
 
         document.getElementById('cancelButton').onclick = () => {
+            document.getElementById('aboutUsForm').style.display = 'none';
+        };
+
+        function showForm(){
+            document.getElementById('aboutUsForm').style.display = 'block';
+            document.getElementById('barberId').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('age').value = '';
+            document.getElementById('position').value = '';
+            document.getElementById('experience').value = '';
+        };
+
+        function hideForm() {
             document.getElementById('aboutUsForm').style.display = 'none';
         };
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - About Us</title>
-    <link rel="stylesheet" href="Designs/admin-aboutus.css">
+    <link rel="stylesheet" href="Designs/admin-aboutus.css?v=901">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -42,7 +42,15 @@
     </aside>
 
     <div class="aboutus-header">
-        <h1>SERVICES</h1>
+        <h1>ABOUT US</h1>
+        <div class="button-containers">
+            <div class="aboutbarbers">
+                <a href="../admin/aboutus.php">ABOUT BARBERS</a>
+            </div>
+            <div class="hiring">
+                <a href="../admin/hiring.php">HIRING</a>
+            </div>
+        </div>
     </div>
     
 

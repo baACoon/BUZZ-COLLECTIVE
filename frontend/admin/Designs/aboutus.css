@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #F5F5F5;
+    color: #000000;
+}
+
+.sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #222222;
+    color: white;
+    padding-top: 20px;
+    z-index: 999;
+    
+}
+
+i.bx-menu{
+    display: none;
+    order: 2; 
+    font-size: 30px; 
+    color: #333; 
+    cursor: pointer; 
+    display: block; 
+}
+
+#close-sidebar {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+
+#close-sidebar:hover{
+    color: #f73201;   
+    transform: rotate(90deg);
+}
+
+/* Mobile Navbar (for screens below 768px) */
+.mobile-navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #F8F8F8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.mobile-logo img {
+    max-height: 25vh;
+    max-width: 25vw;
+    margin: 1rem;
+}
+
+
+.sidebar .logo{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 17%;
+}
+.sidebar .logo img {
+    margin-top: 5%;
+    max-width: 100%;
+    max-height: 110px;
+    object-fit: contain;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 13%;
+}
+
+.sidebar nav ul li {
+    padding: 10px 0;
+    margin: 10px;
+    text-align: left;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar nav ul li a:hover {
+    color: #f73201;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+/* back button  */
+.back-button i{
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+.back-button i:hover{
+    color: #f73201;   
+}
+/* About us- Barber Start*/
+
+.aboutus-content {
+    padding: 20px;
+    margin: 20px;
+    margin-left: 300px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.aboutus-content h1 { 
+    margin-bottom: 20px;
+}
+
+.barberspan{
+    font-weight: 400;
+    font-size: 0.7em;
+    padding-left: 20px;
+}
+
+.aboutus-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+}
+/* Common styles for both */
+.barber, .add-barber {
+    flex: 0 1 calc(33.333% - 20px); /* Equal width */
+    box-sizing: border-box;
+    height: 300px; /* Fixed height for uniformity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.barber {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px; /* Fixed height */
+    position: relative;
+    flex: 0 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+.aboutus-content {
+    text-align: left; 
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.barber:hover {
+    transform: translateY(-5px);
+}
+
+.barber h2 {
+    font-size: 1em;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.barber h3 {
+    font-size: 1.5em;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.barber p {
+    font-size: 1em;
+    color: #000000;
+    line-height: 1.4;
+    margin: 0; 
+}
+
+/* Add Barber button */
+.add-barber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    color: #222222;
+    cursor: pointer;
+}
+
+.add-barber span {
+    font-size: 3em;
+    color: #555;
+}
+
+.add-barber:hover {
+    background-color: #b6b6b6;
+}
+
+.add-barber p {
+    font-size: 1em;
+    color: #777;
+}
+
+/* Delete Button Styles */
+.button-container {
+    position: relative; /* Position relative to barber */
+    margin-top: auto;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+
+.delete-button {
+    background-color: #E43A19; /* Soft red background */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button{
+    background-color: rgb(77, 77, 180); /* Soft red background */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #222222; /* Darker red on hover */
+}
+
+.edit-button:hover{
+    background-color: rgb(70, 161, 70);
+}
+
+/* Form container */
+.aboutus-form {
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: opacity 0.3s ease;
+    height: 80%;
+}
+
+.aboutus-form h4 {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.aboutus-form label {
+    margin-bottom: 5px;
+    color: #555;
+    text-align: left;
+}
+
+.aboutus-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #222222;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-buttons button:hover {
+    background-color: #555;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .mobile-navbar {
+        display: flex;
+    }
+    .sidebar {
+        display: none; 
+        right: 0; /* Aligns sidebar to the right */
+        transform: translateX(100%); /* Initially hides the sidebar */
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar .logo img {
+        margin-top: 15%;
+        max-height: 100px;
+        width: auto; 
+    }
+    .sidebar nav ul {
+        margin-top: 10%; 
+    }
+
+    i.bx-menu {
+        display: block; 
+        cursor: pointer;
+        font-size: 25px; 
+        color: #333; 
+        position: absolute;
+        right: 20px; /* Positioning to the right side */
+        top: 20px; /* Adjusts vertical positioning */
+    }
+    /* Show the sidebar when the 'open' class is added */
+    .sidebar.open {
+        display: block; 
+        transform: translateX(0); /* Slide-in effect */
+    }
+    .aboutus-container {
+        justify-content: space-between; 
+    }
+    .aboutus-content {
+        margin-left: 50px;
+        margin-top: 100px;
+    }
+    .aboutus-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .barber {
+        flex: 0 1 calc(50% - 20px); 
+        box-sizing: border-box; 
+        max-width: 100%; 
+        overflow: hidden; /* Prevents any content from spilling out */
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .aboutus-container {
+        /* Center the form vertically and horizontally */
+        top: 50%;
+        transform: translateY(-50%);
+        height: 35%;
+    }
+}
+
+@media (max-width: 480px){
+    i.bx-menu{
+        font-size: 35px;
+    }
+
+    .aboutus-content {
+        margin-left: 30px;
+    }
+    .aboutus-container {
+        gap: 10px
+    }
+    .barber {
+        flex: 0 1 calc(100% - 20px); 
+
+    }
+    .aboutus-container {
+        height: 25%;
+    }
+
+ }
