@@ -44,7 +44,7 @@ $db->close();
 
 </head>
 <body>
-    <!-- Navbar for screens below 768px -->
+     <!-- Navbar for screens below 768px -->
     <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
             <img src="design/image/BUZZ-Black.png" alt="Buzz Collective Logo">

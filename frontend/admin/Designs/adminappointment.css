@@ -13,13 +13,66 @@ body {
 }
 
 .sidebar {
+    display: block;
     position: fixed;
     top: 0;
     width: 250px;
     height: 100%;
-    background-color: #222;
+    background-color: #222222;
     color: white;
     padding-top: 20px;
+    z-index: 999;
+}
+
+i.bx-menu{
+    display: none;
+    order: 2; 
+    font-size: 30px; 
+    color: #333; 
+    cursor: pointer; 
+    display: block; 
+}
+#close-sidebar {
+    font-size: 2rem; 
+    color: white; 
+    text-decoration: none;
+    position: absolute; 
+    top: 0.93rem; 
+    right: 0.93rem; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+#close-sidebar:hover{
+    color: #f73201;   
+    transform: rotate(90deg); /* Rotate the icon on hover */
+}
+
+/* Mobile Navbar (for screens below 768px) */
+.mobile-navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #F8F8F8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.mobile-logo img {
+    max-height: 25vh;
+    max-width: 25vw;
+    margin: 1rem;
 }
 
 .sidebar .logo {
@@ -57,6 +110,17 @@ body {
     padding-left: 10px;
     transition: padding-left 0.2s ease;
     font-weight: bold;
+}
+
+/* back button  */
+.back-button i{
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+.back-button i:hover{
+    color: #f73201;   
 }
 
 .content {
@@ -120,6 +184,7 @@ select {
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
+    overflow-x: auto;
 }
 
 .appointments-table {
@@ -174,13 +239,17 @@ select {
 
 .modal {
     display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed; /* Stay in place */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Shift back by 50% of its size */
+    z-index: 1000; /* Ensure it appears on top */
+    background-color: #fff; /* Modal background color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Adjust modal width */
+    max-width: 400px; /* Maximum width for larger screens */
+    padding: 20px; /* Inner spacing */
 }
 
 .modal-content {
@@ -188,7 +257,7 @@ select {
     top: 10%;
     margin: auto;
     padding: 20px;
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     background-color: white;
     border-radius: 8px;
@@ -196,7 +265,7 @@ select {
 
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 5%;
     right: 20px;
     font-size: 50px;
     font-weight: bold;
@@ -213,4 +282,80 @@ select {
 .view-receipt:hover {
     color: #841a1a; /* Change text color on hover */
     z-index: 1;
+}
+
+@media (max-width: 768px){
+    .mobile-navbar {
+        display: flex;
+    }
+    .sidebar {
+        display: none; 
+        right: 0; /* Aligns sidebar to the right */
+        transform: translateX(100%); /* Initially hides the sidebar */
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar .logo img {
+        margin-top: 15%;
+        max-height: 100px;
+        width: auto; 
+    }
+    .sidebar nav ul {
+        margin-top: 10%; 
+    }
+
+    i.bx-menu {
+        display: block; 
+        cursor: pointer;
+        font-size: 2.5rem; 
+        color: #333; 
+        position: absolute;
+        right: 7%; /* Positioning to the right side */
+        top: 1.25rem; /* Adjusts vertical positioning */
+    }
+    /* Show the sidebar when the 'open' class is added */
+    .sidebar.open {
+        display: block; 
+        transform: translateX(0); /* Slide-in effect */
+    }
+    .mobile-logo img {
+        max-height: 20vh;
+        max-width: 20vh;
+    }
+    .content{
+        margin-left: 1.25rem;
+        margin-top: 10%;
+    }
+}
+
+@media (max-width: 480px){
+    i.bx-menu{
+        font-size: 2.18rem;
+        right: 6%;
+    }
+    .mobile-logo img {
+        max-height: 13vh;
+        max-width: 13vh;
+        margin-left: -0.5rem;
+    }
+    .content{
+        margin-left: 0.9rem;
+        margin-top: 20%;
+    }
+    .dropdown-container {
+        flex-wrap: wrap; /* Allow elements to wrap to a new line */
+        gap: 10px;       /* Add spacing between elements */
+    }
+
+    .delete-btn {
+        flex-wrap: wrap; /* Allow buttons to wrap */
+        gap: 10px;       /* Add spacing between buttons */
+        justify-content: flex-start; /* Align buttons to the left */
+    }
+
+    .delete-btn button {
+        flex: 1;        /* Make buttons flexible to adjust width */
+        min-width: 100px; /* Set a minimum width for better layout */
+    }
+
 }

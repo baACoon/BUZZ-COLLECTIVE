@@ -20,9 +20,19 @@ $branches = json_decode($json_data, true);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointments - Buzz & Collective</title>
     <link rel="stylesheet" href="Designs/adminappointment.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
+    <!-- Navbar for screens below 768px -->
+    <div class="mobile-navbar" id="mobile-navbar">
+        <div class="mobile-logo">
+            <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
+        </div>
+        <i class='bx bx-menu' id="menu-icon"></i>
+    </div>
     <aside class="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
             <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
         </div>
@@ -144,6 +154,25 @@ $branches = json_decode($json_data, true);
 
 
     <script>
+        // menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
+        
         // Select or Deselect all checkboxes
         document.getElementById('select-all').addEventListener('click', function() {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
