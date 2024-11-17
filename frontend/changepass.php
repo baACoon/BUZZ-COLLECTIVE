@@ -81,42 +81,7 @@ $db->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective | Change Password</title>
-    <style>
-        /* Add some basic styling for the notification popup */
-        .notification-popup {
-            display: none;
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
 
-        .notification-popup.show {
-            display: block;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        .overlay.show {
-            display: block;
-        }
-    </style>
 </head>
 <body>
 
@@ -128,7 +93,13 @@ $db->close();
         <div id="overlay" class="overlay show"></div>
     <?php endif; ?>
 
-    <i class='bx bx-menu' id="menu-icon"></i>
+    <!-- Navbar for screens below 768px -->
+    <div class="mobile-navbar" id="mobile-navbar">
+        <div class="mobile-logo">
+            <img src="design/image/BUZZ-Black.png" alt="Buzz Collective Logo">
+        </div>
+        <i class='bx bx-menu' id="menu-icon"></i>
+    </div>
     <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="profile-container">

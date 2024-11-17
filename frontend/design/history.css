@@ -17,26 +17,72 @@ body {
     background-color: #222222;
     color: white;
     padding-top: 20px;
-    z-index: 1;
+    z-index: 999;
 }
 
 i.bx-menu{
     display: none;
+    order: 2; 
+    font-size: 30px; 
+    color: #333; 
+    cursor: pointer; 
+    display: block; 
 }
 #close-sidebar {
-    font-size: 30px; /* Adjust size as needed */
-    color: white; /* Adjust color as needed */
+    font-size: 2rem; 
+    color: white; 
     text-decoration: none;
-    position: absolute; /* Positioning the button */
-    top: 15px; 
-    right: 15px; 
+    position: absolute; 
+    top: 0.93rem; 
+    right: 0.93rem; 
     cursor: pointer; 
     transition: transform 0.3s ease; /* Smooth rotation transition */
 }
 #close-sidebar:hover{
     color: #f73201;   
     transform: rotate(90deg); /* Rotate the icon on hover */
+}
 
+/* Mobile Navbar (for screens below 768px) */
+.mobile-navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #F8F8F8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.mobile-logo img {
+    max-height: 25vh;
+    max-width: 25vw;
+    margin: 1rem;
+}
+
+
+.sidebar .logo{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 17%;
+}
+.sidebar .logo img {
+    margin-top: 5%;
+    max-width: 100%;
+    max-height: 110px;
+    object-fit: contain;
 }
 .sidebar nav ul {
     list-style-type: none;
@@ -66,6 +112,7 @@ i.bx-menu{
 
 /* back button  */
 .back-button i{
+    font-size: 1.2rem; 
     color: white;
     text-decoration: none;
     margin-left: 1em;
@@ -201,37 +248,54 @@ tbody td {
 }
 
 @media (max-width:768px){
+    .mobile-navbar {
+        display: flex;
+    }
     .sidebar {
-        display: none; /* Hide sidebar on small screens */
+        display: none; 
+        right: 0; /* Aligns sidebar to the right */
+        transform: translateX(100%); /* Initially hides the sidebar */
+        transition: transform 0.3s ease;
     }
+
+    .sidebar .logo img {
+        margin-top: 15%;
+        max-height: 100px;
+        width: auto; 
+    }
+    .sidebar nav ul {
+        margin-top: 10%; 
+    }
+
     i.bx-menu {
-        display: block; /* Show menu icon on small screens */
-        cursor: pointer; /* Make it clear it's clickable */
-        order: 2; 
-        font-size: 45px; 
-        color: #333; 
-        cursor: pointer; 
         display: block; 
+        cursor: pointer;
+        font-size: 2.5rem; 
+        color: #333; 
         position: absolute;
-        left: 10%;
-        top: 5%;
+        right: 12%; /* Positioning to the right side */
+        top: 1.25rem; /* Adjusts vertical positioning */
     }
-        /* Show the sidebar when the 'open' class is added */
+    /* Show the sidebar when the 'open' class is added */
     .sidebar.open {
-        display: block; /* Show sidebar when toggled */
-        transition: transform 0.3s ease; /* Optional: add a transition for smooth opening */
+        display: block; 
+        transform: translateX(0); /* Slide-in effect */
+    }
+    .mobile-logo img {
+        max-height: 15vh;
+        max-width: 15vh;
     }
 
     .history-wrapper{
-        width: 70%;
-        margin-left: 4em;
-        margin-right: 5px;
+        width: 85%;
+        margin-left: 2em;
+        margin-right: 0.313rem;
         position: relative;
         top: 12%;
         height: 80vh;
     }
     .history h1{
-        font-size: 40px;
+        font-size: 2.5rem;
     }
     .welcome p{
         margin-top: 1em;
@@ -248,10 +312,16 @@ tbody td {
 }
 @media (max-width: 480px){
     i.bx-menu{
-        font-size: 35px;
+        font-size: 2.18rem;
+        right: 14%;
+    }
+    .mobile-logo img {
+        max-height: 13vh;
+        max-width: 3vh;
+        margin-left: -0.5rem;
     }
     .history-wrapper{
-        width: 85%;
+        width: 82%;
         margin-left: 1em;
         margin-right: 1px;
         position: relative;
@@ -269,12 +339,12 @@ tbody td {
     }
     .history h1{
         margin-left: 0.2em;
-        font-size: 25px;
+        font-size: 1.9rem;
     }
     .welcome p{
         margin-left: 0.2em;   
         margin-top: 1em;  
-        font-size: 20px; 
+        font-size: 1.56rem; 
     }
 
     .profile-img{

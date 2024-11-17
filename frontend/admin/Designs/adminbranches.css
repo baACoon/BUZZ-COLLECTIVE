@@ -20,7 +20,6 @@ body {
     color: white;
     padding-top: 20px;
     z-index: 999;
-    
 }
 
 i.bx-menu{
@@ -31,21 +30,19 @@ i.bx-menu{
     cursor: pointer; 
     display: block; 
 }
-
 #close-sidebar {
-    font-size: 30px;
-    color: white;
+    font-size: 2rem; 
+    color: white; 
     text-decoration: none;
-    position: absolute;
-    top: 15px; 
-    right: 15px; 
+    position: absolute; 
+    top: 0.93rem; 
+    right: 0.93rem; 
     cursor: pointer; 
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease; /* Smooth rotation transition */
 }
-
 #close-sidebar:hover{
     color: #f73201;   
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* Rotate the icon on hover */
 }
 
 /* Mobile Navbar (for screens below 768px) */
@@ -115,6 +112,7 @@ i.bx-menu{
 
 /* back button  */
 .back-button i{
+    font-size: 1.2rem; 
     color: white;
     text-decoration: none;
     margin-left: 1em;
@@ -315,16 +313,20 @@ i.bx-menu{
     i.bx-menu {
         display: block; 
         cursor: pointer;
-        font-size: 25px; 
+        font-size: 2.5rem; 
         color: #333; 
         position: absolute;
-        right: 20px; /* Positioning to the right side */
-        top: 20px; /* Adjusts vertical positioning */
+        right: 7%; /* Positioning to the right side */
+        top: 1.25rem; /* Adjusts vertical positioning */
     }
     /* Show the sidebar when the 'open' class is added */
     .sidebar.open {
         display: block; 
         transform: translateX(0); /* Slide-in effect */
+    }
+    .mobile-logo img {
+        max-height: 20vh;
+        max-width: 20vh;
     }
     .box-container {
         justify-content: space-between; 
@@ -357,7 +359,13 @@ i.bx-menu{
 
 @media (max-width: 480px){
     i.bx-menu{
-        font-size: 35px;
+        font-size: 2.18rem;
+        right: 6%;
+    }
+    .mobile-logo img {
+        max-height: 13vh;
+        max-width: 13vh;
+        margin-left: -0.5rem;
     }
 
     .branches-content {
