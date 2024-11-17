@@ -112,6 +112,7 @@ i.bx-menu{
 .sidebar nav ul li a:hover {
     color: #f73201; 
     padding-left: 10px;
+    transition: padding-left 0.2s ease;
     font-weight: bold;
 }
 
@@ -125,6 +126,15 @@ i.bx-menu{
     color: #f73201;   
 }
 
+
+.aboutus-header{
+    padding: 20px;
+    margin-left: 300px;
+    margin-top: 30px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {

@@ -27,13 +27,24 @@
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
-                <li><a href="admin-aboutus.php">About Us</a></li>
+                <li>
+                    <a href="admin-aboutus.php">About Us</a>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                                <li><a href="aboutus.php">Barbers</a></li>
+                                <li><a href="aboutushiring.php">Hiring</a></li>
+                            </ul>
+                </li>
                 <li><a href="news.php">News</a></li>
                 <li><a href="admin-branches.php">Branches</a></li>
                 <li><a href="settings.php">Settings</a></li>
             </ul>
         </nav>
     </aside>
+
+    <div class="aboutus-header">
+        <h1>SERVICES</h1>
+    </div>
+    
 
     <script>
          // menu icon
