@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="../frontend/design/payment.css?v=101">
     <link rel="stylesheet" href="../frontend/design/terms.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">

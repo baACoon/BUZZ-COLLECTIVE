@@ -403,8 +403,8 @@ select {
         transform: translateX(0); /* Slide-in effect */
     }
     .mobile-logo img {
-        max-height: 20vh;
-        max-width: 20vh;
+        max-height: 17vh;
+        max-width: 17vh;
     }
     .dropdown-container {
         margin-left: 70px;

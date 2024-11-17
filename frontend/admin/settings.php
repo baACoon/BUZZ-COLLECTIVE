@@ -20,6 +20,7 @@ if (isset($_SESSION['success'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Settings</title>
+    <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="Designs/settings.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>

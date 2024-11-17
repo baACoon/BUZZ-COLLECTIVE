@@ -315,16 +315,20 @@ i.bx-menu{
     i.bx-menu {
         display: block; 
         cursor: pointer;
-        font-size: 25px; 
+        font-size: 2.5rem; 
         color: #333; 
         position: absolute;
-        right: 20px; /* Positioning to the right side */
-        top: 20px; /* Adjusts vertical positioning */
+        right: 7%; /* Positioning to the right side */
+        top: 1.25rem; /* Adjusts vertical positioning */
     }
     /* Show the sidebar when the 'open' class is added */
     .sidebar.open {
         display: block; 
         transform: translateX(0); /* Slide-in effect */
+    }
+    .mobile-logo img {
+        max-height: 17vh;
+        max-width: 17vh;
     }
     .box-container {
         justify-content: space-between; 

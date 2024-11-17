@@ -428,8 +428,8 @@ i.bx-menu{
         transform: translateX(0); /* Slide-in effect */
     }
     .mobile-logo img {
-        max-height: 15vh;
-        max-width: 15vh;
+        max-height: 17vh;
+        max-width: 17vh;
     }
     .profile-wrapper{
         width: 85%;

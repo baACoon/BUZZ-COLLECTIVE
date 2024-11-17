@@ -4,18 +4,20 @@
       background-color: white; /* Background color for the error container */
       color: black; /* Text color for the error messages */
       padding: 30px; /* Padding around the error messages */
-      border: 1px solid #f5c6cb; /* Border color for the error container */
+      border: 1px solid  #E43A19; /* Border color for the error container */
       border-radius: 5px; /* Rounded corners for the error container */
-      margin-bottom: 275px; /* Margin at the bottom of the error container */
-	  position: absolute;
-	  font-weight: 400;
-	  font-size: 10px;
-	  margin-right: 275px;
-	  margin-left: 50px;
+      font-weight: 400;
+      font-size: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
 	}
 
     .error-message {
       margin: 0; /* Remove default margin for paragraphs */
+      font-size: 1rem;
     }
   </style>
 
