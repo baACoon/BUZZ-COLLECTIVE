@@ -12,7 +12,7 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/design/appointmentform.css?v=101">
+    <link rel="stylesheet" href="../frontend/design/appointmentform.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Buzz & Collective - Appointment Form</title>
@@ -97,7 +97,7 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
 
         <input type="hidden" id="timeslot" name="timeslot" value="<?php echo $selectedTime; ?>">
         <input type="hidden" id="date" name="date" value="<?php echo $selectedDate; ?>">
-        <button type="submit" class="proceed-btn">PROCEED</button>
+        <button type="submit" class="proceed-btn" style="font-family:'Montserrat', sans-serif;">PROCEED</button>
     </form>
     <script>
         document.getElementById('appointmentForm').addEventListener('submit', function(event) {

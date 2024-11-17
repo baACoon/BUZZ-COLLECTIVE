@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "<div class='prompt' >THIS TIMESLOT IS ALREADY BOOKED.</div>";
+        echo "<div class='warning_prompt' >THIS TIMESLOT IS ALREADY BOOKED.</div>";
     } else {
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/design/confirmation.css?v=101">
+    <link rel="stylesheet" href="../frontend/design/confirmation.css">
     <title>Buzz & Collective - Confirmation</title>
 </head>
 <style>
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form method="POST" action="payment.php">
                 <button class="confirm-btn" type="submit" style="font-family: 'Montserrat', sans-serif;">Confirm Appointment</button>
             </form>
-            <form method="POST" action="landingappointment.php">
+            <form method="POST" action="appointment.php">
                 <button type="submit" style="font-family: 'Montserrat', sans-serif; border: none; background-color: #e2e2e2;">Back</button>
             </form>
         </div>

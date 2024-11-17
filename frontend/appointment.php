@@ -75,31 +75,31 @@ function timeslots($duration, $cleanup, $start, $end){
             </div>
         
         <!-- Time Selection Form -->
-        <div class="row">
-            <div class="time-selection">
-                    <label for="timeslot">Select Time</label>
-                    <select name="timeslot" id="timeslot">
-                    <?php 
-                            $timeslots = timeslots($duration, $cleanup, $start, $end);
-                            foreach($timeslots as $ts) {
-                                // If the timeslot is booked, disable the option
-                                if (in_array($ts, $bookings)) {
-                                    echo '<option value="'.$ts.'" disabled>'.$ts.' (Booked)</option>';
-                                } else {
-                                    echo '<option value="'.$ts.'">'.$ts.'</option>';
+            <div class="row">
+                <div class="time-selection">
+                        <label for="timeslot">SELECT TIME</label>
+                        <select name="timeslot" id="timeslot" style="font-family: 'Montserrat', sans-serif; justify-content: center;">
+                        <?php 
+                                $timeslots = timeslots($duration, $cleanup, $start, $end);
+                                foreach($timeslots as $ts) {
+                                    // If the timeslot is booked, disable the option
+                                    if (in_array($ts, $bookings)) {
+                                        echo '<option value="'.$ts.'" disabled>'.$ts.' (Booked)</option>';
+                                    } else {
+                                        echo '<option value="'.$ts.'">'.$ts.'</option>';
+                                    }
                                 }
-                            }
-                        ?>
-                    </select>
+                            ?>
+                        </select>
 
-                    <input type="hidden" name="selected-date" value="<?php echo isset($_GET['date']) ? htmlspecialchars($_GET['date']) : ''; ?>">
-                   <!--<input type="submit" id="selected-timeslot" name="selected-timeslot">-->
+                        <input type="hidden" name="selected-date" value="<?php echo isset($_GET['date']) ? htmlspecialchars($_GET['date']) : ''; ?>">
+                    <!--<input type="submit" id="selected-timeslot" name="selected-timeslot">-->
 
-    
-                    <button type="submit" id="selected-timeslot"class="submit-btn" name="selected-timeslot">Proceed</button>
-                
+        
+                        <button type="submit" id="selected-timeslot"class="submit-btn" name="selected-timeslot" style="font-family: 'Montserrat', sans-serif;">PROCEED</button>
+                    
+                </div>
             </div>
-        </div>
         </form>
     </div>
 

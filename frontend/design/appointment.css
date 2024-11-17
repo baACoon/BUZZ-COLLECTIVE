@@ -85,11 +85,11 @@ body::before {
 
 
 
-h6{
+h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px ;
+    font-size: 18px;
     top: 10em;
     height: 8px;
     color: #FFFFFF;
@@ -98,36 +98,35 @@ h6{
 
 
 table {
-    width:100%;
+    width: 100%;
     border-collapse: separate;
     text-indent: initial;
-    background-color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     table-layout: fixed;
-    padding:10px;
-    margin-top:30px;
-    border-radius:0px 0px 8px 8px ;
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 0 0 8px 8px;
 }
 th, td {
     padding: 10px;
     text-align: center;
     width: 14.28%;
     border-radius: 15px;
-   
 }
-tr td h4{
+
+tr td h4 {
     font-size: 0.7em;
-    padding:2px;
+    padding: 2px;
 }
 
 .row {
-    position:relative;
-    margin-left:250px;
-    margin-right:250px;
+    position: relative;
+    margin: 20px auto;
     border-radius: 8px;
-    top:5em;
-    background-color:rgb(255, 255, 255);
-
+    background-color: rgb(255, 255, 255);
+    max-width: 650px;
 }
+
 /*.today {
     background : rgb(238, 238, 54);
 }*/
@@ -140,7 +139,6 @@ tr td h4{
     cursor: pointer; 
     top: 20px;
     right: 50px;
-
 }
  
 .next_mon i {
@@ -251,7 +249,7 @@ tr td h4{
     background-color: #cccccc;
     color: #666;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -286,7 +284,7 @@ tr td h4{
 #appointment-form p{
     display: flex;
     position: absolute;
-    top: 10%;
+    top: 16%;
     justify-content: center;
     align-items: center;
 }
@@ -305,5 +303,110 @@ tr td h4{
     text-decoration: none;
 }
 
+@media (max-width: 1024px) {
+    .row {
+        margin: 10px auto;
+    }
 
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        padding: 20px;
+    }
+
+    .row {
+        margin: 5px auto;
+        width: 90%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    .time-selection {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .time-selection label {
+        font-size: 14px;
+    }
+
+    .time-selection select {
+        font-size: 14px;
+    }
+
+    .time-selection .submit-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .row {
+        margin: 5px auto;
+        width: 100%;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    th, td {
+        padding: 3px;
+    }
+
+    .time-selection {
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .time-selection label {
+        font-size: 12px;
+    }
+
+    .time-selection select {
+        font-size: 12px;
+    }
+
+    .time-selection .submit-btn {
+        font-size: 12px;
+    }
+}
+
+/* Selected and Available States */
+.selected {
+    background-color: #E43A19;
+    color: white;
+}
+
+.selected h4 {
+    color: white;
+}
+
+.available {
+    text-decoration: none;
+}
+
+.time-selection .submit-btn.active {
+    background-color: #E43A19;
+    color: #fff;
+}
+
+.time-selection .submit-btn.unavailable {
+    background-color: #cccccc;
+    color: #666;
+}
 

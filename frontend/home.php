@@ -191,7 +191,7 @@ $db->close();
                     <img src="design/image/stockphotos5.png" alt="">
                 </div>
                 <h2>SERVE THE COMMUNITY WITH SOME FRESH LOOKS!</h2>
-                <a href="">More Info</a>
+                <a href="../frontend/aboutushiring.php">More Info</a>
             </section>
             <footer>
                 <div class="footer-content">

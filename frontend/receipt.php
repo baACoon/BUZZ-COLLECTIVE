@@ -93,20 +93,17 @@ try {
     <title>Buzz & Collective - Receipt</title>
 </head>
 <body>
-    <div class="confirmation-form">
-        <h2>Buzz & Collective Appointment Form</h2>
-        <p>MAIN BRANCH</p>
-    </div>
    
     <div class="confirmation-section">
         <div class="confirmation-message">
             <h3><a href="home.php">HOME</a></h3>
             <h1>Appointment Successful</h1>
-            <p>You will be notified via email a day before your appointment schedule.</p>
-            <p>For no show on your appointed day, you will be re-scheduled.</p>
+            <p>Cancellations are not accepted once the appointment is confirmed.</p>
+            <p>Appointment modifications (such as rescheduling) are allowed up to 2 hours before the appointment time. Once it is within 2 hours of the appointment, no changes will be accepted.</p>
+            <p>If you are late to your appointment, we will hold your booking for a maximum of 15 minutes. After this period, your appointment may be forfeited, and walk-in customers may be prioritized.</p>
             <p>
                 For cancellation, contact us via email at 
-                <a href="mailto:buzzcollective@gmail.com" target="_blank" class="redirect-email">
+                <a href="mailto:buzzcollective@gmail.com" target="_blank" class="redirect-email" style="text-decoration: underline;">
                     buzzcollective@gmail.com
                 </a>
             </p>
