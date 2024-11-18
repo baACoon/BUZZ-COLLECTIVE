@@ -121,132 +121,63 @@ $db->close();
     </div>
 
      <!-- BARBERS INFO SELECTION -->
-     <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
-    <div class="carousel">
+      <section>
+      <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
 
-        <div class="list">
+                <?php 
+                $aboutUsFile = 'admin/data/about_us.json';
 
-            <div class="item" style="background-image: url(design/image/andre.jpg);">
-                <div class="content">
-                    <div class="title">Andre</div>
-                    <div class="name">Gumba</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">22</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>Head Barber Stylist | 2020 - present
-                                Head of Production  | 2023 - 2024
-                                Social Media Manager | 2021 - 2022
-                                Barber for 7 years and counting</span>
-                    </div>
-                </div>
-            </div>
+                $barbers = [];
+                if (file_exists($aboutUsFile)){
+                    $barbersContent = file_get_contents($aboutUsFile);
+                    if($barbersContent !== false){
+                        $barbers = json_decode($barbersContent, true)?? [];
+                    } else {
+                        echo "<p class='error'>Error: Unable to read the file. Please try again later.</p>";
+                    } 
+                } else {
+                    echo "<p class='error'>Error: file not found. Please contact the administrator.</p>";
+                }
 
-            <div class="item" style="background-image: url(design/image/kevin.jpg);">
-                
-                <div class="content">
-                    <div class="title">Kevin </div>
-                    <div class="name">Nuestro</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">##</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>Barber | 20[##] - 20[##]</span>
-                    </div>
-                </div>
+                if (!empty($barbers)): ?>
 
-            </div>
+        <div class="carousel">
+                    <?php foreach ($barbers as $barber): ?>
+            <div class="list">
 
-            <div class="item" style="background-image: url(design/image/donie.jpg);">
-                
-                <div class="content">
-                    <div class="title">Donie</div>
-                    <div class="name">Alonte</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">22</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>Head Barber Stylist | 2020 - present
-                                Head of Production  | 2023 - 2024
-                                Social Media Manager | 2021 - 2022
-                                Barber for 7 years and counting</span>
+                <div class="item" style="background-image: url('<?= htmlspecialchars($barber['backgroundImage']) ?>');">
+                    <div class="content">
+                        <div class="title"><?= htmlspecialchars($barber['title']) ?></div>
+                        <div class="name"><?= htmlspecialchars($barber['name']) ?></div>
+                        <div class="des">
+                            <h4>Age: <span style="font-weight: 400"><?= htmlspecialchars($barber['age']) ?></span></h4>
+                            <h4>Work / Position / Years of Experience:  <?= htmlspecialchars($barber['experience']) ?></h4>
+                        </div>
                     </div>
                 </div>
 
+                <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <p class="no-news">No news available at the moment. Stay tuned!</p>
+                    <?php endif; ?>
+        
             </div>
 
-            <div class="item" style="background-image: url(design/image/johnpaulo.jpg);">
-                
-                <div class="content">
-                    <div class="title">Paulo </div>
-                    <div class="name">Torrijos</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">23</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>6-7 years
-                        Barber | 2017 - present</span>
-                    </div>
+                 <!--next prev button-->
+                <div class="arrows">
+                    <button class="prev"><</button>
+                    <button class="next">></button>
                 </div>
 
-            </div>
 
-            <div class="item" style="background-image: url(design/image/vien.jpg);">
-                
-                <div class="content">
-                    <div class="title">Vien</div>
-                    <div class="name">Gerona</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">##</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>Barber | 20[##] - 20[##]</span>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item" style="background-image: url(design/image/akiraaa.jpg);">
-                
-                <div class="content">
-                    <div class="title">Akira</div>
-                    <div class="name">Gata</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">26</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>Business owner | 2017 - present</span>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item" style="background-image: url(design/image/monti.jpg);">
-                
-                <div class="content">
-                    <div class="title">Monti</div>
-                    <div class="name">Comia</div>
-                    <div class="des">
-                        <h4>Age: <span style="font-weight: 400">27</span></h4>
-                        <h4>Work / Position / Years of Experience: </h4>
-                        <span>Business Owner | 2022 - present
-                            Photographer | 2023 - present
-                            Multimedia Artist | 2018 - present</span>
-
-                    </div>
-                </div>
-
-            </div>
+                <!-- time running -->
+                <div class="timeRunning"></div>
 
         </div>
 
-        <!--next prev button-->
-        <div class="arrows">
-            <button class="prev"><</button>
-            <button class="next">></button>
-        </div>
-
-
-        <!-- time running -->
-        <div class="timeRunning"></div>
-
-    </div>
+    </section>
+    
     <script>
                     var nextBtn = document.querySelector('.next'),
                 prevBtn = document.querySelector('.prev'),

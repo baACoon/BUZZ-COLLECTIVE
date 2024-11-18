@@ -1,74 +1,20 @@
-[
-    {
-        "id": "67397528c6739",
-        "title": "Hair master",
-        "name": "BOris",
-        "age": "5123",
-        "position": "top",
-        "experience": "1 year",
-        "backgroundImage": "uploads\/default-avatar.png"
+{
+    "8": {
+        "id": "673ae875e6ce4",
+        "title": "icon",
+        "name": "sha",
+        "age": "19",
+        "position": "position",
+        "experience": "okay",
+        "backgroundImage": "uploads\/icon.png"
     },
-    {
-        "id": "673a1bf61300f",
-        "title": "sad",
-        "name": "qweq",
-        "age": "tqwe",
-        "position": "qwtq",
-        "experience": "qwr",
-        "backgroundImage": ""
-    },
-    {
-        "id": "673a1c506b7eb",
-        "title": "qwrqweqw",
-        "name": "gedsa",
-        "age": "sdcfdqw",
-        "position": "dsvqw",
-        "experience": "scfqwf",
-        "backgroundImage": ""
-    },
-    {
-        "id": "673a1cf65483d",
-        "title": "qwrqweqw",
-        "name": "gedsa",
-        "age": "sdcfdqw",
-        "position": "dsvqw",
-        "experience": "scfqwf",
-        "backgroundImage": ""
-    },
-    {
-        "id": "673a1d1730df5",
-        "title": "qwrqweqw",
-        "name": "gedsa",
-        "age": "sdcfdqw",
-        "position": "dsvqw",
-        "experience": "scfqwf",
-        "backgroundImage": ""
-    },
-    {
-        "id": "673a1d91367fe",
-        "title": "qwrqweqw",
-        "name": "gedsa",
-        "age": "sdcfdqw",
-        "position": "dsvqw",
-        "experience": "scfqwf",
-        "backgroundImage": ""
-    },
-    {
-        "id": "673a1db7237cf",
-        "title": "jasqwhanjm",
-        "name": "ehnjskcmwhn",
-        "age": "ednjskm ejdnk",
-        "position": "ehnlj",
-        "experience": "klqn,m\r\n",
-        "backgroundImage": ""
-    },
-    {
-        "id": "673a1dc484c6b",
-        "title": "efjdns ",
-        "name": "euh ",
-        "age": "euhfjk ",
-        "position": "wuham",
-        "experience": "8qhefnk m",
-        "backgroundImage": ""
+    "9": {
+        "id": "673af835c3224",
+        "title": "donnie",
+        "name": "alonte",
+        "age": "23",
+        "position": "asfasfa",
+        "experience": "afsafaf",
+        "backgroundImage": "uploads\/donie.jpg"
     }
-]
+}
