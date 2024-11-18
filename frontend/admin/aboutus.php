@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
     <title>Buzz & Collective - About Us</title>
     <link rel="stylesheet" href="Designs/aboutus.css?v=901">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -121,6 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="aboutus-container" id="aboutUsContainer">
             <?php if (!empty($barbers)): ?>
                 <?php foreach ($barbers as $barber): ?>
+                    <div class="barber-container">
                         <div class="item-background" style="background-image: url('<?= htmlspecialchars($barber['backgroundImage']) ?>');"></div>
                         <div class="barber">
                             <h2><?= htmlspecialchars($barber['title']) ?></h2>
@@ -128,17 +130,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <p>Age: <?= htmlspecialchars($barber['age']) ?></p>
                             <p>Position: <?= htmlspecialchars($barber['position']) ?></p>
                             <p>Experience: <?= htmlspecialchars($barber['experience']) ?></p>
-                            <!-- DELETE / EDIT BUTTON -->
                             <div class="button-container">
                                 <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this branch?');" class="delete-button-container">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="<?= htmlspecialchars($barber['id']) ?>">
                                     <button type="submit" class="delete-button">DELETE</button>
                                 </form>
-                            <button class="edit-button" onclick="editBarber('<?= htmlspecialchars(json_encode($barber)) ?>')">EDIT</button>
+                                <button class="edit-button" onclick="editBarber('<?= htmlspecialchars(json_encode($barber)) ?>')">EDIT</button>
+                            </div>
                         </div>
-                        </div>
+                    </div>
                 <?php endforeach; ?>
+
                 <div class="barber add-barber" id="addBarber" onclick="showForm()">
                     <span>+</span>
                 </div>
@@ -179,6 +182,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     
     <script>
+        // menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
         // Handle Add/Edit functionality
         document.getElementById('addButton').onclick = () => {
             document.getElementById('barberAction').value = 'add';

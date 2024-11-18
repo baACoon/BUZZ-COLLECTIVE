@@ -20,7 +20,6 @@ body {
     color: white;
     padding-top: 20px;
     z-index: 999;
-    
 }
 
 i.bx-menu{
@@ -31,21 +30,19 @@ i.bx-menu{
     cursor: pointer; 
     display: block; 
 }
-
 #close-sidebar {
-    font-size: 30px;
-    color: white;
+    font-size: 2rem; 
+    color: white; 
     text-decoration: none;
-    position: absolute;
-    top: 15px; 
-    right: 15px; 
+    position: absolute; 
+    top: 0.93rem; 
+    right: 0.93rem; 
     cursor: pointer; 
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease; /* Smooth rotation transition */
 }
-
 #close-sidebar:hover{
     color: #f73201;   
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* Rotate the icon on hover */
 }
 
 /* Mobile Navbar (for screens below 768px) */
@@ -75,7 +72,6 @@ i.bx-menu{
     max-width: 25vw;
     margin: 1rem;
 }
-
 
 .sidebar .logo{
     display: flex;
@@ -115,6 +111,7 @@ i.bx-menu{
 
 /* back button  */
 .back-button i{
+    font-size: 1.2rem; 
     color: white;
     text-decoration: none;
     margin-left: 1em;
@@ -133,6 +130,8 @@ i.bx-menu{
 }
 
 .aboutus-content h1 { 
+    font-size: 2rem;
+
     margin-bottom: 20px;
 }
 
@@ -145,26 +144,32 @@ i.bx-menu{
 .aboutus-container {
     display: flex;
     justify-content: left;
-    gap: 10px;
+    gap: 20px;
     flex-wrap: wrap;
     position: relative;
 }
-/* Common styles for both */
-.barber, .add-barber {
-    flex: 0 1 calc(33.333% - 20px); /* Equal width */
-    box-sizing: border-box;
-    height: 300px; /* Fixed height for uniformity */
+.barber-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    width: 300px; /* Ensure uniform width */
+    background-color: #fff;
+    border: none;
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+
+.item-background {
+    width: 100%;
+    height: 200px; /* Fixed height for all background images */
+    background-size: cover;
+    background-position: center;
 }
 
 .barber {
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 300px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     display: flex;
@@ -217,21 +222,22 @@ i.bx-menu{
 }
 
 .add-barber span {
-    font-size: 3em;
+    font-size: 4em;
     color: #555;
+}
+.add-barber p {
+    font-size: 1em;
+    color: #777;
 }
 
 .add-barber:hover {
     background-color: #b6b6b6;
 }
 
-.add-barber p {
-    font-size: 1em;
-    color: #777;
-}
 
 /* Delete Button Styles */
 .button-container {
+    padding-top: 10%;
     position: relative; /* Position relative to barber */
     margin-top: auto;
     bottom: 0; 
@@ -332,14 +338,41 @@ i.bx-menu{
 }
 
 /* Responsive design for smaller screens */
+@media (max-width: 1024px){
+    .aboutus-content{
+        margin-left: 280px;
+        height: auto; /* Adjust this as needed */
+    }
+    .barber{
+        flex: 0 1 calc(50% - 30px); 
+        box-sizing: border-box; 
+        max-width: 100%; 
+        overflow: hidden; /* Prevents any content from spilling out */
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+}
+@media (max-width:960px){
+    .aboutus-container{
+        gap: 10px;
+
+    }
+    .aboutus-content{
+        margin-left: 260px;
+        height: auto; /* Adjust this as needed */
+    }
+    
+    
+}
 @media (max-width: 768px) {
     .mobile-navbar {
         display: flex;
     }
     .sidebar {
         display: none; 
-        right: 0; /* Aligns sidebar to the right */
-        transform: translateX(100%); /* Initially hides the sidebar */
+        right: 0;
+        transform: translateX(100%); 
         transition: transform 0.3s ease;
     }
 
@@ -355,22 +388,27 @@ i.bx-menu{
     i.bx-menu {
         display: block; 
         cursor: pointer;
-        font-size: 25px; 
+        font-size: 2.5rem; 
         color: #333; 
         position: absolute;
-        right: 20px; /* Positioning to the right side */
-        top: 20px; /* Adjusts vertical positioning */
+        right: 7%; /* Positioning to the right side */
+        top: 1.25rem; /* Adjusts vertical positioning */
     }
     /* Show the sidebar when the 'open' class is added */
     .sidebar.open {
         display: block; 
         transform: translateX(0); /* Slide-in effect */
     }
+    .mobile-logo img {
+        max-height: 17vh;
+        max-width: 17vh;
+    }
+
     .aboutus-container {
         justify-content: space-between; 
     }
     .aboutus-content {
-        margin-left: 50px;
+        margin-left: 20px;
         margin-top: 100px;
     }
     .aboutus-content h1 {
@@ -387,13 +425,8 @@ i.bx-menu{
         margin-bottom: 20px;
     }
 
-    .aboutus-container {
-        /* Center the form vertically and horizontally */
-        top: 50%;
-        transform: translateY(-50%);
-        height: 35%;
-    }
 }
+
 
 @media (max-width: 480px){
     i.bx-menu{
@@ -413,5 +446,8 @@ i.bx-menu{
     .aboutus-container {
         height: 25%;
     }
-
+    .item-background {
+        height: 300px; /* Fixed height for all background images */
+    }
+    
  }

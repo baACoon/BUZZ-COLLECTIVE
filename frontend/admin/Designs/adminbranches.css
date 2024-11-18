@@ -9,7 +9,6 @@ body {
     background: #F5F5F5;
     color: #000000;
 }
-
 .sidebar {
     display: block;
     position: fixed;
@@ -20,7 +19,6 @@ body {
     color: white;
     padding-top: 20px;
     z-index: 999;
-    
 }
 
 i.bx-menu{
@@ -31,21 +29,19 @@ i.bx-menu{
     cursor: pointer; 
     display: block; 
 }
-
 #close-sidebar {
-    font-size: 30px;
-    color: white;
+    font-size: 2rem; 
+    color: white; 
     text-decoration: none;
-    position: absolute;
-    top: 15px; 
-    right: 15px; 
+    position: absolute; 
+    top: 0.93rem; 
+    right: 0.93rem; 
     cursor: pointer; 
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease; /* Smooth rotation transition */
 }
-
 #close-sidebar:hover{
     color: #f73201;   
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* Rotate the icon on hover */
 }
 
 /* Mobile Navbar (for screens below 768px) */
@@ -77,6 +73,12 @@ i.bx-menu{
 }
 
 
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 13%;
+}
+
 .sidebar .logo{
     display: flex;
     justify-content: center; 
@@ -90,11 +92,6 @@ i.bx-menu{
     object-fit: contain;
 }
 
-.sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 13%;
-}
 
 .sidebar nav ul li {
     padding: 10px 0;
@@ -115,6 +112,7 @@ i.bx-menu{
 
 /* back button  */
 .back-button i{
+    font-size: 1.2rem; 
     color: white;
     text-decoration: none;
     margin-left: 1em;
@@ -134,6 +132,7 @@ i.bx-menu{
 }
 
 .branches-content h1 { 
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
@@ -202,13 +201,17 @@ i.bx-menu{
 
 .add-branch span {
     font-size: 4em;
+    color: #555;
 }
 
 .add-branch p {
     font-size: 1em;
     color: #777;
 }
+.add-branch:hover{
+    background-color: #b6b6b6;
 
+}
 /* Delete Button Styles */
 .delete-button-container {
     margin-top: auto; 
@@ -291,6 +294,25 @@ i.bx-menu{
     background-color: #555;
 }
 
+@media (max-width: 1024px){
+    .branches-content{
+        margin-left: 280px;
+        height: auto; /* Adjust this as needed */
+    }
+    .branch{
+        flex: 0 1 calc(50% - 20px); 
+        box-sizing: border-box; 
+        max-width: 100%; 
+        overflow: hidden; /* Prevents any content from spilling out */
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .branch p{
+        font-size: 0.9em;
+    }
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .mobile-navbar {
@@ -334,23 +356,12 @@ i.bx-menu{
         justify-content: space-between; 
     }
     .branches-content {
-        margin-left: 50px;
+        margin-left: 40px;
         margin-top: 100px;
     }
     .branches-content h1 {
         font-size: 1.5rem;
     }
-
-    .branch {
-        flex: 0 1 calc(50% - 20px); 
-        box-sizing: border-box; 
-        max-width: 100%; 
-        overflow: hidden; /* Prevents any content from spilling out */
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
-
     .form-container {
         /* Center the form vertically and horizontally */
         top: 50%;
@@ -359,9 +370,28 @@ i.bx-menu{
     }
 }
 
+@media (max-width: 600px){
+    .branches-content{
+        margin-left: 37px;
+        height: auto; /* Adjust this as needed */
+        padding-bottom: 40px; /* Add some padding if content overflows */
+    }
+    .branch {
+        flex: 0 1 calc(100% - 20px); 
+
+    }
+    
+}
+
 @media (max-width: 480px){
     i.bx-menu{
-        font-size: 35px;
+        font-size: 2.18rem;
+        right: 6%;
+    }
+    .mobile-logo img {
+        max-height: 13vh;
+        max-width: 13vh;
+        margin-left: -0.5rem;
     }
 
     .branches-content {
@@ -369,10 +399,6 @@ i.bx-menu{
     }
     .box-container {
         gap: 10px
-    }
-    .branch {
-        flex: 0 1 calc(100% - 20px); 
-
     }
     .form-container {
         height: 25%;
