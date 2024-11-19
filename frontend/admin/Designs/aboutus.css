@@ -237,7 +237,7 @@ i.bx-menu{
 
 /* Delete Button Styles */
 .button-container {
-    padding-top: 10%;
+    padding: 10% 0;
     position: relative; /* Position relative to barber */
     margin-top: auto;
     bottom: 0; 
@@ -340,11 +340,11 @@ i.bx-menu{
 /* Responsive design for smaller screens */
 @media (max-width: 1024px){
     .aboutus-content{
-        margin-left: 280px;
+        margin-left: 250px;
         height: auto; /* Adjust this as needed */
     }
     .barber{
-        flex: 0 1 calc(50% - 30px); 
+        flex: 0 1 calc(50% - 20px); 
         box-sizing: border-box; 
         max-width: 100%; 
         overflow: hidden; /* Prevents any content from spilling out */
@@ -352,6 +352,7 @@ i.bx-menu{
         flex-direction: column;
         margin-bottom: 20px;
     }
+
 }
 @media (max-width:960px){
     .aboutus-container{
@@ -371,8 +372,8 @@ i.bx-menu{
     }
     .sidebar {
         display: none; 
-        right: 0;
-        transform: translateX(100%); 
+        right: 0; /* Aligns sidebar to the right */
+        transform: translateX(100%); /* Initially hides the sidebar */
         transition: transform 0.3s ease;
     }
 
@@ -400,8 +401,8 @@ i.bx-menu{
         transform: translateX(0); /* Slide-in effect */
     }
     .mobile-logo img {
-        max-height: 17vh;
-        max-width: 17vh;
+        max-height: 15vh;
+        max-width: 15vh;
     }
 
     .aboutus-container {
@@ -430,7 +431,13 @@ i.bx-menu{
 
 @media (max-width: 480px){
     i.bx-menu{
-        font-size: 35px;
+        font-size: 2.18rem;
+        right: 6%;
+    }
+    .mobile-logo img {
+        max-height: 13vh;
+        max-width: 13vh;
+        margin-left: -0.5rem;
     }
 
     .aboutus-content {
@@ -448,6 +455,9 @@ i.bx-menu{
     }
     .item-background {
         height: 300px; /* Fixed height for all background images */
+    }
+    .button-container{
+        padding: 1% 0;
     }
     
  }

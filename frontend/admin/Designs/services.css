@@ -399,8 +399,8 @@ input::placeholder {
         transform: translateX(0); /* Slide-in effect */
     }
     .mobile-logo img {
-        max-height: 17vh;
-        max-width: 17vh;
+        max-height: 15vh;
+        max-width: 15vh;
     }
     .services-header {
         margin-left: 50px;
