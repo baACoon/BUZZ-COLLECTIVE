@@ -120,7 +120,6 @@ i.bx-menu{
     color: #f73201;   
 }
 /* About us- Barber Start*/
-
 .aboutus-content {
     padding: 20px;
     margin: 20px;
@@ -131,7 +130,6 @@ i.bx-menu{
 
 .aboutus-content h1 { 
     font-size: 2rem;
-
     margin-bottom: 20px;
 }
 
@@ -157,7 +155,6 @@ i.bx-menu{
     border: none;
     overflow: hidden;
     border-radius: 10px;
-
 }
 
 .item-background {
@@ -340,7 +337,7 @@ i.bx-menu{
 /* Responsive design for smaller screens */
 @media (max-width: 1024px){
     .aboutus-content{
-        margin-left: 250px;
+        margin-left: 280px;
         height: auto; /* Adjust this as needed */
     }
     .barber{
@@ -354,18 +351,7 @@ i.bx-menu{
     }
 
 }
-@media (max-width:960px){
-    .aboutus-container{
-        gap: 10px;
 
-    }
-    .aboutus-content{
-        margin-left: 260px;
-        height: auto; /* Adjust this as needed */
-    }
-    
-    
-}
 @media (max-width: 768px) {
     .mobile-navbar {
         display: flex;
@@ -427,7 +413,19 @@ i.bx-menu{
     }
 
 }
-
+@media (max-width:600px){
+    .aboutus-content{
+        margin-left: 37px;
+        height: auto; /* Adjust this as needed */
+        padding-bottom: 40px; /* Add some padding if content overflows */
+    }
+    .barber-container{
+        flex: 0 1 calc(100% - 20px); 
+    }
+    .item-background {
+        height: 300px; /* Fixed height for all background images */
+    }
+}
 
 @media (max-width: 480px){
     i.bx-menu{
@@ -443,19 +441,19 @@ i.bx-menu{
     .aboutus-content {
         margin-left: 30px;
     }
-    .aboutus-container {
-        gap: 10px
-    }
-    .barber {
-        flex: 0 1 calc(100% - 20px); 
 
+    .barber-container{
+        margin: 0 auto; /* Center horizontally */
+        display: flex; /* Ensure flex properties are applied */
+        justify-content: center; /* Center contents inside container */
+        align-items: center; /* Center contents inside container */
+        width: 100%;
     }
     .aboutus-container {
         height: 25%;
+        gap: 30px;
     }
-    .item-background {
-        height: 300px; /* Fixed height for all background images */
-    }
+
     .button-container{
         padding: 1% 0;
     }
