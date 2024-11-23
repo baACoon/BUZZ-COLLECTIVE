@@ -45,7 +45,15 @@ if (isset($_SESSION['payment_data']['payment_option_id'])) {
 
 // Retrieve the service and appointment fees if they are not already set
 $_SESSION['payment_data']['service_fee'] = $_SESSION['payment_data']['service_fee'] ?? 1000; 
-$_SESSION['payment_data']['appointment_fee'] = $_SESSION['payment_data']['appointment_fee'] ?? 150; 
+//$_SESSION['payment_data']['appointment_fee'] = $_SESSION['payment_data']['appointment_fee'] ?? 150; 
+$query = "SELECT appointment_fee FROM appointment_fees WHERE id = 1";
+$result = $mysqli->query($query);
+if ($result) {
+    $_SESSION['payment_data']['appointment_fee'] = $result->fetch_assoc()['appointment_fee'];
+} else {
+    die("Error fetching appointment fee: " . $mysqli->error);
+}
+
 $totalPayment = $_SESSION['payment_data']['service_fee'] + $_SESSION['payment_data']['appointment_fee'];
 $_SESSION['payment_data']['total_payment'] = $totalPayment;
 
@@ -139,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
                 <button type="submit" name="payment_option" value="1" <?php if (isset($_SESSION['payment_data']['payment_option_id']) 
                     && $_SESSION['payment_data']['payment_option_id'] == 1) echo 'checked'; ?>>
                     <h3>Appointment Fee</h3>
-                    <h1>₱150.00</h1>
+                    <h1>₱<?php echo number_format($_SESSION['payment_data']['appointment_fee'], 2); ?></h1>
                 </button>
             </div>
     </form>
