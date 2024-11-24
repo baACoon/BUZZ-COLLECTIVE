@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Retrieve form data from session if available
+// Retrieve f orm data from session if available
 $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
 $selectedTime = isset($_GET['selected-timeslot']) ? htmlspecialchars($_GET['selected-timeslot']) : '';
 $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected-date']): '';
