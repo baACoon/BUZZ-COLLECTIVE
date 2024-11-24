@@ -61,12 +61,5 @@
         "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
         "price_terms": "",
         "fee": "200"
-    },
-    {
-        "id": "",
-        "name": "sasa",
-        "with": "with shampoo",
-        "price_terms": "depends",
-        "fee": "250"
     }
 ]

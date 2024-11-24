@@ -108,6 +108,71 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
         </div>
     <?php endforeach; ?>
 
+       <!-- Haircuts Section -->
+       <div class="haircuts-section">
+        <h1>Haircuts</h1> 
+        
+        <!-- Display the first 3 images -->
+        <div class="haircut-images">
+            <div class="haircut-item">
+                <img src="design/image/services-haircut1.jpeg" alt="Haircut 1">
+                <p class="haircut-name">Mid Fade x Textured Fringe</p> 
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut2.jpeg" alt="Haircut 2">
+                <p class="haircut-name">Low Taper Fade x Textured Fringe</p> 
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut3.jpeg" alt="Haircut 3">
+                <p class="haircut-name">Low Taper Fringe</p> 
+            </div>
+        </div>
+
+        <!-- "See More" link -->
+        <a href="javascript:void(0);" class="see-more-link" onclick="showMoreImages()">See More</a>
+
+        <!-- Display hidden images (initially hidden) -->
+        <div class="additional-images" style="display: none;">
+        
+            <div class="haircut-item">
+                <img src="design/image/services-haircut5.jpeg" alt="Haircut 5">
+                <p class="haircut-name">Blowout Taper</p>
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut6.jpeg" alt="Haircut 6">
+                <p class="haircut-name">Mid Taper x Crop</p>
+            </div>
+
+            <div class="haircut-item">
+                <img src="design/image/services-haircut7.jpeg" alt="Haircut 7">
+                <p class="haircut-name">Short Mullet Textured Fringe</p>
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut8.jpeg" alt="Haircut 8">
+                <p class="haircut-name">Low Taper Fade</p> 
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut9.jpeg" alt="Haircut 9">
+                <p class="haircut-name">Mid Fade</p>
+            </div>
+
+            <div class="haircut-item">
+                <img src="design/image/services-haircut10.jpeg" alt="Haircut 10">
+                <p class="haircut-name">Mid Burst Fade</p> 
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut11.jpeg" alt="Haircut 11">
+                <p class="haircut-name">Mid Fade x Textured Fringe</p> 
+            </div>
+            <div class="haircut-item">
+                <img src="design/image/services-haircut12.jpeg" alt="Haircut 12">
+                <p class="haircut-name">Jay Jo Mullet x Textured Fringe</p> 
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="button-container">
         <button class="bookus-button"><a href="appointment.php">Book Now</a></button>
     </div>
@@ -150,5 +215,20 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../frontend/js/landingscript.js"></script>
+    <script>
+        function showMoreImages() {
+            var additionalImages = document.querySelector('.additional-images');
+            var seeMoreLink = document.querySelector('.see-more-link');
+            
+            // Toggle visibility of additional images
+            if (additionalImages.style.display === 'none' || additionalImages.style.display === '') {
+                additionalImages.style.display = 'grid';  // Show the images
+                seeMoreLink.textContent = 'See Less'; // Change text to 'See Less'
+            } else {
+                additionalImages.style.display = 'none'; // Hide the images
+                seeMoreLink.textContent = 'See More'; // Change text back to 'See More'
+            }
+        }
+    </script>
 </body>
 </html>
