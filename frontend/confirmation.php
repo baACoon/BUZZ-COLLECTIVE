@@ -8,17 +8,23 @@ if ($mysqli->connect_error) {                                                   
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
-                                                                                                                                        // Retrieve form data
+echo "Debug Timeslot: " . htmlspecialchars($_SESSION['form_data']['timeslot'] ?? 'No timeslot');
+
+// Retrieve form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['form_data'] = array(                                                                                                      // Store form data in session
+    $date = htmlspecialchars($_POST['date']);
+    $time = htmlspecialchars($_POST['timeslot']);
+    $barber = htmlspecialchars($_POST['barber']);
+    
+    $_SESSION['form_data'] = array(
         'first_name' => htmlspecialchars($_POST['first_name']),
         'last_name' => htmlspecialchars($_POST['last_name']),
         'email' => htmlspecialchars($_POST['email']),
         'phone_num' => htmlspecialchars($_POST['phone_num']),
-        'services' => htmlspecialchars($_POST['services']),                                                                     // Make sure 'services' is correct
-        'barber' => htmlspecialchars($_POST['barber']),
-        'timeslot' => htmlspecialchars($_POST['timeslot']),
-        'date' => htmlspecialchars($_POST['date'])
+        'services' => htmlspecialchars($_POST['services']),
+        'barber' => $barber,
+        'timeslot' => $time,
+        'date' => $date
     );
 
     $serviceFees = array(                                                                                                               // Define fees for each service
@@ -54,10 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'total_payment' => $totalPayment
     );
 
-    
-    $date = isset($_POST['date']) ? htmlspecialchars($_POST['date']) : '';
-    $time = isset($_POST['timeslot']) ? htmlspecialchars($_POST['timeslot']) : '';
-   
     $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ?");
     $stmt->bind_param('ss', $date, $time);
     $stmt->execute();
@@ -67,13 +69,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<div class='warning_prompt' >THIS TIMESLOT IS ALREADY BOOKED.</div>";
     } else {
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssssssss', $_SESSION['form_data']['first_name'], $_SESSION['form_data']['last_name'], $_SESSION['form_data']['email'], $_SESSION['form_data']['phone_num'], $_SESSION['form_data']['services'], $_SESSION['form_data']['barber'], $date, $time);
+        $stmt->bind_param('ssssssss', 
+            $_SESSION['form_data']['first_name'], 
+            $_SESSION['form_data']['last_name'], 
+            $_SESSION['form_data']['email'], 
+            $_SESSION['form_data']['phone_num'], 
+            $_SESSION['form_data']['services'], 
+            $_SESSION['form_data']['barber'], 
+            $_SESSION['form_data']['date'], // Use the session values here
+            $_SESSION['form_data']['timeslot'] // Use the session values here
+        );
         
         if ($stmt->execute()) {
-            $_SESSION['form_data']['appointment_id'] = $mysqli->insert_id; // Store appointment_id
-            $_SESSION['form_data']['date'] = $date;
-            $_SESSION['form_data']['email'] = $_SESSION['form_data']['email']; // Email is already stored
-            
+            $_SESSION['form_data']['appointment_id'] = $mysqli->insert_id;
             echo "<div class='prompt'>PLEASE CONFIRM THE DETAILS!</div>";
         } else {
             echo "<div class='prompt'>There was an error processing your booking. Please try again.</div>";
@@ -106,14 +114,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="confirmation-container">
         <div class="confirmation-details">
             <p>BRANCH <strong>MAIN BRANCH</strong></p>
-            <p>DATE <strong><?php echo $date; ?></strong></p>
-            <p>TIME <strong><?php echo $time; ?></strong></p>
+            <p>DATE <strong><?php echo htmlspecialchars($_SESSION['form_data']['date'] ?? ''); ?></strong></p>
+            <p>TIME <strong><?php echo htmlspecialchars($_SESSION['form_data']['timeslot'] ?? 'Not set'); ?></strong></p>
             <p>FIRST NAME <strong><?php echo $_SESSION['form_data']['first_name']; ?></strong></p>
             <p>LAST NAME <strong><?php echo $_SESSION['form_data']['last_name']; ?></strong></p>
             <p>EMAIL <strong><?php echo $_SESSION['form_data']['email']; ?></strong></p>
             <p>CONTACT NUMBER <strong><?php echo $_SESSION['form_data']['phone_num']; ?></strong></p>
             <p>SERVICE <strong><?php echo ucfirst($_SESSION['form_data']['services']); ?></strong></p>
-            <p>BARBER <strong><?php echo ucfirst($_SESSION['form_data']['barber']); ?></strong></p>
+            <p>BARBER <strong><?php echo htmlspecialchars($_SESSION['form_data']['barber'] ?? ''); ?></strong></p>
             <hr>
             <p class="service-fee" style="font-weight: bolder;">SERVICE FEE <strong>₱<?php echo number_format($serviceFee, 0); ?></strong></p>
             <p class="total-fee" style="font-weight: bolder;">TOTAL PAYMENT: <strong>₱<?php echo number_format($totalPayment, 0); ?></strong></p>

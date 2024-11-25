@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-// Retrieve form data from session if available
+// Retrieve f orm data from session if available
 $formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
-$selectedTime = isset($_GET['selected-timeslot']) ? htmlspecialchars($_GET['selected-timeslot']) : '';
-$selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected-date']): '';
+$selectedTime = isset($_POST['timeslot']) ? htmlspecialchars($_POST['timeslot']) : '';
+$selectedDate = isset($_POST['date']) ? htmlspecialchars($_POST['date']) : '';
+$selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) : '';
 ?>
 
 <!DOCTYPE html>
@@ -79,83 +80,34 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
             </div>
         </div>
 
-        <div class="form-section">
-            <label for="barber">Barber 
-                <span class="tooltip"><i class="fa-light fa-circle-question"></i>
-                    <span class="tooltiptext"><em>Check the available barber for the week in the homepage.</em></span>
-                </span>
-            </label>
-            <div id="barber-container">
-                <!-- Barber options will be populated dynamically -->
-            </div>
-        </div>
-
-        <p class="note-text">NOTE: Only barbers available for your scheduled date and time are visible.</p>
-
         <div class="validation-message" id="validationMessage" style="display: none;">
             Please fill out all fields and select a service and a barber before proceeding.
         </div>
 
-        <input type="hidden" id="timeslot" name="timeslot" value="<?php echo $selectedTime; ?>">
-        <input type="hidden" id="date" name="date" value="<?php echo $selectedDate; ?>">
+        <input type="hidden" name="date" value="<?php echo $selectedDate; ?>">
+        <input type="hidden" name="timeslot" value="<?php echo $selectedTime; ?>">
+        <input type="hidden" name="barber" value="<?php echo $selectedBarber; ?>">
         <button type="submit" class="proceed-btn" style="font-family:'Montserrat', sans-serif;">PROCEED</button>
     </form>
-    <script>
-        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
-        const firstName = document.getElementById('first_name').value.trim();
-        const lastName = document.getElementById('last_name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone_num').value.trim();
-        const services = document.querySelector('input[name="services"]:checked');
-        const barber = document.querySelector('input[name="barber"]:checked');
-        const selectedDate = document.getElementById('date').value.trim();
-        const timeslot = document.getElementById('timeslot').value.trim();
+        <script>
+       // Update your validation script
+            document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+                const firstName = document.getElementById('first_name').value.trim();
+                const lastName = document.getElementById('last_name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone_num').value.trim();
+                const services = document.querySelector('input[name="services"]:checked');
+                const date = document.getElementById('date').value.trim();
+                const timeslot = document.getElementById('timeslot').value.trim();
+                const barber = document.getElementById('barber').value.trim();
 
-        if (!firstName || !lastName || !email || !phone || !services || !barber || !timeslot || !selectedDate) {
-            document.getElementById('validationMessage').style.display = 'block';
-            event.preventDefault(); // Prevent form submission
-
-
-            
-        } else {
-            document.getElementById('validationMessage').style.display = 'none';
-        }
-    });
-
-    window.onload = function() {
-        const selectedDate = "<?php echo $selectedDate; ?>";
-        const selectedTime = "<?php echo $selectedTime; ?>";
-        
-        if (selectedDate && selectedTime) {
-            fetchAvailableBarbers(selectedDate);
-        }
-    };
-
-    function fetchAvailableBarbers(date) {
-        const barberContainer = document.getElementById('barber-container');
-        barberContainer.innerHTML = 'Loading barbers...'; // Placeholder text while fetching
-        
-        // AJAX request to fetch availability
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `barberavailability.php?selected_date=${date}`, true); // Removed selected_time since it's not needed
-        xhr.onload = function() {
-            if (this.status === 200) {
-                const barbers = JSON.parse(this.responseText);
-                let barberOptions = '';
-
-                // Display only available barbers
-                barbers.forEach(barber => {
-                    barberOptions += `<div class='barber-item'>
-                                        <input type='radio' name='barber' value='${barber.barber_name}' required>
-                                        <label>${barber.barber_name}</label>
-                                    </div>`;
-                });
-
-                barberContainer.innerHTML = barberOptions.length ? barberOptions : 'No available barbers for the selected date.';
-            }
-        };
-        xhr.send();
-    }
+                if (!firstName || !lastName || !email || !phone || !services || !date || !timeslot || !barber) {
+                    document.getElementById('validationMessage').style.display = 'block';
+                    event.preventDefault();
+                } else {
+                    document.getElementById('validationMessage').style.display = 'none';
+                }
+            });
 
     </script> 
 </body>

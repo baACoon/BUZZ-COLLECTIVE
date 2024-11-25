@@ -1,3 +1,4 @@
+
 <?php require_once '../frontend/calendar.php'; ?>
 <?php require_once '../backend/adminappointments.php'; ?>
 
@@ -47,7 +48,7 @@ function timeslots($duration, $cleanup, $start, $end){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Date and Time</title>
+    <title>Date, Time, and Barber Selection</title>
 </head>
 <body>
     <div class="bg-container">
@@ -58,95 +59,117 @@ function timeslots($duration, $cleanup, $start, $end){
              <h2>Buzz & Collective Appointment Form</h2> <br>
              <p>Main Branch</p>
         </div>
-        <form action="appointmentform.php"id="appointmentForm" method="GET">
+        <form action="appointmentform.php" id="appointmentForm" method="POST">
             <div class="row">
                 <div class="coloumnn">
                     <?php
                         $dateComponents = getdate();
-                        if(isset($_GET['month']) && isset($_GET['year'])){
-                            $month = $_GET['month']; 			     
+                        if (isset($_GET['month']) && isset($_GET['year'])) {
+                            $month = $_GET['month'];
                             $year = $_GET['year'];
-                        }else{
-                            $month = $dateComponents['mon']; 			     
+                        } else {
+                            $month = $dateComponents['mon'];
                             $year = $dateComponents['year'];
                         }
-                        echo build_calendar($month,$year);
+                        echo build_calendar($month, $year);
                     ?>
                 </div>
             </div>
         
-        <!-- Time Selection Form -->
+            <!-- Time Selection Form -->
             <div class="row">
                 <div class="time-selection">
-                        <label for="timeslot">SELECT TIME</label>
-                        <select name="timeslot" id="timeslot" style="font-family: 'Montserrat', sans-serif; justify-content: center;">
+                    <label for="timeslot">SELECT TIME</label>
+                    <select name="timeslot" id="timeslot" style="font-family: 'Montserrat', sans-serif; justify-content: center;" required>
                         <?php 
-                                $timeslots = timeslots($duration, $cleanup, $start, $end);
-                                foreach($timeslots as $ts) {
-                                    // If the timeslot is booked, disable the option
-                                    if (in_array($ts, $bookings)) {
-                                        echo '<option value="'.$ts.'" disabled>'.$ts.' (Booked)</option>';
-                                    } else {
-                                        echo '<option value="'.$ts.'">'.$ts.'</option>';
-                                    }
+                            $timeslots = timeslots($duration, $cleanup, $start, $end);
+                            foreach ($timeslots as $ts) {
+                                if (in_array($ts, $bookings)) {
+                                    echo '<option value="'.$ts.'" disabled>'.$ts.' (Booked)</option>';
+                                } else {
+                                    echo '<option value="'.$ts.'">'.$ts.'</option>';
                                 }
-                            ?>
-                        </select>
-
-                        <input type="hidden" name="selected-date" value="<?php echo isset($_GET['date']) ? htmlspecialchars($_GET['date']) : ''; ?>">
-                    <!--<input type="submit" id="selected-timeslot" name="selected-timeslot">-->
-
-        
-                        <button type="submit" id="selected-timeslot"class="submit-btn" name="selected-timeslot" style="font-family: 'Montserrat', sans-serif;">PROCEED</button>
-                    
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
+
+            <!-- Barber Selection -->
+            <div class="row">
+                <div class="barber-selection">
+                    <label for="barber">SELECT BARBER</label>
+                    <div id="barber-container" name="barber-container">
+                        <!-- Barbers will be dynamically loaded -->
+                        <p class="loading-text">Select a date and time to see available barbers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change these hidden fields -->
+            <input type="hidden" name="date" id="date" value="<?php echo htmlspecialchars($_GET['date'] ?? ''); ?>">
+            <input type="hidden" name="barber" id="barber" value="">
+            <input type="hidden" name="timeslot" id="timeslot" value="">
+
+            <button type="submit" class="submit-btn" style="font-family: 'Montserrat', sans-serif;">PROCEED</button>
         </form>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const timeSelect = document.getElementById('timeslot');
-            const submitBtn = document.querySelector('.submit-btn');
-            const unavailableTimes = ['10:00 AM - 11:00 AM', '02:00 PM - 03:00 PM']; // Mock data
+            const barberContainer = document.getElementById('barber-container');
+            const dateInput = document.getElementById('date');
+            const barberInput = document.getElementById('barber');
 
-            function isTimeAvailable(time) {
-                return !unavailableTimes.includes(time);
-            }
-
-            // Event listener for changing time slot
-            document.getElementById('timeslot').addEventListener('change', function (event) {
+            // Update time when selected
+            timeSelect.addEventListener('change', function () {
                 const selectedTime = this.value;
-                document.getElementById('selected-timeslot').value = selectedTime;
-                if (selectedTime && isTimeAvailable(selectedTime)) {
-                    submitBtn.classList.add('active');
-                    submitBtn.classList.remove('unavailable');
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.classList.remove('active');
-                    submitBtn.classList.add('unavailable');
-                    submitBtn.disabled = true;
+                document.querySelector('input[name="timeslot"]').value = selectedTime;
+                if (dateInput.value && selectedTime) {
+                    fetchAvailableBarbers(dateInput.value, selectedTime);
                 }
             });
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const dateCells = document.querySelectorAll('td');
-
-                dateCells.forEach(cell => {
-                    cell.addEventListener('click', function () {
-                        // Remove 'selected' class from all cells
-                        dateCells.forEach(c => c.classList.remove('selected'));
-
-                        // Add 'selected' class to the clicked cell
-                        if (!this.classList.contains('unavailable')) {
-                            this.classList.add('selected');
-                        }
-                    });
-                });
+            // Update barber when selected
+            barberContainer.addEventListener('change', function(e) {
+                if(e.target.type === 'radio' && e.target.name === 'barber') {
+                    barberInput.value = e.target.value;
+                }
             });
 
-        });
+            // Add this to handle date selection
+            function handleDateSelection(date) {
+                dateInput.value = date;
+                // Clear previous selections
+                timeSelect.value = '';
+                barberContainer.innerHTML = '<p class="loading-text">Select a time to see available barbers.</p>';
+            }
 
+            // Existing AJAX function to fetch available barbers
+            function fetchAvailableBarbers(date, time) {
+                barberContainer.innerHTML = 'Loading available barbers...';
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `barberavailability.php?selected_date=${date}&selected_time=${time}`, true);
+                xhr.onload = function () {
+                    if (this.status === 200) {
+                        const barbers = JSON.parse(this.responseText);
+                        if (barbers.length > 0) {
+                            barberContainer.innerHTML = barbers.map(barber => `
+                                <div class='barber-item'>
+                                    <input type='radio' name='barber' value='${barber.barber_name}' required>
+                                    <label>${barber.barber_name}</label>
+                                </div>
+                            `).join('');
+                        } else {
+                            barberContainer.innerHTML = '<p>No available barbers for the selected date and time.</p>';
+                        }
+                    }
+                };
+                xhr.send();
+            }
+        });
     </script>
 </body>
 </html>
