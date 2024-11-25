@@ -25,6 +25,7 @@
         </div>
         <nav>
             <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
@@ -42,19 +43,20 @@
         </nav>
     </aside>
 
-    <div class="aboutus-header">
-        <h1>ABOUT US</h1>
-        <div class="button-containers">
-            <div class="aboutbarbers">
-                <a href="../admin/aboutus.php">ABOUT BARBERS</a>
-            </div>
-            <div class="hiring">
-                <a href="../admin/hiring.php">HIRING</a>
-            </div>
+
+    <div class="aboutus-content">
+        <div class="aboutusheader">
+            <h1>ABOUT US</h1>
+        </div>
+
+        <div class="aboutus-btn">
+            <li><button class="aboutbarbers"><a href="../admin/aboutus.php">ABOUT US</a></button></li>
+            <li><button class="hiring"><a href="../admin/hiring.php">HIRING</a></button></li>
+
         </div>
     </div>
-    
 
+ 
     <script>
          // menu icon
          document.addEventListener('DOMContentLoaded', function() {

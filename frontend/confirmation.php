@@ -40,7 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'shave-and-sculpting' => 200
     );
 
-    $appointmentFee = 150;                                                                                                               // Appointment fee
+    //$appointmentFee = 150;
+    // Fetch the appointment fee from the database
+    $query = "SELECT appointment_fee FROM appointment_fees WHERE id = 1"; 
+    $result = $mysqli->query($query);
+    $appointmentFee = $result->fetch_assoc()['appointment_fee'];                                                                                                               // Appointment fee
 
                                                                                                                                             // Get the fee for the selected service
     $serviceKey = $_SESSION['form_data']['services'];                                                                                      // Store the service key properly
