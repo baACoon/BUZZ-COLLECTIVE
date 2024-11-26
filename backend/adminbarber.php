@@ -5,8 +5,21 @@ $mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-// Fetch barber names
-$barbers = ['Drey', 'Vien', 'Andro', 'Lili', 'Rego'];
+
+// Fetch barber names from the barbers table
+$barbers_query = "SELECT name FROM barbers ORDER BY name";
+$barbers_result = $mysqli->query($barbers_query);
+$barbers = [];
+if ($barbers_result) {
+    while ($row = $barbers_result->fetch_assoc()) {
+        $barbers[] = $row['name'];
+    }
+}
+
+/* If no barbers found, use default list
+if (empty($barbers)) {
+    $barbers = ['Drey', 'Vien', 'Andro', 'Lili', 'Rego'];
+} */
 
 // Initialize date range
 $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-d', strtotime('next Monday'));
@@ -24,5 +37,8 @@ if ($result->num_rows > 0) {
 }
 $mysqli->close();
 
-$daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+$daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+
+
 ?>

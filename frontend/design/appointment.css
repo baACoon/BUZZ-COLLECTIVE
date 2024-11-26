@@ -85,6 +85,25 @@ body::before {
 
 
 
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-section label {
+    display: block;
+    margin-top: -0.4rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+
 h6 {
     display: flex;
     justify-content: center;

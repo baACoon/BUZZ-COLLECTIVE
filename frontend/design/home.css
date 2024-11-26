@@ -236,36 +236,61 @@ li:hover .arrow, li:hover .profile-arrow {
     overflow: hidden;
 
 }
-
-.image1{
-    width: 500px;
-    height: 677px;
-    background: url(image/image1.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity: 1;
-    position: absolute;
-    top: 215px;
-    left: 120px;
-    overflow: hidden;
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em; /* Consistent spacing between items */
+  justify-content: space-between;
+  margin-top: 2em;
+  padding: 0 1em; /* Optional: Padding to keep layout aligned */
 }
 
-
-.image2{
-    width: 500px;
-    height: 677px;
-    background: url(image/image2.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity: 1;
-    position: absolute;
-    top: 215px;
-    left: 730px;
-    overflow: hidden;
+.news-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(33.333% - 1em); /* Ensures three items per row */
+  max-width: calc(33.333% - 1em); /* Prevents items from exceeding the row width */
+  background-color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
+.news-image img {
+  width: 100%;
+  height: 200px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensures proper scaling and cropping */
+  display: block;
+}
+
+.news-details {
+  padding: 1em;
+}
+
+.news-details h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.news-details h3 {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+  color: #bbb;
+}
+
+.news-details p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.no-news {
+  text-align: center;
+  font-size: 1.2em;
+  color: #bbb;
+}
 
 /* barber selection */
 .barber-selection{
