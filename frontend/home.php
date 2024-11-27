@@ -20,7 +20,7 @@ $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
 // Calculate the start (Monday) and end (Friday) of the current week
 $startDate = date('Y-m-d', strtotime('monday this week'));
-$endDate = date('Y-m-d', strtotime('friday this week'));
+$endDate = date('Y-m-d', strtotime('sunday this week'));
 
 
 $profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
@@ -233,7 +233,7 @@ $db->close();
             <!--SCRIPT TO SA PAG DISPLAY NG BARBER SA HOME-->
             <script> //note: hindi functionable yung (April 22 chuchu)
                 document.addEventListener('DOMContentLoaded', function() {
-                const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+                const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                 const urlParams = new URLSearchParams(window.location.search);
                 const startDate = urlParams.get('start_date') || '';
                 const endDate = urlParams.get('end_date') || '';
@@ -251,7 +251,9 @@ $db->close();
                                 'Tuesday': [],
                                 'Wednesday': [],
                                 'Thursday': [],
-                                'Friday': []
+                                'Friday': [],
+                                'Saturday': [],
+                                'Sunday': []
                             };
 
                             // Iterate over the fetched data and group barbers by day
