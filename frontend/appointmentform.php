@@ -14,9 +14,10 @@ $selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) :
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
-    <link rel="stylesheet" href="../frontend/design/appointmentform.css">
+    <link rel="stylesheet" href="../frontend/design/appointmentform.css?=901">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Buzz & Collective - Appointment Form</title>
 </head>
 <body>
@@ -87,8 +88,12 @@ $selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) :
         <input type="hidden" name="date" value="<?php echo $selectedDate; ?>">
         <input type="hidden" name="timeslot" value="<?php echo $selectedTime; ?>">
         <input type="hidden" name="barber" value="<?php echo $selectedBarber; ?>">
-        <button type="submit" class="proceed-btn" style="font-family:'Montserrat', sans-serif;">PROCEED</button>
+        <div class="buttons">
+            <button type="submit" class="back-btn"style="font-family: 'Montserrat', sans-serif; border: none; background-color: #e2e2e2;"><a href="appointment.php">Back</a></button>
+            <button type="submit" class="proceed-btn" style="font-family:'Montserrat', sans-serif;">PROCEED</button>
+        </div>
     </form>
+
         <script>
        // Update your validation script
             document.getElementById('appointmentForm').addEventListener('submit', function(event) {

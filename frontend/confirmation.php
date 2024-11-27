@@ -8,7 +8,7 @@ if ($mysqli->connect_error) {                                                   
     die("Database connection failed: " . $mysqli->connect_error);
 }
 
-echo "Debug Timeslot: " . htmlspecialchars($_SESSION['form_data']['timeslot'] ?? 'No timeslot');
+// echo "Debug Timeslot: " . htmlspecialchars($_SESSION['form_data']['timeslot'] ?? 'No timeslot');
 
 // Retrieve form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -64,13 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'total_payment' => $totalPayment
     );
 
-    $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ?");
-    $stmt->bind_param('ss', $date, $time);
+    $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ? AND barber = ?");
+    $stmt->bind_param('sss', $date, $time, $barber);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "<div class='warning_prompt' >THIS TIMESLOT IS ALREADY BOOKED.</div>";
+        echo "<div class='warning_prompt'>THIS TIMESLOT IS ALREADY BOOKED.</div>";
     } else {
         $stmt = $mysqli->prepare("INSERT INTO appointments (first_name, last_name, email, phone_num, services, barber, date, timeslot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('ssssssss', 
@@ -80,8 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['form_data']['phone_num'], 
             $_SESSION['form_data']['services'], 
             $_SESSION['form_data']['barber'], 
-            $_SESSION['form_data']['date'], // Use the session values here
-            $_SESSION['form_data']['timeslot'] // Use the session values here
+            $_SESSION['form_data']['date'], 
+            $_SESSION['form_data']['timeslot']
         );
         
         if ($stmt->execute()) {
@@ -105,9 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../frontend/design/confirmation.css">
     <title>Buzz & Collective - Confirmation</title>
 </head>
-<style>
-    
-</style>
 
 <body>
     <div class="confirmation-form">

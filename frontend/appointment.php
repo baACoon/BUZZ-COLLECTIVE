@@ -98,7 +98,7 @@ function timeslots($duration, $cleanup, $start, $end){
             <!-- Barber Selection -->
             <div class="row">
                 <div class="barber-selection">
-                    <label for="barber">SELECT BARBER</label>
+                    <label for="barber"><h4>SELECT BARBER</h4></label>
                     <div id="barber-container" name="barber-container">
                         <!-- Barbers will be dynamically loaded -->
                         <p class="loading-text">Select a date and time to see available barbers.</p>
@@ -111,7 +111,7 @@ function timeslots($duration, $cleanup, $start, $end){
             <input type="hidden" name="barber" id="barber" value="">
             <input type="hidden" name="timeslot" id="timeslot" value="">
 
-            <button type="submit" class="submit-btn" style="font-family: 'Montserrat', sans-serif;">PROCEED</button>
+            <button type="submit" class="submit-btn">PROCEED</button>
         </form>
     </div>
 
