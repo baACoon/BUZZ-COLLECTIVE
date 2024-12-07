@@ -238,59 +238,56 @@ $db->close();
                 const startDate = urlParams.get('start_date') || '';
                 const endDate = urlParams.get('end_date') || '';
 
-                // Fetch availability data from the server
-                fetch(`fetch_availability.php`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const availabilityDiv = document.getElementById('availability');
+                fetch('fetch_availability.php')
+        .then(response => response.json())
+        .then(data => {
+            const availabilityDiv = document.getElementById('availability');
+            
+            if (data.length > 0) {
+                // Initialize barbers by day for available barbers only
+                const availableBarbersByDay = {};
+                daysOfWeek.forEach(day => {
+                    availableBarbersByDay[day] = [];
+                });
 
-                        if (data.length > 0) {
-                            // Initialization sa barbers by day 
-                            const availableBarbersByDay = {
-                                'Monday': [],
-                                'Tuesday': [],
-                                'Wednesday': [],
-                                'Thursday': [],
-                                'Friday': [],
-                                'Saturday': [],
-                                'Sunday': []
-                            };
+                // Group only available barbers by day
+                data.forEach(entry => {
+                    const date = new Date(entry.date);
+                    const dayName = daysOfWeek[date.getDay() === 0 ? 6 : date.getDay() - 1];
+                    if (dayName && entry.is_available) {  // Only add if barber is available
+                        availableBarbersByDay[dayName].push(entry.barber_name);
+                    }
+                });
 
-                            // Iterate over the fetched data and group barbers by day
-                            data.forEach(entry => {
-                                const dayName = daysOfWeek[new Date(entry.date).getDay()-1];                                                  // Get the day of the week
-                                if (dayName && entry.is_available) {                                                                            // Ensure barber is available and day is within Monday to Friday
-                                    availableBarbersByDay[dayName].push(entry.barber_name);
-                                }
-                            });
+                // Build HTML for each day
+                let html = '';
+                daysOfWeek.forEach(day => {
+                    html += `<div class="day-row">
+                        <strong>${day}:</strong><br>
+                        <div class="barbers-row">`;
 
-                            // Build the HTML for each day with up to 6 barbers per day
-                            let html = '';
-                            daysOfWeek.forEach(day => {
-                                html += `<div class="day-row"><strong>${day}:</strong><br><div class="barbers-row">`;
+                    const availableBarbers = availableBarbersByDay[day];
 
-                                // Display up to 6 barbers for the current day
-                                const barbers = availableBarbersByDay[day].slice(0, 6);
-                                if (barbers.length > 0) {
-                                    barbers.forEach(barber => {
-                                        html += `<span class="barber">${barber}</span>`;
-                                    });
-                                } else {
-                                    html += `<span class="no-barbers">No barbers available</span>`;
-                                }
+                    if (availableBarbers.length > 0) {
+                        availableBarbers.forEach(barber => {
+                            html += `<span class="barber available">${barber}</span>`;
+                        });
+                    } else {
+                        html += `<span class="no-barbers">No barbers available</span>`;
+                    }
 
-                                html += '</div></div><br>';
-                            });
+                    html += '</div></div><br>';
+                });
 
-                            availabilityDiv.innerHTML = html; // Insert the generated HTML into the DOM
-                        } else {
-                            availabilityDiv.textContent = "No availability data found for the current week.";
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching availability data:', error);
-                        document.getElementById('availability').textContent = "Failed to load availability data.";
-                    });
+                availabilityDiv.innerHTML = html;
+            } else {
+                availabilityDiv.textContent = "No availability data found for the current week.";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching availability data:', error);
+            document.getElementById('availability').textContent = "Failed to load availability data.";
+        });
             });
 
             </script>
