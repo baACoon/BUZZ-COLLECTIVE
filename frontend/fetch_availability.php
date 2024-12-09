@@ -1,26 +1,37 @@
 <?php
-// Connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+header('Content-Type: application/json');
 
-// Fetch the start and end date parameters
-$start_date = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-d');
-$end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d', strtotime('+6 days'));
+$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 
-// Fetch available barbers for the selected date range
-$query = "SELECT * FROM barber_availability WHERE date BETWEEN '$start_date' AND '$end_date'";
-$result = mysqli_query($db, $query);
+if ($mysqli->connect_error) {
+    die(json_encode(['error' => 'Connection failed: ' . $mysqli->connect_error]));
+}
 
-$availability_data = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $availability_data[] = [
+// Get current week's dates
+$startDate = date('Y-m-d', strtotime('monday this week'));
+$endDate = date('Y-m-d', strtotime('sunday this week'));
+
+// Fetch all barber availability for the current week
+$query = "SELECT ba.barber_name, ba.date, ba.is_available 
+          FROM barber_availability ba 
+          WHERE ba.date BETWEEN ? AND ?
+          ORDER BY ba.date, ba.barber_name";
+
+$stmt = $mysqli->prepare($query);
+$stmt->bind_param('ss', $startDate, $endDate);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$availability = [];
+while ($row = $result->fetch_assoc()) {
+    $availability[] = [
         'barber_name' => $row['barber_name'],
         'date' => $row['date'],
-        'is_available' => $row['is_available']
+        'is_available' => (bool)$row['is_available']
     ];
 }
 
-// Return the availability data as JSON
-echo json_encode($availability_data);
+$stmt->close();
+$mysqli->close();
 
-mysqli_close($db);
-?>
+echo json_encode($availability);

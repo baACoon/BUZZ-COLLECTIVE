@@ -7,10 +7,18 @@
         "poster": "uploads\/icon.png"
     },
     {
+<<<<<<< HEAD
         "id": "673b73726f2d9",
         "title": "mhvhv ",
         "subtitle": "MAMA MO PROMO",
         "description": "vgjnn ",
         "poster": "uploads\/donie.jpg"
+=======
+        "id": "67471ecaa4dc6",
+        "title": "Discount Discount",
+        "subtitle": "Discount dito, discount diyan, saan ka pa?",
+        "description": "LAGIT LAGING MAY DISCOUNT DITO SA BUZZ AND COLLECTIVES",
+        "poster": "uploads\/1.png"
+>>>>>>> 59f75bee3270d9f122f51876606c80dc60e39b70
     }
 ]

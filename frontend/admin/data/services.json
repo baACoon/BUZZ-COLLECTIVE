@@ -4,7 +4,7 @@
         "name": "Haircut",
         "with": "with shampoo, blowdry",
         "price_terms": "280",
-        "fee": "100"
+        "fee": "200"
     },
     {
         "id": "2",
@@ -61,12 +61,5 @@
         "with": "WITH SHAMPOO, BLOWDRY, AND POMADE APPLICATION",
         "price_terms": "",
         "fee": "200"
-    },
-    {
-        "id": "",
-        "name": "sasa",
-        "with": "with shampoo",
-        "price_terms": "depends",
-        "fee": "250"
     }
 ]

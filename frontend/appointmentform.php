@@ -1,10 +1,34 @@
 <?php
 session_start();
+$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 
-// Retrieve form data from session if available
-$formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
-$selectedTime = isset($_GET['selected-timeslot']) ? htmlspecialchars($_GET['selected-timeslot']) : '';
-$selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected-date']): '';
+if ($mysqli->connect_error) {
+    die("Database connection failed: " . $mysqli->connect_error);
+}
+
+// Retrieve selected date, time, and barber from POST or session
+$selectedTime = isset($_POST['timeslot']) ? htmlspecialchars($_POST['timeslot']) : '';
+$selectedDate = isset($_POST['date']) ? htmlspecialchars($_POST['date']) : '';
+$selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) : '';
+
+$promptMessage = '';
+$promptType = '';
+
+if ($selectedDate && $selectedTime && $selectedBarber) {
+    $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ? AND barber = ?");
+    $stmt->bind_param('sss', $selectedDate, $selectedTime, $selectedBarber);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $promptMessage = "This timeslot is already booked.";
+        $promptType = 'warning';
+    } else {
+        $promptMessage = "You can continue to fill up the appointment details.";
+        $promptType = 'success';
+    }
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +37,84 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
-    <link rel="stylesheet" href="../frontend/design/appointmentform.css">
+    <link rel="stylesheet" href="../frontend/design/appointmentform.css?=901">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Buzz & Collective - Appointment Form</title>
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content p {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .warning {
+            color: red;
+        }
+
+        .success {
+            color: rgb(255, 77, 64);
+        }
+
+        .back-btn {
+            background-color: #e2e2e2;
+        }
+
+        .continue-btn {
+            background-color: rgb(255, 77, 64);
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <!-- Prompt Modal -->
+    <?php if ($promptMessage): ?>
+        <div id="promptModal" class="modal">
+            <div class="modal-content">
+                <p class="<?php echo htmlspecialchars($promptType); ?>">
+                    <?php echo htmlspecialchars($promptMessage); ?>
+                </p>
+                <?php if ($promptType === 'warning'): ?>
+                    <button class="back-btn" onclick="location.href='appointment.php'">Back</button>
+                <?php else: ?>
+                    <button class="continue-btn" onclick="closeModal()">Continue</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
         <div class="appointment-form">
                 <h2>Buzz & Collective Appointment Form</h2>
                 <p>Main Branch</p>
@@ -79,83 +175,54 @@ $selectedDate = isset($_GET['selected-date']) ? htmlspecialchars($_GET['selected
             </div>
         </div>
 
-        <div class="form-section">
-            <label for="barber">Barber 
-                <span class="tooltip"><i class="fa-light fa-circle-question"></i>
-                    <span class="tooltiptext"><em>Check the available barber for the week in the homepage.</em></span>
-                </span>
-            </label>
-            <div id="barber-container">
-                <!-- Barber options will be populated dynamically -->
-            </div>
-        </div>
-
-        <p class="note-text">NOTE: Only barbers available for your scheduled date and time are visible.</p>
-
         <div class="validation-message" id="validationMessage" style="display: none;">
             Please fill out all fields and select a service and a barber before proceeding.
         </div>
 
-        <input type="hidden" id="timeslot" name="timeslot" value="<?php echo $selectedTime; ?>">
-        <input type="hidden" id="date" name="date" value="<?php echo $selectedDate; ?>">
-        <button type="submit" class="proceed-btn" style="font-family:'Montserrat', sans-serif;">PROCEED</button>
+        <input type="hidden" name="date" value="<?php echo $selectedDate; ?>">
+        <input type="hidden" name="timeslot" value="<?php echo $selectedTime; ?>">
+        <input type="hidden" name="barber" value="<?php echo $selectedBarber; ?>">
+        <div class="buttons">
+            <button type="submit" class="back-btn"style="font-family: 'Montserrat', sans-serif; border: none; background-color: #e2e2e2;"><a href="appointment.php">Back</a></button>
+            <button type="submit" class="proceed-btn" style="font-family:'Montserrat', sans-serif;">PROCEED</button>
+        </div>
     </form>
-    <script>
-        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
-        const firstName = document.getElementById('first_name').value.trim();
-        const lastName = document.getElementById('last_name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone_num').value.trim();
-        const services = document.querySelector('input[name="services"]:checked');
-        const barber = document.querySelector('input[name="barber"]:checked');
-        const selectedDate = document.getElementById('date').value.trim();
-        const timeslot = document.getElementById('timeslot').value.trim();
 
-        if (!firstName || !lastName || !email || !phone || !services || !barber || !timeslot || !selectedDate) {
-            document.getElementById('validationMessage').style.display = 'block';
-            event.preventDefault(); // Prevent form submission
+        <script>
+       // Update your validation script
+            document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+                const firstName = document.getElementById('first_name').value.trim();
+                const lastName = document.getElementById('last_name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone_num').value.trim();
+                const services = document.querySelector('input[name="services"]:checked');
+                const date = document.getElementById('date').value.trim();
+                const timeslot = document.getElementById('timeslot').value.trim();
+                const barber = document.getElementById('barber').value.trim();
 
+                if (!firstName || !lastName || !email || !phone || !services || !date || !timeslot || !barber) {
+                    document.getElementById('validationMessage').style.display = 'block';
+                    event.preventDefault();
+                } else {
+                    document.getElementById('validationMessage').style.display = 'none';
+                }
+            });
 
-            
-        } else {
-            document.getElementById('validationMessage').style.display = 'none';
-        }
-    });
-
-    window.onload = function() {
-        const selectedDate = "<?php echo $selectedDate; ?>";
-        const selectedTime = "<?php echo $selectedTime; ?>";
-        
-        if (selectedDate && selectedTime) {
-            fetchAvailableBarbers(selectedDate);
-        }
-    };
-
-    function fetchAvailableBarbers(date) {
-        const barberContainer = document.getElementById('barber-container');
-        barberContainer.innerHTML = 'Loading barbers...'; // Placeholder text while fetching
-        
-        // AJAX request to fetch availability
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `barberavailability.php?selected_date=${date}`, true); // Removed selected_time since it's not needed
-        xhr.onload = function() {
-            if (this.status === 200) {
-                const barbers = JSON.parse(this.responseText);
-                let barberOptions = '';
-
-                // Display only available barbers
-                barbers.forEach(barber => {
-                    barberOptions += `<div class='barber-item'>
-                                        <input type='radio' name='barber' value='${barber.barber_name}' required>
-                                        <label>${barber.barber_name}</label>
-                                    </div>`;
-                });
-
-                barberContainer.innerHTML = barberOptions.length ? barberOptions : 'No available barbers for the selected date.';
+             // Show modal on load
+        window.onload = function () {
+            const modal = document.getElementById('promptModal');
+            if (modal) {
+                modal.style.display = 'block';
             }
         };
-        xhr.send();
-    }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('promptModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
 
     </script> 
 </body>

@@ -20,10 +20,13 @@
     <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
-            <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            <a href="../admin/admin-home.php">
+                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            </a>
         </div>
         <nav>
             <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li><a href="services.php">Services</a><span class="notification-dot"></span></li>

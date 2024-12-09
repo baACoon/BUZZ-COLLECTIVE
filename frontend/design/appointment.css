@@ -85,6 +85,25 @@ body::before {
 
 
 
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-section label {
+    display: block;
+    margin-top: -0.4rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+
 h6 {
     display: flex;
     justify-content: center;
@@ -121,8 +140,8 @@ tr td h4 {
 
 .row {
     position: relative;
-    margin: 20px auto;
-    border-radius: 8px;
+    margin: 10px auto;
+    border-radius: 5px;
     background-color: rgb(255, 255, 255);
     max-width: 650px;
 }
@@ -222,7 +241,7 @@ tr td h4 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 .time-selection label {
@@ -273,12 +292,59 @@ tr td h4 {
     cursor: not-allowed;
 }
 
+.barber-selection{
+    padding: 10px 20px;
+}
+
+.barber-selection h1{
+    font-weight: 600;
+    padding: 0;
+}
+.barber-selection p{
+    font-weight: 500;
+}
+
+/* Styling for the 'PROCEED' button */
+.submit-btn {
+    position: relative;
+    margin: 20px auto;
+    display: block;
+    width: 150px;
+    background-color: #E43A19;
+    color: #ffffff;
+    font-size: 15px;
+    
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #ff4d4d;
+    transform: scale(1.05);
+}
+
+.submit-btn:active {
+    transform: scale(1);
+}
+
+.submit-btn:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+}
 
 
 #appointment-form {
     color: #ffffff;
     text-align: center; 
     padding: 0; 
+    font-size: smaller;
 }
 
 #appointment-form p{
