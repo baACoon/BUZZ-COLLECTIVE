@@ -1,11 +1,34 @@
 <?php
 session_start();
+$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 
-// Retrieve f orm data from session if available
-$formData = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
+if ($mysqli->connect_error) {
+    die("Database connection failed: " . $mysqli->connect_error);
+}
+
+// Retrieve selected date, time, and barber from POST or session
 $selectedTime = isset($_POST['timeslot']) ? htmlspecialchars($_POST['timeslot']) : '';
 $selectedDate = isset($_POST['date']) ? htmlspecialchars($_POST['date']) : '';
 $selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) : '';
+
+$promptMessage = '';
+$promptType = '';
+
+if ($selectedDate && $selectedTime && $selectedBarber) {
+    $stmt = $mysqli->prepare("SELECT * FROM appointments WHERE date = ? AND timeslot = ? AND barber = ?");
+    $stmt->bind_param('sss', $selectedDate, $selectedTime, $selectedBarber);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $promptMessage = "This timeslot is already booked.";
+        $promptType = 'warning';
+    } else {
+        $promptMessage = "You can continue to fill up the appointment details.";
+        $promptType = 'success';
+    }
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +42,79 @@ $selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) :
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Buzz & Collective - Appointment Form</title>
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content p {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .warning {
+            color: red;
+        }
+
+        .success {
+            color: rgb(255, 77, 64);
+        }
+
+        .back-btn {
+            background-color: #e2e2e2;
+        }
+
+        .continue-btn {
+            background-color: rgb(255, 77, 64);
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <!-- Prompt Modal -->
+    <?php if ($promptMessage): ?>
+        <div id="promptModal" class="modal">
+            <div class="modal-content">
+                <p class="<?php echo htmlspecialchars($promptType); ?>">
+                    <?php echo htmlspecialchars($promptMessage); ?>
+                </p>
+                <?php if ($promptType === 'warning'): ?>
+                    <button class="back-btn" onclick="location.href='appointment.php'">Back</button>
+                <?php else: ?>
+                    <button class="continue-btn" onclick="closeModal()">Continue</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
         <div class="appointment-form">
                 <h2>Buzz & Collective Appointment Form</h2>
                 <p>Main Branch</p>
@@ -113,6 +207,22 @@ $selectedBarber = isset($_POST['barber']) ? htmlspecialchars($_POST['barber']) :
                     document.getElementById('validationMessage').style.display = 'none';
                 }
             });
+
+             // Show modal on load
+        window.onload = function () {
+            const modal = document.getElementById('promptModal');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        };
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('promptModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
 
     </script> 
 </body>
