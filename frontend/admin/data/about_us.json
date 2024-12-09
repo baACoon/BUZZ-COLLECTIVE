@@ -1,20 +1,56 @@
 {
-    "8": {
-        "id": "673ae875e6ce4",
-        "title": "icon",
-        "name": "sha",
-        "age": "19",
-        "position": "position",
-        "experience": "okay",
-        "backgroundImage": "uploads\/icon.png"
+    "3": {
+        "id": "673ff15ba1736",
+        "title": "Kevin",
+        "name": "Nuestro",
+        "age": "20",
+        "position": "Barber | 2020 - 2024",
+        "experience": "asdfghjkl",
+        "backgroundImage": "uploads\/kevin.jpg"
     },
-    "9": {
-        "id": "673af835c3224",
-        "title": "donnie",
-        "name": "alonte",
+    "4": {
+        "id": "673ff1a30faf3",
+        "title": "John",
+        "name": "Paulo",
         "age": "23",
-        "position": "asfasfa",
-        "experience": "afsafaf",
-        "backgroundImage": "uploads\/donie.jpg"
+        "position": "Barber | 2018 - 2024",
+        "experience": "qwertyu",
+        "backgroundImage": "uploads\/johnpaulo.jpg"
+    },
+    "5": {
+        "id": "673ff21ec0998",
+        "title": "Julius",
+        "name": "Andre",
+        "age": "22",
+        "position": "Barber Stylist",
+        "experience": "7 years barber",
+        "backgroundImage": "uploads\/andre.jpg"
+    },
+    "6": {
+        "id": "673ff2c56d963",
+        "title": "Vien",
+        "name": "Gerona",
+        "age": "24",
+        "position": "barber",
+        "experience": "2 years barber",
+        "backgroundImage": "uploads\/vien.jpg"
+    },
+    "7": {
+        "id": "673ff329368a3",
+        "title": "Monti",
+        "name": "Comia",
+        "age": "27",
+        "position": "Business Owner",
+        "experience": "ahdga",
+        "backgroundImage": "uploads\/monti.jpg"
+    },
+    "8": {
+        "id": "673ff3477c71f",
+        "title": "Akira",
+        "name": "Gata",
+        "age": "26",
+        "position": "Business Owner",
+        "experience": "qwertyui",
+        "backgroundImage": "uploads\/akiraaa.jpg"
     }
 }

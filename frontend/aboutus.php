@@ -285,7 +285,7 @@ $db->close();
     
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="landingscript.js"></script>
+    <script src="js /landingscript.js"></script>
     <script src="script.js"></script>
     <script>
       jQuery(document).ready(function ($) {
