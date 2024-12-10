@@ -1,6 +1,7 @@
 <?php
-
 session_start();
+
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit();
@@ -37,6 +38,19 @@ if ($stmt) {
     if ($profile_image_path) {
         $profile_image = $profile_image_path; // Use the saved image if available
     }
+}
+
+
+// Fetch news from the database
+$news = [];
+$result = $db->query("SELECT * FROM news ORDER BY created_at DESC");
+
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $news[] = $row;
+    }
+} else {
+    echo "<p class='error'>Error fetching news: " . $db->error . "</p>";
 }
 
 $db->close();
@@ -130,39 +144,24 @@ $db->close();
             <section class="body-cont">
                 <h1>NEWS AND DISCOUNTS</h1>
 
-                <?php
-                $newsFile = 'admin/data/news.json'; // Adjust path based on your directory structure
-
-                // Load the JSON file and handle errors gracefully
-                $news = [];
-                if (file_exists($newsFile)) {
-                    $newsContent = file_get_contents($newsFile);
-                    if ($newsContent !== false) {
-                        $news = json_decode($newsContent, true) ?? [];
-                    } else {
-                        echo "<p class='error'>Error: Unable to read the news file. Please try again later.</p>";
-                    }
-                } else {
-                    echo "<p class='error'>Error: News file not found. Please contact the administrator.</p>";
-                }
-
-                // Display the news if available
-                if (!empty($news)): ?>
+                <?php if (!empty($news)): ?>
                     <div class="news-container">
                         <?php foreach ($news as $item): ?>
                             <div class="news-item">
                                 <div class="news-image">
-                                <div class="news-image">
-                                        <img src="<?= htmlspecialchars( $item['poster'] ) ?>" 
-                                        alt="<?= htmlspecialchars($item['title']) ?>">
-                                </div>
+                                    <!-- Check if the poster path is not empty -->
+                                    <?php if (!empty($item['poster'])): ?>
+                                        <img src=" <?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                    <?php else: ?>
+                                        <img src="design/image/default-placeholder.png" alt="Default Image">
+                                    <?php endif; ?>
                                 </div>
                                 <div class="news-details">
                                     <h2><?= htmlspecialchars($item['title']) ?></h2>
                                     <h3><?= htmlspecialchars($item['subtitle']) ?></h3>
                                     <p><?= nl2br(htmlspecialchars($item['description'])) ?></p>
                                 </div>
-                            </div>        
+                            </div>
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>

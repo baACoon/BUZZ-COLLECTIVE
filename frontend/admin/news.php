@@ -1,76 +1,81 @@
 <?php
-$newsFile = 'data/news.json'; // Path to the JSON file
+// Database connection
+$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
 
-// Ensure the JSON file exists
-if (!file_exists($newsFile)) {
-    file_put_contents($newsFile, json_encode([])); // Create an empty JSON array if the file doesn't exist
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
-
-// Get existing news from the JSON file
-$news = json_decode(file_get_contents($newsFile), true) ?? [];
-
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         $action = $_POST['action'];
 
         if ($action === 'add') {
-            // Get the data from the form submission
+            // Add news
             $title = $_POST['title'] ?? '';
             $subtitle = $_POST['subtitle'] ?? '';
             $description = $_POST['description'] ?? '';
-
-            // Handle the uploaded poster file
+            $posterPath = '';
+        
+            // Handle uploaded poster
             if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = 'uploads/';
+                $uploadDir = __DIR__ . '/uploads/';
                 if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0777, true); // Ensure upload directory exists
+                    mkdir($uploadDir, 0777, true);
                 }
-                $posterPath = $uploadDir . basename($_FILES['poster']['name']);
-                if (move_uploaded_file($_FILES['poster']['tmp_name'], $posterPath)) {
-                    // File uploaded successfully
-                } else {
-                    $posterPath = ''; // If failed, set an empty path
+                $fullPosterPath = $uploadDir . basename($_FILES['poster']['name']);
+                if (move_uploaded_file($_FILES['poster']['tmp_name'], $fullPosterPath)) {
+                    $posterPath = 'admin/uploads/' . basename($_FILES['poster']['name']); // Relative path for the database
                 }
-            } else {
-                $posterPath = ''; // No file uploaded or an error occurred
             }
-
-            // Add the new news item
-            $news[] = [
-                'id' => uniqid(), // Unique ID for the news item
-                'title' => $title,
-                'subtitle' => $subtitle,
-                'description' => $description,
-                'poster' => $posterPath,
-            ];
+        
+            // Insert into database
+            $stmt = $mysqli->prepare("INSERT INTO news (title, subtitle, description, poster) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $title, $subtitle, $description, $posterPath);
+            $stmt->execute();
+            $stmt->close();
         } elseif ($action === 'delete' && isset($_POST['id'])) {
-            // Delete the news item
+            // Delete news
             $id = $_POST['id'];
-            $news = array_filter($news, function ($item) use ($id) {
-                return $item['id'] !== $id;
-            });
-            $news = array_values($news); // Re-index the array after deletion
+            $stmt = $mysqli->prepare("DELETE FROM news WHERE id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
         } elseif ($action === 'edit' && isset($_POST['id'])) {
-            // Edit the news item
+            // Edit news
             $id = $_POST['id'];
-            foreach ($news as &$item) {
-                if ($item['id'] === $id) {
-                    $item['title'] = $_POST['title'] ?? $item['title'];
-                    $item['subtitle'] = $_POST['subtitle'] ?? $item['subtitle'];
-                    $item['description'] = $_POST['description'] ?? $item['description'];
+            $title = $_POST['title'] ?? '';
+            $subtitle = $_POST['subtitle'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $posterPath = '';
 
-                    if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-                        $posterPath = 'uploads/' . basename($_FILES['poster']['name']);
-                        move_uploaded_file($_FILES['poster']['tmp_name'], $posterPath);
-                        $item['poster'] = $posterPath;
-                    }
-                }
+            // Handle uploaded poster
+            if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
+                $posterPath = 'admin/uploads/' . basename($_FILES['poster']['name']);
+                move_uploaded_file($_FILES['poster']['tmp_name'], $posterPath);
             }
-        }
 
-        // Save back to the JSON file
-        file_put_contents($newsFile, json_encode($news, JSON_PRETTY_PRINT));
+            // Update in database
+            if (!empty($posterPath)) {
+                $stmt = $mysqli->prepare("UPDATE news SET title = ?, subtitle = ?, description = ?, poster = ? WHERE id = ?");
+                $stmt->bind_param("ssssi", $title, $subtitle, $description, $posterPath, $id);
+            } else {
+                $stmt = $mysqli->prepare("UPDATE news SET title = ?, subtitle = ?, description = ? WHERE id = ?");
+                $stmt->bind_param("sssi", $title, $subtitle, $description, $id);
+            }
+            $stmt->execute();
+            $stmt->close();
+        }
+    }
+}
+
+// Fetch news from the database
+$news = [];
+$result = $mysqli->query("SELECT * FROM news ORDER BY id DESC");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $news[] = $row;
     }
 }
 ?>
