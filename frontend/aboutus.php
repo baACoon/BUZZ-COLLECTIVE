@@ -3,7 +3,6 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {
-    // If not logged in, redirect to login page
     header('Location: login.php');
     exit();
 }
@@ -28,6 +27,18 @@ if ($stmt) {
     if ($profile_image_path) {
         $profile_image = $profile_image_path; // Use the saved image if available
     }
+}
+
+// Fetch barbers' details from the database
+$barbers = [];
+$barber_query = "SELECT name, age, work, experience, position, image FROM barbers ORDER BY name";
+$result = $db->query($barber_query);
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $barbers[] = $row;
+    }
+} else {
+    echo "<p class='error'>Error fetching barbers: " . $db->error . "</p>";
 }
 
 $db->close();
@@ -121,70 +132,50 @@ $db->close();
     </div>
 
      <!-- BARBERS INFO SELECTION -->
-      <section>
-      <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
-
-                <?php 
-                $aboutUsFile = 'admin/data/about_us.json';
-
-                $barbers = [];
-                if (file_exists($aboutUsFile)){
-                    $barbersContent = file_get_contents($aboutUsFile);
-                    if($barbersContent !== false){
-                        $barbers = json_decode($barbersContent, true)?? [];
-                    } else {
-                        echo "<p class='error'>Error: Unable to read the file. Please try again later.</p>";
-                    } 
-                } else {
-                    echo "<p class='error'>Error: file not found. Please contact the administrator.</p>";
-                }
-
-                if (!empty($barbers)): ?>
-
+     <section>
+        <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
         <div class="carousel">
+            <?php if (!empty($barbers)): ?>
+                <div class="list">
                     <?php foreach ($barbers as $barber): ?>
-            <div class="list">
-
-                <div class="item" style="background-image: url('<?= htmlspecialchars($barber['backgroundImage']) ?>');">
-                    <div class="content">
-                        <div class="title"><?= htmlspecialchars($barber['title']) ?></div>
-                        <div class="name"><?= htmlspecialchars($barber['name']) ?></div>
-                        <div class="des">
-                            <h4>Age: <span style="font-weight: 400"><?= htmlspecialchars($barber['age']) ?></span></h4>
-                            <h4>Work / Position / Years of Experience:  <?= htmlspecialchars($barber['experience']) ?></h4>
+                        <div class="item" style="background-image: url('<?= htmlspecialchars($barber['image']) ?>');">
+                            <div class="content">
+                                <div class="title"><?= htmlspecialchars($barber['position']) ?></div>
+                                <div class="name"><?= htmlspecialchars($barber['name']) ?></div>
+                                <div class="des">
+                                    <h4>Age: <span style="font-weight: 400"><?= htmlspecialchars($barber['age']) ?></span></h4>
+                                    <h4>Work: <?= htmlspecialchars($barber['work']) ?></h4>
+                                    <h4>Position: <?= htmlspecialchars($barber['position']) ?></h4>
+                                    <h4>Years of Experience: <?= htmlspecialchars($barber['experience']) ?></h4>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
+            <?php else: ?>
+                <p class="no-news">No barbers available at the moment. Stay tuned!</p>
+            <?php endif; ?>
 
-                <?php endforeach; ?>
-                        </div>
-                    <?php else: ?>
-                        <p class="no-news">No news available at the moment. Stay tuned!</p>
-                    <?php endif; ?>
-        
+            <!-- Next/Prev buttons -->
+            <div class="arrows">
+                <button class="prev"><</button>
+                <button class="next">></button>
             </div>
 
-                 <!--next prev button-->
-                <div class="arrows">
-                    <button class="prev"><</button>
-                    <button class="next">></button>
-                </div>
-
-
-                <!-- time running -->
-                <div class="timeRunning"></div>
-
+            <!-- Time running -->
+            <div class="timeRunning"></div>
         </div>
-
+        <button class="barbers-button"><a href="appointment.php">BOOK AN APPOINTMENT</a></button>
     </section>
+
     
     <script>
-                    var nextBtn = document.querySelector('.next'),
-                prevBtn = document.querySelector('.prev'),
-                carousel = document.querySelector('.carousel'),
-                list = document.querySelector('.list'), 
-                item = document.querySelectorAll('.item'),
-                runningTime = document.querySelector('.carousel .timeRunning') 
+            const nextBtn = document.querySelector('.next');
+            const prevBtn = document.querySelector('.prev');
+            const carousel = document.querySelector('.carousel');
+            const list = document.querySelector('.list');
+            const items = document.querySelectorAll('.item');
+            let index = 0;
 
             let timeRunning = 3000 
             let timeAutoNext = 7000
@@ -238,11 +229,8 @@ $db->close();
                 resetTimeAnimation() // Reset the running time animation
             }
 
-            // Start the initial animation 
-            resetTimeAnimation()
     </script>
 
-    <button class="barbers-button"><a href="appointment.php">BOOK AN APPOINTMENT </a></button> <br>
 
 
     <footer>
@@ -285,7 +273,7 @@ $db->close();
     
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js /landingscript.js"></script>
+    <script src="landingscript.js"></script>
     <script src="script.js"></script>
     <script>
       jQuery(document).ready(function ($) {

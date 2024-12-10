@@ -1,76 +1,85 @@
 
 <?php
-$aboutUsFile = 'data/about_us.json'; 
-if (!file_exists($aboutUsFile)) {
-    file_put_contents($aboutUsFile, json_encode([])); // Create an empty JSON array if the file doesn't exist
+// Database connection
+$db = new mysqli('localhost', 'root', '', 'barbershop');
+if ($db->connect_error) {
+    die("Database connection failed: " . $db->connect_error);
 }
 
-// Get existing barber details from the JSON file
-$barbers = json_decode(file_get_contents($aboutUsFile), true) ?? [];
+// Fetch existing barber details from the database
+$barbers = [];
+$query = "SELECT * FROM barbers ORDER BY name";
+$result = $db->query($query);
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $barbers[] = $row;
+    }
+} else {
+    echo "Error fetching barbers: " . $db->error;
+}
 
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action'])) {
-        $action = $_POST['action'];
+    $action = $_POST['action'];
 
-        if ($action === 'add') {
-            // Add a new barber
-            $title = $_POST['title'] ?? '';
-            $name = $_POST['name'] ?? '';
-            $age = $_POST['age'] ?? '';
-            $position = $_POST['position'] ?? '';
-            $experience = $_POST['experience'] ?? '';
-            $backgroundImage = '';
+    if ($action === 'add') {
+        // Add a new barber
+        $title = $_POST['title'];
+        $name = $_POST['name'];
+        $age = $_POST['age'];
+        $position = $_POST['position'];
+        $experience = $_POST['experience'];
+        $image = '';
 
-            // Handle the uploaded image file
-            if (isset($_FILES['backgroundImage']) && $_FILES['backgroundImage']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = 'uploads/';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0777, true);
-                }
-                $backgroundImage = $uploadDir . basename($_FILES['backgroundImage']['name']);
-                if (!move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $backgroundImage)) {
-                    $backgroundImage = '';
-                }
+        // Handle image upload
+        if (isset($_FILES['backgroundImage']) && $_FILES['backgroundImage']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'design/image/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
             }
-
-            $barbers[] = [
-                'id' => uniqid(),
-                'title' => $title,
-                'name' => $name,
-                'age' => $age,
-                'position' => $position,
-                'experience' => $experience,
-                'backgroundImage' => $backgroundImage,
-            ];
-        } elseif ($action === 'delete' && isset($_POST['id'])) {
-            // Delete a barber
-            $id = $_POST['id'];
-            $barbers = array_filter($barbers, fn($barber) => $barber['id'] !== $id);
-        } elseif ($action === 'edit' && isset($_POST['id'])) {
-            // Edit a barber
-            $id = $_POST['id'];
-            foreach ($barbers as &$barber) {
-                if ($barber['id'] === $id) {
-                    $barber['title'] = $_POST['title'] ?? $barber['title'];
-                    $barber['name'] = $_POST['name'] ?? $barber['name'];
-                    $barber['age'] = $_POST['age'] ?? $barber['age'];
-                    $barber['position'] = $_POST['position'] ?? $barber['position'];
-                    $barber['experience'] = $_POST['experience'] ?? $barber['experience'];
-
-                    if (isset($_FILES['backgroundImage']) && $_FILES['backgroundImage']['error'] === UPLOAD_ERR_OK) {
-                        $backgroundImage = 'uploads/' . basename($_FILES['backgroundImage']['name']);
-                        move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $backgroundImage);
-                        $barber['backgroundImage'] = $backgroundImage;
-                    }
-                }
-            }
+            $image = $uploadDir . basename($_FILES['backgroundImage']['name']);
+            move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $image);
         }
 
-        // Save back to the JSON file
-        file_put_contents($aboutUsFile, json_encode($barbers, JSON_PRETTY_PRINT));
+        $stmt = $db->prepare("INSERT INTO barbers (name, age, work, experience, position, image) VALUES (?, ?, '', ?, ?, ?)");
+        $stmt->bind_param("sisss", $name, $age, $experience, $position, $image);
+        $stmt->execute();
+        $stmt->close();
+    } elseif ($action === 'edit') {
+        // Edit an existing barber
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $name = $_POST['name'];
+        $age = $_POST['age'];
+        $position = $_POST['position'];
+        $experience = $_POST['experience'];
+
+        $image = $_POST['currentImage'];
+        if (isset($_FILES['backgroundImage']) && $_FILES['backgroundImage']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'design/image/';
+            $image = $uploadDir . basename($_FILES['backgroundImage']['name']);
+            move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $image);
+        }
+
+        $stmt = $db->prepare("UPDATE barbers SET name = ?, age = ?, work = '', experience = ?, position = ?, image = ? WHERE id = ?");
+        $stmt->bind_param("sisssi", $name, $age, $experience, $position, $image, $id);
+        $stmt->execute();
+        $stmt->close();
+    } elseif ($action === 'delete') {
+        // Delete a barber
+        $id = $_POST['id'];
+        $stmt = $db->prepare("DELETE FROM barbers WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
     }
+
+    // Refresh page to reflect changes
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
 }
+
+$db->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,70 +128,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </aside>
 
 
-    <div class="aboutus-content">
-        <h1>ABOUT US <span class="barberspan">BARBERS</span></h1>
-        
-        <div class="aboutus-container" id="aboutUsContainer">
-            <?php if (!empty($barbers)): ?>
-                <?php foreach ($barbers as $barber): ?>
-                    <div class="barber-container">
-                        <div class="item-background" style="background-image: url('<?= htmlspecialchars($barber['backgroundImage']) ?>');"></div>
-                        <div class="barber">
-                            <h2><?= htmlspecialchars($barber['title']) ?></h2>
-                            <h3><?= htmlspecialchars($barber['name']) ?></h3>
-                            <p>Age: <?= htmlspecialchars($barber['age']) ?></p>
-                            <p>Position: <?= htmlspecialchars($barber['position']) ?></p>
-                            <p>Experience: <?= htmlspecialchars($barber['experience']) ?></p>
-                            <div class="button-container">
-                                <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this branch?');" class="delete-button-container">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="<?= htmlspecialchars($barber['id']) ?>">
-                                    <button type="submit" class="delete-button">DELETE</button>
-                                </form>
-                                <button class="edit-button" onclick="editBarber('<?= htmlspecialchars(json_encode($barber)) ?>')">EDIT</button>
+        <div class="aboutus-content">
+            <h1>ABOUT US <span class="barberspan">BARBERS</span></h1>
+            <div class="aboutus-container" id="aboutUsContainer">
+                <?php if (!empty($barbers)): ?>
+                    <?php foreach ($barbers as $barber): ?>
+                        <div class="barber-container">
+                            <div class="item-background" style="background-image: url('<?= htmlspecialchars($barber['image']) ?>');"></div>
+                            <div class="barber">
+                                <h2><?= htmlspecialchars($barber['position']) ?></h2>
+                                <h3><?= htmlspecialchars($barber['name']) ?></h3>
+                                <p>Age: <?= htmlspecialchars($barber['age']) ?></p>
+                                <p>Position: <?= htmlspecialchars($barber['position']) ?></p>
+                                <p>Experience: <?= htmlspecialchars($barber['experience']) ?></p>
+                                <div class="button-container">
+                                    <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this barber?');">
+                                        <input type="hidden" name="action" value="delete">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($barber['id']) ?>">
+                                        <button type="submit" class="delete-button">DELETE</button>
+                                    </form>
+                                    <button class="edit-button" onclick="editBarber('<?= htmlspecialchars(json_encode($barber)) ?>')">EDIT</button>
+                                </div>
                             </div>
                         </div>
+                    <?php endforeach; ?>
+
+                    <div class="barber add-barber" id="addBarber" onclick="showForm()">
+                        <span>+</span>
                     </div>
-                <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No barbers available.</p>
+                <?php endif; ?>
+            </div>
+            <div class="barber aboutus-form" id="aboutUsForm" style="display: none;">
+                <h2>ADD/EDIT BARBER</h2>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" id="barberId">
+                    <input type="hidden" name="action" id="barberAction" value="add">
+                    <input type="hidden" name="currentImage" id="currentImage">
 
-                <div class="barber add-barber" id="addBarber" onclick="showForm()">
-                    <span>+</span>
-                </div>
-            <?php else: ?>
-                <p>No barbers available.</p>
-            <?php endif; ?>
+                    <label for="backgroundImage">Background Image</label>
+                    <input type="file" id="backgroundImage" name="backgroundImage" accept="image/*"><br>
+
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required><br>
+
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required><br>
+
+                    <label for="age">Age</label>
+                    <input type="text" id="age" name="age" required><br>
+
+                    <label for="position">Position</label>
+                    <input type="text" id="position" name="position" required><br>
+
+                    <label for="experience">Experience</label>
+                    <textarea id="experience" name="experience" required></textarea><br>
+                    
+                    <div class="form-buttons">
+                        <button type="submit">SAVE</button>
+                        <button type="button" onclick="hideForm()">CANCEL</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="barber aboutus-form" id="aboutUsForm" style="display: none;">
-            <h2>ADD/EDIT BARBER</h2>
-            <form method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" id="barberId">
-                <input type="hidden" name="action" id="barberAction" value="add">
-
-                <label for="backgroundImage">Background Image</label>
-                <input type="file" id="backgroundImage" name="backgroundImage" accept="image/*"><br>
-
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required><br>
-
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required><br>
-
-                <label for="age">Age</label>
-                <input type="text" id="age" name="age" required><br>
-
-                <label for="position">Position</label>
-                <input type="text" id="position" name="position" required><br>
-
-                <label for="experience">Experience</label>
-                <textarea id="experience" name="experience" required></textarea><br>
-                
-                <div class="form-buttons">
-                    <button type="submit">SAVE</button>
-                    <button type="button" id="cancelButton" onclick="hideForm()">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
     
     <script>
         // menu icon
@@ -212,31 +221,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById('cancelButton').onclick = () => {
             document.getElementById('aboutUsForm').style.display = 'none';
         };
-
-        function showForm(){
+        function showForm() {
             document.getElementById('aboutUsForm').style.display = 'block';
+            document.getElementById('barberAction').value = 'add';
             document.getElementById('barberId').value = '';
             document.getElementById('title').value = '';
             document.getElementById('name').value = '';
             document.getElementById('age').value = '';
             document.getElementById('position').value = '';
             document.getElementById('experience').value = '';
-        };
+            document.getElementById('currentImage').value = '';
+        }
 
         function hideForm() {
             document.getElementById('aboutUsForm').style.display = 'none';
-        };
+        }
 
         function editBarber(barberJson) {
             const barber = JSON.parse(barberJson);
+            document.getElementById('aboutUsForm').style.display = 'block';
+            document.getElementById('barberAction').value = 'edit';
             document.getElementById('barberId').value = barber.id;
-            document.getElementById('title').value = barber.title;
+            document.getElementById('title').value = barber.position;
             document.getElementById('name').value = barber.name;
             document.getElementById('age').value = barber.age;
             document.getElementById('position').value = barber.position;
             document.getElementById('experience').value = barber.experience;
-            document.getElementById('barberAction').value = 'edit';
-            document.getElementById('aboutUsForm').style.display = 'block';
+            document.getElementById('currentImage').value = barber.image;
         }
     </script>
 </body>
