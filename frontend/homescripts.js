@@ -1,4 +1,3 @@
-Angela Gallo
 // Image Slider
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
