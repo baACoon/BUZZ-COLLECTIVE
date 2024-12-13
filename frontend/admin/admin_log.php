@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - BUZZ Collective</title>
-    <link rel="stylesheet" href="Designs/admin-logreg.css">
+    <base href="https://buzzcollective.gayvar.com/frontend/">
+    <link rel="stylesheet" href="frontend/admin/Designs/admin-logreg.css">
 </head>
 <body>
 
     <div id="buzz-img">
-        <img src="images/BUZZ-White2.png" alt="">
+        <img src="admin/images/BUZZ-White2.png" alt="">
     </div>
     <div class="login-container">
         <?php include('../errors.php'); ?>

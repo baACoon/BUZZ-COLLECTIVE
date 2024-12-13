@@ -1,0 +1,17 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Set admin-home.php as the default page for the admin section
+DirectoryIndex admin-home.php
+
+# Optional: Restrict access to the admin folder for unauthorized users
+# Replace "YOUR_IP_ADDRESS" with the admin's IP address
+<RequireAny>
+    Require ip YOUR_IP_ADDRESS
+    Require all denied
+</RequireAny>
+
+# Redirect users to the admin login page if not logged in
+RewriteCond %{REQUEST_URI} !^/admin/admin-log.php$
+RewriteCond %{REQUEST_URI} !^/admin/
+RewriteRule ^(.*)$ /Buzz-collective/admin/admin-log.php [L]
