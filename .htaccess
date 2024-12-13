@@ -6,7 +6,7 @@ DirectoryIndex landingpage.php
 
 # Redirect admin requests to the admin folder
 RewriteCond %{REQUEST_URI} ^/admin($|/)
-RewriteRule ^admin($|/) /Buzz-collective/admin/ [L]
+RewriteRule ^admin($|/) /Buzz-collective/frontend/admin/ [L]
 
 # Ensure the frontend works correctly
 RewriteCond %{REQUEST_URI} !^/admin/

@@ -12,6 +12,6 @@ DirectoryIndex admin-home.php
 </RequireAny>
 
 # Redirect users to the admin login page if not logged in
-RewriteCond %{REQUEST_URI} !^/admin/admin-log.php$
+RewriteCond %{REQUEST_URI} !^/admin/admin_log.php$
 RewriteCond %{REQUEST_URI} !^/admin/
-RewriteRule ^(.*)$ /Buzz-collective/admin/admin-log.php [L]
+RewriteRule ^(.*)$ /Buzz-collective/admin/admin_log.php [L]
