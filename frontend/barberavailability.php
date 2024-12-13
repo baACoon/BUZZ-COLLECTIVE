@@ -1,7 +1,7 @@
 
 <?php
 // Connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+$db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 // Fetch the selected date parameter
 $selected_date = isset($_GET['selected_date']) ? $_GET['selected_date'] : date('Y-m-d');

@@ -2,7 +2,7 @@
 session_start();
 
 // Database connection
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+$db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {

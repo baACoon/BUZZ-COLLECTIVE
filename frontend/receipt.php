@@ -8,7 +8,7 @@ require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php'; 
 require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';       
 
-$mysqli = new mysqli("localhost", "root", "", "barbershop");
+$mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 if ($mysqli->connect_error) {
     die("Database connection failed: " . $mysqli->connect_error);
 }

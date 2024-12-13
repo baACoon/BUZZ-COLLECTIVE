@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
+$mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 if ($mysqli->connect_error) {
     die("Database connection failed: " . $mysqli->connect_error);

@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 
 // Database connection
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+$db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 // Calculate the start (Monday) and end (Friday) of the current week
 $startDate = date('Y-m-d', strtotime('monday this week'));

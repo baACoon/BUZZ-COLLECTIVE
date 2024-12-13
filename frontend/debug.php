@@ -15,7 +15,7 @@ print_r($files);
 echo "</pre>";
 
 echo "<h2>Database Records:</h2>";
-$conn = new mysqli("localhost", "root", "", "barbershop");
+$conn = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 $result = $conn->query("SELECT * FROM payments");
 echo "<pre>";
 while ($row = $result->fetch_assoc()) {

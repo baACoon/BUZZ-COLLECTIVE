@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // Database connection
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+$db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 // Fetch the user's profile image from the database
 $profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
