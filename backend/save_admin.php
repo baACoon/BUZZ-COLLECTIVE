@@ -2,10 +2,8 @@
 // Start the session
 session_start();
 
-// Connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'barbershop');
 
-// Check connection
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }

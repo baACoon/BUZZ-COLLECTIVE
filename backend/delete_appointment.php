@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $idString = implode(',', array_map('intval', $appointments));
 
         // Database connection
-        $db = mysqli_connect('localhost', 'root', '', 'barbershop');
+        $db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
         if (!$db) {
             echo json_encode(['status' => 'error', 'message' => 'Database connection failed: ' . mysqli_connect_error()]);

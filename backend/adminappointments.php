@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', '', 'barbershop');
+$mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 $selected_branch = isset($_SESSION['selected_branch']) ? $_SESSION['selected_branch'] : null;
 

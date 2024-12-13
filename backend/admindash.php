@@ -10,7 +10,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+$db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 // REGISTER USER
 if (isset($_POST['reg_admin'])) {

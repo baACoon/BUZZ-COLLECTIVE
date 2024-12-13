@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\Exception;
 
  
 // Database connection
-$db = new mysqli('localhost', 'root', '', 'barbershop');
+$db = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);

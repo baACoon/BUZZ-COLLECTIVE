@@ -6,7 +6,7 @@ session_start();
 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'barbershop');
+$db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 //customer data
 $email = $_POST['email'];
