@@ -2,7 +2,7 @@
 include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/adminbarber.php'); 
 // Handle availability form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['availability'])) {
-    $mysqli = new mysqli('localhost', 'root', '', 'barbershop');
+    $mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
     
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);

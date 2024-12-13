@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-$mysqli = new mysqli('localhost','root','','barbershop');
+$mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
 if($mysqli->connect_error){
     die('Connection failed'. $mysqli->connect_error);
