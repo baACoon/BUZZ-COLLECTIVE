@@ -1,2 +1,18 @@
-# Set landingpage.php as the default index file
-DirectoryIndex landingpage.php
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect requests starting with /admin/ to the admin folder
+RewriteCond %{REQUEST_URI} ^/admin/
+RewriteRule ^admin/(.*)$ frontend/admin/$1 [L]
+
+# Exclude backend folder from interference
+RewriteCond %{REQUEST_URI} ^/backend/
+RewriteRule ^backend/(.*)$ backend/$1 [L]
+
+# Redirect specific frontend files (like login, home) to their proper locations
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(login|home|register|services)\.php$ frontend/$1.php [L]
+
+# Redirect all other requests to the landing page
+RewriteRule ^.*$ frontend/landingpage.php [L]
