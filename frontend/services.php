@@ -68,7 +68,7 @@ $services = json_decode(file_get_contents('../frontend/admin/data/services.json'
                     <ul class="links">
                         <li><a href="home.php">HOME</a></li>
                         <li>
-                            <a href="#">ABOUT US</a>
+                            <a href="aboutus.php">ABOUT US</a>
                             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
                             <ul class="htmlCss-sub-menu sub-menu">
                                 <li><a href="aboutus.php">Buzz & Collectives</a></li>
