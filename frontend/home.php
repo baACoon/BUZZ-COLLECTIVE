@@ -89,7 +89,7 @@ $db->close();
                         <i class='bx bx-x' ></i>
                     </div>
                     <ul class="links">
-                        <li><a href="home.php">HOMEs</a></li>
+                        <li><a href="home.php">HOME</a></li>
                         <li>
                             <a href="#">ABOUT US</a>
                             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
