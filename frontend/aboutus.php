@@ -59,7 +59,7 @@ $db->close();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <base href="https://buzzcollective.gayvar.com/frontend/">
+    <base href="https://buzzcollective.gayvar.com/Buzz-collective/frontend/">
     <title>About us</title>
 </head>
 <body>

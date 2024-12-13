@@ -43,7 +43,6 @@ window.onload = function () {
       navLinks.classList.toggle("show1");
     };
   }
-
   let jsArrow = document.querySelector(".js-arrow");
   if (jsArrow) {
     jsArrow.onclick = function () {
