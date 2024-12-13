@@ -1,12 +1,6 @@
-// Ensure all event listeners are set after the DOM is fully loaded
-window.onload = function () {
-  // Example button click alert
-  document.getElementById("subm").onclick = function () {
-    alert("Hello World");
-  };
-
-  // Image Slider
-  var swiper = new Swiper(".mySwiper", {
+Angela Gallo
+// Image Slider
+var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     loop: true,
     pagination: {
@@ -19,22 +13,18 @@ window.onload = function () {
     },
   });
 
-  // Sidebar open/close functionality
-  let navLinks = document.querySelector(".nav-links");
-  let menuOpenBtn = document.querySelector(".navbar .bx-menu");
-  let menuCloseBtn = document.querySelector(".nav-links .bx-x");
+// sidebar open close js code
+let navLinks = document.querySelector(".nav-links");
+let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+let menuCloseBtn = document.querySelector(".nav-links .bx-x");
 
-  if (menuOpenBtn) {
-    menuOpenBtn.onclick = function () {
-      navLinks.classList.add("show");
-    };
-  }
+menuOpenBtn.onclick = function() {
+  navLinks.classList.add("show");
+};
 
-  if (menuCloseBtn) {
-    menuCloseBtn.onclick = function () {
-      navLinks.classList.remove("show");
-    };
-  }
+menuCloseBtn.onclick = function() {
+  navLinks.classList.remove("show");
+};
 
 // sidebar submenu open close js code
 let htmlcssArrow = document.querySelector(".htmlcss-arrow");
