@@ -51,14 +51,15 @@ $db->close();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
-    <link rel="stylesheet" href="frontend/design/about.css">
-    <link rel="stylesheet" href="frontend/design/barbersinfo.css">
-    <link rel="stylesheet" href="frontend/design/founders_info.css">
+    <link rel="stylesheet" href="design/about.css">
+    <link rel="stylesheet" href="design/barbersinfo.css">
+    <link rel="stylesheet" href="design/founders_info.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <base href="https://buzzcollective.gayvar.com/frontend/">
     <title>About us</title>
 </head>
 <body>
@@ -170,66 +171,81 @@ $db->close();
 
     
     <script>
-            const nextBtn = document.querySelector('.next');
-            const prevBtn = document.querySelector('.prev');
-            const carousel = document.querySelector('.carousel');
-            const list = document.querySelector('.list');
-            const items = document.querySelectorAll('.item');
-            let index = 0;
+    // Select DOM elements
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    const carousel = document.querySelector('.carousel');
+    const list = document.querySelector('.list');
+    const items = document.querySelectorAll('.item');
 
-            let timeRunning = 3000 
-            let timeAutoNext = 7000
+    let index = 0; // Index for tracking current slider position
 
-            nextBtn.onclick = function(){
-                showSlider('next')
-            }
+    // Timing variables
+    let timeRunning = 3000; 
+    let timeAutoNext = 7000; 
 
-            prevBtn.onclick = function(){
-                showSlider('prev')
-            }
+    // Declare a global `runningTime` variable for animation
+    let runningTime = document.createElement('div'); 
+    runningTime.style.animation = 'runningTime 7s linear 1 forwards'; 
+    document.body.appendChild(runningTime); // Temporarily added to the DOM
 
-            let runTimeOut 
+    // Event listeners for next and previous buttons
+    if (nextBtn) {
+        nextBtn.onclick = function () {
+            showSlider('next');
+        };
+    }
 
-            let runNextAuto = setTimeout(() => {
-                nextBtn.click()
-            }, timeAutoNext)
+    if (prevBtn) {
+        prevBtn.onclick = function () {
+            showSlider('prev');
+        };
+    }
 
+    let runTimeOut; // Timeout for animation reset
+    let runNextAuto = setTimeout(() => {
+        nextBtn.click(); // Trigger next slider automatically
+    }, timeAutoNext);
 
-            function resetTimeAnimation() {
-                runningTime.style.animation = 'none'
-                runningTime.offsetHeight /* trigger reflow */
-                runningTime.style.animation = null 
-                runningTime.style.animation = 'runningTime 7s linear 1 forwards'
-            }
+    // Function to reset the running time animation
+    function resetTimeAnimation() {
+        if (runningTime) {
+            runningTime.style.animation = 'none'; // Clear the animation
+            runningTime.offsetHeight; // Trigger a reflow
+            runningTime.style.animation = 'runningTime 7s linear 1 forwards'; // Restart the animation
+        }
+    }
 
+    // Function to handle slider transitions
+    function showSlider(type) {
+        let sliderItemsDom = list.querySelectorAll('.carousel .list .item');
 
-            function showSlider(type) {
-                let sliderItemsDom = list.querySelectorAll('.carousel .list .item')
-                if(type === 'next'){
-                    list.appendChild(sliderItemsDom[0])
-                    carousel.classList.add('next')
-                } else{
-                    list.prepend(sliderItemsDom[sliderItemsDom.length - 1])
-                    carousel.classList.add('prev')
-                }
+        if (type === 'next') {
+            list.appendChild(sliderItemsDom[0]); // Move first item to the end
+            carousel.classList.add('next');
+        } else {
+            list.prepend(sliderItemsDom[sliderItemsDom.length - 1]); // Move last item to the front
+            carousel.classList.add('prev');
+        }
 
-                clearTimeout(runTimeOut)
+        // Clear the transition timeout
+        clearTimeout(runTimeOut);
 
-                runTimeOut = setTimeout( () => {
-                    carousel.classList.remove('next')
-                    carousel.classList.remove('prev')
-                }, timeRunning)
+        runTimeOut = setTimeout(() => {
+            carousel.classList.remove('next');
+            carousel.classList.remove('prev');
+        }, timeRunning);
 
+        // Clear and reset the auto-next timer
+        clearTimeout(runNextAuto);
+        runNextAuto = setTimeout(() => {
+            nextBtn.click(); // Trigger the next button click
+        }, timeAutoNext);
 
-                clearTimeout(runNextAuto)
-                runNextAuto = setTimeout(() => {
-                    nextBtn.click()
-                }, timeAutoNext)
+        resetTimeAnimation(); // Reset the running time animation
+    }
+</script>
 
-                resetTimeAnimation() // Reset the running time animation
-            }
-
-    </script>
 
 
 
