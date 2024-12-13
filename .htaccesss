@@ -1,0 +1,6 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect all traffic to Buzz-collective folder
+RewriteCond %{REQUEST_URI} !^/Buzz-collective/
+RewriteRule ^(.*)$ /Buzz-collective/$1 [L]

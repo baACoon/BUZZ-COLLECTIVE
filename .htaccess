@@ -1,0 +1,2 @@
+# Set landingpage.php as the default index file
+DirectoryIndex landingpage.php
