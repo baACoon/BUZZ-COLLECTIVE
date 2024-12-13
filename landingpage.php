@@ -30,15 +30,15 @@
         <ul class="links">
           <li><a href="login.php">HOME</a></li>
           <li>
-            <a href="#">ABOUT US</a>
+            <a href="login.php">ABOUT US</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="aboutus.php">Buzz & Collectives</a></li>
-              <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+              <li><a href="login.php">Buzz & Collectives</a></li>
+              <li><a href="login.php">Be a Buzzing Barber</a></li>
             </ul>
           </li>
           <li>
-            <a href="branches.php">BRANCHES</a>
+            <a href="login.php">BRANCHES</a>
           </li>
           <li><a href="services.php">SERVICES</a></li>
 			<li><button class="login"><a href="login.php">Sign In</a></button></li>

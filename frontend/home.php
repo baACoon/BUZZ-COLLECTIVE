@@ -79,7 +79,7 @@ $db->close();
         <div class="navbar">
             <i class='bx bx-menu'></i>
             <div class="logo">
-		        <a href="landingpage.php"><img src="design/image/BUZZ-Black.png"></a>
+		        <a href="home.php"><img src="design/image/BUZZ-Black.png"></a>
 	        </div>
                 <div class="nav-links">
                     <div class="sidebar-logo">
