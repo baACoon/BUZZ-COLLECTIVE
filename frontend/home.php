@@ -62,8 +62,8 @@ $db->close();
     <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
-    <link rel="stylesheet" href="design/home.css">
+    <link rel="icon" type="image/x-icon" href="frontend/design/image/buzznCollectives.jpg">
+    <link rel="stylesheet" href="frontend/design/home.css">
     <link rel="stylesheet" href="design/popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,6 +71,7 @@ $db->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <base href="https://buzzcollective.gayvar.com/frontend/">
     <title>Buzz & Collective | Home</title>
 </head>
 <body>
