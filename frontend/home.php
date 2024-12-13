@@ -229,7 +229,7 @@ $db->close();
             </footer>
 
             <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-            <script src="homescripts.js"></script>
+            <script src="/frontend/homescripts.js"></script>
             <!--SCRIPT TO SA PAG DISPLAY NG BARBER SA HOME-->
             <script> //note: hindi functionable yung (April 22 chuchu)
                 document.addEventListener('DOMContentLoaded', function() {
