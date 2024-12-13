@@ -1,2 +1,13 @@
 # Set landingpage.php as the default index file
 DirectoryIndex landingpage.php
+
+# Redirect requests to the admin folder appropriately
+RewriteEngine On
+
+# If accessing the admin folder, set the default index to admin-home.php
+RewriteCond %{REQUEST_URI} ^/Buzz-collective/admin/?$ [NC]
+RewriteRule ^ /Buzz-collective/admin/admin-home.php [L]
+
+# Handle other admin routes dynamically
+RewriteCond %{REQUEST_URI} ^/Buzz-collective/admin/([a-zA-Z0-9_-]+)$ [NC]
+RewriteRule ^ /Buzz-collective/admin/%1.php [L]
