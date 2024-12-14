@@ -137,7 +137,6 @@ $db->close();
         <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
         <div class="carousel">
             <?php if (!empty($barbers)): ?>
-                <h5>Meet the <span>PRIDE</span> of Buzz&Collectives</h5>
                 <div class="list">
                     <?php foreach ($barbers as $barber): ?>
                         <div class="item" style="background-image: url('<?= htmlspecialchars($barber['image']) ?>');">
