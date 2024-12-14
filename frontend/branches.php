@@ -159,21 +159,6 @@ $db->close();
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="landingscript.js"></script>
-    <script>
-        document.getElementById('toggleBranches').addEventListener('click', function() {
-            var otherBranches = document.getElementById('otherBranches');
-            var arrow = document.querySelector('.arrow');
-            if (otherBranches.style.display === "none") {
-                otherBranches.style.display = "block"; // Show the branches
-                arrow.classList.add('rotate');
-            } else {
-                otherBranches.style.display = "none"; // Hide the branches
-                this.textContent = "Other Branches"; // Change button text back
-                arrow.classList.remove('rotate');
-            }
-        });
-    </script>
+    <script src="../frontend/js/branches.js"></script>
 </body>
 </html>
