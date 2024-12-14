@@ -17,6 +17,13 @@ htmlcssArrow.onclick = function() {
 navLinks.classList.toggle("show1");
 }
 
+jQuery(document).ready(function ($) {
+    $(".slider-img").on("click", function () {
+    $(".slider-img").removeClass("active");
+    $(this).addClass("active");
+    });
+});
+
 // Select DOM elements
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
