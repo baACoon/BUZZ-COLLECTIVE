@@ -210,5 +210,13 @@ $db->close();
     <script src="../frontend/js/aboutus.js"></script>
     <script src="script.js"></script>
 
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".slider-img").on("click", function () {
+            $(".slider-img").removeClass("active");
+            $(this).addClass("active");
+            });
+        });
+    </script>
 </body>
 </html>
