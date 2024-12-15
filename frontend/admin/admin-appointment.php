@@ -36,7 +36,7 @@ $branches = json_decode($json_data, true);
     <aside class="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
-            <a href="../admin/admin-home.php">
+            <a href="/admin-home.php">
                 <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
