@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - BUZZ Collective</title>
     <!-- Set base URL for all paths -->
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/">
-    <link rel="stylesheet" href="/frontend/admin/Designs/admin-logreg.css?v=101">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin">
+    <link rel="stylesheet" href="/Designs/admin-logreg.css?v=101">
 </head>
 <body>
     <div id="buzz-img">
@@ -26,7 +26,7 @@
             <input type="text" placeholder="Username" name="username" required>
             <h4>PASSWORD</h4>
             <input type="password" placeholder="Password" name="password" required>
-            <a href="admin_reg.php">Sign Up</a>
+            <a href="/admin_reg.php">Sign Up</a>
             <button type="submit" name="log_admin">Login</button>
         </form>
     </div>
