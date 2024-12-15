@@ -109,38 +109,47 @@ i.bx-menu{
     font-weight: bold;
 }
 
-/* Dropdown Menu Styling */
+/* Dropdown Menu Styling for 'About Us' */
+li {
+    position: relative; /* Required to position the dropdown */
+}
+
 .sub-menu {
     list-style-type: none;
-    padding: 0;
     margin: 0;
-    display: none;
+    padding: 0;
+    display: none; /* Hidden by default */
     position: absolute;
-    left: 100%; /* Aligns the submenu to the right of the parent menu item */
-    top: 0;
-    background-color: #444;
+    top: 100%; /* Position below the parent menu */
+    left: 0;
+    background-color: #333;
     z-index: 1000;
-    border-radius: 5px;
+    min-width: 200px; /* Ensures dropdown has consistent width */
+    border-radius: 4px;
 }
 
 .sub-menu li {
-    width: 200px; /* Width for the dropdown items */
+    width: 100%;
 }
 
 .sub-menu li a {
+    display: block;
     padding: 10px;
     color: #fff;
     text-decoration: none;
+    background-color: #444;
+    transition: background-color 0.3s;
 }
 
 .sub-menu li a:hover {
     background-color: #555;
 }
 
-/* Show Dropdown on Hover */
-.sidebar nav ul li:hover > .sub-menu {
+/* Show the dropdown when parent <li> is hovered */
+li:hover > .sub-menu {
     display: block;
 }
+
 
 /* back button  */
 .back-button i{
