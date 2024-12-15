@@ -303,110 +303,93 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .body-cont{
     width: 100%;
+    height: auto;
     background-color: #222222;
     position: absolute;
     overflow: hidden;
     padding: 10px;
+  
 }
-
-section.body-cont .news-container {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Default to 2 columns */
-  gap: 1.5em !important; /* Space between items */
-  justify-content: center; /* Center the items horizontally */
-  margin-top: 2em;
-  padding: 0 1em; /* Optional: Padding for alignment */
+.news-container {
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 1.5em; /* Add spacing between items */
+  justify-content: center; /* Center items horizontally */
+  margin: 0 auto; /* Center align the container */
+  padding: 2em; /* Add padding to the container */
+  max-width: 1200px; /* Set a max width for the container */
 }
 
 .news-item {
-  background-color: #333;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  color: white;
+  background-color: #333; /* Background color */
+  color: white; /* Text color */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevent content overflow */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Distribute content evenly */
+  flex: 0 1 calc(30% - 1.5em); /* Two columns by default */
+  padding: 1em; /* Add padding inside each news item */
 }
 
 .news-image img {
-  width: 50%;
-  height: 100px; /* Fixed height for uniformity */
-  object-fit: cover; /* Ensures proper scaling and cropping */
+  width: 100%; /* Stretch the image to fit the width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Crop the image if necessary */
   display: block;
 }
 
 .news-details {
-  padding: 1em;
+  padding: 1em; /* Add padding for text */
+}
+
+.news-details h2,
+.news-details h3 {
+  margin-bottom: 0.5em; /* Add spacing between elements */
 }
 
 .news-details h2 {
   font-size: 1.5em;
-  margin-bottom: 0.5em;
 }
 
 .news-details h3 {
   font-size: 1.2em;
-  margin-bottom: 0.5em;
-  font-weight: normal;
-  color: #bbb;
+  color: #bbb; /* Muted color for subtitles */
 }
 
 .news-details p {
   font-size: 1em;
   line-height: 1.5;
-  color: #ddd;
+  color: #ddd; /* Muted text for descriptions */
 }
 
-/* No news message */
-.no-news {
-  text-align: center;
-  font-size: 1.2em;
-  color: #bbb;
-}
-
-/* Responsive layout */
-@media (max-width: 920px) {
-  .news-container {
-      grid-template-columns: 1fr; /* Single column for medium screens */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .news-image{
+    display:none
+  }
+  
+  .news-item {
+    flex: 0 1 calc(100% - 1.5em); /* Single column on smaller screens */
+    display:flex;
+    justify-content:center;
   }
 
-  .news-image img {
-      height: 180px; /* Adjust image height for smaller screens */
+  .news-details {
+    padding: 0.8em;
   }
 
   .news-details h2 {
-      font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   .news-details h3 {
-      font-size: 1em;
+    font-size: 1em;
   }
 
   .news-details p {
-      font-size: 0.9em;
-  }
-}
-
-@media (max-width: 480px) {
-  .news-container {
-      grid-template-columns: 1fr; /* Single column for extra-small screens */
-  }
-
-  .news-image img {
-      height: 150px; /* Further reduce image height */
-  }
-
-  .news-details h2 {
-      font-size: 1.2em;
-  }
-
-  .news-details h3 {
-      font-size: 0.9em;
-  }
-
-  .news-details p {
-      font-size: 0.8em;
+    font-size: 0.9em;
   }
 }
 
