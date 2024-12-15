@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
-    <link rel="stylesheet" href="/Designs/adminhome.css?v=101">
+    <link rel="stylesheet" href="/Designs/admindash.css?v=101">
+    <link rel="stylesheet" href="/Designs/dashboard.css?v=101">
 </head>
 <body>
 
