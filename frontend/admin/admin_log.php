@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - BUZZ Collective</title>
-    <!-- Base URL for all relative paths -->
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
+    <!-- Set base URL for all paths -->
+    <base href="https://admin.buzzcollective.gayvar.com/">
     <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
 </head>
 <body>
