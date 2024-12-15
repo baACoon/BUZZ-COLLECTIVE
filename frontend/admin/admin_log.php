@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - BUZZ Collective</title>
-    <link rel="stylesheet" href="/Buzz-collective/frontend/admin/Designs/admin-logreg.css?v=101">
+    <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
 </head>
 <body>
     <div id="buzz-img">
