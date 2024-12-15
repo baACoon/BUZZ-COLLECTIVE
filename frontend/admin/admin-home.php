@@ -64,7 +64,7 @@ if (!isset($_SESSION['admin_username'])) {
             </ul>
         </div>
         <div class="logout-button">
-        <a href="admin_log.php">
+        <a href="/admin_log.php">
             <p>Logout</p>
         </a>
     </div>
