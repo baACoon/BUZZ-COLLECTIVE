@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - BUZZ Collective</title>
-    <link rel="stylesheet" href="/Buzz-collective/Designs/admin-logreg.css?v=101">
+    <link rel="stylesheet" href="/Buzz-collective/frontend/admin/Designs/admin-logreg.css?v=101">
 </head>
 <body>
     <div id="buzz-img">
-        <img src="/Buzz-collective/images/BUZZ-White2.png" alt="Buzz Logo">
+        <img src="/Buzz-collective/frontend/admin/images/BUZZ-White2.png" alt="Buzz Logo">
     </div>
     <div class="login-container">
         <?php 
