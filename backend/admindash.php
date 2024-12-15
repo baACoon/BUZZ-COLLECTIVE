@@ -76,8 +76,7 @@ if (isset($_POST['log_admin'])) {
                 header('Location: admin-home.php');
                 exit();
             } elseif ($stored_password === $password) {
-                // Password is in plain text and matches
-                // Hash the plain text password and update the database
+                // Plain text password detected; hash and update it
                 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                 $update_query = "UPDATE admin SET password='$hashed_password' WHERE username='$username'";
                 mysqli_query($db, $update_query);
