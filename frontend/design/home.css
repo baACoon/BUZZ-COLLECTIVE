@@ -500,6 +500,8 @@ li:hover .arrow, li:hover .profile-arrow {
   overflow: hidden; /* Avoid overflow issues */
   position: relative; /* Remove absolute positioning */
   margin-top: 2em; /* Ensure there's spacing between sections */
+  margin-bottom: 1em;
+  top: 190em;
 }
 
 .buzzin-barber h1 {
