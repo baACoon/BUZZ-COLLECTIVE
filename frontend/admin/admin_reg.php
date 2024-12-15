@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/Buzz-collective/backend/admindash.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/Admin/backend/admindash.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@
                 <?php foreach ($errors as $error) echo $error . '<br>'; ?>
             </div>
         <?php endif; ?>
-        <form class="login-form2" method="POST" action="https://admin.buzzcollective.gayvar.com/Buzz-collective/backend/admindash.php">
+        <form class="login-form2" method="POST" action="https://admin.buzzcollective.gayvar.com/Admin/backend/admindash.php">
             <h4>USERNAME</h4>
             <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>" required>
             <h4>EMAIL</h4>
