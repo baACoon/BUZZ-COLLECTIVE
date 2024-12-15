@@ -168,7 +168,8 @@ li:hover .arrow, li:hover .profile-arrow {
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    height: 180vh;
+    background-size: cover;
+    height: 100vh; /* Adjust height for smaller screens */
     overflow: hidden;
 }
 
@@ -224,7 +225,6 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .v79368 {
       font-size: 30px; /* Reduce font size */
-      top: 5em;
       left: 2em;
   }
 
