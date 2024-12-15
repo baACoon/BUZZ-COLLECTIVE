@@ -60,7 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Branches</title>
     <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
-    <link rel="stylesheet" href="../admin/Designs/adminbranches.css">
+    <link rel="stylesheet" href="/Designs/adminbranches.css">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="script.js" defer></script>
@@ -69,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
      <!-- Navbar for screens below 768px -->
      <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
-            <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
+            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
@@ -77,20 +78,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
-            <a href="../admin/admin-home.php">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            <a href="/admin-home.php">
+                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
         <nav>
             <ul>
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-                <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                <li><a href="services.php">Services</a></li>
-                <li><a href="admin-aboutus.php">About Us</a></li>
-                <li><a href="news.php">News</a></li>
-                <li><a href="admin-branches.php">Branches</a></li>
-                <li><a href="settings.php">Settings</a></li>
+                <li><a href="/dashboard.php">Dashboard</a></li>
+                <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
+                <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
+                <li><a href="/services.php">Services</a></li>
+                <li><a href="/admin-aboutus.php">About Us</a></li>
+                <li><a href="/news.php">News</a></li>
+                <li><a href="/admin-branches.php">Branches</a></li>
+                <li><a href="/settings.php">Settings</a></li>
             </ul>
         </nav>
     </aside>

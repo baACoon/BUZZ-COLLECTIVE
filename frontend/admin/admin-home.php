@@ -32,32 +32,32 @@ if (!isset($_SESSION['admin_username'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="admin-barber.php">
+                    <a href="/admin-barber.php">
                         <p><i class="fa-solid fa-scissors" style="color: #cfcfcf;"></i> Barbers' Schedule</p>
                     </a>
                 </li>
                 <li>
-                    <a href="services.php">
+                    <a href="/services.php">
                         <p><i class="fa-solid fa-concierge-bell" style="color: #cfcfcf;"></i> Services</p>
                     </a>   
                 </li>
                 <li>
-                    <a href="admin-aboutus.php">
+                    <a href="/admin-aboutus.php">
                         <p><i class="fa-solid fa-info-circle" style="color: #cfcfcf;"></i> About Us</p>
                     </a>
                 </li>
                 <li>    
-                    <a href="news.php">
+                    <a href="/news.php">
                         <p><i class="fa-solid fa-newspaper" style="color: #cfcfcf;"></i> News</p>
                     </a>   
                 </li>
                 <li>
-                    <a href="admin-branches.php">
+                    <a href="/admin-branches.php">
                         <p><i class="fa-solid fa-map-marker-alt" style="color: #cfcfcf;"></i> Branches</p>
                     </a>
                 </li>
                 <li>
-                    <a href="settings.php">
+                    <a href="/settings.php">
                         <p><i class="fa-solid fa-cog" style="color: #cfcfcf;"></i> Settings</p>
                     </a>
                 </li>
