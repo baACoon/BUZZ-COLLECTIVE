@@ -37,13 +37,13 @@ $branches = json_decode($json_data, true);
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
             <a href="../admin/admin-home.php">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
         <nav>
             <ul>
-                <li><a href="/admin/dashboard.php">Dashboard</a></li>
-                <li><a href="/admin/admin-appointment.php">Appointment Bookings</a></li>
+                <li><a href="/dashboard.php">Dashboard</a></li>
+                <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
                 <li><a href="admin-aboutus.php">About Us</a></li>
