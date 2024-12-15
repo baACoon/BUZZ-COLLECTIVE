@@ -144,15 +144,13 @@ $db->close();
             <!-- NEWS SELECTION -->
             <section class="body-cont">
                 <h1>NEWS AND DISCOUNTS</h1>
-
                 <?php if (!empty($news)): ?>
                     <div class="news-container">
                         <?php foreach ($news as $item): ?>
                             <div class="news-item">
                                 <div class="news-image">
-                                    <!-- Check if the poster path is not empty -->
                                     <?php if (!empty($item['poster'])): ?>
-                                        <img src=" <?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                        <img src="<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                                     <?php else: ?>
                                         <img src="design/image/default-placeholder.png" alt="Default Image">
                                     <?php endif; ?>
@@ -169,6 +167,7 @@ $db->close();
                     <p class="no-news">No news available at the moment. Stay tuned!</p>
                 <?php endif; ?>
             </section>
+
             <!-- Barbers' Availability Section -->
             <section class="barber-selection">
                 <!-- Barbers' IMAGE -->

@@ -292,42 +292,24 @@ li:hover .arrow, li:hover .profile-arrow {
 
 
 /* NEWS AND DISCOUNT */
-.body-cont h1{
-    color: white;
-    font-size: 50px;
-    margin-top: 1em;
-    margin-left: 2em;
-}
-
-.body-cont{
-    width: 100%;
-    height: 1020px;
-    background-color: #222222;
-    position: absolute;
-    top: 67em;
-    left: 0px;
-    overflow: hidden;
-
-}
 .news-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
   gap: 1.5em; /* Consistent spacing between items */
-  justify-content: space-between;
+  justify-content: center; /* Center the items horizontally */
   margin-top: 2em;
   padding: 0 1em; /* Optional: Padding to keep layout aligned */
 }
 
 .news-item {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 calc(33.333% - 1em); /* Ensures three items per row */
-  max-width: calc(33.333% - 1em); /* Prevents items from exceeding the row width */
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .news-image img {
@@ -359,19 +341,25 @@ li:hover .arrow, li:hover .profile-arrow {
   color: #ddd;
 }
 
+/* No news message */
 .no-news {
   text-align: center;
   font-size: 1.2em;
   color: #bbb;
 }
 
-@media (max-width: 768px) {
+/* Responsive layout */
+@media (max-width: 920px) {
+  .news-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+
   .news-image img {
-      height: 150px;
+      height: 180px; /* Adjust image height for smaller screens */
   }
 
   .news-details h2 {
-      font-size: 1.2em;
+      font-size: 1.3em;
   }
 
   .news-details h3 {
@@ -385,15 +373,15 @@ li:hover .arrow, li:hover .profile-arrow {
 
 @media (max-width: 480px) {
   .news-container {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* Single column for extra-small screens */
   }
 
   .news-image img {
-      height: 120px;
+      height: 150px; /* Further reduce image height */
   }
 
   .news-details h2 {
-      font-size: 1em;
+      font-size: 1.2em;
   }
 
   .news-details h3 {
