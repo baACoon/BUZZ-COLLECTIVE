@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/Admin/backend/admindash.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/Buzz-collective/backend/admindash.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration - BUZZ Collective</title>
-    <base href="https://admin.buzzcollective.gayvar.com/Admin/">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/">
     <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
 </head>
 <body>
