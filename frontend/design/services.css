@@ -223,41 +223,42 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .haircuts-section {
   text-align: center;
-  margin: 40px 0; 
-  margin-top: 10%;
+  margin: 40px 0;
 }
 
-.haircut-images, 
+.haircut-images,
 .additional-images {
-  display: flex; /* Ensure flexbox is used to align images horizontally */
-  justify-content: center; /* Center the images horizontally */
-  gap: 20px; /* Add space between images */
+  display: grid; /* Use grid layout for flexibility */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  gap: 20px; /* Space between items */
+  justify-content: center;
   margin-top: 3%;
 }
 
 .haircut-item {
-  text-align: center; /* Center the text below each image */
+  text-align: center; /* Center-align text below each image */
 }
 
 .haircut-images img,
 .additional-images img {
-  width: 330px; /* Set the width of each image */
-  height: 380px; /* Set the height of each image */
-  border-radius: 10px; /* Optional: rounded corners */
-  transition: transform 0.3s ease; /* Smooth scaling on hover */
+  width: 100%; /* Make the images responsive */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 330px; /* Set max width for large screens */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
-.haircut-images img:hover, 
+.haircut-images img:hover,
 .additional-images img:hover {
-  transform: scale(1.05); /* Slightly zoom the image on hover */
+  transform: scale(1.05); /* Slightly zoom on hover */
 }
 
 .haircut-name {
-  margin-top: 5px; /* Space between image and name */
+  margin-top: 5px;
   margin-bottom: 12px;
-  font-size: 16px; /* Font size for the name */
-  font-weight: bold; /* Make the name bold */
-  color: #333; /* Set text color */
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
 
 .see-more-link {
@@ -271,15 +272,6 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .see-more-link:hover {
   text-decoration: underline;
-}
-
-/* Ensure proper layout for the .additional-images when visible */
-.additional-images {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
-  justify-items: center; /* Center images within grid cells */
-  gap: 10px; /* Space between the items */
-  margin-top: 3%;
 }
 
 
@@ -428,6 +420,10 @@ footer {
     .price {
         margin-right: 20px;
         margin-top: -10px;
+    }
+    .haircut-images,
+    .additional-images {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
     }
 }
 
@@ -617,6 +613,18 @@ footer {
       width: 90%; 
     }
 
+    .haircut-images,
+    .additional-images {
+      grid-template-columns: repeat(1, 1fr); /* 1 column for smaller screens */
+    }
+
+    .haircut-images img,
+    .additional-images img {
+      max-width: 100%; /* Adjust image size for smaller screens */
+      width: 90%; /* Add padding/margin to keep a centered appearance */
+    }
+
+
     .footer-content {
       flex-direction: column;
     }
@@ -661,6 +669,16 @@ footer {
   .price{
     margin-right: 20px;
     margin-top: 5px;
+  }
+
+  .haircut-name {
+    font-size: 14px; /* Reduce text size for smaller screens */
+  }
+
+  .haircut-images img,
+  .additional-images img {
+    max-width: 100%; /* Adjust image size for very small screens */
+    border-radius: 5px; /* Smaller rounded corners */
   }
 
   
