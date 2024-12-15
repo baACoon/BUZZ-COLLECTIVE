@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration - BUZZ Collective</title>
     <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/">
-    <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
+    <link rel="stylesheet" href="/Designs/admin-logreg.css?v=101">
 </head>
 <body>
     <div id="buzz-img">
