@@ -59,9 +59,8 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li>
-                    <a href="admin-aboutus.php">Services<span class="notification-dot"></span></a>
+                    <a href="services.php">Services<span class="notification-dot"></span></a>
                     <ul class="htmlCss-sub-menu sub-menu">
-                        <li><a href="services.php">Services</a></li>
                         <li><a href="appointment-fee.php">Appointment Fee</a></li>
                     </ul>
                 </li>
