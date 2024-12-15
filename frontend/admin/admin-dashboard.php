@@ -9,6 +9,7 @@
     <title>Admin Dashboard</title>
     <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
     <link rel="stylesheet" href="/Designs/admindash.css?v=101">
+    <link rel="stylesheet" href="/Designs/dashboard.css?v=101">
 </head>
 <body>
 
