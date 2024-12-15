@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration - BUZZ Collective</title>
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin">
     <link rel="stylesheet" href="/Designs/admin-logreg.css?v=101">
 </head>
 <body>
@@ -30,7 +30,7 @@
             <h4>CONFIRM PASSWORD</h4>
             <input type="password" name="password_2" placeholder="Confirm Password" required>
             <button type="submit" name="reg_admin">Sign Up</button>
-            <a href="admin_log.php">Login</a>
+            <a href="/admin_log.php">Login</a>
         </form>
     </div>
 </body>
