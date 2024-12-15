@@ -546,6 +546,10 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 @media (max-width: 768px) {
+  .buzzin-img{
+    height: 50vh;
+  }
+
   .buzzin-barber h1 {
       font-size: 1.5em;
   }
@@ -560,6 +564,10 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 @media (max-width: 480px) {
+  .buzzin-img{
+    height: 40vh;
+  }
+
   .buzzin-barber h1 {
       font-size: 1.2em;
   }
@@ -577,26 +585,22 @@ li:hover .arrow, li:hover .profile-arrow {
   }
 }
 /* FOOTER */
-
-footer {
-    background-color: #222; 
+  footer {
+    background-color: #222222; 
     color: white;
     padding: 20px;
     position: relative;
-    margin-top: 220em;
 }
-
 .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 6%;
     align-items: flex-start;
 }
-
 .footer-logo{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     margin-top: 5px; 
 }
 
@@ -604,11 +608,10 @@ footer {
     margin: 5px;
 }
 
-.footer-left1 h2 {
-    color: white;
-}
-
-.footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
+.footer-left1 p, 
+.footer-left1 address, 
+.footer-left1 form, 
+.footer-left1{
     margin: 10px 0 20px;
 }
 
@@ -632,12 +635,12 @@ footer {
     border: none;
     border-radius: 5px 0 0 5px;
     flex: 1;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .footer-left1 form button {
     padding: 22px;
-    background-color: #1a1110;
+    background-color: #E43A19;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -664,19 +667,17 @@ footer {
 
 .social-media {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align items to the center vertically */
+    justify-content: center; 
+    align-items: center;
     position: absolute;
     bottom: 25px;
     left: 0;
     right: 0;
-    
 }
 
 .social-media a {
     margin-right: 40px; 
 }
-
 .social-media i {
     font-size: 35px; /* Adjust icon size */
 }
