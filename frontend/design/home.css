@@ -546,10 +546,6 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 @media (max-width: 768px) {
-  .buzzin-img{
-    height: 50vh;
-  }
-
   .buzzin-barber h1 {
       font-size: 1.5em;
   }
@@ -564,10 +560,6 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 @media (max-width: 480px) {
-  .buzzin-img{
-    height: 40vh;
-  }
-
   .buzzin-barber h1 {
       font-size: 1.2em;
   }
@@ -585,34 +577,39 @@ li:hover .arrow, li:hover .profile-arrow {
   }
 }
 /* FOOTER */
+
   footer {
-    background-color: #222222; 
+    background-color: #222; 
     color: white;
     padding: 20px;
     position: relative;
-}
+    margin-top: 220em;
+  }
+
 .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 6%;
+    margin-bottom: 50px;
     align-items: flex-start;
 }
+
 .footer-logo{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin-top: 5px; 
 }
 
 .footer-left, .footer-left1, .footer-right{
-    margin: 5px;
+  margin: 5px;
 }
 
-.footer-left1 p, 
-.footer-left1 address, 
-.footer-left1 form, 
-.footer-left1{
-    margin: 10px 0 20px;
+.footer-left1 h2 {
+  color: white;
+}
+
+.footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
+  margin: 10px 0 20px;
 }
 
 .footer-left1 address p {
@@ -635,12 +632,12 @@ li:hover .arrow, li:hover .profile-arrow {
     border: none;
     border-radius: 5px 0 0 5px;
     flex: 1;
-    font-size: 1rem;
+    font-size: 18px;
 }
 
 .footer-left1 form button {
     padding: 22px;
-    background-color: #E43A19;
+    background-color: #1a1110;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -667,8 +664,8 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .social-media {
     display: flex;
-    justify-content: center; 
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Align items to the center vertically */
     position: absolute;
     bottom: 25px;
     left: 0;
@@ -678,6 +675,7 @@ li:hover .arrow, li:hover .profile-arrow {
 .social-media a {
     margin-right: 40px; 
 }
+
 .social-media i {
     font-size: 35px; /* Adjust icon size */
 }
