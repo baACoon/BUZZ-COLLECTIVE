@@ -168,6 +168,7 @@ $db->close();
                 <?php endif; ?>
             </section>
 
+
             <!-- Barbers' Availability Section -->
             <section class="barber-selection">
                 <!-- Barbers' IMAGE -->
