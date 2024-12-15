@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/Buzz-collective/backend/admindash.php'); ?>
+<?php include(__DIR__ . '/../../backend/admindash.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

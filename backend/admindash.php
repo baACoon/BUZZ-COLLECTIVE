@@ -43,7 +43,7 @@ if (isset($_POST['reg_admin'])) {
         if (mysqli_query($db, $query)) {
             $_SESSION['admin_username'] = $username;
             $_SESSION['success'] = "You are now logged in";
-            header('Location: https://admin.buzzcollective.gayvar.com/admin-home.php');
+            header('Location: admin-home.php');
             exit();
 
         } else {
@@ -70,7 +70,7 @@ if (isset($_POST['log_admin'])) {
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
-                header('Location: https://admin.buzzcollective.gayvar.com/admin-home.php');
+                header('Location: admin-home.php');
                 exit();
 
             } else {
