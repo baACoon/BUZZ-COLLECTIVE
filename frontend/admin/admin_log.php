@@ -21,7 +21,7 @@
                 <?php foreach ($errors as $error) echo $error . '<br>'; ?>
             </div>
         <?php endif; ?>
-        <form class="login-form" method="post" action="../backend/admindash.php">
+        <form class="login-form" method="post" action="backend/admindash.php">
             <h4>USERNAME</h4>
             <input type="text" placeholder="Username" name="username" required>
             <h4>PASSWORD</h4>

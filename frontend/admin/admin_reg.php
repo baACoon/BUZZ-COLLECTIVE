@@ -20,7 +20,7 @@
                 <?php foreach ($errors as $error) echo $error . '<br>'; ?>
             </div>
         <?php endif; ?>
-        <form class="login-form2" method="POST" action="../backend/admindash.php">
+        <form class="login-form2" method="POST" action="backend/admindash.php">
             <h4>USERNAME</h4>
             <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>" required>
             <h4>EMAIL</h4>
