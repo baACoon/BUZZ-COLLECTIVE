@@ -494,12 +494,12 @@ li:hover .arrow, li:hover .profile-arrow {
 /* BUZZIN BARBER */
 .buzzin-barber {
   width: 100%;
-  height: auto; /* Adjust height to fit content dynamically */
   background-color: #222222;
-  position: relative;
-  padding: 2em 1em; /* Added padding for better spacing */
+  padding: 3em 1em; /* Add padding for spacing */
   text-align: center; /* Center-align all content */
-  overflow: hidden;
+  overflow: hidden; /* Avoid overflow issues */
+  position: relative; /* Remove absolute positioning */
+  margin-top: 2em; /* Ensure there's spacing between sections */
 }
 
 .buzzin-barber h1 {
@@ -522,7 +522,6 @@ li:hover .arrow, li:hover .profile-arrow {
   color: rgba(255, 255, 255, 1);
   font-weight: bold;
   font-size: 40px;
-  opacity: 1;
   margin: 1em 0;
   text-align: center;
 }
@@ -531,25 +530,25 @@ li:hover .arrow, li:hover .profile-arrow {
   color: rgba(255, 255, 255, 1);
   font-style: italic;
   font-size: 28px;
-  font-weight: 200;
   text-decoration: underline;
   display: inline-block;
   margin-top: 1em;
   cursor: pointer;
 }
 
+/* Responsive Adjustments */
 @media (max-width: 920px) {
   .buzzin-barber h1 {
-      font-size: 40px; /* Reduce font size */
+      font-size: 40px;
   }
 
   .buzzin-img img {
-      width: 80%; /* Adjust image size */
+      width: 80%;
       max-width: 400px;
   }
 
   .buzzin-barber h2 {
-      font-size: 32px; /* Reduce font size */
+      font-size: 32px;
   }
 
   .buzzin-barber a {
@@ -594,6 +593,7 @@ li:hover .arrow, li:hover .profile-arrow {
       font-size: 18px;
   }
 }
+
 
 /* FOOTER */
 
