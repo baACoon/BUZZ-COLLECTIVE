@@ -43,8 +43,9 @@ if (isset($_POST['reg_admin'])) {
         if (mysqli_query($db, $query)) {
             $_SESSION['admin_username'] = $username;
             $_SESSION['success'] = "You are now logged in";
-            header('Location: ../admin-home.php');
+            header('Location: https://yourwebsite.com/Buzz-collective/frontend/admin/admin-home.php');
             exit();
+
         } else {
             $errors[] = "Failed to register admin. Please try again.";
         }
@@ -69,8 +70,9 @@ if (isset($_POST['log_admin'])) {
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
-                header('Location: ../admin-home.php');
+                header('Location: https://yourwebsite.com/Buzz-collective/frontend/admin/admin-home.php');
                 exit();
+
             } else {
                 $errors[] = "Wrong username/password combination";
             }
