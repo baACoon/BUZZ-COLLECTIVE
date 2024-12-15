@@ -24,7 +24,7 @@
             <input type="text" placeholder="Username" name="username" required>
             <h4>PASSWORD</h4>
             <input type="password" placeholder="Password" name="password" required>
-            <a href="/Buzz-collective/frontend/admin/admin_reg.php">Sign Up</a>
+            <a href="./admin_reg.php">Sign Up</a>
             <button type="submit" name="log_admin">Login</button>
         </form>
     </div>
