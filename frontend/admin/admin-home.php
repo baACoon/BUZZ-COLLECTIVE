@@ -21,13 +21,13 @@ if (!isset($_SESSION['admin_username'])) {
 </head>
 <body>
     <div id="home-logo">
-        <img src="images/BUZZ-White2.png" alt="Buzz Logo">
+        <img src="images/Buzz-White2.png" alt="Buzz Logo">
     </div>
     <div class="home-container">
         <div class="home-selection">
             <ul>
                 <li>
-                    <a href="admin-appointment.php">
+                    <a href="/admin/admin-appointment.php">
                         <p><i class="fa-solid fa-book" style="color: #cfcfcf"></i> Appointment Bookings</p>
                     </a>
                 </li>

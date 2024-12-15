@@ -20,7 +20,8 @@ $branches = json_decode($json_data, true);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointments - Buzz & Collective</title>
     <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
-    <link rel="stylesheet" href="Designs/adminappointment.css">
+    <link rel="stylesheet" href="/Designs/adminappointment.css">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -41,8 +42,8 @@ $branches = json_decode($json_data, true);
         </div>
         <nav>
             <ul>
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+                <li><a href="/admin/dashboard.php">Dashboard</a></li>
+                <li><a href="/admin/admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
                 <li><a href="admin-aboutus.php">About Us</a></li>
