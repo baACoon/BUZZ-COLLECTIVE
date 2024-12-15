@@ -29,7 +29,7 @@ $branches = json_decode($json_data, true);
     <!-- Navbar for screens below 768px -->
     <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
-            <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
+            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
