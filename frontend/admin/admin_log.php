@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="buzz-img">
-        <img src="frontend/admin/images/BUZZ-White2.png" alt="Buzz Logo">
+        <img src="frontend/images/BUZZ-White2.png" alt="Buzz Logo">
     </div>
     <div class="login-container">
         <?php 
