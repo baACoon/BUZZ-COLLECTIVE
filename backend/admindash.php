@@ -57,26 +57,27 @@ if (isset($_POST['log_admin'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
+    // Validate form inputs
     if (empty($username)) $errors[] = "Username is required";
     if (empty($password)) $errors[] = "Password is required";
 
     if (count($errors) == 0) {
+        // Fetch admin record by username
         $query = "SELECT * FROM admin WHERE username='$username'";
         $result = mysqli_query($db, $query);
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
-            $stored_password = $admin['password'];
+            $stored_password = $admin['password']; // Get the stored password from the database
 
-            // Check if the stored password is plain text
             if (password_verify($password, $stored_password)) {
-                // Password is hashed and matches
+                // Password matches the hash, log the user in
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
             } elseif ($stored_password === $password) {
-                // Plain text password detected; hash and update it
+                // Plain text password detected, hash it and update the database
                 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                 $update_query = "UPDATE admin SET password='$hashed_password' WHERE username='$username'";
                 mysqli_query($db, $update_query);
@@ -91,9 +92,11 @@ if (isset($_POST['log_admin'])) {
                 $errors[] = "Wrong username/password combination";
             }
         } else {
+            // Username not found
             $errors[] = "Wrong username/password combination";
         }
     }
 }
+
 
 ?>
