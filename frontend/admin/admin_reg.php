@@ -19,7 +19,7 @@
                 <?php foreach ($errors as $error) echo $error . '<br>'; ?>
             </div>
         <?php endif; ?>
-        <form class="login-form2" method="POST" action="/Buzz-collective/frontend/admin/admin_reg.php">
+        <form class="login-form2" method="POST" action="admin/admin_reg.php">
             <h4>USERNAME</h4>
             <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>" required>
             <h4>EMAIL</h4>
@@ -29,7 +29,7 @@
             <h4>CONFIRM PASSWORD</h4>
             <input type="password" name="password_2" placeholder="Confirm Password" required>
             <button type="submit" name="reg_admin">Sign Up</button>
-            <a href="/Buzz-collective/frontend/admin/admin_log.php">Login</a>
+            <a href="admin/admin_log.php">Login</a>
         </form>
     </div>
 </body>
