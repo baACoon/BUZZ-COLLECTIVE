@@ -27,7 +27,7 @@ if (!isset($_SESSION['admin_username'])) {
         <div class="home-selection">
             <ul>
                 <li>
-                    <a href="/admin/admin-appointment.php">
+                    <a href="/admin-appointment.php">
                         <p><i class="fa-solid fa-book" style="color: #cfcfcf"></i> Appointment Bookings</p>
                     </a>
                 </li>
