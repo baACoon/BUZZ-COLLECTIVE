@@ -166,11 +166,12 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .bgimage{
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh; /* Adjust height for smaller screens */
+    background-position: center;
+    height: 180vh; /* Adjust height for smaller screens */
     overflow: hidden;
+    
+    
 }
 
 
@@ -225,6 +226,7 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .v79368 {
       font-size: 30px; /* Reduce font size */
+      top: 5em;
       left: 2em;
   }
 
@@ -251,12 +253,6 @@ li:hover .arrow, li:hover .profile-arrow {
       height: 70vh;
   }
 
-  .v79368 {
-      font-size: 25px;
-      top: 3em;
-      left: 1.5em;
-  }
-
   .day {
       font-size: 20px;
   }
@@ -278,12 +274,6 @@ li:hover .arrow, li:hover .profile-arrow {
 @media (max-width: 480px) {
   .bgimage {
       height: 60vh;
-  }
-
-  .v79368 {
-      font-size: 20px;
-      top: 2em;
-      left: 1em;
   }
 
   .day, .time {
@@ -593,7 +583,7 @@ footer {
     color: white;
     padding: 20px;
     position: relative;
-    margin-top: 180em;
+    margin-top: 220em;
 }
 
 .footer-content {
