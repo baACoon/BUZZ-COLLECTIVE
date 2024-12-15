@@ -87,7 +87,7 @@ $branches = json_decode($json_data, true);
                     </thead>
                     <tbody>
                         <?php
-                        include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/displayappointment.php');
+                         include(__DIR__ . '/../../backend/displayappointment.php'); 
                         
                         foreach ($appointments as $appointment) {
         
