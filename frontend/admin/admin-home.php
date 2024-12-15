@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION['admin_username'])) {
-    header('location: https://admin.buzzcollective.gayvar.com/admin_log.php');
+    header('location: admin_log.php');
     exit();
 }
 
