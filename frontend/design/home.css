@@ -168,12 +168,11 @@ li:hover .arrow, li:hover .profile-arrow {
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
     background-size: cover;
     background-position: center;
-    height: 180vh; /* Adjust height for smaller screens */
+    height: 100vh; /* Adjust height for smaller screens */
     overflow: hidden;
     
     
 }
-
 
 /*  */
 .v79368{
@@ -369,7 +368,7 @@ li:hover .arrow, li:hover .profile-arrow {
   .news-image{
     display:none
   }
-  
+
   .news-item {
     flex: 0 1 calc(100% - 1.5em); /* Single column on smaller screens */
     display:flex;
