@@ -166,8 +166,9 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .bgimage{
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
-    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh; /* Adjust height for smaller screens */
     overflow: hidden;
 }
@@ -224,7 +225,6 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .v79368 {
       font-size: 30px; /* Reduce font size */
-      top: 5em;
       left: 2em;
   }
 
@@ -319,18 +319,20 @@ li:hover .arrow, li:hover .profile-arrow {
     overflow: hidden;
 
 }
-/* News and Discounts Section */
 .news-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5em;
-  justify-content: center;
-  margin: 2em auto;
-  padding: 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em; /* Consistent spacing between items */
+  justify-content: space-between;
+  margin-top: 2em;
+  padding: 0 1em; /* Optional: Padding to keep layout aligned */
 }
 
 .news-item {
-  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(33.333% - 1em); /* Ensures three items per row */
+  max-width: calc(33.333% - 1em); /* Prevents items from exceeding the row width */
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
@@ -340,25 +342,30 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .news-image img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 200px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensures proper scaling and cropping */
+  display: block;
 }
 
-.news-details h2, .news-details h3, .news-details p {
-  margin: 0.5em 0;
+.news-details {
+  padding: 1em;
 }
 
 .news-details h2 {
   font-size: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 .news-details h3 {
   font-size: 1.2em;
+  margin-bottom: 0.5em;
+  font-weight: normal;
   color: #bbb;
 }
 
 .news-details p {
   font-size: 1em;
+  line-height: 1.5;
   color: #ddd;
 }
 
@@ -407,6 +414,7 @@ li:hover .arrow, li:hover .profile-arrow {
       font-size: 0.8em;
   }
 }
+
 /* barber selection */
 .barber-selection{
     width: 100%;
@@ -416,18 +424,15 @@ li:hover .arrow, li:hover .profile-arrow {
     top: 2091px;
     left: 0px;
     overflow: hidden;
-    padding: 2em;
 }
 
 /* barber IMAGE */
 .barber-sched-img img{ 
     z-index: 0;
     width: auto;
+    height: 88vh;
+    margin-top: -50px;
     position: absolute;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: auto;
 }
 
 /* barber MONTHS */
@@ -438,10 +443,9 @@ li:hover .arrow, li:hover .profile-arrow {
     top: 7em;
     left: 32em;
     font-weight: Bold;
+    font-size: 25px;
     opacity: 1;
-    font-size: 1.2em;
     text-align: center;
-    margin-top: 1em;
 }
 
 
@@ -475,16 +479,17 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* barber APPOINTMENT BUTTON */
 .barber-button{
+    display: inline-block;
+    margin-top: 22em;
+    margin-left: 27em;
     color: white;
     background-color: #E43A19; 
+    font-size: 20px;
+    padding: 13px 17px;
     border: none; 
-    border-radius: 10px; 
+    border-radius: 30px; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
-    margin: 2em auto;
-    display: block;
-    font-size: 16px;
-    padding: 10px 20px;
 }
 
 .barber-button a{
@@ -507,36 +512,47 @@ li:hover .arrow, li:hover .profile-arrow {
     font-size: 50px;
     text-align: center;
 }
-.buzzin-barber {
-  text-align: center;
-  padding: 3em 1em;
-  background-color: #222;
-  color: white;
+.buzzin-barber{
+    width: 100%;
+    height: 1000px;
+    background-color: #222222;
+    position: absolute;
+    top: 190em;
+    left: 0px;
+    overflow: hidden;
 }
 
-.buzzin-barber h1 {
-  font-size: 2em;
-  margin-bottom: 1em;
+.buzzin-img img{
+    width: 70em;
+    height: 95vh;
+    left: 7.2em;
+    position: absolute;
+    margin-top: 10em;
 }
 
-.buzzin-img img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  margin: 1em auto;
+.buzzin-barber h2{
+    width: 100%;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 848px;
+    left: 1px;
+    font-weight: Bold;
+    font-size: 40px;
+    opacity: 1;
+    text-align: center;
 }
 
-.buzzin-barber h2 {
-  font-size: 1.5em;
-  margin-top: 1em;
-}
-
-.buzzin-barber a {
-  font-size: 1.2em;
-  text-decoration: underline;
-  color: white;
-  margin-top: 1em;
-  display: inline-block;
+.buzzin-barber a{
+    width: 142px;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 900px;
+    left: 600px;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 200;
+    text-align: center;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -570,8 +586,6 @@ li:hover .arrow, li:hover .profile-arrow {
       max-width: 300px;
   }
 }
-
-
 /* FOOTER */
 
 footer {
