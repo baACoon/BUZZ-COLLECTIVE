@@ -2,7 +2,7 @@
 
 session_start();
 if (!isset($_SESSION['admin_username'])) {
-    header('location: ../admin_log.php');
+    header('location: https://admin.buzzcollective.gayvar.com/admin_log.php');
     exit();
 }
 
@@ -13,8 +13,8 @@ if (!isset($_SESSION['admin_username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Home</title>
-    <base href="https://admin.buzzcollective.gayvar.com/Admin/frontend/admin/">
-    <link rel="stylesheet" href="Designs/adminhomee.css">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin">
+    <link rel="stylesheet" href="/Designs/adminhomee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="script.js" defer></script>
     <script src="branches.js"></script>
