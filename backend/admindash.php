@@ -68,35 +68,23 @@ if (isset($_POST['log_admin'])) {
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
-            $stored_password = $admin['password']; // Get the stored password from the database
+            $stored_password = $admin['password']; // Get the stored hashed password
 
+            // Check if the entered password matches the stored hashed password
             if (password_verify($password, $stored_password)) {
                 // Password matches the hash, log the user in
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
-            } elseif ($stored_password === $password) {
-                // Plain text password detected, hash it and update the database
-                $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-                $update_query = "UPDATE admin SET password='$hashed_password' WHERE username='$username'";
-                mysqli_query($db, $update_query);
-
-                // Log the user in
-                $_SESSION['admin_username'] = $username;
-                $_SESSION['success'] = "You are now logged in";
-                header('Location: admin-home.php');
-                exit();
             } else {
                 // Password mismatch
-                $errors[] = "Wrong username/password combination";
+                $errors[] = "Password mismatch";
             }
         } else {
             // Username not found
-            $errors[] = "Wrong username/password combination";
+            $errors[] = "Username not found";
         }
     }
 }
-
-
 ?>
