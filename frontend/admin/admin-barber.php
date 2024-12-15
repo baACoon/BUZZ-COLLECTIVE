@@ -131,7 +131,7 @@ if (isset($_GET['error'])) {
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
             <a href="/admin-home.php">
-                <img src="/images/Buzz-White.png" alt="Buzz Collective Logo">
+                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
         <nav>
