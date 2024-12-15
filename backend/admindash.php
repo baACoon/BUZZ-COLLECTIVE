@@ -89,11 +89,11 @@ if (isset($_POST['log_admin'])) {
                 exit();
             } else {
                 // Password mismatch
-                $errors[] = "Wrong username/password combination";
+                $errors[] = "Password mismatch";
             }
         } else {
             // Username not found
-            $errors[] = "Wrong username/password combination";
+            $errors[] = "Username not found";
         }
     }
 }
