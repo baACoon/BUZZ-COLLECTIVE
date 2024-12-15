@@ -21,7 +21,7 @@ if (!isset($_SESSION['admin_username'])) {
 </head>
 <body>
     <div id="home-logo">
-        <img src="images/Buzz-White2.png" alt="Buzz Logo">
+        <img src="/images/Buzz-White2.png" alt="Buzz Logo">
     </div>
     <div class="home-container">
         <div class="home-selection">
