@@ -67,12 +67,16 @@ if (isset($_POST['log_admin'])) {
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
 
+            // Debugging stored and entered password
+            echo "Stored password hash: " . $admin['password'] . "<br>";
+            echo "Password verify result: " . (password_verify($password, $admin['password']) ? 'true' : 'false') . "<br>";
+            exit();
+
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
-
             } else {
                 $errors[] = "Wrong username/password combination";
             }
