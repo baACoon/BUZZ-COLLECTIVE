@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration - BUZZ Collective</title>
-    <base href="https://admin.buzzcollective.gayvar.com/">
+    <base href="https://admin.buzzcollective.gayvar.com/Admin/">
     <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
 </head>
 <body>
@@ -20,7 +20,7 @@
                 <?php foreach ($errors as $error) echo $error . '<br>'; ?>
             </div>
         <?php endif; ?>
-        <form class="login-form2" method="POST" action="https://admin.buzzcollective.gayvar.com/Admin/backend/admindash.php">
+        <form class="login-form2" method="POST" action="backend/admindash.php">
             <h4>USERNAME</h4>
             <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>" required>
             <h4>EMAIL</h4>
