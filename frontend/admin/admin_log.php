@@ -8,7 +8,7 @@
     <title>Admin - BUZZ Collective</title>
     <!-- Set base URL for all paths -->
     <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/">
-    <link rel="stylesheet" href="Designs/admin-logreg.css?v=101">
+    <link rel="stylesheet" href="/frontend/admin/Designs/admin-logreg.css?v=101">
 </head>
 <body>
     <div id="buzz-img">
