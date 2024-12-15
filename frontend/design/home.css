@@ -309,10 +309,10 @@ li:hover .arrow, li:hover .profile-arrow {
     padding: 10px;
 }
 
-.news-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
-  gap: 1.5em; /* Space between items */
+section.body-cont .news-container {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* Default to 2 columns */
+  gap: 1.5em !important; /* Space between items */
   justify-content: center; /* Center the items horizontally */
   margin-top: 2em;
   padding: 0 1em; /* Optional: Padding for alignment */
@@ -330,7 +330,7 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 .news-image img {
-  width: 100%;
+  width: 50%;
   height: 100px; /* Fixed height for uniformity */
   object-fit: cover; /* Ensures proper scaling and cropping */
   display: block;
