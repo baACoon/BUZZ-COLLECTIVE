@@ -22,7 +22,10 @@ if (isset($_SESSION['success'])) {
     <title>Buzz & Collective - Settings</title>
     <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="Designs/settings.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -42,12 +45,24 @@ if (isset($_SESSION['success'])) {
             </a>
         </div>
         <nav>
-            <ul>
+            <ul class="links">
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
-                <li><a href="admin-aboutus.php">About Us</a></li>
+                <li>
+                    <a href="services.php">Services</a><span class="notification-dot"></span>
+                    <i class='bx bxs-chevron-down arrow  '></i>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        <li><a href="appointment-fee.php">Appointment Fee</a></li>
+                    </ul>
+                <li>
+                    <a href="admin-aboutus.php">About Us</a>
+                    <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        <li><a href="aboutus.php">Barbers</a></li>
+                        <li><a href="aboutushiring.php">Hiring</a></li>
+                    </ul>
+                </li>
                 <li><a href="news.php">News</a></li>
                 <li><a href="admin-branches.php">Branches</a></li>
                 <li><a href="settings.php">Settings</a></li>
