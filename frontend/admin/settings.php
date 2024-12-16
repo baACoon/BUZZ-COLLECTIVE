@@ -38,38 +38,38 @@ if (isset($_SESSION['success'])) {
     </div>
 
     <aside class="sidebar" id="sidebar">
-        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
-        <div class="logo">
-            <a href="../admin/admin-home.php">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
-            </a>
-        </div>
-        <nav>
-            <ul class="links">
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-                <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                <li class="services">
-                    <a href="services.php">Services</a><span class="notification-dot"></span>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                    <ul class="htmlCss-sub-menu sub-menu">
-                        <li><a href="appointment-fee.php">Appointment Fee</a></li>
-                    </ul>
-                </li>
-                <li class="about-us">
-                    <a href="admin-aboutus.php">About Us</a>
-                    <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-                    <ul class="htmlCss-sub-menu sub-menu">
-                        <li><a href="aboutus.php">Barbers</a></li>
-                        <li><a href="aboutushiring.php">Hiring</a></li>
-                    </ul>
-                </li>
-                <li><a href="news.php">News</a></li>
-                <li><a href="admin-branches.php">Branches</a></li>
-                <li><a href="settings.php">Settings</a></li>
-            </ul>
-        </nav>
-    </aside>
+    <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
+    <div class="logo">
+        <a href="../admin/admin-home.php">
+            <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+        </a>
+    </div>
+    <nav>
+        <ul class="links">
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+            <li><a href="admin-barber.php">Barbers' Schedule</a></li>
+            <li class="services">
+                <a href="services.php">Services</a><span class="notification-dot"></span>
+                <i class='bx bxs-chevron-down arrow'></i>
+                <ul class="htmlCss-sub-menu sub-menu">
+                    <li><a href="appointment-fee.php">Appointment Fee</a></li>
+                </ul>
+            </li>
+            <li class="about-us">
+                <a href="admin-aboutus.php">About Us</a>
+                <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+                <ul class="htmlCss-sub-menu sub-menu">
+                    <li><a href="aboutus.php">Barbers</a></li>
+                    <li><a href="aboutushiring.php">Hiring</a></li>
+                </ul>
+            </li>
+            <li><a href="news.php">News</a></li>
+            <li><a href="admin-branches.php">Branches</a></li>
+            <li><a href="settings.php">Settings</a></li>
+        </ul>
+    </nav>
+</aside>
 
 
     <div class="settings-content">

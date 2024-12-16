@@ -23,7 +23,6 @@ body {
     padding-top: 20px;
     z-index: 999;
 }
-
 i.bx-menu{
     display: none;
     order: 2; 
@@ -113,7 +112,7 @@ i.bx-menu{
     font-weight: bold;
 } */
 
-/* Ensure that the submenus are hidden by default */
+
 .htmlCss-sub-menu {
     display: none;
     list-style-type: none;
@@ -121,15 +120,16 @@ i.bx-menu{
     margin: 0;
 }
 
-/* Display the submenu when hovering over the Services or About Us list item */
+/* Show submenu when hovering over Services or About Us */
 .services:hover .htmlCss-sub-menu,
 .about-us:hover .htmlCss-sub-menu {
-    display: block; /* Show submenu on hover */
+    display: block;
     position: absolute;
-    top: 100%; /* Position submenu below the parent item */
+    top: 100%;
     left: 0;
-    background-color: #333; /* Optional: background color for the submenu */
-    width: 100%; /* Ensures the submenu spans the full width of the parent item */
+    background-color: #333;
+    width: 100%;
+    z-index: 2;
 }
 
 /* Style for submenu links */
@@ -141,17 +141,16 @@ i.bx-menu{
 
 /* Submenu link hover effect */
 .htmlCss-sub-menu li a:hover {
-    background-color: #f73201; /* Change color on hover */
+    background-color: #f73201;
 }
 
-/* Optional: make the submenu appear in the same position on both services and about-us */
+/* Optional: Ensure submenus are consistently styled */
 .services .htmlCss-sub-menu,
 .about-us .htmlCss-sub-menu {
-    min-width: 200px; /* Optional: ensure consistent width for the submenu */
-    z-index: 2; /* Ensure the submenu is above other elements */
+    min-width: 200px;
 }
 
-/* Arrow rotation effect for About Us and Services */
+/* Rotate arrow on hover */
 .services .arrow,
 .about-us .arrow {
     transition: transform 0.3s ease;
@@ -159,9 +158,8 @@ i.bx-menu{
 
 .services:hover .arrow,
 .about-us:hover .arrow {
-    transform: rotate(180deg); /* Rotate the arrow on hover */
+    transform: rotate(180deg);
 }
-
 /* back button  */
 .back-button i{
     font-size: 1.2rem; 
