@@ -37,8 +37,8 @@ if (isset($_SESSION['success'])) {
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
 
-    <aside class="sidebar"  id="sidebar">
-        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
         <div class="logo">
             <a href="../admin/admin-home.php">
                 <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
@@ -49,15 +49,16 @@ if (isset($_SESSION['success'])) {
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                <li>
+                <li class="services">
                     <a href="services.php">Services</a><span class="notification-dot"></span>
-                    <i class='bx bxs-chevron-down arrow  '></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                     <ul class="htmlCss-sub-menu sub-menu">
                         <li><a href="appointment-fee.php">Appointment Fee</a></li>
                     </ul>
-                <li>
+                </li>
+                <li class="about-us">
                     <a href="admin-aboutus.php">About Us</a>
-                    <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                    <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
                     <ul class="htmlCss-sub-menu sub-menu">
                         <li><a href="aboutus.php">Barbers</a></li>
                         <li><a href="aboutushiring.php">Hiring</a></li>
@@ -69,6 +70,7 @@ if (isset($_SESSION['success'])) {
             </ul>
         </nav>
     </aside>
+
 
     <div class="settings-content">
         <div class="settings-header">

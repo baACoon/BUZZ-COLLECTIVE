@@ -121,32 +121,25 @@ i.bx-menu{
     margin: 0;
 }
 
-.htmlCss-main-menu li {
-    position: relative;
-}
-
-.htmlCss-main-menu li:hover .htmlCss-sub-menu {
-    display: block; /* Show submenu on hover */
+.services:hover .htmlCss-sub-menu,
+.about-us:hover .htmlCss-sub-menu {
+    display: block; /* Show submenu when hovering over Services or About Us */
     position: absolute;
     top: 100%; /* Position submenu below the parent item */
     left: 0;
     background-color: #333; /* Optional: background color for the submenu */
 }
 
+/* Style for submenu links */
 .htmlCss-sub-menu li a {
     color: white;
     padding: 10px;
     text-decoration: none;
 }
 
+/* Submenu link hover effect */
 .htmlCss-sub-menu li a:hover {
     background-color: #f73201; /* Change color on hover */
-}
-
-/* Ensure submenus only appear when hovering over the parent menu item */
-.about-us:hover .htmlCss-sub-menu,
-.services:hover .htmlCss-sub-menu {
-    display: block; /* Display the submenu */
 }
 
 /* back button  */
