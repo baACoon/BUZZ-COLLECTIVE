@@ -113,22 +113,28 @@ i.bx-menu{
     font-weight: bold;
 } */
 
+/* Ensure the parent li items are relatively positioned */
+.services, .about-us {
+    position: relative;
+}
+
 /* Ensure that the submenus are hidden by default */
 .htmlCss-sub-menu {
     display: none;
     list-style-type: none;
     padding: 0;
     margin: 0;
+    position: absolute; /* This will position the submenu below the parent */
+    top: 100%; /* Ensure it appears below the parent item */
+    left: 0;
+    background-color: #333; /* Optional: background color for the submenu */
+    min-width: 200px; /* Optional: ensure consistent width for the submenu */
 }
 
 /* Display the submenu when hovering over the Services or About Us list item */
 .services:hover .htmlCss-sub-menu,
 .about-us:hover .htmlCss-sub-menu {
     display: block; /* Show submenu on hover */
-    position: absolute;
-    top: 100%; /* Position submenu below the parent item */
-    left: 0;
-    background-color: #333; /* Optional: background color for the submenu */
 }
 
 /* Style for submenu links */
@@ -143,10 +149,17 @@ i.bx-menu{
     background-color: #f73201; /* Change color on hover */
 }
 
-/* Optional: make the submenu appear in the same position on both services and about-us */
-.services .htmlCss-sub-menu,
-.about-us .htmlCss-sub-menu {
-    min-width: 200px; /* Optional: ensure consistent width for the submenu */
+/* Optional: add transition for smoother appearance */
+.htmlCss-sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.services:hover .htmlCss-sub-menu,
+.about-us:hover .htmlCss-sub-menu {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* back button  */
