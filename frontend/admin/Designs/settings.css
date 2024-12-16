@@ -121,9 +121,10 @@ i.bx-menu{
     margin: 0;
 }
 
+/* Display the submenu when hovering over the Services or About Us list item */
 .services:hover .htmlCss-sub-menu,
 .about-us:hover .htmlCss-sub-menu {
-    display: block; /* Show submenu when hovering over Services or About Us */
+    display: block; /* Show submenu on hover */
     position: absolute;
     top: 100%; /* Position submenu below the parent item */
     left: 0;
@@ -140,6 +141,12 @@ i.bx-menu{
 /* Submenu link hover effect */
 .htmlCss-sub-menu li a:hover {
     background-color: #f73201; /* Change color on hover */
+}
+
+/* Optional: make the submenu appear in the same position on both services and about-us */
+.services .htmlCss-sub-menu,
+.about-us .htmlCss-sub-menu {
+    min-width: 200px; /* Optional: ensure consistent width for the submenu */
 }
 
 /* back button  */
