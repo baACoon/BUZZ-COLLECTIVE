@@ -98,6 +98,8 @@ i.bx-menu{
     padding: 10px 0;
     margin: 10px;
     text-align: left;
+    position: relative; /* Added to ensure submenu is positioned correctly */
+
 }
 
 .sidebar nav ul li a {
@@ -118,18 +120,17 @@ i.bx-menu{
     list-style-type: none;
     padding: 0;
     margin: 0;
+    position: absolute;
+    top: 100%; /* Ensure submenu is below the parent */
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 9999; /* Make sure it's on top */
 }
 
-/* Show submenu when hovering over Services or About Us */
 .services:hover .htmlCss-sub-menu,
 .about-us:hover .htmlCss-sub-menu {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    width: 100%;
-    z-index: 2;
+    display: block; /* Show the submenu when hovering */
 }
 
 /* Style for submenu links */
@@ -144,7 +145,7 @@ i.bx-menu{
     background-color: #f73201;
 }
 
-/* Optional: Ensure submenus are consistently styled */
+/* Optional: Set min-width to maintain consistent layout */
 .services .htmlCss-sub-menu,
 .about-us .htmlCss-sub-menu {
     min-width: 200px;
@@ -158,7 +159,7 @@ i.bx-menu{
 
 .services:hover .arrow,
 .about-us:hover .arrow {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Rotate the arrow on hover */
 }
 /* back button  */
 .back-button i{
