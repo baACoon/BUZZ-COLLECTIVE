@@ -106,7 +106,48 @@ i.bx-menu{
     text-decoration: none;
 }
 
+/*.sidebar nav ul li a:hover {
+    color: #f73201; 
+    padding-left: 10px;
+    transition: padding-left 0.2s ease;
+    font-weight: bold;
+} */
 
+/* Ensure that the submenus are hidden by default */
+.htmlCss-sub-menu {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.htmlCss-main-menu li {
+    position: relative;
+}
+
+.htmlCss-main-menu li:hover .htmlCss-sub-menu {
+    display: block; /* Show submenu on hover */
+    position: absolute;
+    top: 100%; /* Position submenu below the parent item */
+    left: 0;
+    background-color: #333; /* Optional: background color for the submenu */
+}
+
+.htmlCss-sub-menu li a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.htmlCss-sub-menu li a:hover {
+    background-color: #f73201; /* Change color on hover */
+}
+
+/* Ensure submenus only appear when hovering over the parent menu item */
+.about-us:hover .htmlCss-sub-menu,
+.services:hover .htmlCss-sub-menu {
+    display: block; /* Display the submenu */
+}
 
 /* back button  */
 .back-button i{
