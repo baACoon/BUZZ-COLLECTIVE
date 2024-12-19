@@ -115,8 +115,9 @@ i.bx-menu{
 } */
 
 
-.htmlCss-sub-menu {
-    display: none;
+.services .htmlCss-sub-menu,
+.about-us .htmlCss-sub-menu {
+    display: none; /* Hide submenu by default */
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -126,6 +127,7 @@ i.bx-menu{
     width: 100%;
     background-color: #333;
     z-index: 9999; /* Make sure it's on top */
+    transition: display 0.3s ease; /* Smooth transition */
 }
 
 .services:hover .htmlCss-sub-menu,
