@@ -133,7 +133,7 @@ $db->close();
                 background.style.display = 'none';
             }
         </script>
-        <main>
+        
             <div class="bgimage">
             </div>
             <div class="v79368">
@@ -194,8 +194,7 @@ $db->close();
                 <h2>SERVE THE COMMUNITY WITH SOME FRESH LOOKS!</h2>
                 <a href="../frontend/aboutushiring.php">More Info</a>
             </section>
-            </main>
-            
+
             <footer>
                 <div class="footer-content">
                     <div class="footer-left">
