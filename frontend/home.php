@@ -173,16 +173,21 @@ $db->close();
             <section class="barber-selection">
                 <!-- Barbers' IMAGE -->
                 <div class="barber-sched-img">
-                    <img src="design/image/SCHEDULE.png" alt="">
+                    <img src="design/image/SCHEDULE.png" alt="Barbers Schedule">
                 </div>
 
                 <!-- Barbers' DAYS and Availability Section -->
                 <div class="barber-months">
-                <h1 class="date">(<?php echo date('F j', strtotime($startDate)) . ' - ' . date('F j, Y', strtotime($endDate)); ?>)</h1>
+                    <h1 class="date">
+                        (<?php echo date('F j', strtotime($startDate)) . ' - ' . date('F j, Y', strtotime($endDate)); ?>)
+                    </h1>
                 </div>
-                <div id="availability"></div> <!-- Dito for displaying lang din db to client side and vice versa-->
 
-                <button class="barber-button"><a href="appointment.php">BOOK AN APPOINTMENT</a></button><br>
+                <div id="availability"></div> <!-- Placeholder for availability -->
+
+                <button class="barber-button">
+                    <a href="appointment.php">BOOK AN APPOINTMENT</a>
+                </button>
             </section>
               <!-- BUZZIN  -->
               <section class="buzzin-barber" id="buzzbarber">
