@@ -288,7 +288,7 @@ $db->close();
                 let html = '';
                 daysOfWeek.forEach(day => {
                     html += `<div class="day-row">
-                        <strong>${day}:</strong><br>
+                        <strong>${day}:</strong>
                         <div class="barbers-row">`;
 
                     const availableBarbers = availableBarbersByDay[day];
@@ -301,8 +301,9 @@ $db->close();
                         html += `<span class="no-barbers">No barbers available</span>`;
                     }
 
-                    html += '</div></div><br>';
+                    html += '</div></div>'; // Close barbers-row and day-row
                 });
+
 
                 availabilityDiv.innerHTML = html;
             } else {
@@ -321,113 +322,88 @@ $db->close();
         <!-- CSS TO SA BARBERS Availability (Dito mo nalang siguro iadjust yung design. Baka kasi magulo sa back e^^) -->
             <style> 
             #availability {
-                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
                 margin-top: 20px;
                 padding: 10px;
-                display: flex; /* Enable flex layout for day and barbers */
-                align-items: flex-start; /* Align items to the top */
-                justify-content: center; /* Center align the content */
-                flex-wrap: wrap; /* Allow wrapping for smaller screens */
-                gap: 20px; /* Add spacing between day and barbers */
             }
 
             /* Day Row */
             .day-row {
-                text-transform: uppercase;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 10px;
+                background-color: #f9f9f9; /* Subtle background for day-row */
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for day row */
+            }
+
+            /* Day Label */
+            .day-row strong {
+                flex: 0 0 150px; /* Fixed width for day name */
                 font-weight: bold;
-                font-size: 1.2rem; /* Adjust font size for better readability */
-                text-align: left; /* Align text to the left */
-                flex: 1 1 200px; /* Allow the day-row to adjust dynamically */
-                max-width: 300px; /* Limit the maximum width */
+                font-size: 1.2rem;
+                color: #333;
+                text-align: left;
             }
 
             /* Barbers Row */
             .barbers-row {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Dynamic columns for barbers */
-                gap: 10px; /* Add spacing between barbers */
-                flex: 2 1 300px; /* Allow the barbers-row to adjust dynamically */
-                max-width: 800px; /* Limit the maximum width */
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                flex: 1; /* Expand to take up remaining space */
+                align-items: center;
             }
 
             /* Barber Item */
             .barber {
-                padding: 10px;
-                text-align: center;
-                background-color: #f8f8f8; /* Subtle background for visual distinction */
-                border-radius: 8px; /* Rounded corners */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+                padding: 5px 10px;
+                background-color: #4CAF50; /* Green for available barbers */
+                color: white;
+                border-radius: 4px;
                 font-size: 0.9rem;
+                text-align: center;
+                white-space: nowrap;
+                flex: 0 1 auto; /* Flexible width */
             }
 
             /* No Barbers Placeholder */
             .no-barbers {
-                grid-column: span 6; /* Take up the entire row if no barbers */
+                padding: 5px 10px;
+                background-color: #ccc;
+                color: #666;
+                border-radius: 4px;
+                font-size: 0.9rem;
                 text-align: center;
-                font-style: italic;
-                color: #777; /* Muted color for placeholder text */
+                flex: 0 1 auto; /* Flexible width */
             }
 
             /* Responsive Adjustments */
-            @media (max-width: 920px) {
-                #availability {
-                    flex-direction: column; /* Stack the day and barbers on top of each other */
-                    align-items: center; /* Center-align items */
-                }
-
-                .day-row {
-                    font-size: 1rem; /* Reduce font size for smaller screens */
-                    text-align: center; /* Center align text for smaller screens */
-                }
-
-                .barbers-row {
-                    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust grid size dynamically */
-                    gap: 8px;
-                }
-
-                .barber {
-                    font-size: 0.8rem; /* Adjust font size */
-                    padding: 8px;
-                }
-            }
-
             @media (max-width: 768px) {
                 .day-row {
-                    font-size: 0.9rem;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .day-row strong {
+                    flex: 1; /* Make the day name take full width */
+                    font-size: 1rem;
                 }
 
                 .barbers-row {
-                    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Further adjust for smaller screens */
-                    gap: 6px;
+                    justify-content: flex-start;
                 }
 
-                .barber {
-                    font-size: 0.75rem;
-                    padding: 6px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .day-row {
-                    font-size: 0.8rem;
-                    text-align: center; /* Center-align text */
-                    margin-bottom: 10px; /* Add spacing between day and barbers */
-                }
-
-                .barbers-row {
-                    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Compact layout */
-                    gap: 5px;
-                }
-
-                .barber {
-                    font-size: 0.7rem;
-                    padding: 5px;
-                }
-
+                .barber,
                 .no-barbers {
-                    font-size: 0.8rem; /* Adjust placeholder text size */
+                    font-size: 0.8rem;
                 }
             }
+
 
 
 
