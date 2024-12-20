@@ -324,26 +324,30 @@ $db->close();
                 position: relative;
                 margin-top: 20px;
                 padding: 10px;
-                text-align: center; /* Center-align for better visual balance */
+                display: flex; /* Enable flex layout for day and barbers */
+                align-items: flex-start; /* Align items to the top */
+                justify-content: center; /* Center align the content */
+                flex-wrap: wrap; /* Allow wrapping for smaller screens */
+                gap: 20px; /* Add spacing between day and barbers */
             }
 
             /* Day Row */
             .day-row {
-                position: relative;
-                margin: 20px auto; /* Center the row */
                 text-transform: uppercase;
                 font-weight: bold;
                 font-size: 1.2rem; /* Adjust font size for better readability */
-                text-align: center;
+                text-align: left; /* Align text to the left */
+                flex: 1 1 200px; /* Allow the day-row to adjust dynamically */
+                max-width: 300px; /* Limit the maximum width */
             }
 
             /* Barbers Row */
             .barbers-row {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Dynamic columns based on screen size */
-                gap: 10px; /* Add spacing between items */
-                margin: 0 auto; /* Center the grid */
-                padding: 0 10px;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Dynamic columns for barbers */
+                gap: 10px; /* Add spacing between barbers */
+                flex: 2 1 300px; /* Allow the barbers-row to adjust dynamically */
+                max-width: 800px; /* Limit the maximum width */
             }
 
             /* Barber Item */
@@ -366,12 +370,18 @@ $db->close();
 
             /* Responsive Adjustments */
             @media (max-width: 920px) {
+                #availability {
+                    flex-direction: column; /* Stack the day and barbers on top of each other */
+                    align-items: center; /* Center-align items */
+                }
+
                 .day-row {
                     font-size: 1rem; /* Reduce font size for smaller screens */
+                    text-align: center; /* Center align text for smaller screens */
                 }
 
                 .barbers-row {
-                    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust grid size dynamically */
+                    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust grid size dynamically */
                     gap: 8px;
                 }
 
@@ -387,7 +397,7 @@ $db->close();
                 }
 
                 .barbers-row {
-                    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Further adjust for smaller screens */
+                    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Further adjust for smaller screens */
                     gap: 6px;
                 }
 
@@ -400,7 +410,8 @@ $db->close();
             @media (max-width: 480px) {
                 .day-row {
                     font-size: 0.8rem;
-                    margin: 10px auto; /* Reduce spacing */
+                    text-align: center; /* Center-align text */
+                    margin-bottom: 10px; /* Add spacing between day and barbers */
                 }
 
                 .barbers-row {
@@ -417,6 +428,7 @@ $db->close();
                     font-size: 0.8rem; /* Adjust placeholder text size */
                 }
             }
+
 
 
             </style>
