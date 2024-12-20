@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    font-family: "Montserrat", sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  flex: 1; /* Ensures the main content takes up remaining space */
+  display: flex;
+  flex-direction: column; /* Stack sections vertically */
+  align-items: center; /* Center-align sections */
+  gap: 20px; /* Add spacing between sections */
+  width: 100%;
+  padding: 20px;
 }
 
 /* NAVBAR */
@@ -164,14 +174,14 @@ li:hover .arrow, li:hover .profile-arrow {
   display: none;
   }
 
-.bgimage{
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh; /* Adjust height for smaller screens */
-    overflow: hidden;
-    
-    
+.bgimage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Adjust alignment if needed */
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
 }
 
 /*  */
@@ -300,23 +310,24 @@ li:hover .arrow, li:hover .profile-arrow {
     justify-content: center;
 }
 
-.body-cont{
-    width: 100%;
-    height: auto;
-    background-color: #222222;
-    position: absolute;
-    overflow: hidden;
-    padding: 10px;
-  
+.body-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #222222;
+  padding: 20px;
+  margin: 20px 0; /* Ensure spacing between sections */
+  box-sizing: border-box;
 }
 .news-container {
-  display: flex; /* Use flexbox for layout */
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  gap: 1.5em; /* Add spacing between items */
-  justify-content: center; /* Center items horizontally */
-  margin: 0 auto; /* Center align the container */
-  padding: 2em; /* Add padding to the container */
-  max-width: 1200px; /* Set a max width for the container */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .news-item {
@@ -394,36 +405,28 @@ li:hover .arrow, li:hover .profile-arrow {
 
 
 /* barber selection */
-.barber-selection{
-    width: 100%;
-    height: 950px;
-    background-color: #ffffff;
-    position: absolute;
-    top: 2091px;
-    left: 0px;
-    overflow: hidden;
+.barber-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 20px 0;
 }
 
-/* barber IMAGE */
-.barber-sched-img img{ 
-    z-index: 0;
-    width: auto;
-    height: 88vh;
-    margin-top: -50px;
-    position: absolute;
+.barber-sched-img img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* barber MONTHS */
-.barber-months{
-    width: 425px;
-    color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 7em;
-    left: 32em;
-    font-weight: Bold;
-    font-size: 25px;
-    opacity: 1;
-    text-align: center;
+.barber-months {
+  margin: 20px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 
@@ -457,9 +460,6 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* barber APPOINTMENT BUTTON */
 .barber-button{
-    display: inline-block;
-    margin-top: 22em;
-    margin-left: 27em;
     color: white;
     background-color: #E43A19; 
     font-size: 20px;
@@ -468,7 +468,11 @@ li:hover .arrow, li:hover .profile-arrow {
     border-radius: 30px; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+  }
 
 .barber-button a{
     color: white; 
@@ -481,15 +485,22 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* BUZZIN BARBER */
 .buzzin-barber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  padding: 20px;
   background-color: #222222;
-  padding: 3em 1em; /* Add padding for spacing */
-  text-align: center; /* Center-align all content */
-  overflow: hidden; /* Avoid overflow issues */
-  position: relative; /* Remove absolute positioning */
-  margin-top: 2em; /* Ensure there's spacing between sections */
-  margin-bottom: 1em;
-  top: 190em;
+  color: white;
+  box-sizing: border-box;
+  margin: 20px 0;
+}
+
+.buzzin-img img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
 }
 
 .buzzin-barber h1 {
@@ -500,13 +511,7 @@ li:hover .arrow, li:hover .profile-arrow {
   text-align: center;
 }
 
-.buzzin-img img {
-  width: 70%; /* Adjust image size relative to container */
-  max-width: 500px; /* Limit maximum size */
-  height: auto; /* Maintain aspect ratio */
-  margin: 1em auto; /* Center the image vertically and horizontally */
-  display: block;
-}
+
 
 .buzzin-barber h2 {
   color: rgba(255, 255, 255, 1);
@@ -587,20 +592,21 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* FOOTER */
 
-  footer {
-    background-color: #222; 
-    color: white;
-    padding: 20px;
-    position: relative;
-    margin-top: 220em;
-  }
+footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  background-color: #222222;
+  color: white;
+  padding: 20px;
+  width: 100%;
+}
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .footer-logo{
