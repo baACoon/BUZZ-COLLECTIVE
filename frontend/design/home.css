@@ -164,14 +164,18 @@ li:hover .arrow, li:hover .profile-arrow {
   display: none;
   }
 
-.bgimage{
+.bgimage {
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh; /* Adjust height for smaller screens */
-    overflow: hidden;
-    
-    
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Adjust alignment if needed */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
 }
 
 /*  */
@@ -295,28 +299,28 @@ li:hover .arrow, li:hover .profile-arrow {
     color: white;
     font-size: 25px;
     font-weight: 500;
-    margin-top: 1em;
+    margin: 1em;
     display: flex;
     justify-content: center;
 }
 
-.body-cont{
+.body-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: auto;
     background-color: #222222;
-    position: absolute;
-    overflow: hidden;
-    padding: 10px;
-  
+    padding: 20px;
+    box-sizing: border-box;
 }
 .news-container {
-  display: flex; /* Use flexbox for layout */
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  gap: 1.5em; /* Add spacing between items */
-  justify-content: center; /* Center items horizontally */
-  margin: 0 auto; /* Center align the container */
-  padding: 2em; /* Add padding to the container */
-  max-width: 1200px; /* Set a max width for the container */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .news-item {
@@ -360,7 +364,7 @@ li:hover .arrow, li:hover .profile-arrow {
 .news-details p {
   font-size: 1em;
   line-height: 1.5;
-  color: #ddd; /* Muted text for descriptions */
+  color: #fff; /* Muted text for descriptions */
 }
 
 /* Responsive adjustments */
@@ -395,77 +399,70 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* barber selection */
 .barber-selection{
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 950px;
     background-color: #ffffff;
     position: absolute;
-    top: 2091px;
-    left: 0px;
+    padding:20px;
     overflow: hidden;
+   box-sizing: border-box;
 }
 
 /* barber IMAGE */
-.barber-sched-img img{ 
-    z-index: 0;
-    width: auto;
-    height: 88vh;
-    margin-top: -50px;
-    position: absolute;
+.barber-sched-img img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* barber MONTHS */
-.barber-months{
-    width: 425px;
-    color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 7em;
-    left: 32em;
-    font-weight: Bold;
-    font-size: 25px;
-    opacity: 1;
+.barber-months {
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
 }
 
-
-
 /* barber DAYS */
 .barber-days{
-    width: 280px;
+    width: 100%; /* Make it flexible */
     color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 400px;
-    left: 210px;
-    font-weight: Bold;
-    font-size: 30px;
+    font-weight: bold;
+    font-size: 1.5rem;
     text-align: left;
+    margin: 20px 0; /* Add spacing */
+    padding: 0 20px; /* Add padding for better alignment */
 }
 
 /* barber NAMES */
 .barber-names {
-    width: 800px;
+    width: 100%; /* Make it flexible */
     color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 400px;
-    left: 600px;
-    font-size: 30px;
+    font-size: 1.5rem;
     text-align: left;
+    margin: 20px 0; /* Add spacing */
+    padding: 0 20px; /* Add padding for better alignment */
 }
 
 .barber-names h1{
     font-weight: 300;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 /* barber APPOINTMENT BUTTON */
 .barber-button{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 22em;
-    margin-left: 27em;
     color: white;
     background-color: #E43A19; 
     font-size: 20px;
     padding: 13px 17px;
     border: none; 
-    border-radius: 30px; 
+    border-radius: 15px; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 }
@@ -501,11 +498,8 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 .buzzin-img img {
-  width: 70%; /* Adjust image size relative to container */
-  max-width: 500px; /* Limit maximum size */
-  height: auto; /* Maintain aspect ratio */
-  margin: 1em auto; /* Center the image vertically and horizontally */
-  display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .buzzin-barber h2 {
