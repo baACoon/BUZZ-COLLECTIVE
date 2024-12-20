@@ -332,31 +332,32 @@ $db->close();
             /* Day Row */
             .day-row {
                 display: flex;
-                flex-wrap: wrap;
                 align-items: center;
                 gap: 10px;
                 background-color: #f9f9f9; /* Subtle background for day-row */
                 padding: 10px;
                 border-radius: 5px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for day row */
+                overflow: hidden; /* Ensure clean layout */
             }
 
             /* Day Label */
             .day-row strong {
-                flex: 0 0 150px; /* Fixed width for day name */
+                flex-shrink: 0; /* Prevent shrinking of day name */
                 font-weight: bold;
                 font-size: 1.2rem;
                 color: #333;
                 text-align: left;
+                width: 150px; /* Fixed width for day name */
             }
 
             /* Barbers Row */
             .barbers-row {
                 display: flex;
-                flex-wrap: wrap;
+                overflow-x: auto; /* Enable horizontal scrolling */
                 gap: 8px;
+                padding: 5px 0;
                 flex: 1; /* Expand to take up remaining space */
-                align-items: center;
             }
 
             /* Barber Item */
@@ -367,8 +368,8 @@ $db->close();
                 border-radius: 4px;
                 font-size: 0.9rem;
                 text-align: center;
-                white-space: nowrap;
-                flex: 0 1 auto; /* Flexible width */
+                white-space: nowrap; /* Prevent wrapping of text */
+                flex-shrink: 0; /* Prevent shrinking of items */
             }
 
             /* No Barbers Placeholder */
@@ -379,7 +380,21 @@ $db->close();
                 border-radius: 4px;
                 font-size: 0.9rem;
                 text-align: center;
-                flex: 0 1 auto; /* Flexible width */
+                flex-shrink: 0; /* Prevent shrinking of placeholder */
+            }
+
+            /* Scrollbar Styling */
+            .barbers-row::-webkit-scrollbar {
+                height: 6px; /* Adjust scrollbar height */
+            }
+
+            .barbers-row::-webkit-scrollbar-thumb {
+                background: #aaa;
+                border-radius: 3px;
+            }
+
+            .barbers-row::-webkit-scrollbar-thumb:hover {
+                background: #888;
             }
 
             /* Responsive Adjustments */
@@ -390,7 +405,7 @@ $db->close();
                 }
 
                 .day-row strong {
-                    flex: 1; /* Make the day name take full width */
+                    width: auto; /* Allow full width for smaller screens */
                     font-size: 1rem;
                 }
 
@@ -403,6 +418,7 @@ $db->close();
                     font-size: 0.8rem;
                 }
             }
+
 
 
 
