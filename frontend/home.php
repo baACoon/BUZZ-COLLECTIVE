@@ -133,7 +133,7 @@ $db->close();
                 background.style.display = 'none';
             }
         </script>
-        
+
             <div class="bgimage">
             </div>
             <div class="v79368">
@@ -320,78 +320,102 @@ $db->close();
 
         <!-- CSS TO SA BARBERS Availability (Dito mo nalang siguro iadjust yung design. Baka kasi magulo sa back e^^) -->
             <style> 
-            #availability{
+            #availability {
                 position: relative;
-                top: 170px;
+                margin-top: 20px;
+                padding: 10px;
+                text-align: center; /* Center-align for better visual balance */
             }
+
+            /* Day Row */
             .day-row {
                 position: relative;
-                top:17em;
-                margin-bottom: 20px;
-                margin-left: 10em;
+                margin: 20px auto; /* Center the row */
                 text-transform: uppercase;
-
+                font-weight: bold;
+                font-size: 1.2rem; /* Adjust font size for better readability */
+                text-align: center;
             }
 
+            /* Barbers Row */
             .barbers-row {
                 display: grid;
-                grid-template-columns: repeat(6, 1fr); /* 6 columns for 6 barbers */
-                gap: 5px;
-                margin-left: 10em;
-                margin-top: -1.6em;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Dynamic columns based on screen size */
+                gap: 10px; /* Add spacing between items */
+                margin: 0 auto; /* Center the grid */
+                padding: 0 10px;
             }
 
+            /* Barber Item */
             .barber {
-                padding: 5px;
+                padding: 10px;
                 text-align: center;
-
+                background-color: #f8f8f8; /* Subtle background for visual distinction */
+                border-radius: 8px; /* Rounded corners */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+                font-size: 0.9rem;
             }
 
+            /* No Barbers Placeholder */
             .no-barbers {
                 grid-column: span 6; /* Take up the entire row if no barbers */
                 text-align: center;
                 font-style: italic;
-            }
-            .news-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
+                color: #777; /* Muted color for placeholder text */
             }
 
-            .news-item {
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                overflow: hidden;
-                width: calc(33.33% - 20px);
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s ease;
+            /* Responsive Adjustments */
+            @media (max-width: 920px) {
+                .day-row {
+                    font-size: 1rem; /* Reduce font size for smaller screens */
+                }
+
+                .barbers-row {
+                    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust grid size dynamically */
+                    gap: 8px;
+                }
+
+                .barber {
+                    font-size: 0.8rem; /* Adjust font size */
+                    padding: 8px;
+                }
             }
 
-            .news-item:hover {
-                transform: translateY(-5px);
+            @media (max-width: 768px) {
+                .day-row {
+                    font-size: 0.9rem;
+                }
+
+                .barbers-row {
+                    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Further adjust for smaller screens */
+                    gap: 6px;
+                }
+
+                .barber {
+                    font-size: 0.75rem;
+                    padding: 6px;
+                }
             }
 
-            .news-image img {
-                width: 100%;
-                height: auto;
-            }
+            @media (max-width: 480px) {
+                .day-row {
+                    font-size: 0.8rem;
+                    margin: 10px auto; /* Reduce spacing */
+                }
 
-            .news-details {
-                padding: 10px;
-            }
+                .barbers-row {
+                    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Compact layout */
+                    gap: 5px;
+                }
 
-            .news-details h2, .news-details h3 {
-                margin: 0;
-            }
+                .barber {
+                    font-size: 0.7rem;
+                    padding: 5px;
+                }
 
-            .news-details p {
-                margin-top: 10px;
-                color: #555;
-            }
-
-            .error, .no-news {
-                color: red;
-                font-style: italic;
+                .no-barbers {
+                    font-size: 0.8rem; /* Adjust placeholder text size */
+                }
             }
 
 
