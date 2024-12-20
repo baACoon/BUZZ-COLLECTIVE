@@ -183,7 +183,7 @@ li:hover .arrow, li:hover .profile-arrow {
     color: white;
     font-size: 50px;
     position: absolute;
-    top: 7em;
+    top: 5em;
     left: 3em;
 }
 
@@ -205,7 +205,7 @@ li:hover .arrow, li:hover .profile-arrow {
     font-size: 20px;
     padding: 13px 17px;
     border: none; 
-    border-radius: 30px; 
+    border-radius: 10px; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 }
@@ -229,7 +229,7 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .v79368 {
       font-size: 30px; /* Reduce font size */
-      top: 5em;
+      top: 7em;
       left: 2em;
   }
 
@@ -279,8 +279,14 @@ li:hover .arrow, li:hover .profile-arrow {
       height: 60vh;
   }
 
+  .v79368{
+    top: 5em;
+    padding: 10px;
+  }
+
   .day, .time {
       font-size: 18px;
+      
   }
 
   .text {
@@ -289,7 +295,7 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .appntmnt-button {
       font-size: 14px;
-      padding: 6px 10px;
+      padding: 10px;
   }
 }
 
@@ -427,7 +433,7 @@ li:hover .arrow, li:hover .profile-arrow {
 #availability {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
   margin-top: 20px;
   padding: 10px;
 }
@@ -436,11 +442,8 @@ li:hover .arrow, li:hover .profile-arrow {
 .day-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: #f9f9f9; /* Subtle background for day-row */
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for day row */
+  gap: 100px;
+  padding: 10px 100px;
   overflow: hidden; /* Ensure clean layout */
 }
 
@@ -448,7 +451,8 @@ li:hover .arrow, li:hover .profile-arrow {
 .day-row strong {
   flex-shrink: 0; /* Prevent shrinking of day name */
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
   color: #333;
   text-align: left;
   width: 150px; /* Fixed width for day name */
@@ -458,7 +462,7 @@ li:hover .arrow, li:hover .profile-arrow {
 .barbers-row {
   display: flex;
   overflow-x: auto; /* Enable horizontal scrolling */
-  gap: 8px;
+  gap: 10px;
   padding: 5px 0;
   flex: 1; /* Expand to take up remaining space */
 }
@@ -466,10 +470,9 @@ li:hover .arrow, li:hover .profile-arrow {
 /* Barber Item */
 .barber {
   padding: 5px 10px;
-  background-color: #4CAF50; /* Green for available barbers */
-  color: white;
+  color: #1a1110;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   text-align: center;
   white-space: nowrap; /* Prevent wrapping of text */
   flex-shrink: 0; /* Prevent shrinking of items */
@@ -501,15 +504,18 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .day-row {
       flex-direction: column;
       align-items: flex-start;
+    padding:auto 500px;
+    align-items: center;
+    gap: 10px;
   }
 
   .day-row strong {
       width: auto; /* Allow full width for smaller screens */
-      font-size: 1rem;
+      font-size: 1.2rem;
   }
 
   .barbers-row {
@@ -518,7 +524,7 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .barber,
   .no-barbers {
-      font-size: 0.8rem;
+      font-size: 1.3rem;
   }
 }
 
