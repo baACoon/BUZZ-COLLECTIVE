@@ -404,17 +404,16 @@ li:hover .arrow, li:hover .profile-arrow {
 
 
 /* barber selection */
-.barber-selection{
-  display: flex;
-  flex-direction: column;
+.barber-selection {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     background-color: #ffffff;
-    position: absolute;
-    padding:20px;
-    overflow: hidden;
-   box-sizing: border-box;
+    padding: 40px 20px; /* Add padding for spacing */
+    margin-bottom: 20px; /* Add margin to separate from the next section */
+    box-sizing: border-box;
 }
 
 /* barber IMAGE */
@@ -444,6 +443,7 @@ li:hover .arrow, li:hover .profile-arrow {
   align-items: center;
   gap: 100px;
   padding: 10px 100px;
+  
   overflow: hidden; /* Ensure clean layout */
 }
 
@@ -511,6 +511,11 @@ li:hover .arrow, li:hover .profile-arrow {
     padding:auto 500px;
     align-items: center;
     gap: 10px;
+    background-color: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+    border-radius:10px;
+    
   }
 
   .day-row strong {
@@ -529,20 +534,21 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 /* barber APPOINTMENT BUTTON */
-.barber-button{
+.barber-button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
     color: white;
-    background-color: #E43A19; 
+    background-color: #E43A19;
     font-size: 20px;
     padding: 13px 17px;
-    border: none; 
-    border-radius: 15px; 
-    cursor: pointer; 
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 }
+
 
 .barber-button a{
     color: white; 
@@ -555,23 +561,20 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* BUZZIN BARBER */
 .buzzin-barber {
-  width: 100%;
-  background-color: #222222;
-  padding: 3em 1em; /* Add padding for spacing */
-  text-align: center; /* Center-align all content */
-  overflow: hidden; /* Avoid overflow issues */
-  position: relative; /* Remove absolute positioning */
-  margin-top: 2em; /* Ensure there's spacing between sections */
-  margin-bottom: 1em;
-  top: 190em;
+    width: 100%;
+    background-color: #222222;
+    padding: 40px 20px; /* Adjust padding for consistent spacing */
+    text-align: center;
+    margin-bottom: 20px; /* Add margin to separate from the footer */
+    box-sizing: border-box;
 }
 
+
 .buzzin-barber h1 {
-  color: rgba(255, 255, 255, 1);
-  font-weight: bold;
-  font-size: 50px;
-  margin-bottom: 1em;
-  text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 1em;
 }
 
 .buzzin-img img {
@@ -588,13 +591,13 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 .buzzin-barber a {
-  color: rgba(255, 255, 255, 1);
-  font-style: italic;
-  font-size: 28px;
-  text-decoration: underline;
-  display: inline-block;
-  margin-top: 1em;
-  cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    font-style: italic;
+    font-size: 28px;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 1em;
+    cursor: pointer;
 }
 
 /* Responsive Adjustments */
@@ -658,25 +661,24 @@ li:hover .arrow, li:hover .profile-arrow {
 
 /* FOOTER */
 
-  footer {
-    background-color: #222; 
+ footer {
+    background-color: #222;
     color: white;
     padding: 20px;
-    position: relative;
-    margin-top: 220em;
-  }
+    margin-top: 20px; /* Add margin to separate from previous section */
+    box-sizing: border-box;
+}
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 50px;
     align-items: flex-start;
 }
 
 .footer-logo{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     margin-top: 5px; 
 }
 
@@ -686,6 +688,10 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .footer-left1 h2 {
   color: white;
+}
+
+.footer-left, .footer-left1, .footer-right {
+    margin: 5px;
 }
 
 .footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
@@ -744,20 +750,17 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .social-media {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align items to the center vertically */
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .social-media a {
-    margin-right: 40px; 
+    margin-right: 40px;
 }
 
 .social-media i {
-    font-size: 35px; /* Adjust icon size */
+    font-size: 35px;
 }
 
 
@@ -922,5 +925,17 @@ li:hover .arrow, li:hover .profile-arrow {
         height: 100px;
         width: 100px;
         margin: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 20px 0;
+        text-align: center;
     }
 }
