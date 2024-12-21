@@ -31,12 +31,15 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzz & Collective - Appointment Fee</title>
     <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="Designs/admin-appointmentfee.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -48,29 +51,39 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
 
-    <aside class="sidebar"  id="sidebar">
-        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
         <div class="logo">
-            <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            <a href="../admin/admin-home.php">
+                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            </a>
         </div>
         <nav>
-            <ul>
+            <ul class="links">
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-                <li>
-                    <a href="services.php">Services<span class="notification-dot"></span></a>
+                <li class="services">
+                    <a href="services.php">Services</a><span class="notification-dot"></span>
+                    <i class='bx bxs-chevron-down arrow'></i>
                     <ul class="htmlCss-sub-menu sub-menu">
                         <li><a href="appointment-fee.php">Appointment Fee</a></li>
                     </ul>
                 </li>
-                <li><a href="admin-aboutus.php">About Us</a></li>
+                <li class="about-us">
+                    <a href="admin-aboutus.php">About Us</a>
+                    <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        <li><a href="aboutus.php">Barbers</a></li>
+                        <li><a href="aboutushiring.php">Hiring</a></li>
+                    </ul>
+                </li>
                 <li><a href="news.php">News</a></li>
                 <li><a href="admin-branches.php">Branches</a></li>
                 <li><a href="settings.php">Settings</a></li>
             </ul>
         </nav>
-    </aside>
+    </aside>    
 
     <div class="appointment-fee-content">
         <div class="appoinment-fee-header">
