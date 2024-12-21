@@ -121,11 +121,15 @@ i.bx-menu{
     list-style: none;
     padding: 10px 0;
     margin: 0;
-    top: -50%; /* Adjust position relative to the parent menu */
+    border-radius: 4px;
+    top: 100%; /* Adjust position relative to the parent menu */
     left: 0;
     width: 200px; /* Adjust width as needed */
-    z-index: 999;
+    z-index: 450;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
     transform: translateY(-10px); /* Raise the submenu slightly */
 }
 
@@ -140,7 +144,7 @@ i.bx-menu{
 }
 
 .htmlCss-sub-menu li a:hover {
-    background-color: #f73201;
+    color: #f73201;
 }
 
 /* Show submenu on hover */
