@@ -185,11 +185,20 @@ i.bx-menu{
     margin-left: 300px;
     margin-top: 30px;
     text-align: left;
+    position: relative;
 }
 
-.appointment-fee-content h1{
-    font-size: 2rem;
+.appointment-fee-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.appointment-fee-header h1{
+    margin: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
 }
 
 .update-btn{

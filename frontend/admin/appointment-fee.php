@@ -85,8 +85,9 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
         </nav>
     </aside>
 
+
     <div class="appointment-fee-content">
-        <div class="appoinment-fee-header">
+        <div class="appointment-fee-header">
             <h1>Update Appointment Fee</h1>
             <?php if ($successMessage): ?>
                 <p style="color: green;"><?php echo $successMessage; ?></p>
@@ -99,28 +100,28 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
             <label for="new_appointment_fee">New Appointment Fee:</label>
             <input type="number" step="0.01" id="new_appointment_fee" name="new_appointment_fee" value="<?php echo $currentFee; ?>" required>
             <button type="submit" class="update-btn">Update Fee</button>
-    </form>
+        </form>
     </div>
 
     <script>
-// menu icon
-document.addEventListener('DOMContentLoaded', function() {
-    const menuIcon = document.getElementById('menu-icon');
-    const sidebar = document.querySelector('.sidebar');
-    const closeSidebar = document.getElementById('close-sidebar');
+    // menu icon
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuIcon = document.getElementById('menu-icon');
+        const sidebar = document.querySelector('.sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
 
-    // Add click event to the menu icon
-    menuIcon.addEventListener('click', function() {
-        sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
-        closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
-    });
+        // Add click event to the menu icon
+        menuIcon.addEventListener('click', function() {
+            sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+            closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+        });
 
-    // Add click event to the close button
-    closeSidebar.addEventListener('click', function() {
-        sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
-        closeSidebar.style.display = 'none'; // Hide close button
+        // Add click event to the close button
+        closeSidebar.addEventListener('click', function() {
+            sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+            closeSidebar.style.display = 'none'; // Hide close button
+        });
     });
-});
  
 </script>
     
