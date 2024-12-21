@@ -22,6 +22,7 @@ body {
     color: white;
     padding-top: 20px;
     z-index: 999;
+    overflow-y: scroll;
 }
 i.bx-menu{
     display: none;
@@ -114,46 +115,45 @@ i.bx-menu{
     font-weight: bold;
 } */
 
-
-.services .htmlCss-sub-menu,
-.about-us .htmlCss-sub-menu {
-    display: none; /* Hide submenu by default */
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.htmlCss-sub-menu {
+    display: none; /* Initially hidden */
     position: absolute;
-    top: 100%; /* Ensure submenu is below the parent */
-    left: 0;
-    width: 100%;
     background-color: #333;
-    z-index: 9999; /* Make sure it's on top */
-    transition: display 0.3s ease; /* Smooth transition */
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    top: 100%; /* Position it below the parent link */
+    left: 0;
+    width: 200px; /* Adjust width as needed */
+    z-index: 999;
 }
 
-.services:hover .htmlCss-sub-menu,
-.about-us:hover .htmlCss-sub-menu {
-    display: block; /* Show the submenu when hovering */
+.htmlCss-sub-menu li {
+    padding: 10px 15px;
 }
 
-/* Style for submenu links */
 .htmlCss-sub-menu li a {
     color: white;
-    padding: 10px;
     text-decoration: none;
+    display: block;
 }
 
-/* Submenu link hover effect */
 .htmlCss-sub-menu li a:hover {
     background-color: #f73201;
 }
 
-/* Optional: Set min-width to maintain consistent layout */
-.services .htmlCss-sub-menu,
-.about-us .htmlCss-sub-menu {
-    min-width: 200px;
+/* Show submenu on hover */
+.services:hover .htmlCss-sub-menu,
+.about-us:hover .htmlCss-sub-menu {
+    display: block; /* Show submenu */
 }
 
-/* Rotate arrow on hover */
+/* Parent list items */
+.links li {
+    position: relative; 
+}
+
+/* Optional arrow rotation */
 .services .arrow,
 .about-us .arrow {
     transition: transform 0.3s ease;
@@ -161,8 +161,9 @@ i.bx-menu{
 
 .services:hover .arrow,
 .about-us:hover .arrow {
-    transform: rotate(180deg); /* Rotate the arrow on hover */
+    transform: rotate(180deg); /* Rotate arrow when hovered */
 }
+
 /* back button  */
 .back-button i{
     font-size: 1.2rem; 
