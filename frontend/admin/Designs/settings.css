@@ -121,7 +121,7 @@ i.bx-menu{
     list-style: none;
     padding: 10px 0;
     margin: 0;
-    top: 10%; /* Adjust position relative to the parent menu */
+    top: -50%; /* Adjust position relative to the parent menu */
     left: 0;
     width: 200px; /* Adjust width as needed */
     z-index: 999;
@@ -140,7 +140,7 @@ i.bx-menu{
 }
 
 .htmlCss-sub-menu li a:hover {
-    color: #f73201;
+    background-color: #f73201;
 }
 
 /* Show submenu on hover */
