@@ -43,8 +43,8 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <!-- Navbar for screens below 768px -->
-    <div class="mobile-navbar" id="mobile-navbar">
+     <!-- Navbar for screens below 768px -->
+     <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
             <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
@@ -83,7 +83,7 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
                 <li><a href="settings.php">Settings</a></li>
             </ul>
         </nav>
-    </aside>    
+    </aside>
 
     <div class="appointment-fee-content">
         <div class="appoinment-fee-header">
@@ -102,7 +102,27 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
     </form>
     </div>
 
-    
+    <script>
+// menu icon
+document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const sidebar = document.querySelector('.sidebar');
+    const closeSidebar = document.getElementById('close-sidebar');
+
+    // Add click event to the menu icon
+    menuIcon.addEventListener('click', function() {
+        sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+        closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+    });
+
+    // Add click event to the close button
+    closeSidebar.addEventListener('click', function() {
+        sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+        closeSidebar.style.display = 'none'; // Hide close button
+    });
+});
+ 
+</script>
     
 </body>
 </html>
