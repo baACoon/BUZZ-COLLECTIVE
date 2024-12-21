@@ -22,7 +22,6 @@ body {
     color: white;
     padding-top: 20px;
     z-index: 999;
-    overflow-y: scroll;
 }
 i.bx-menu{
     display: none;
@@ -114,18 +113,20 @@ i.bx-menu{
     transition: padding-left 0.2s ease;
     font-weight: bold;
 } */
-
+/* Submenu style */
 .htmlCss-sub-menu {
     display: none; /* Initially hidden */
     position: absolute;
-    background-color: #333;
+    background-color: red;
     list-style: none;
     padding: 10px 0;
     margin: 0;
-    top: 100%; /* Position it below the parent link */
+    top: 10%; /* Adjust position relative to the parent menu */
     left: 0;
     width: 200px; /* Adjust width as needed */
     z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
+    transform: translateY(-10px); /* Raise the submenu slightly */
 }
 
 .htmlCss-sub-menu li {
@@ -150,10 +151,10 @@ i.bx-menu{
 
 /* Parent list items */
 .links li {
-    position: relative; 
+    position: relative; /* Required for submenu positioning */
 }
 
-/* Optional arrow rotation */
+/* Arrow rotation for better UX */
 .services .arrow,
 .about-us .arrow {
     transition: transform 0.3s ease;
@@ -163,6 +164,7 @@ i.bx-menu{
 .about-us:hover .arrow {
     transform: rotate(180deg); /* Rotate arrow when hovered */
 }
+
 
 /* back button  */
 .back-button i{
