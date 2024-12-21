@@ -91,7 +91,7 @@ if ($result) {
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-         <!-- Navbar for screens below 768px -->
+    <!-- Navbar for screens below 768px -->
     <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
             <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
@@ -99,7 +99,7 @@ if ($result) {
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
 
-    <aside cl-ass="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
         <div class="logo">
             <a href="../admin/admin-home.php">
@@ -132,6 +132,7 @@ if ($result) {
             </ul>
         </nav>
     </aside>
+
 
     <div class="news-content">
         <div class="news-header">
