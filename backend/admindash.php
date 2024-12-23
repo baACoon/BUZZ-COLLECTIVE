@@ -67,46 +67,42 @@ if (isset($_POST['log_admin'])) {
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
-            $stored_password = $admin['password']; // Get the stored password from the database
+            $stored_password = $admin['password'];
 
             if (password_verify($password, $stored_password)) {
-                // Password matches the hash, log the user in
+                echo "Login successful! Redirecting...";
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
             } else {
-                // Password mismatch
                 $errors[] = "Invalid username or password";
             }
         } else {
-            // Username not found
             $errors[] = "Invalid username or password";
         }
     }
 }
 
 // OPTIONAL: Password Hashing Fix Script
-// Run this code once to ensure all plaintext passwords in the database are hashed
-function hashPlaintextPasswords($db) {
-    $query = "SELECT id, password FROM admin";
-    $result = mysqli_query($db, $query);
+// Uncomment this function and the call below only to hash existing plaintext passwords once.
+// function hashPlaintextPasswords($db) {
+//     $query = "SELECT id, password FROM admin";
+//     $result = mysqli_query($db, $query);
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['id'];
-        $password = $row['password'];
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         $id = $row['id'];
+//         $password = $row['password'];
 
-        // Check if the password is already hashed
-        if (!password_get_info($password)['algo']) {
-            // Hash the plaintext password and update the record
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $update_query = "UPDATE admin SET password='$hashed_password' WHERE id=$id";
-            mysqli_query($db, $update_query);
-        }
-    }
-}
+//         if (!password_get_info($password)['algo']) {
+//             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+//             $update_query = "UPDATE admin SET password='$hashed_password' WHERE id=$id";
+//             mysqli_query($db, $update_query);
+//         }
+//     }
+// }
 
-// Uncomment the following line to run the password fix script (run it only once!)
-hashPlaintextPasswords($db);
+// Uncomment this line only to hash plaintext passwords once.
+// hashPlaintextPasswords($db);
 
 ?>
