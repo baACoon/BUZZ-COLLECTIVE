@@ -71,7 +71,7 @@ if (isset($_POST['log_admin'])) {
       $_SESSION['username'] = $username;
       $_SESSION['success'] = "You are now logged in";
       $_SESSION['show_popup'] = true; // Set popup flag
-      header('location: ../frontend/admin/admin-home.php');
+      header('location: admin-home.php');
       exit();
     } else {
       array_push($errors, "Wrong username/password combination");
@@ -81,7 +81,7 @@ if (isset($_POST['log_admin'])) {
   // If there are errors, store them in session and redirect back
   if (!empty($errors)) {
     $_SESSION['errors'] = $errors;
-    header('location: ../frontend/admin/admin-home.php'); // Redirect back to login
+    header('location: admin-home.php'); // Redirect back to login
     exit();
   }
 }
