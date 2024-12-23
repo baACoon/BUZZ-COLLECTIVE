@@ -66,21 +66,25 @@ if (isset($_POST['log_admin'])) {
         $result = mysqli_query($db, $query);
 
         if ($result && mysqli_num_rows($result) == 1) {
+            echo "Username found in database.<br>";
             $admin = mysqli_fetch_assoc($result);
             $stored_password = $admin['password'];
-
+        
             if (password_verify($password, $stored_password)) {
-                echo "Login successful! Redirecting...";
+                echo "Password matched! Logging in...<br>";
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
             } else {
+                echo "Password mismatch.<br>";
                 $errors[] = "Invalid username or password";
             }
         } else {
+            echo "Username not found in database.<br>";
             $errors[] = "Invalid username or password";
         }
+        
     }
 }
 
