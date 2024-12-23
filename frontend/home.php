@@ -115,8 +115,6 @@ $db->close();
 
             </div>
     </nav>
-
-
             <?php if (isset($_SESSION['show_popup'])) : ?>
                 <?php unset($_SESSION['show_popup']); // Unset the session variable after showing the popup ?>
                 <div class="pop-background" id="popBackground">
