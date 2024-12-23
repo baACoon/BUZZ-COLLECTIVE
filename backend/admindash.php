@@ -99,23 +99,23 @@ if (isset($_POST['log_admin'])) {
 
 // OPTIONAL: Password Hashing Fix Script
 // Uncomment this function and the call below only to hash existing plaintext passwords once.
- function hashPlaintextPasswords($db) {
-    $query = "SELECT id, password FROM admin";
-    $result = mysqli_query($db, $query);
+// function hashPlaintextPasswords($db) {
+//     $query = "SELECT id, password FROM admin";
+//     $result = mysqli_query($db, $query);
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['id'];
-       $password = $row['password'];
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         $id = $row['id'];
+//         $password = $row['password'];
 
-       if (!password_get_info($password)['algo']) {
-          $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-           $update_query = "UPDATE admin SET password='$hashed_password' WHERE id=$id";
-           mysqli_query($db, $update_query);
-       }
-   }
- }
+//         if (!password_get_info($password)['algo']) {
+//             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+//             $update_query = "UPDATE admin SET password='$hashed_password' WHERE id=$id";
+//             mysqli_query($db, $update_query);
+//         }
+//     }
+// }
 
 // Uncomment this line only to hash plaintext passwords once.
- hashPlaintextPasswords($db);
+// hashPlaintextPasswords($db);
 
 ?>
