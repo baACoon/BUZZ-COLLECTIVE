@@ -263,7 +263,7 @@ $db->close();
                 const startDate = urlParams.get('start_date') || '';
                 const endDate = urlParams.get('end_date') || '';
 
-                fetch('fetch_availability.php')
+                fetch('../frontend/fetch_availability.php')
         .then(response => response.json())
         .then(data => {
             const availabilityDiv = document.getElementById('availability');
