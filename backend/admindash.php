@@ -56,6 +56,9 @@ if (isset($_POST['log_admin'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
+     // Debug: Print POST data
+     var_dump($_POST);
+
     // Validate form inputs
     if (empty($username)) $errors[] = "Username is required";
     if (empty($password)) $errors[] = "Password is required";
@@ -67,6 +70,13 @@ if (isset($_POST['log_admin'])) {
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
+
+             // Debug: Print password comparison
+             var_dump([
+                'Entered Password' => $password,
+                'Stored Hash' => $admin['password'],
+                'Verification Result' => password_verify($password, $admin['password'])
+            ]);
             
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
