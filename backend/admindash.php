@@ -56,46 +56,26 @@ if (isset($_POST['log_admin'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    // Validate form inputs
     if (empty($username)) $errors[] = "Username is required";
     if (empty($password)) $errors[] = "Password is required";
 
     if (count($errors) == 0) {
-        // Fetch admin record by username
         $query = "SELECT * FROM admin WHERE username='$username'";
         $result = mysqli_query($db, $query);
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
-            
-            // Debug information
-            error_log('Login attempt - Username: ' . $username);
-            error_log('Stored hash: ' . $admin['password']);
-            
-            // Try password verification
+
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
-                header('Location: admin-home.php');
+                header('Location: ./admin-home.php');
                 exit();
             } else {
-                // Try with the plain password as a fallback
-                if ($password === $admin['password']) {
-                    // Update to hashed password
-                    $hashed = password_hash($password, PASSWORD_BCRYPT);
-                    $update = "UPDATE admin SET password='$hashed' WHERE username='$username'";
-                    mysqli_query($db, $update);
-                    
-                    $_SESSION['admin_username'] = $username;
-                    $_SESSION['success'] = "You are now logged in";
-                    header('Location: admin-home.php');
-                    exit();
-                } else {
-                    $errors[] = "Invalid username or password";
-                }
+                $errors[] = "Wrong username/password combination";
             }
         } else {
-            $errors[] = "Invalid username or password";
+            $errors[] = "Wrong username/password combination";
         }
     }
 }
