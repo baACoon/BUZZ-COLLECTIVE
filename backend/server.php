@@ -91,12 +91,21 @@ if (isset($_POST['login_user'])) {
     if (mysqli_num_rows($results) == 1) {
       $_SESSION['username'] = $username;
       $_SESSION['success'] = "You are now logged in";
-      $_SESSION['show_popup'] = true; //set popup flag
+      $_SESSION['show_popup'] = true; // Set popup flag
       header('location: ../frontend/home.php');
+      exit();
     } else {
       array_push($errors, "Wrong username/password combination");
     }
   }
+
+  // If there are errors, store them in session and redirect back
+  if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header('location: ../frontend/login.php'); // Redirect back to login
+    exit();
+  }
 }
+
 
 ?>

@@ -21,10 +21,12 @@ include('../backend/server.php');
     <div class="login-form">
       <h2>LOGIN</h2>
       <!-- Login form -->
-      <form method="post" action="../backend/server.php">
+      <form method="post" action="login.php"> <!-- Submit to self -->
         <?php 
-          // Include any error messages if present
-          if (file_exists('errors.php')) {
+          // Display error messages
+          if (isset($_SESSION['errors'])) {
+            $errors = $_SESSION['errors']; 
+            unset($_SESSION['errors']); // Clear errors after displaying
             include('errors.php'); 
           }
         ?>

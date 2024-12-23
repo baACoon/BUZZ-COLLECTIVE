@@ -164,21 +164,26 @@ li:hover .arrow, li:hover .profile-arrow {
   display: none;
   }
 
-.bgimage{
+.bgimage {
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh; /* Adjust height for smaller screens */
-    overflow: hidden;
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Adjust alignment if needed */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
 }
-
 
 /*  */
 .v79368{
     color: white;
     font-size: 50px;
     position: absolute;
-    top: 7em;
+    top: 5em;
     left: 3em;
 }
 
@@ -200,7 +205,7 @@ li:hover .arrow, li:hover .profile-arrow {
     font-size: 20px;
     padding: 13px 17px;
     border: none; 
-    border-radius: 30px; 
+    border-radius: 10px; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
 }
@@ -224,7 +229,7 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .v79368 {
       font-size: 30px; /* Reduce font size */
-      top: 5em;
+      top: 7em;
       left: 2em;
   }
 
@@ -251,12 +256,6 @@ li:hover .arrow, li:hover .profile-arrow {
       height: 70vh;
   }
 
-  .v79368 {
-      font-size: 25px;
-      top: 3em;
-      left: 1.5em;
-  }
-
   .day {
       font-size: 20px;
   }
@@ -280,14 +279,14 @@ li:hover .arrow, li:hover .profile-arrow {
       height: 60vh;
   }
 
-  .v79368 {
-      font-size: 20px;
-      top: 2em;
-      left: 1em;
+  .v79368{
+    top: 5em;
+    padding: 10px;
   }
 
   .day, .time {
       font-size: 18px;
+      
   }
 
   .text {
@@ -296,7 +295,7 @@ li:hover .arrow, li:hover .profile-arrow {
 
   .appntmnt-button {
       font-size: 14px;
-      padding: 6px 10px;
+      padding: 10px;
   }
 }
 
@@ -304,48 +303,59 @@ li:hover .arrow, li:hover .profile-arrow {
 /* NEWS AND DISCOUNT */
 .body-cont h1{
     color: white;
-    font-size: 50px;
-    margin-top: 1em;
-    margin-left: 2em;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 1em;
+    display: flex;
+    justify-content: center;
 }
 
-.body-cont{
+.body-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 1020px;
     background-color: #222222;
-    position: absolute;
-    top: 67em;
-    left: 0px;
-    overflow: hidden;
-
+    padding: 20px;
+    box-sizing: border-box;
 }
-/* News and Discounts Section */
 .news-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5em;
-  justify-content: center;
-  margin: 2em auto;
-  padding: 0 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .news-item {
-  flex: 1 1 auto;
-  background-color: #333;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  color: white;
+  background-color: #333; /* Background color */
+  color: white; /* Text color */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevent content overflow */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Distribute content evenly */
+  flex: 0 1 calc(30% - 1.5em); /* Two columns by default */
+  padding: 1em; /* Add padding inside each news item */
 }
 
 .news-image img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  width: 100%; /* Stretch the image to fit the width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Crop the image if necessary */
+  display: block;
 }
 
-.news-details h2, .news-details h3, .news-details p {
-  margin: 0.5em 0;
+.news-details {
+  padding: 1em; /* Add padding for text */
+}
+
+.news-details h2,
+.news-details h3 {
+  margin-bottom: 0.5em; /* Add spacing between elements */
 }
 
 .news-details h2 {
@@ -354,138 +364,191 @@ li:hover .arrow, li:hover .profile-arrow {
 
 .news-details h3 {
   font-size: 1.2em;
-  color: #bbb;
+  color: #bbb; /* Muted color for subtitles */
 }
 
 .news-details p {
   font-size: 1em;
-  color: #ddd;
+  line-height: 1.5;
+  color: #fff; /* Muted text for descriptions */
 }
 
-.no-news {
-  text-align: center;
-  font-size: 1.2em;
-  color: #bbb;
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .news-image img {
-      height: 150px;
+  .news-image{
+    display:none
+  }
+
+  .news-item {
+    flex: 0 1 calc(100% - 1.5em); /* Single column on smaller screens */
+    display:flex;
+    justify-content:center;
+  }
+
+  .news-details {
+    padding: 0.8em;
   }
 
   .news-details h2 {
-      font-size: 1.2em;
+    font-size: 1.2em;
   }
 
   .news-details h3 {
-      font-size: 1em;
+    font-size: 1em;
   }
 
   .news-details p {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
 }
 
-@media (max-width: 480px) {
-  .news-container {
-      grid-template-columns: 1fr;
-  }
 
-  .news-image img {
-      height: 120px;
-  }
-
-  .news-details h2 {
-      font-size: 1em;
-  }
-
-  .news-details h3 {
-      font-size: 0.9em;
-  }
-
-  .news-details p {
-      font-size: 0.8em;
-  }
-}
 /* barber selection */
-.barber-selection{
+.barber-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 950px;
     background-color: #ffffff;
-    position: absolute;
-    top: 2091px;
-    left: 0px;
-    overflow: hidden;
-    padding: 2em;
+    padding: 40px 20px; /* Add padding for spacing */
+    margin-bottom: 20px; /* Add margin to separate from the next section */
+    box-sizing: border-box;
 }
 
 /* barber IMAGE */
-.barber-sched-img img{ 
-    z-index: 0;
-    width: auto;
-    position: absolute;
+.barber-sched-img img {
     max-width: 100%;
     height: auto;
-    display: block;
-    margin: auto;
 }
 
 /* barber MONTHS */
-.barber-months{
-    width: 425px;
-    color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 7em;
-    left: 32em;
-    font-weight: Bold;
-    opacity: 1;
-    font-size: 1.2em;
+.barber-months {
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
-    margin-top: 1em;
 }
 
-
-
-/* barber DAYS */
-.barber-days{
-    width: 280px;
-    color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 400px;
-    left: 210px;
-    font-weight: Bold;
-    font-size: 30px;
-    text-align: left;
+#availability {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
-/* barber NAMES */
-.barber-names {
-    width: 800px;
-    color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 400px;
-    left: 600px;
-    font-size: 30px;
-    text-align: left;
+/* Day Row */
+.day-row {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 10px 100px;
+  
+  overflow: hidden; /* Ensure clean layout */
 }
 
-.barber-names h1{
-    font-weight: 300;
+/* Day Label */
+.day-row strong {
+  flex-shrink: 0; /* Prevent shrinking of day name */
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #333;
+  text-align: left;
+  width: 150px; /* Fixed width for day name */
+}
+
+/* Barbers Row */
+.barbers-row {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 10px;
+  padding: 5px 0;
+  flex: 1; /* Expand to take up remaining space */
+}
+
+/* Barber Item */
+.barber {
+  padding: 5px 10px;
+  color: #1a1110;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  text-align: center;
+  white-space: nowrap; /* Prevent wrapping of text */
+  flex-shrink: 0; /* Prevent shrinking of items */
+}
+
+/* No Barbers Placeholder */
+.no-barbers {
+  padding: 5px 10px;
+  background-color: #ccc;
+  color: #666;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  flex-shrink: 0; /* Prevent shrinking of placeholder */
+}
+
+/* Scrollbar Styling */
+.barbers-row::-webkit-scrollbar {
+  height: 6px; /* Adjust scrollbar height */
+}
+
+.barbers-row::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+
+.barbers-row::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .day-row {
+      flex-direction: column;
+      align-items: flex-start;
+    padding:auto 500px;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+    border-radius:10px;
+    
+  }
+
+  .day-row strong {
+      width: auto; /* Allow full width for smaller screens */
+      font-size: 1.2rem;
+  }
+
+  .barbers-row {
+      justify-content: flex-start;
+  }
+
+  .barber,
+  .no-barbers {
+      font-size: 1.3rem;
+  }
 }
 
 /* barber APPOINTMENT BUTTON */
-.barber-button{
+.barber-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
     color: white;
-    background-color: #E43A19; 
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer; 
+    background-color: #E43A19;
+    font-size: 20px;
+    padding: 13px 17px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow to the header */
-    margin: 2em auto;
-    display: block;
-    font-size: 16px;
-    padding: 10px 20px;
 }
+
 
 .barber-button a{
     color: white; 
@@ -497,115 +560,142 @@ li:hover .arrow, li:hover .profile-arrow {
 }
 
 /* BUZZIN BARBER */
-.buzzin-barber h1{
-    width: 631px;
-    color: rgba(255, 255, 255, 1);
-    position: absolute;
-    top: 1.5em;
-    left: 3em;
-    font-weight: Bold;
-    font-size: 50px;
-    text-align: center;
-}
 .buzzin-barber {
-  text-align: center;
-  padding: 3em 1em;
-  background-color: #222;
-  color: white;
+    width: 100%;
+    background-color: #222222;
+    padding: 40px 20px; /* Adjust padding for consistent spacing */
+    text-align: center;
+    margin-bottom: 20px; /* Add margin to separate from the footer */
+    box-sizing: border-box;
 }
 
+
 .buzzin-barber h1 {
-  font-size: 2em;
-  margin-bottom: 1em;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 1em;
 }
 
 .buzzin-img img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  margin: 1em auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .buzzin-barber h2 {
-  font-size: 1.5em;
-  margin-top: 1em;
+  color: rgba(255, 255, 255, 1);
+  font-weight: bold;
+  font-size: 40px;
+  margin: 1em 0;
+  text-align: center;
 }
 
 .buzzin-barber a {
-  font-size: 1.2em;
-  text-decoration: underline;
-  color: white;
-  margin-top: 1em;
-  display: inline-block;
+    color: rgba(255, 255, 255, 1);
+    font-style: italic;
+    font-size: 28px;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 920px) {
+  .buzzin-barber h1 {
+      font-size: 40px;
+  }
+
+  .buzzin-img img {
+      width: 80%;
+      max-width: 400px;
+  }
+
+  .buzzin-barber h2 {
+      font-size: 32px;
+  }
+
+  .buzzin-barber a {
+      font-size: 24px;
+  }
 }
 
 @media (max-width: 768px) {
   .buzzin-barber h1 {
-      font-size: 1.5em;
+      font-size: 32px;
+  }
+
+  .buzzin-img img {
+      width: 90%;
+      max-width: 350px;
   }
 
   .buzzin-barber h2 {
-      font-size: 1.2em;
+      font-size: 28px;
   }
 
   .buzzin-barber a {
-      font-size: 1em;
+      font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .buzzin-barber h1 {
-      font-size: 1.2em;
-  }
-
-  .buzzin-barber h2 {
-      font-size: 1em;
-  }
-
-  .buzzin-barber a {
-      font-size: 0.9em;
+      font-size: 28px;
   }
 
   .buzzin-img img {
+      width: 100%;
       max-width: 300px;
+  }
+
+  .buzzin-barber h2 {
+      font-size: 24px;
+  }
+
+  .buzzin-barber a {
+      font-size: 18px;
   }
 }
 
 
 /* FOOTER */
 
-footer {
-    background-color: #222; 
+ footer {
+    background-color: #222;
     color: white;
     padding: 20px;
-    position: relative;
-    margin-top: 180em;
+    margin-top: 20px; /* Add margin to separate from previous section */
+    box-sizing: border-box;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 50px;
     align-items: flex-start;
 }
 
 .footer-logo{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     margin-top: 5px; 
 }
 
 .footer-left, .footer-left1, .footer-right{
-    margin: 5px;
+  margin: 5px;
 }
 
 .footer-left1 h2 {
-    color: white;
+  color: white;
+}
+
+.footer-left, .footer-left1, .footer-right {
+    margin: 5px;
 }
 
 .footer-left1 p, .footer-left1 address, .footer-left1 form, .footer-left1{
-    margin: 10px 0 20px;
+  margin: 10px 0 20px;
 }
 
 .footer-left1 address p {
@@ -660,21 +750,17 @@ footer {
 
 .social-media {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Align items to the center vertically */
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
-    
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .social-media a {
-    margin-right: 40px; 
+    margin-right: 40px;
 }
 
 .social-media i {
-    font-size: 35px; /* Adjust icon size */
+    font-size: 35px;
 }
 
 
@@ -839,5 +925,17 @@ footer {
         height: 100px;
         width: 100px;
         margin: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 20px 0;
+        text-align: center;
     }
 }

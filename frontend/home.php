@@ -133,6 +133,7 @@ $db->close();
                 background.style.display = 'none';
             }
         </script>
+
             <div class="bgimage">
             </div>
             <div class="v79368">
@@ -144,15 +145,13 @@ $db->close();
             <!-- NEWS SELECTION -->
             <section class="body-cont">
                 <h1>NEWS AND DISCOUNTS</h1>
-
                 <?php if (!empty($news)): ?>
                     <div class="news-container">
                         <?php foreach ($news as $item): ?>
                             <div class="news-item">
                                 <div class="news-image">
-                                    <!-- Check if the poster path is not empty -->
                                     <?php if (!empty($item['poster'])): ?>
-                                        <img src=" <?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                        <img src="<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                                     <?php else: ?>
                                         <img src="design/image/default-placeholder.png" alt="Default Image">
                                     <?php endif; ?>
@@ -169,6 +168,8 @@ $db->close();
                     <p class="no-news">No news available at the moment. Stay tuned!</p>
                 <?php endif; ?>
             </section>
+
+
             <!-- Barbers' Availability Section -->
             <section class="barber-selection">
                 <!-- Barbers' IMAGE -->
@@ -185,48 +186,54 @@ $db->close();
                 <button class="barber-button"><a href="appointment.php">BOOK AN APPOINTMENT</a></button><br>
             </section>
               <!-- BUZZIN  -->
-            <section class="buzzin-barber" id="buzzbarber"> 
+              <section class="buzzin-barber" id="buzzbarber">
                 <h1>BE A BUZZIN' BARBER!</h1>
                 <div class="buzzin-img" id="buzzimg">
-                    <img src="design/image/stockphotos5.png" alt="">
+                    <img src="design/image/stockphotos5.png" alt="Buzzin Barber">
                 </div>
                 <h2>SERVE THE COMMUNITY WITH SOME FRESH LOOKS!</h2>
                 <a href="../frontend/aboutushiring.php">More Info</a>
             </section>
+
             <footer>
                 <div class="footer-content">
                     <div class="footer-left">
-                        <a href="aboutus.php"><img src="design/image/buzz.png" class="footer-logo" alt=""></a>
+                        <a href="aboutus.php"><img src="design/image/buzz.png" class="footer-logo" alt="Footer Logo"></a>
                     </div>
-
                     <div class="footer-left1">
                         <h3>SIGN UP FOR NEWS AND PROMOS</h3>
-                            <form>
-                                <input type="email" placeholder="buzzandcollective@gmail.com">  
-                                <button type="submit"><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></button>
-                            </form>
-                            <address>
-                                <p><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> <a href="https://www.google.com/maps/place/Buzz+%26+Collective/@14.4412671,120.9296644,13z/data=!4m20!1m13!4m12!1m4!2m2!1d121.0417152!2d14.49984!4e1!1m6!1m2!1s0x3397d3fd93f7bdc5:0x776c208c818a1b77!2sbuzz+and+collective!2m2!1d120.9390436!2d14.4256597!3m5!1s0x3397d3fd93f7bdc5:0x776c208c818a1b77!8m2!3d14.4256826!4d120.9390514!16s%2Fg%2F11qb5sx_vm?entry=ttu"> 89 Nueno Ave, Imus Cavite, Imus, Philippines, 4103</a></p>
-                                <p><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> buzzandcollective@gmail.com</p>
-                                <p><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 0995 451 5631</p>
-                            </address>
+                        <form>
+                            <input type="email" placeholder="buzzandcollective@gmail.com">
+                            <button type="submit">
+                                <i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
+                            </button>
+                        </form>
+                        <address>
+                            <p>
+                                <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+                                <a href="https://www.google.com/maps/place/Buzz+%26+Collective/...">89 Nueno Ave, Imus Cavite</a>
+                            </p>
+                            <p><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> buzzandcollective@gmail.com</p>
+                            <p><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 0995 451 5631</p>
+                        </address>
                     </div>
                     <div class="footer-right">
                         <h3>BUZZ & COLLECTIVES</h3>
                         <ul>
                             <li><a href="aboutus.php">About Us</a></li>
-                            <li><a href="aboutushiring.php">Be a Buzzing Barber</a></li>
+                            <li><a href="aboutushiring.php">Be a Buzzin Barber</a></li>
                             <li><a href="branches.php">Branches</a></li>
                             <li><a href="services.php">Services</a></li>
                         </ul>
                     </div>
                     <div class="social-media">
-                        <a href="https://www.instagram.com/buzzncollective?igsh=NTk4eTR5dHBzMThi"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a>
+                        <a href="https://www.instagram.com/buzzncollective"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a>
                         <a href="https://www.facebook.com/buzzncollective"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></a>
-                        <a href="https://www.tiktok.com/@buzzncollective?_t=8mhQewDUUCI&_r=1"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a>
+                        <a href="https://www.tiktok.com/@buzzncollective"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a>
                     </div>
                 </div>
             </footer>
+
 
             <script >
                 // sidebar open close js code
@@ -281,7 +288,7 @@ $db->close();
                 let html = '';
                 daysOfWeek.forEach(day => {
                     html += `<div class="day-row">
-                        <strong>${day}:</strong><br>
+                        <strong>${day}:</strong>
                         <div class="barbers-row">`;
 
                     const availableBarbers = availableBarbersByDay[day];
@@ -294,8 +301,9 @@ $db->close();
                         html += `<span class="no-barbers">No barbers available</span>`;
                     }
 
-                    html += '</div></div><br>';
+                    html += '</div></div>'; // Close barbers-row and day-row
                 });
+
 
                 availabilityDiv.innerHTML = html;
             } else {
@@ -310,84 +318,5 @@ $db->close();
 
             </script>
 
-
-        <!-- CSS TO SA BARBERS Availability (Dito mo nalang siguro iadjust yung design. Baka kasi magulo sa back e^^) -->
-            <style> 
-            #availability{
-                position: relative;
-                top: 170px;
-            }
-            .day-row {
-                position: relative;
-                top:17em;
-                margin-bottom: 20px;
-                margin-left: 10em;
-                text-transform: uppercase;
-
-            }
-
-            .barbers-row {
-                display: grid;
-                grid-template-columns: repeat(6, 1fr); /* 6 columns for 6 barbers */
-                gap: 5px;
-                margin-left: 10em;
-                margin-top: -1.6em;
-            }
-
-            .barber {
-                padding: 5px;
-                text-align: center;
-
-            }
-
-            .no-barbers {
-                grid-column: span 6; /* Take up the entire row if no barbers */
-                text-align: center;
-                font-style: italic;
-            }
-            .news-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-
-            .news-item {
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                overflow: hidden;
-                width: calc(33.33% - 20px);
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s ease;
-            }
-
-            .news-item:hover {
-                transform: translateY(-5px);
-            }
-
-            .news-image img {
-                width: 100%;
-                height: auto;
-            }
-
-            .news-details {
-                padding: 10px;
-            }
-
-            .news-details h2, .news-details h3 {
-                margin: 0;
-            }
-
-            .news-details p {
-                margin-top: 10px;
-                color: #555;
-            }
-
-            .error, .no-news {
-                color: red;
-                font-style: italic;
-            }
-
-
-            </style>
 </body>
 </html>
