@@ -56,29 +56,47 @@ if (isset($_POST['log_admin'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
+    // Validate form inputs
     if (empty($username)) $errors[] = "Username is required";
     if (empty($password)) $errors[] = "Password is required";
 
     if (count($errors) == 0) {
+        // Fetch admin record by username
         $query = "SELECT * FROM admin WHERE username='$username'";
         $result = mysqli_query($db, $query);
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
+            $stored_password = $admin['password']; // Get the stored password from the database
 
-            if (password_verify($password, $admin['password'])) {
+            if (password_verify($password, $stored_password)) {
+                // Password matches the hash, log the user in
+                $_SESSION['admin_username'] = $username;
+                $_SESSION['success'] = "You are now logged in";
+                header('Location: admin-home.php');
+                exit();
+            } elseif ($stored_password === $password) {
+                // Plain text password detected, hash it and update the database
+                $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+                $update_query = "UPDATE admin SET password='$hashed_password' WHERE username='$username'";
+                mysqli_query($db, $update_query);
+
+                // Log the user in
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
             } else {
-                $errors[] = "Wrong username/password combination";
+                // Password mismatch
+                $errors[] = "Password mismatch";
             }
         } else {
-            $errors[] = "Wrong username/password combination";
+            // Username not found
+            $errors[] = "Username not found";
         }
     }
 }
+
 // OPTIONAL: Password Hashing Fix Script
 // Uncomment this function and the call below only to hash existing plaintext passwords once.
 // function hashPlaintextPasswords($db) {
