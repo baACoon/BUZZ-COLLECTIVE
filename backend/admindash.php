@@ -56,9 +56,6 @@ if (isset($_POST['log_admin'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
-     // Debug: Print POST data
-     var_dump($_POST);
-
     // Validate form inputs
     if (empty($username)) $errors[] = "Username is required";
     if (empty($password)) $errors[] = "Password is required";
@@ -70,28 +67,38 @@ if (isset($_POST['log_admin'])) {
 
         if ($result && mysqli_num_rows($result) == 1) {
             $admin = mysqli_fetch_assoc($result);
-
-             // Debug: Print password comparison
-             var_dump([
-                'Entered Password' => $password,
-                'Stored Hash' => $admin['password'],
-                'Verification Result' => password_verify($password, $admin['password'])
-            ]);
             
+            // Debug information
+            error_log('Login attempt - Username: ' . $username);
+            error_log('Stored hash: ' . $admin['password']);
+            
+            // Try password verification
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
                 header('Location: admin-home.php');
                 exit();
             } else {
-                $errors[] = "Invalid username or password";
+                // Try with the plain password as a fallback
+                if ($password === $admin['password']) {
+                    // Update to hashed password
+                    $hashed = password_hash($password, PASSWORD_BCRYPT);
+                    $update = "UPDATE admin SET password='$hashed' WHERE username='$username'";
+                    mysqli_query($db, $update);
+                    
+                    $_SESSION['admin_username'] = $username;
+                    $_SESSION['success'] = "You are now logged in";
+                    header('Location: admin-home.php');
+                    exit();
+                } else {
+                    $errors[] = "Invalid username or password";
+                }
             }
         } else {
             $errors[] = "Invalid username or password";
         }
     }
 }
-
 // OPTIONAL: Password Hashing Fix Script
 // Uncomment this function and the call below only to hash existing plaintext passwords once.
 // function hashPlaintextPasswords($db) {

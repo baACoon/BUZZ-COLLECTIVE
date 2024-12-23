@@ -6,6 +6,14 @@ if (!isset($_SESSION['admin_username'])) {
     exit();
 }
 
+// Add this to the top of admin-home.php or create a logout.php
+if(isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['admin_username']);
+    header('location: admin_log.php');
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
