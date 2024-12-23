@@ -69,7 +69,7 @@ if (isset($_POST['log_admin'])) {
             if (password_verify($password, $admin['password'])) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['success'] = "You are now logged in";
-                header('Location: ./admin-home.php');
+                header('Location: admin-home.php');
                 exit();
             } else {
                 $errors[] = "Wrong username/password combination";
