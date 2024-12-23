@@ -116,7 +116,6 @@ if (isset($_GET['error'])) {
     <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
     <title>Barber Schedule</title>
 </head>
 <body>
