@@ -1,5 +1,5 @@
 <?php 
-include($_SERVER['DOCUMENT_ROOT'] . '/BUZZ-COLLECTIVE/backend/adminbarber.php'); 
+include($_SERVER['DOCUMENT_ROOT'] . '/../../backend/adminbarber.php'); 
 // Handle availability form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['availability'])) {
     $mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
@@ -68,11 +68,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['availability'])) {
 
             $mysqli->commit();
             $success = true;
-            header("Location: /BUZZ-COLLECTIVE/frontend/admin/admin-barber.php?start_date=$startDate&end_date=$endDate&success=true");
+            header("Location: admin-barber.php?start_date=$startDate&end_date=$endDate&success=true");
             exit;
         } catch (Exception $e) {
             $mysqli->rollback();
-            header("Location: /BUZZ-COLLECTIVE/frontend/admin/admin-barber.php?start_date=$startDate&end_date=$endDate&error=" . urlencode($e->getMessage()));
+            header("Location: admin-barber.php?start_date=$startDate&end_date=$endDate&error=" . urlencode($e->getMessage()));
             exit;
         }
     }
@@ -113,6 +113,7 @@ if (isset($_GET['error'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="/Designs/adminbarber.css">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
@@ -148,7 +149,7 @@ if (isset($_GET['error'])) {
         </nav>
     </aside>
     <div class="dropdown-container">
-        <form method="get" action="/BUZZ-COLLECTIVE/frontend/admin/admin-barber.php">
+        <form method="get" action="/admin-barber.php">
             <label for="start_date">Start Date:</label>
             <input type="date" id="start_date" name="start_date" value="<?php echo $startDate; ?>">
             <label for="end_date">End Date:</label>
@@ -230,7 +231,7 @@ if (isset($_GET['error'])) {
             </form>
 
             <!-- New form for editing barber names -->
-            <form id="barberNamesForm" method="post" action="/BUZZ-COLLECTIVE/backend/update_barbers_name.php" style="display: none;">
+            <form id="barberNamesForm" method="post" action="/../../backend/update_barbers_name.php" style="display: none;">
                 <!-- Add a button and input for new barber -->
                 <div class="add-barber-section">
                     <input type="text" id="newBarberName" placeholder="Enter new barber name">
@@ -335,7 +336,7 @@ if (isset($_GET['error'])) {
         addBarberButton.addEventListener('click', function() {
             const newBarberName = newBarberNameInput.value.trim();
             if (newBarberName) {
-                fetch('/BUZZ-COLLECTIVE/backend/update_barbers_name.php', {
+                fetch('/../../backend/update_barbers_name.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -368,7 +369,7 @@ if (isset($_GET['error'])) {
             const formData = new FormData(this);
             formData.append('action', 'update');
 
-            fetch('/BUZZ-COLLECTIVE/backend/update_barbers_name.php', {
+            fetch('/../../backend/update_barbers_name.php', {
                 method: 'POST',
                 body: formData
             })
@@ -396,7 +397,7 @@ if (isset($_GET['error'])) {
                 if (confirm('Are you sure you want to delete this barber?')) {
                     const barberName = this.getAttribute('data-barber');
                     
-                    fetch('/BUZZ-COLLECTIVE/backend/update_barbers_name.php', {
+                    fetch('/../../backend/update_barbers_name.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
