@@ -49,21 +49,8 @@ if (isset($_SESSION['success'])) {
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="admin-appointment.php">Appointment Bookings</a></li>
             <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-            <li class="services">
-                <a href="services.php">Services</a><span class="notification-dot"></span>
-                <i class='bx bxs-chevron-down arrow'></i>
-                <ul>
-                    <li><a href="appointment-fee.php">Appointment Fee</a></li>
-                </ul>
-            </li>
-            <li class="about-us">
-                <a href="admin-aboutus.php">About Us</a>
-                <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-                <ul>
-                    <li><a href="aboutus.php">Barbers</a></li>
-                    <li><a href="aboutushiring.php">Hiring</a></li>
-                </ul>
-            </li>
+            <li class="services"><a href="services.php">Services</a><span class="notification-dot"></span></li>
+            <li class="about-us"><a href="admin-aboutus.php">About Us</a></li>
             <li><a href="news.php">News</a></li>
             <li><a href="admin-branches.php">Branches</a></li>
             <li><a href="settings.php">Settings</a></li>
