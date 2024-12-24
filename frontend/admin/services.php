@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                 <li>
                     <a href="services.php">Services<span class="notification-dot"></span></a>
-                    <ul class="htmlCss-sub-menu sub-menu">
+                    <ul>
                         <li><a href="appointment-fee.php">Appointment Fee</a></li>
                     </ul>
                 </li>

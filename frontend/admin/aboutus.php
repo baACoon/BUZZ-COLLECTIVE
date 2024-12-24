@@ -115,10 +115,10 @@ $db->close();
                     <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
                     <li>
                         <a href="admin-aboutus.php">About Us</a>
-                        <ul class="htmlCss-sub-menu sub-menu">
-                                    <li><a href="aboutus.php">Barbers</a></li>
-                                    <li><a href="aboutushiring.php">Hiring</a></li>
-                                </ul>
+                        <ul>
+                            <li><a href="aboutus.php">Barbers</a></li>
+                                <li><a href="aboutushiring.php">Hiring</a></li>
+                            </ul>
                     </li>
                     <li><a href="news.php">News</a></li>
                     <li><a href="admin-branches.php">Branches</a></li>

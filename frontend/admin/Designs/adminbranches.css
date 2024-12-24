@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     font-family: "Montserrat", sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     background: #F5F5F5;
     color: #000000;
 }
+
 .sidebar {
     display: block;
     position: fixed;
@@ -18,59 +21,28 @@ body {
     background-color: #222222;
     color: white;
     padding-top: 20px;
+    z-index: 999;
 }
+
 i.bx-menu{
     display: none;
-    order: 2; 
-    font-size: 30px; 
-    color: #333; 
-    cursor: pointer; 
-    display: block; 
 }
+
 #close-sidebar {
-    font-size: 2rem; 
-    color: white; 
+    font-size: 30px;
+    color: white;
     text-decoration: none;
-    position: absolute; 
-    top: 0.93rem; 
-    right: 0.93rem; 
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
     cursor: pointer; 
-    transition: transform 0.3s ease; /* Smooth rotation transition */
+    transition: transform 0.3s ease; 
 }
+
 #close-sidebar:hover{
     color: #f73201;   
-    transform: rotate(90deg); /* Rotate the icon on hover */
+    transform: rotate(90deg);
 }
-
-/* Mobile Navbar (for screens below 768px) */
-.mobile-navbar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: #F8F8F8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 99;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.mobile-logo {
-    display: flex;
-    align-items: center;
-    margin-right: auto;
-}
-
-.mobile-logo img {
-    max-height: 25vh;
-    max-width: 25vw;
-    margin: 1rem;
-}
-
-
 .sidebar .logo{
     display: flex;
     justify-content: center; 
@@ -94,8 +66,6 @@ i.bx-menu{
     padding: 10px 0;
     margin: 10px;
     text-align: left;
-    position: relative; /* Added to ensure submenu is positioned correctly */
-
 }
 
 .sidebar nav ul li a {
@@ -104,71 +74,12 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    color: #f73201; 
+    background-color: #222222;
     padding-left: 10px;
-    transition: padding-left 0.2s ease;
-    font-weight: bold;
-} 
-/* Submenu style */
-.htmlCss-sub-menu {
-    display: none; /* Initially hidden */
-    position: absolute;
-    background-color: #333;
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    border-radius: 4px;
-    top: 100%; /* Adjust position relative to the parent menu */
-    left: 0;
-    width: 200px; /* Adjust width as needed */
-    z-index: 120;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s;
-    transform: translateY(-10px); /* Raise the submenu slightly */
 }
-
-.htmlCss-sub-menu li {
-    padding: 10px 15px;
-}
-
-.htmlCss-sub-menu li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-}
-
-/*.htmlCss-sub-menu li a:hover {
-    color: #f73201;
-} */
-
-/* Show submenu on hover */
-.services:hover .htmlCss-sub-menu,
-.about-us:hover .htmlCss-sub-menu {
-    display: block; /* Show submenu */
-}
-
-/* Parent list items */
-.links li {
-    position: relative; /* Required for submenu positioning */
-}
-
-/* Arrow rotation for better UX */
-.services .arrow,
-.about-us .arrow {
-    transition: transform 0.3s ease;
-}
-
-.services:hover .arrow,
-.about-us:hover .arrow {
-    transform: rotate(180deg); /* Rotate arrow when hovered */
-}
-
 
 /* back button  */
 .back-button i{
-    font-size: 1.2rem; 
     color: white;
     text-decoration: none;
     margin-left: 1em;
