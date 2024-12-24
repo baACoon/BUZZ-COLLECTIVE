@@ -21,59 +21,28 @@ body {
     background-color: #222222;
     color: white;
     padding-top: 20px;
+    z-index: 999;
 }
+
 i.bx-menu{
     display: none;
-    order: 2; 
-    font-size: 30px; 
-    color: #333; 
-    cursor: pointer; 
-    display: block; 
 }
+
 #close-sidebar {
-    font-size: 2rem; 
-    color: white; 
+    font-size: 30px;
+    color: white;
     text-decoration: none;
-    position: absolute; 
-    top: 0.93rem; 
-    right: 0.93rem; 
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
     cursor: pointer; 
-    transition: transform 0.3s ease; /* Smooth rotation transition */
+    transition: transform 0.3s ease; 
 }
+
 #close-sidebar:hover{
     color: #f73201;   
-    transform: rotate(90deg); /* Rotate the icon on hover */
+    transform: rotate(90deg);
 }
-
-/* Mobile Navbar (for screens below 768px) */
-.mobile-navbar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: #F8F8F8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 99;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.mobile-logo {
-    display: flex;
-    align-items: center;
-    margin-right: auto;
-}
-
-.mobile-logo img {
-    max-height: 25vh;
-    max-width: 25vw;
-    margin: 1rem;
-}
-
-
 .sidebar .logo{
     display: flex;
     justify-content: center; 
@@ -97,8 +66,6 @@ i.bx-menu{
     padding: 10px 0;
     margin: 10px;
     text-align: left;
-    position: relative; /* Added to ensure submenu is positioned correctly */
-
 }
 
 .sidebar nav ul li a {
@@ -107,71 +74,12 @@ i.bx-menu{
 }
 
 .sidebar nav ul li a:hover {
-    color: #f73201; 
+    background-color: #222222;
     padding-left: 10px;
-    transition: padding-left 0.2s ease;
-    font-weight: bold;
-} 
-/* Submenu style */
-.htmlCss-sub-menu {
-    display: none; /* Initially hidden */
-    position: absolute;
-    background-color: #333;
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    border-radius: 4px;
-    top: 100%; /* Adjust position relative to the parent menu */
-    left: 0;
-    width: 200px; /* Adjust width as needed */
-    z-index: 120;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s;
-    transform: translateY(-10px); /* Raise the submenu slightly */
 }
-
-.htmlCss-sub-menu li {
-    padding: 10px 15px;
-}
-
-.htmlCss-sub-menu li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-}
-
-/*.htmlCss-sub-menu li a:hover {
-    color: #f73201;
-} */
-
-/* Show submenu on hover */
-.services:hover .htmlCss-sub-menu,
-.about-us:hover .htmlCss-sub-menu {
-    display: block; /* Show submenu */
-}
-
-/* Parent list items */
-.links li {
-    position: relative; /* Required for submenu positioning */
-}
-
-/* Arrow rotation for better UX */
-.services .arrow,
-.about-us .arrow {
-    transition: transform 0.3s ease;
-}
-
-.services:hover .arrow,
-.about-us:hover .arrow {
-    transform: rotate(180deg); /* Rotate arrow when hovered */
-}
-
 
 /* back button  */
 .back-button i{
-    font-size: 1.2rem; 
     color: white;
     text-decoration: none;
     margin-left: 1em;
@@ -216,26 +124,21 @@ i.bx-menu{
 }
 
 .settings-btn button {
-    max-width: 900px;
+    width: 100%;
     padding: 10px;
     font-size: 1rem;
-    width: 200px;
-    height: 50px;
     border: none;
-    border-radius: 8px;
+    border-radius: 13px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 450;
 }
 .settings-btn .addnew{
-    background-color: rgb(61, 146, 65);
+    background-color: #4BD37B; 
     color: white;
 }
 .settings-btn .login{
-    background-color: #E43A19;
-    color: white;
-    padding-top: 15px;
-
+    background-color: #E43A19; 
 }
 
 .settings-btn a {
@@ -248,7 +151,7 @@ i.bx-menu{
     line-height: 1.5rem; 
 }
 .settings-btn button:hover {
-    background-color:  #222222;
+    opacity: 0.8;
 }
 #new-admin-container {
     display: none;
@@ -319,20 +222,13 @@ i.bx-menu{
 }
 
 .form-buttons button:hover {
-    background-color: #222222;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {
-    .mobile-navbar {
-        display: flex;
-    }
     .sidebar {
         display: none; 
-        right: 0; /* Aligns sidebar to the right */
-        transform: translateX(100%); /* Initially hides the sidebar */
-        transition: transform 0.3s ease;
     }
-
     .sidebar .logo img {
         margin-top: 15%;
         max-height: 100px;
@@ -345,20 +241,19 @@ i.bx-menu{
     i.bx-menu {
         display: block; 
         cursor: pointer;
-        font-size: 2.5rem; 
+        order: 2; 
+        font-size: 45px; 
         color: #333; 
+        cursor: pointer; 
+        display: block; 
         position: absolute;
-        right: 7%; /* Positioning to the right side */
-        top: 1.25rem; /* Adjusts vertical positioning */
+        left: 10%;
+        top: 5%;
     }
     /* Show the sidebar when the 'open' class is added */
     .sidebar.open {
         display: block; 
-        transform: translateX(0); /* Slide-in effect */
-    }
-    .mobile-logo img {
-        max-height: 15vh;
-        max-width: 15vh;
+        transition: transform 0.3s ease; 
     }
     .settings-content {
         margin-left: 50px;
@@ -372,13 +267,7 @@ i.bx-menu{
 
 @media (max-width: 480px){
     i.bx-menu{
-        font-size: 2.18rem;
-        right: 6%;
-    }
-    .mobile-logo img {
-        max-height: 13vh;
-        max-width: 13vh;
-        margin-left: -0.5rem;
+        font-size: 35px;
     }
     .settings-content {
         margin-left: 30px;

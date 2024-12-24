@@ -45,21 +45,21 @@ if (isset($_SESSION['success'])) {
         </a>
     </div>
     <nav>
-        <ul class="links">
+        <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="admin-appointment.php">Appointment Bookings</a></li>
             <li><a href="admin-barber.php">Barbers' Schedule</a></li>
             <li class="services">
                 <a href="services.php">Services</a><span class="notification-dot"></span>
                 <i class='bx bxs-chevron-down arrow'></i>
-                <ul class="htmlCss-sub-menu sub-menu">
+                <ul>
                     <li><a href="appointment-fee.php">Appointment Fee</a></li>
                 </ul>
             </li>
             <li class="about-us">
                 <a href="admin-aboutus.php">About Us</a>
                 <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-                <ul class="htmlCss-sub-menu sub-menu">
+                <ul>
                     <li><a href="aboutus.php">Barbers</a></li>
                     <li><a href="aboutushiring.php">Hiring</a></li>
                 </ul>
