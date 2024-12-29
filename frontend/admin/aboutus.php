@@ -101,7 +101,7 @@ $db->close();
         </div>
         
         <aside class="sidebar" id="sidebar">
-            <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
+            <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
             <div class="logo">
                 <a href="../admin/admin-home.php">
                     <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
@@ -114,19 +114,18 @@ $db->close();
                     <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                     <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
                     <li class="has-submenu">
-                        <a href="admin-aboutus.php" class="parent-menu">About Us</a>
+                        <a href="#" class="parent-menu">About Us</a>
                         <ul class="submenu">
                             <li><a href="aboutus.php">Barbers</a></li>
-                                <li><a href="aboutushiring.php">Hiring</a></li>
-                            </ul>
+                            <li><a href="aboutushiring.php">Hiring</a></li>
+                        </ul>
                     </li>
                     <li><a href="news.php">News</a></li>
                     <li><a href="admin-branches.php">Branches</a></li>
                     <li><a href="settings.php">Settings</a></li>
                 </ul>
             </nav>
-        </aside>
-
+</aside>
 
         <div class="aboutus-content">
             <h1>ABOUT US <span class="barberspan">BARBERS</span></h1>
@@ -250,23 +249,39 @@ $db->close();
             document.getElementById('currentImage').value = barber.image;
         }
 
-           // Get the parent menu and submenu
-            const parentMenu = document.querySelector('.parent-menu');
-            const submenu = document.querySelector('.submenu');
+        const parentMenu = document.querySelector('.parent-menu'); // About Us link
+        const submenu = document.querySelector('.submenu'); // Submenu under About Us
 
-            // Initially hide the submenu
-            submenu.style.display = 'none';
+        // Hide submenu initially
+        submenu.style.display = 'none';
 
-            // Add click event listener
-            parentMenu.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent the default link action
+        // Track the click state
+        let isSubmenuVisible = false;
 
-                // Toggle the visibility of the submenu
-                if (submenu.style.display === 'none') {
-                    submenu.style.display = 'block';
-                } else {
+        // Add click event listener to the parent menu
+        parentMenu.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default action
+
+            if (isSubmenuVisible) {
+                // If submenu is visible, hide it
+                submenu.style.display = 'none';
+                isSubmenuVisible = false;
+            } else {
+                // If submenu is hidden, show it
+                submenu.style.display = 'block';
+                isSubmenuVisible = true;
+            }
+        });
+
+        // Hide submenu if another link is clicked
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link !== parentMenu) {
                     submenu.style.display = 'none';
+                    isSubmenuVisible = false;
                 }
+            });
+        });
     </script>
 </body>
 </html>
