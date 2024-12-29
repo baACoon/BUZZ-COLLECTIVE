@@ -261,20 +261,15 @@ $db->close();
             e.preventDefault(); // Prevent the default action for the link
 
             // Toggle submenu visibility
-            if (submenu.style.display === 'block') {
-                submenu.style.display = 'none'; // Hide submenu
-            } else {
-                submenu.style.display = 'block'; // Show submenu
-            }
+            submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
         });
 
-        // Add click event listener to all other links to hide the submenu
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (link !== parentMenu) {
-                    submenu.style.display = 'none'; // Hide submenu
-                }
-            });
+        // Optional: Hide submenu when clicking outside the sidebar
+        document.addEventListener('click', (e) => {
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar.contains(e.target) && submenu.style.display === 'block') {
+                submenu.style.display = 'none'; // Hide submenu
+            }
         });
 
     </script>
