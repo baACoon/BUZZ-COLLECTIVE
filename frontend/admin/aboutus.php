@@ -114,7 +114,7 @@ $db->close();
                     <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                     <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
                     <li class="has-submenu">
-                        <a href="#" class="parent-menu">About Us</a>
+                        <a href="admin-aboutus.php" class="parent-menu">About Us</a>
                         <ul class="submenu">
                             <li><a href="aboutus.php">Barbers</a></li>
                             <li><a href="aboutushiring.php">Hiring</a></li>
@@ -249,39 +249,34 @@ $db->close();
             document.getElementById('currentImage').value = barber.image;
         }
 
-        const parentMenu = document.querySelector('.parent-menu'); // About Us link
-        const submenu = document.querySelector('.submenu'); // Submenu under About Us
+       // Select the parent menu and submenu elements
+        const parentMenu = document.querySelector('.parent-menu'); // "About Us" link
+        const submenu = document.querySelector('.submenu'); // Submenu under "About Us"
 
-        // Hide submenu initially
+        // Initially hide the submenu
         submenu.style.display = 'none';
-
-        // Track the click state
-        let isSubmenuVisible = false;
 
         // Add click event listener to the parent menu
         parentMenu.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent the default action
+            e.preventDefault(); // Prevent the default action for the link
 
-            if (isSubmenuVisible) {
-                // If submenu is visible, hide it
-                submenu.style.display = 'none';
-                isSubmenuVisible = false;
+            // Toggle submenu visibility
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none'; // Hide submenu
             } else {
-                // If submenu is hidden, show it
-                submenu.style.display = 'block';
-                isSubmenuVisible = true;
+                submenu.style.display = 'block'; // Show submenu
             }
         });
 
-        // Hide submenu if another link is clicked
+        // Add click event listener to all other links to hide the submenu
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', (e) => {
                 if (link !== parentMenu) {
-                    submenu.style.display = 'none';
-                    isSubmenuVisible = false;
+                    submenu.style.display = 'none'; // Hide submenu
                 }
             });
         });
+
     </script>
 </body>
 </html>
