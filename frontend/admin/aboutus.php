@@ -113,9 +113,9 @@ $db->close();
                     <li><a href="admin-appointment.php">Appointment Bookings</a></li>
                     <li><a href="admin-barber.php">Barbers' Schedule</a></li>
                     <li><a href="services.php">Services</a><span class="notification-dot"></span></li>
-                    <li>
-                        <a href="admin-aboutus.php">About Us</a>
-                        <ul>
+                    <li class="has-submenu">
+                        <a href="admin-aboutus.php" class="parent-menu">About Us</a>
+                        <ul class="submenu">
                             <li><a href="aboutus.php">Barbers</a></li>
                                 <li><a href="aboutushiring.php">Hiring</a></li>
                             </ul>
@@ -249,6 +249,24 @@ $db->close();
             document.getElementById('experience').value = barber.experience;
             document.getElementById('currentImage').value = barber.image;
         }
+
+           // Get the parent menu and submenu
+            const parentMenu = document.querySelector('.parent-menu');
+            const submenu = document.querySelector('.submenu');
+
+            // Initially hide the submenu
+            submenu.style.display = 'none';
+
+            // Add click event listener
+            parentMenu.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent the default link action
+
+                // Toggle the visibility of the submenu
+                if (submenu.style.display === 'none') {
+                    submenu.style.display = 'block';
+                } else {
+                    submenu.style.display = 'none';
+                }
     </script>
 </body>
 </html>
