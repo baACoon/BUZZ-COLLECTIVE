@@ -173,10 +173,16 @@ li:hover .arrow, li:hover .profile-arrow {
   
 .bgimage{
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 180vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width:70%;
+    height: 100vh;
+    padding: 20px;
 }
   
 #body-container .logo-body{
@@ -350,6 +356,9 @@ footer {
     nav .navbar .links li a{
       font-size: 15px;
     }
+    .bgimage {
+        height: 80vh;
+    }
   }
   
 @media (max-width: 800px) {
@@ -462,6 +471,12 @@ footer {
     }
   }
 
+@media (max-width: 768px) {
+    .bgimage {
+        height: 70vh;
+    }
+}
+
 @media (max-width: 480px){
     nav .navbar .nav-links{
         max-width: 100%;
@@ -470,5 +485,8 @@ footer {
         height: 100px;
         width: 100px;
         margin: 5px;
+    }
+    .bgimage {
+        height: 60vh;
     }
 }
