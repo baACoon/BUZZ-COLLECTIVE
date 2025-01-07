@@ -324,7 +324,7 @@ li:hover > .sub-menu {
     flex-direction: column;
     justify-content: left;
     align-items: left;
-    background-color: #fff;
+    background-color: #8a0808;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
