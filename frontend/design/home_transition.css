@@ -1,0 +1,101 @@
+/* TRANSITION*/
+/* Fade-in effect for the entire page content */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  /* Smooth transition for navigation links */
+  nav .navbar .links li a {
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+  }
+  
+  nav .navbar .links li a:hover {
+    color: #E43A19; /* Change to primary accent color */
+    text-decoration: underline;
+  }
+  
+  /* Smooth popup transitions */
+  .pop-background {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .popup {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .popup.show {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  /* Button hover animation */
+  .appntmnt-button, .barber-button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .appntmnt-button:hover, .barber-button:hover {
+    background-color: #555; /* Darker shade for hover */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Barbers availability fade-in */
+  .day-row {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .day-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Swipe-Up Animation */
+  @keyframes swipeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  /* Initial State: Hidden and Offset */
+  .news-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  /* When Visible, Apply Swipe-Up Animation */
+  .news-item.visible {
+    animation: swipeUp 0.5s ease forwards;
+  }
+  
+  
+  
+  /* Swipe-Up Animation */
+  @keyframes swipeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Start slightly below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* End at the original position */
+    }
+  }
+  
+  /* Apply Swipe-Up to .v79368 */
+  .v79368 {
+    animation: swipeUp 1s ease-in-out forwards; /* 1s duration and smooth easing */
+  }
+  
+  
+  
