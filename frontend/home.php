@@ -325,26 +325,22 @@ $db->close();
                             popupBackground.style.opacity = "1";
                             popup.classList.add("show");
                         }
+
+                        const newsItems = document.querySelectorAll('.news-item');
+                        const observer = new IntersectionObserver(entries => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('visible');
+                                }
+                            });
+                        }, { threshold: 0.1 });
+
+                        newsItems.forEach(item => observer.observe(item));
                     });
 
                     function closePopup() {
                         document.getElementById('popBackground').style.display = 'none';
                     }
-
-                    document.addEventListener("DOMContentLoaded", () => {
-                    const newsItems = document.querySelectorAll('.news-item');
-                    
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible'); // Add the visible class
-                            }
-                        });
-                    }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
-
-                    newsItems.forEach(item => observer.observe(item)); // Observe each news item
-                });
-
 
             </script>
 
