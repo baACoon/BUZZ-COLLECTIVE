@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('Location: admin_log.php');
+    exit();
+}
+
 $appointments = isset($_SESSION['appointments']) ? $_SESSION['appointments'] : [];
 unset($_SESSION['appointments']);
 

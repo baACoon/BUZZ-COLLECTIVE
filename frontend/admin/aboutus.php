@@ -1,9 +1,13 @@
-
 <?php
 // Database connection
 $db = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 if ($db->connect_error) {
     die("Database connection failed: " . $db->connect_error);
+}
+
+if (!isset($_SESSION['username'])) {
+    header('Location: admin_log.php');
+    exit();
 }
 
 // Fetch existing barber details from the database

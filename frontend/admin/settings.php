@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['username'])) {
+    header('Location: admin_log.php');
+    exit();
+}
+
 if (isset($_SESSION['errors'])) {
     foreach ($_SESSION['errors'] as $error) {
         echo "<p style='color: red;'>$error</p>";

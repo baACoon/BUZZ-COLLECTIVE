@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION['username'])) {
+    header('Location: admin_log.php');
+    exit();
+}
+
 // Define the path to your JSON file
 $branchesFile = 'data/branches.json'; 
 
