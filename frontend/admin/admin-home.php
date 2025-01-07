@@ -1,11 +1,5 @@
 <?php
 
-session_start();
-if (!isset($_SESSION['admin_username'])) {
-    header('location: admin_log.php');
-    exit();
-}
-
 // Add this to the top of admin-home.php or create a logout.php
 if(isset($_GET['logout'])) {
     session_destroy();

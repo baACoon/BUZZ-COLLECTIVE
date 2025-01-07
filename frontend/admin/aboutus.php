@@ -5,11 +5,6 @@ if ($db->connect_error) {
     die("Database connection failed: " . $db->connect_error);
 }
 
-if (!isset($_SESSION['username'])) {
-    header('Location: admin_log.php');
-    exit();
-}
-
 // Fetch existing barber details from the database
 $barbers = [];
 $query = "SELECT * FROM barbers ORDER BY name";

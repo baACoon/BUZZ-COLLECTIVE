@@ -1,9 +1,3 @@
-<?php 
-if (!isset($_SESSION['username'])) {
-    header('Location: admin_log.php');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

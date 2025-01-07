@@ -2,10 +2,6 @@
 // Database connection
 $mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
-if (!isset($_SESSION['username'])) {
-    header('Location: admin_log.php');
-    exit();
-}
 
 // Check connection
 if ($mysqli->connect_error) {
