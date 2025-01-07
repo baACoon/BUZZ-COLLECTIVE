@@ -8,8 +8,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 1s ease; /* Fade-in transition */
 }
 
 .container {
@@ -20,14 +18,13 @@ body {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     overflow: hidden;
-    transform: translateY(20px); /* Start slightly below */
     opacity: 0; /* Initially hidden */
-    transition: opacity 1s ease, transform 1s ease; /* Smooth fade-in and slide-in */
+    transform: scale(0.8); /* Start smaller */
+    transition: opacity 0.5s ease; /* Smooth fade-in */
 }
-/* Add Class for Showing the Container */
+
 .container.visible {
-    transform: translateY(0);  
-    opacity: 1; 
+    animation: bounceIn 0.8s ease forwards;
 }
 
 .login-form {
@@ -103,7 +100,7 @@ body {
     background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(141, 141, 141, 0.4)), url('../design/image/WEL-black.png') no-repeat center center;
     background-size: cover;
     opacity: 0; /* Initially hidden */
-    transition: opacity 1s ease; /* Smooth fade-in transition */
+    transition: opacity 0.8s ease; /* Smooth fade-in */
 }
 
 .image-section.visible {
@@ -138,5 +135,20 @@ body {
 
     .image-section {
         height: 200px;
+    }
+}
+
+/* Bounce-In Keyframes */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8); /* Start smaller */
+        opacity: 0; /* Invisible */
+    }
+    50% {
+        transform: scale(1.1); /* Slightly larger */
+        opacity: 1; /* Fully visible */
+    }
+    100% {
+        transform: scale(1); /* Settle to normal size */
     }
 }
