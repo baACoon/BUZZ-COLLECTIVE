@@ -1,11 +1,6 @@
 <?php 
 include($_SERVER['DOCUMENT_ROOT'] . '/../../backend/adminbarber.php'); 
 
-if (!isset($_SESSION['username'])) {
-    header('Location: admin_log.php');
-    exit();
-}
-
 // Handle availability form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['availability'])) {
     $mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
