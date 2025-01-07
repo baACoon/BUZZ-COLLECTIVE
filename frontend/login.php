@@ -46,5 +46,22 @@ include('../backend/server.php');
       <!-- Add an image or content here if needed -->
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Fade in the body
+        document.body.style.opacity = "1";
+
+        // Animate the container and image section
+        const container = document.querySelector(".container");
+        const imageSection = document.querySelector(".image-section");
+
+        setTimeout(() => {
+            container.classList.add("visible");
+            imageSection.classList.add("visible");
+        }, 500); // Delay the animation slightly
+    });
+</script>
+
 </body>
 </html>

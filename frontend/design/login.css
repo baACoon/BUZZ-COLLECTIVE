@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
+/* Fade-In Transition for Page Load */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -8,8 +7,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease; /* Fade-in effect */
 }
 
+/* Container Entrance Animation */
 .container {
     display: flex;
     width: 100%;
@@ -18,109 +20,44 @@ body {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     overflow: hidden;
+    transform: scale(0.9); /* Start slightly smaller */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease, transform 0.5s ease; /* Smooth scaling and fade-in */
 }
 
-.login-form {
-    flex: 1;
-    background-color: #222222;
-    color: #ffffff;
-    padding: 100px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Animated Class for Showing the Container */
+.container.visible {
+    transform: scale(1); /* Restore to full size */
+    opacity: 1; /* Fully visible */
 }
 
-.login-form h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
-}
-
-.login-form h4 {
-    margin: 10px 0 5px;
-    font-size: 12px;
-    font-weight:400;
-    text-align: left;
-    width: 100%;
-    max-width: 300px;
-}
-
-.login-form input {
-    width: 100%;
-    max-width: 300px;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #f5f5f5;
-    font-size: 16px;
-}
-
+/* Submit Button Hover Animation */
 .login-form input[type="submit"] {
     background-color: #E43A19;
     color: #ffffff;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add hover effects */
 }
 
 .login-form input[type="submit"]:hover {
     background-color: #7c200e;
+    transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 
-.login-form h3 {
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: 300;
-    color: #ffffff;
-}
-
-.login-form a {
-    color: #E43A19;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.login-form a:hover {
-    text-decoration: underline;
-}
-
+/* Image Section Entrance */
 .image-section {
     flex: 1;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(141, 141, 141, 0.4)), url('../design/image/WEL-black.png') no-repeat center center;
     background-size: cover;
+    transform: translateX(-50px); /* Slide in from left */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease, transform 1s ease; /* Smooth entrance */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        max-width: 90%;
-    }
-
-    .image-section {
-        height: 250px;
-    }
-}
-
-@media (max-width: 480px) {
-    .login-form {
-        padding: 20px;
-    }
-
-    .login-form h2 {
-        font-size: 24px;
-    }
-
-    .login-form input {
-        max-width: 90%;
-        width: 100%;
-    }
-
-    .image-section {
-        height: 200px;
-    }
+/* Animated Class for Showing the Image Section */
+.image-section.visible {
+    transform: translateX(0); /* Move to the correct position */
+    opacity: 1; /* Fully visible */
 }
