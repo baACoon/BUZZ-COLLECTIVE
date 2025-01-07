@@ -314,33 +314,35 @@ $db->close();
                     });
                         });
 
-                        //ANIMATION TRANSITION
+                        // ANIMATION TRANSITION
                         document.addEventListener("DOMContentLoaded", () => {
-                        document.body.style.opacity = "1";
+                            document.body.style.opacity = "1";
 
-                        const popupBackground = document.getElementById('popBackground');
-                        const popup = document.getElementById('welcomePopup');
+                            const popupBackground = document.getElementById('popBackground');
+                            const popup = document.getElementById('welcomePopup');
 
-                        if (popupBackground && popup) {
-                            popupBackground.style.opacity = "1";
-                            popup.classList.add("show");
+                            if (popupBackground && popup) {
+                                popupBackground.style.opacity = "1";
+                                popup.classList.add("show");
+                            }
+
+                            // News swipe-up animation
+                            const newsItems = document.querySelectorAll('.news-item');
+                            const observer = new IntersectionObserver(entries => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        entry.target.classList.add('visible'); // Add the "visible" class to trigger the swipe-up animation
+                                        observer.unobserve(entry.target); // Stop observing after animation to prevent re-triggering
+                                    }
+                                });
+                            }, { threshold: 0.1 });
+
+                            newsItems.forEach(item => observer.observe(item));
+                        });
+
+                        function closePopup() {
+                            document.getElementById('popBackground').style.display = 'none';
                         }
-
-                        const newsItems = document.querySelectorAll('.news-item');
-                        const observer = new IntersectionObserver(entries => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    entry.target.classList.add('visible');
-                                }
-                            });
-                        }, { threshold: 0.1 });
-
-                        newsItems.forEach(item => observer.observe(item));
-                    });
-
-                    function closePopup() {
-                        document.getElementById('popBackground').style.display = 'none';
-                    }
 
             </script>
 
