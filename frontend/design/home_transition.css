@@ -96,6 +96,21 @@ body {
   .v79368 {
     animation: swipeUp 1s ease-in-out forwards; /* 1s duration and smooth easing */
   }
+
+  /* pop up */
+
+.pop-background {
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+/* Optional: Set display to none when hidden */
+.pop-background.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
   
   
   

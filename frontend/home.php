@@ -129,7 +129,15 @@ $db->close();
         <script>
             function closePopup() {
                 var background = document.getElementById('popBackground');
-                background.style.display = 'none';
+                    if (background) {
+                        background.style.opacity = '0'; 
+                        background.style.transition = 'opacity 0.5s ease';
+
+                        
+                        setTimeout(() => {
+                            background.style.display = 'none';
+                        }, 500); 
+                }
             }
         </script>
 
