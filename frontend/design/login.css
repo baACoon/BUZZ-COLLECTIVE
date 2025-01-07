@@ -63,6 +63,12 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block; /* Ensures the button is treated as a block-level element */
+    margin: 10px auto; /* Centers the button horizontally */
+    text-align: center;
+    padding: 12px 20px; /* Adjust padding for better appearance */
+    border: none;
+    border-radius: 8px;
 }
 
 .login-form input[type="submit"]:hover {
