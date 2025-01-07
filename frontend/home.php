@@ -148,11 +148,11 @@ $db->close();
                         <?php foreach ($news as $item): ?>
                             <div class="news-item">
                                 <div class="news-image">
-                                    <?php if (!empty($item['poster'])): ?>
-                                        <img src="<?= htmlspecialchars('uploads/' . $item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
-                                    <?php else: ?>
-                                        <img src="design/image/default-placeholder.png" alt="Default Image">
-                                    <?php endif; ?>
+                                <?php if (!empty($item['poster']) && file_exists('frontend/uploads/' . $item['poster'])): ?>
+                                    <img src="frontend/uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                <?php else: ?>
+                                    <img src="frontend/design/image/default-placeholder.png" alt="Default Image">
+                                <?php endif; ?>
                                 </div>
                                 <div class="news-details">
                                     <h2><?= htmlspecialchars($item['title']) ?></h2>
