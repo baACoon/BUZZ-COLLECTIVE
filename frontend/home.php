@@ -149,7 +149,7 @@ $db->close();
                             <div class="news-item">
                                 <div class="news-image">
                                     <?php if (!empty($item['poster'])): ?>
-                                        <img src="<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                        <img src="<?= htmlspecialchars('uploads/' . $item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                                     <?php else: ?>
                                         <img src="design/image/default-placeholder.png" alt="Default Image">
                                     <?php endif; ?>
