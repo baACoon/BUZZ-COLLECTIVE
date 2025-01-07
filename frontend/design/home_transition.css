@@ -98,17 +98,19 @@ body {
   }
 
   /* pop up */
-
 .pop-background {
     opacity: 1;
-    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth transition for opacity and visibility */
 }
 
-/* Optional: Set display to none when hidden */
+/* Hidden State */
 .pop-background.hidden {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0; /* Fade out */
+    visibility: hidden; /* Make it invisible after fading out */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Ensure smooth transition for both */
 }
+
 
 
   

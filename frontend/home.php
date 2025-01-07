@@ -130,6 +130,7 @@ $db->close();
             function closePopup() {
                 var background = document.getElementById('popBackground');
                     if (background) {
+                        background.classList.add('hidden');
                         background.style.opacity = '0'; 
                         background.style.transition = 'opacity 0.5s ease';
 
