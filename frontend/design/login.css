@@ -18,14 +18,8 @@ body {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     overflow: hidden;
-    opacity: 0; /* Initially hidden */
-    transform: scale(0.8); /* Start smaller */
-    transition: opacity 0.5s ease; /* Smooth fade-in */
 }
 
-.container.visible {
-    animation: bounceIn 0.8s ease forwards;
-}
 
 .login-form {
     flex: 1;
@@ -99,13 +93,8 @@ body {
     flex: 1;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(141, 141, 141, 0.4)), url('../design/image/WEL-black.png') no-repeat center center;
     background-size: cover;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.8s ease; /* Smooth fade-in */
 }
 
-.image-section.visible {
-    opacity: 1; /* Fully visible */
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -135,20 +124,5 @@ body {
 
     .image-section {
         height: 200px;
-    }
-}
-
-/* Bounce-In Keyframes */
-@keyframes bounceIn {
-    0% {
-        transform: scale(0.8); /* Start smaller */
-        opacity: 0; /* Invisible */
-    }
-    50% {
-        transform: scale(1.1); /* Slightly larger */
-        opacity: 1; /* Fully visible */
-    }
-    100% {
-        transform: scale(1); /* Settle to normal size */
     }
 }

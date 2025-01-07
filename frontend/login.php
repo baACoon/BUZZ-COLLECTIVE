@@ -47,22 +47,7 @@ include('../backend/server.php');
     </div>
   </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-          // Fade in the body
-          document.body.style.opacity = "1";
 
-          // Select elements
-          const container = document.querySelector(".container");
-          const imageSection = document.querySelector(".image-section");
-
-          // Add the 'visible' class to trigger the bounce-in animation
-          setTimeout(() => {
-              container.classList.add("visible");
-              imageSection.classList.add("visible");
-          }, 300); // Slight delay for smooth entrance
-      });
-  </script>
 
 
 
