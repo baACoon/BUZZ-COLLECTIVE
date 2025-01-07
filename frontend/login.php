@@ -47,21 +47,22 @@ include('../backend/server.php');
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Fade in the body
-        document.body.style.opacity = "1";
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fade in the body
+            document.body.style.opacity = "1";
 
-        // Animate the container and image section
-        const container = document.querySelector(".container");
-        const imageSection = document.querySelector(".image-section");
+            // Add the 'visible' class to container and image section after a small delay
+            const container = document.querySelector(".container");
+            const imageSection = document.querySelector(".image-section");
 
-        setTimeout(() => {
-            container.classList.add("visible");
-            imageSection.classList.add("visible");
-        }, 500); // Delay the animation slightly
-    });
-</script>
+            setTimeout(() => {
+                container.classList.add("visible");
+                imageSection.classList.add("visible");
+            }, 300); // Slight delay for smooth animation
+        });
+    </script>
+
 
 </body>
 </html>
