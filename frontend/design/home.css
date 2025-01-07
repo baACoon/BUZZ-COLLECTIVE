@@ -76,17 +76,18 @@ nav .navbar .links li a:hover {
   }
 }
 
-/* Default state before animation */
+/* Initial State: Hidden and Offset */
 .news-item {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Add the animated class when in the viewport */
+/* When Visible, Apply Swipe-Up Animation */
 .news-item.visible {
   animation: swipeUp 0.5s ease forwards;
 }
+
 
 
 /* Bounce Animation */

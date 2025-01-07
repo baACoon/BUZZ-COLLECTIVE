@@ -315,34 +315,35 @@ $db->close();
                         });
 
                         // ANIMATION TRANSITION
-                        document.addEventListener("DOMContentLoaded", () => {
-                            document.body.style.opacity = "1";
+                            document.addEventListener("DOMContentLoaded", () => {
+                                document.body.style.opacity = "1";
 
-                            const popupBackground = document.getElementById('popBackground');
-                            const popup = document.getElementById('welcomePopup');
+                                const popupBackground = document.getElementById('popBackground');
+                                const popup = document.getElementById('welcomePopup');
 
-                            if (popupBackground && popup) {
-                                popupBackground.style.opacity = "1";
-                                popup.classList.add("show");
+                                if (popupBackground && popup) {
+                                    popupBackground.style.opacity = "1";
+                                    popup.classList.add("show");
+                                }
+
+                                // News swipe-up animation with proper scrolling
+                                const newsItems = document.querySelectorAll('.news-item');
+
+                                const observer = new IntersectionObserver(entries => {
+                                    entries.forEach(entry => {
+                                        if (entry.isIntersecting) {
+                                            entry.target.classList.add('visible'); // Add the "visible" class to trigger animation
+                                            observer.unobserve(entry.target); // Stop observing this item after it animates
+                                        }
+                                    });
+                                }, { threshold: 0.3 }); // Trigger when 30% of the item is visible
+
+                                newsItems.forEach(item => observer.observe(item)); // Observe each news item
+                            });
+
+                            function closePopup() {
+                                document.getElementById('popBackground').style.display = 'none';
                             }
-
-                            // News swipe-up animation
-                            const newsItems = document.querySelectorAll('.news-item');
-                            const observer = new IntersectionObserver(entries => {
-                                entries.forEach(entry => {
-                                    if (entry.isIntersecting) {
-                                        entry.target.classList.add('visible'); // Add the "visible" class to trigger the swipe-up animation
-                                        observer.unobserve(entry.target); // Stop observing after animation to prevent re-triggering
-                                    }
-                                });
-                            }, { threshold: 0.1 });
-
-                            newsItems.forEach(item => observer.observe(item));
-                        });
-
-                        function closePopup() {
-                            document.getElementById('popBackground').style.display = 'none';
-                        }
 
             </script>
 
