@@ -322,21 +322,21 @@ li:hover > .sub-menu {
 .aboutus-form {
     display: none;
     flex-direction: column;
-    justify-content: left;
-    align-items: left;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
     background-color: #8a0808;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px;
+    width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 50%; /* Position the form in the middle */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for the element's own size */
     transition: opacity 0.3s ease;
-    height: 150%;
 }
+
 
 .aboutus-form h4 {
     font-size: 1.5em;
