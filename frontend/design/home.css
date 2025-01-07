@@ -8,6 +8,104 @@
     font-family: "Montserrat", sans-serif;
 }
 
+/* TRANSITION*/
+/* Fade-in effect for the entire page content */
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Smooth transition for navigation links */
+nav .navbar .links li a {
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+nav .navbar .links li a:hover {
+  color: #E43A19; /* Change to primary accent color */
+  text-decoration: underline;
+}
+
+/* Smooth popup transitions */
+.pop-background {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.popup {
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Button hover animation */
+.appntmnt-button, .barber-button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.appntmnt-button:hover, .barber-button:hover {
+  background-color: #555; /* Darker shade for hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Barbers availability fade-in */
+.day-row {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.day-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Swipe-Up Animation */
+@keyframes swipeUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Default state before animation */
+.news-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Add the animated class when in the viewport */
+.news-item.visible {
+  animation: swipeUp 0.5s ease forwards;
+}
+
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-20px);
+  }
+  60% {
+      transform: translateY(-10px);
+  }
+}
+
+/* Apply Bounce to .v79368 */
+.v79368 {
+  animation: bounce 2s infinite; /* 2s duration and infinite repeat */
+}
 
 
 
