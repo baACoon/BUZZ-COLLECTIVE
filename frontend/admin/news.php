@@ -131,7 +131,7 @@ if ($result) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                        <img src="<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                        <img src="<?= file_exists('../uploads/' . $item['poster']) ? '../uploads/' . htmlspecialchars($item['poster']) : '../design/image/default-placeholder.png' ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>
                         <p><?= htmlspecialchars($item['description']) ?></p>
