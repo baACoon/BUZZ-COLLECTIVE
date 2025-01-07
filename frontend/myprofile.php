@@ -254,7 +254,6 @@ $db->close();
                 <form action="myprofile.php" method="post">
                     <h4>Name: <input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>" class="name-input" placeholder="Enter your name"></h4>
                     <button type="submit" name="update_name" class="save-name-button">Save Name</button>
-                    <button type="submit" name="remove_name" class="remove-name-button">Remove Name</button>
                 </form>
             </div>
 
