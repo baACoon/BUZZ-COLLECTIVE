@@ -123,8 +123,9 @@ i.bx-menu{
 
 /* APPOINTMENT FEE STYLE */
 .appointment-fee-content{
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    margin: 20px;
     margin-left: 300px;
     margin-top: 30px;
     text-align: left;
@@ -136,17 +137,26 @@ i.bx-menu{
     text-transform: uppercase;
 }
 
-.appointment-fee-content label {
-    display: block;
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+label {
+    font-size: 1rem;
     font-weight: bold;
 }
-.appointment-fee-content input[type="number"]{
+
+input[type="number"] {
     width: 100%;
-    padding: 10px; 
-    margin-bottom: 15px; /* Space below inputs */
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px; 
-    font-size: 16px;
+    border-radius: 4px;
 }
 .update-btn{
     background-color: #E43A19;
@@ -199,12 +209,18 @@ i.bx-menu{
         max-width: 15vh;
     }
 
-    .appointment-fee-header {
-        padding: 40px;
-        margin: 40px;
-        margin-left: 10px;
-        margin-top: 70px;
+    .appointment-fee-content {
+        padding: 15px;
     }
+
+    .appointment-fee-header h1 {
+        font-size: 1.5rem;
+    }
+
+    input[type="number"] {
+        max-width: 100%;
+    }
+
 
 }
 
@@ -218,7 +234,12 @@ i.bx-menu{
         max-width: 13vh;
         margin-left: -0.5rem;
     }
-    .appointment-fee-header {
-        margin-left: 30px;
+    .appointment-fee-header h1 {
+        font-size: 1.2rem;
     }
+
+    label {
+        font-size: 0.9rem;
+    }
+
 }
