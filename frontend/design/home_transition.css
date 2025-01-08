@@ -38,7 +38,7 @@ body {
   }
   
   .appntmnt-button:hover, .barber-button:hover {
-    background-color: #555; /* Darker shade for hover */
+    background-color: #222222; /* Darker shade for hover */
     transform: scale(1.05); /* Slight zoom effect */
   }
   

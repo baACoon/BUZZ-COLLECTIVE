@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['username'] = $username; // Assign the username to the session
-
 if (!isset($_SESSION['username'])) {
     header('Location: admin_log.php');
     exit();
@@ -45,25 +43,25 @@ if (isset($_SESSION['success'])) {
     </div>
 
     <aside class="sidebar" id="sidebar">
-    <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
-    <div class="logo">
-        <a href="../admin/admin-home.php">
-            <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-            <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-            <li class="services"><a href="services.php">Services</a><span class="notification-dot"></span></li>
-            <li class="about-us"><a href="admin-aboutus.php">About Us</a></li>
-            <li><a href="news.php">News</a></li>
-            <li><a href="admin-branches.php">Branches</a></li>
-            <li><a href="settings.php">Settings</a></li>
-        </ul>
-    </nav>
-</aside>
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
+        <div class="logo">
+            <a href="../admin/admin-home.php">
+                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="admin-appointment.php">Appointment Bookings</a></li>
+                <li><a href="admin-barber.php">Barbers' Schedule</a></li>
+                <li class="services"><a href="services.php">Services</a><span class="notification-dot"></span></li>
+                <li class="about-us"><a href="admin-aboutus.php">About Us</a></li>
+                <li><a href="news.php">News</a></li>
+                <li><a href="admin-branches.php">Branches</a></li>
+                <li><a href="settings.php">Settings</a></li>
+            </ul>
+        </nav>
+    </aside>
 
 
     <div class="settings-content">

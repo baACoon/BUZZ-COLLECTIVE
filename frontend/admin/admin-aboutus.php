@@ -34,14 +34,11 @@
                 <li><a href="/services.php">Services</a><span class="notification-dot"></span></li>
                 <li>
                     <a href="/admin-aboutus.php">About Us</a>
-                    <ul class="htmlCss-sub-menu sub-menu">
                                 <li><a href="/aboutus.php">Barbers</a></li>
-                                <li><a href="/aboutushiring.php">Hiring</a></li>
-                            </ul>
+
                 </li>
                 <li><a href="/news.php">News</a></li>
-                <li><a href="/admin-branches.php">Branches</a></li>
-                <li><a href="/settings.php">Settings</a></li>
+                <li><a href="/adminprofile.php">Admin Profile </a></li>
             </ul>
         </nav>
     </aside>
@@ -54,7 +51,7 @@
 
         <div class="aboutus-btn">
             <li><button class="aboutbarbers"><a href="/aboutus.php">ABOUT US</a></button></li>
-            <li><button class="hiring"><a href="/hiring.php">HIRING</a></button></li>
+            
 
         </div>
     </div>

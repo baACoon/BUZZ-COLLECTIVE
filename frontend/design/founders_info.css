@@ -31,6 +31,7 @@
 .buzzing_container  p{
     width: 50%;
     text-align: justify;
+    margin-left: -6em;
 
 }
 .name1 h3{
@@ -91,5 +92,12 @@
     }
     .buzzing_container h4 { 
         font-size: 40px;
+    }
+    .buzzing_container .text-container {
+        margin-left: 0; /* Reset margin for smaller screens */
+        width: 100%; /* Expand width for mobile devices */
+    }
+    .buzzing_container p {
+        width: 90%; /* Reduce width for better readability */
     }
 }

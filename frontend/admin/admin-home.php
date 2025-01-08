@@ -64,8 +64,8 @@ if(isset($_GET['logout'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="/settings.php">
-                        <p><i class="fa-solid fa-cog" style="color: #cfcfcf;"></i> Settings</p>
+                    <a href="/adminprofile.php">
+                        <p><i class="fa-solid fa-cog" style="color: #cfcfcf;"></i> Admin Profile</p>
                     </a>
                 </li>
             </ul>
