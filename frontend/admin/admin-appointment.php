@@ -227,7 +227,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('/../../../backend/confirm_appointment.php', {
+                fetch('/../../backend/confirm_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
@@ -236,7 +236,7 @@ $branches = json_decode($json_data, true);
                         document.getElementById('popup-message').innerText = 'Appointment confirmed successfully!';
                         document.getElementById('popup').style.display = 'flex';
                     } else {
-                        document.getElementById('popup-message').innerText = 'Error confirming appointment.';
+                        document.getElementById('popup-message').innerText = 'Error confirmings appointment.';
                         document.getElementById('popup').style.display = 'flex';
                     }
                 })
