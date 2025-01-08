@@ -1,0 +1,94 @@
+/* Button Transition */
+.barbers-button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.barbers-button:hover {
+    background-color: #222222; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Keyframes for Text Swipe */
+@keyframes textSwipe {
+    0% {
+        opacity: 0;
+        transform: translateX(100%); /* Start off-screen to the right */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End at original position */
+    }
+}
+
+/* Keyframes for Image Swipe */
+@keyframes imageSwipe {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%); /* Start off-screen to the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End at original position */
+    }
+}
+
+/* Initial state for animation */
+.buzzing_container h3,
+.buzzing_container h2,
+.buzzing_container h4,
+.buzzing_container p,
+.v105_40 img,
+.v105_38 img {
+    opacity: 0; /* Start hidden */
+    transform: translateX(100%); /* Text starts off-screen to the right */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.v105_40 img,
+.v105_38 img {
+    transform: translateX(-100%); /* Images start off-screen to the left */
+}
+
+/* When visible, apply the animation */
+.visible h3,
+.visible h2,
+.visible h4,
+.visible p {
+    animation: textSwipe 0.8s ease forwards; /* Adjust duration for smoother effect */
+}
+
+.visible .v105_40 img,
+.visible .v105_38 img {
+    animation: imageSwipe 0.8s ease forwards; /* Adjust duration for smoother effect */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .buzzing_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buzzing_container h3,
+    .buzzing_container h2,
+    .buzzing_container h4,
+    .buzzing_container p {
+        text-align: center;
+    }
+
+    .v105_40 img,
+    .v105_38 img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* Ensure animation runs only when visible */
+.buzzing_container.visible h3,
+.buzzing_container.visible h2,
+.buzzing_container.visible h4,
+.buzzing_container.visible p,
+.buzzing_container.visible .v105_40 img,
+.buzzing_container.visible .v105_38 img {
+    animation-play-state: running; /* Start animation when visible */
+}

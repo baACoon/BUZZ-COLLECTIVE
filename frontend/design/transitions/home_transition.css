@@ -1,17 +1,17 @@
 /* TRANSITION*/
-/* Fade-in effect for the entire page content */
+
 body {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
   
-  /* Smooth transition for navigation links */
+
   nav .navbar .links li a {
     transition: color 0.3s ease, text-decoration 0.3s ease;
   }
   
   nav .navbar .links li a:hover {
-    color: #E43A19; /* Change to primary accent color */
+    color: #E43A19; 
     text-decoration: underline;
   }
   
@@ -53,6 +53,26 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Initial state for elements */
+.news-item,
+.v79368,
+.barber-selection,
+.buzzin-barber,
+.appntmnt-button,
+.barber-button,
+.day-row {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly offset */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+/* When the element is visible */
+.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Return to original position */
+}
+
   
   /* Swipe-Up Animation */
   @keyframes swipeUp {
