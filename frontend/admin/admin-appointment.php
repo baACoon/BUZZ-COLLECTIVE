@@ -202,7 +202,7 @@ $branches = json_decode($json_data, true);
             var formData = new FormData(form);
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../../backend/delete_appointment.php', true);
+            xhr.open('POST', '../../../backend/delete_appointment.php', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);
@@ -227,7 +227,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('../../backend/confirm_appointment.php', {
+                fetch('../../../backend/confirm_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
@@ -259,7 +259,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('../../backend/cancel_appointment.php', {
+                fetch('../../../backend/cancel_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
