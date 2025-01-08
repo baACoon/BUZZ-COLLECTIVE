@@ -227,7 +227,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('../../../../backend/confirm_appointment.php', {
+                fetch('../../backend/confirm_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
