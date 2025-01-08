@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
        <!-- Navbar for screens below 768px -->
        <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
-            <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
+            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
@@ -78,20 +78,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     <aside class="sidebar" id="sidebar">
     <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
     <div class="logo">
-        <a href="../admin/admin-home.php">
-            <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+        <a href="/admin-home.php">
+            <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
         </a>
     </div>
     <nav>
         <ul class="links">
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="admin-appointment.php">Appointment Bookings</a></li>
-            <li><a href="admin-barber.php">Barbers' Schedule</a></li>
-            <li class="services"><a href="services.php">Services</a><span class="notification-dot"></span></li>
-            <li class="about-us"><a href="admin-aboutus.php">About Us</a></li>
-            <li><a href="news.php">News</a></li>
-            <li><a href="admin-branches.php">Branches</a></li>
-            <li><a href="settings.php">Settings</a></li>
+            <li><a href="/dashboard.php">Dashboard</a></li>
+            <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
+            <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
+            <li class="/services"><a href="services.php">Services</a><span class="notification-dot"></span></li>
+            <li class="/about-us"><a href="admin-aboutus.php">About Us</a></li>
+            <li><a href="/news.php">News</a></li>
+            <li><a href="/admin-branches.php">Branches</a></li>
+            <li><a href="/settings.php">Settings</a></li>
         </ul>
     </nav>
 </aside>
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
             <!-- Existing branches will be dynamically populated here -->
             <?php foreach ($branches as $branch): ?>
                 <div class="branch">
-                    <a href="#"><img src="../admin/images/BUZZ-Black.png" alt="Logo"></a>
+                    <a href="#"><img src="/images/BUZZ-Black.png" alt="Logo"></a>
                     <div class="branch-content">
                         <h3><?php echo htmlspecialchars($branch['branchName']); ?></h3>
                         <p><?php echo htmlspecialchars($branch['branchLocation']); ?></p>
