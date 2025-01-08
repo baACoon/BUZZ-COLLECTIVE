@@ -199,6 +199,7 @@ i.bx-menu{
 
     .appointment-fee-content {
         padding: 50px;
+        margin-left:  -10px;
     }
 
     .appointment-fee-header h1 {
