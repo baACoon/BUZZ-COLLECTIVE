@@ -307,7 +307,8 @@ canvas {
         max-width: 15vh;
     }
     .dashboard-content {
-        margin-left: 100px;
+        margin-left: 20px;
+        margin-top: 50px;
     }
 }
 
