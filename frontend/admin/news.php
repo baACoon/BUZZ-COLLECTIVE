@@ -91,7 +91,7 @@ if ($result) {
     <link rel="stylesheet" href="Designs/news.css?=901">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
 </head>
 <body>
     <!-- Navbar for screens below 768px -->
@@ -134,7 +134,7 @@ if ($result) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                        <img src="<?= file_exists('../uploads/' . $item['poster']) ? '../uploads/' . htmlspecialchars($item['poster']) : '../design/image/default-placeholder.png' ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                        <img src="<?= file_exists('../uploads/' . $item['poster']) ? '../uploads/' . htmlspecialchars($item['poster']) : '../frontend/design/image/default-placeholder.png' ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>
                         <p><?= htmlspecialchars($item['description']) ?></p>
