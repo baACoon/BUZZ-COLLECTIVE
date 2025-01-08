@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
             <li class="/about-us"><a href="admin-aboutus.php">About Us</a></li>
             <li><a href="/news.php">News</a></li>
             <li><a href="/admin-branches.php">Branches</a></li>
-            <li><a href="adminprofile.php">Admin Profile</a></li>
+            <li><a href="/adminprofile.php">Admin Profile </a></li>
         </ul>
     </nav>
 </aside>

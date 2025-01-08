@@ -38,7 +38,7 @@
 
                 </li>
                 <li><a href="/news.php">News</a></li>
-                <li><a href="adminprofile.php">Admin Profile</a></li>
+                <li><a href="/adminprofile.php">Admin Profile </a></li>
             </ul>
         </nav>
     </aside>
@@ -51,7 +51,7 @@
 
         <div class="aboutus-btn">
             <li><button class="aboutbarbers"><a href="/aboutus.php">ABOUT US</a></button></li>
-            <li><button class="hiring"><a href="/hiring.php">HIRING</a></button></li>
+            
 
         </div>
     </div>
