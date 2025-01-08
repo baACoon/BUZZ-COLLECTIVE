@@ -7,24 +7,38 @@ $db = mysqli_connect('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_ba
 // Check if the user is logged in
 $username = $_SESSION['username'];
 
-// Fetch the user's email and profile image from the database
+// Fetch user's email and profile image
 $email = '';
 $profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
 
-$sql = "SELECT a.appointment_id, a.first_name, a.last_name, a.services, a.date, a.timeslot, a.barber 
-        FROM appointments a
-        JOIN users u ON a.email = u.email 
-        WHERE u.username = ?
-        ORDER BY a.appointment_id DESC";
-$stmt = $db->prepare($sql);
-if ($stmt) {
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close();
+$profile_sql = "SELECT email, profile_image FROM users WHERE username = ?";
+$profile_stmt = $db->prepare($profile_sql);
+if ($profile_stmt) {
+    $profile_stmt->bind_param("s", $username);
+    $profile_stmt->execute();
+    $profile_stmt->bind_result($email, $profile_image_path);
+    $profile_stmt->fetch();
+    $profile_stmt->close();
+
+    if ($profile_image_path) {
+        $profile_image = $profile_image_path; // Use the saved image if available
+    }
+}
+
+// Fetch appointments for the logged-in user
+$appointments_sql = "SELECT appointment_id, first_name, last_name, services, date, timeslot, barber 
+                     FROM appointments 
+                     WHERE email = ?
+                     ORDER BY appointment_id DESC";
+$appointments_stmt = $db->prepare($appointments_sql);
+if ($appointments_stmt) {
+    $appointments_stmt->bind_param("s", $email);
+    $appointments_stmt->execute();
+    $result = $appointments_stmt->get_result();
+    $appointments_stmt->close();
 } else {
     // Fallback if preparation fails
-    $result = $db->query($sql);
+    $result = $db->query($appointments_sql);
 }
 $db->close();
 ?>
