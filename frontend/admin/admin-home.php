@@ -29,6 +29,11 @@ if(isset($_GET['logout'])) {
         <div class="home-selection">
             <ul>
                 <li>
+                    <a href="/dashboard.php">
+                        <p><i class="fa-solid fa-tachometer-alt" style="color: #cfcfcf"></i> Dashboard</p>
+                    </a>
+                </li>
+                <li>
                     <a href="/admin-appointment.php">
                         <p><i class="fa-solid fa-book" style="color: #cfcfcf"></i> Appointment Bookings</p>
                     </a>
