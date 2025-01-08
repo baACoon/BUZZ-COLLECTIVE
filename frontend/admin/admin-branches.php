@@ -67,11 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBranchId'])) {
     <script src="script.js" defer></script>
 </head>
 <body>
-       <!-- Navbar for screens below 768px -->
+       <!-- Navbar for screens below 768px 
        <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
             <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
-        </div>
+        </div>-->
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
 
