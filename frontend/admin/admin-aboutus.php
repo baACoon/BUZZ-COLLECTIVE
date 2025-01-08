@@ -41,7 +41,7 @@
                 </li>
                 <li><a href="/news.php">News</a></li>
                 <li><a href="/admin-branches.php">Branches</a></li>
-                <li><a href="/settings.php">Admin Profile</a></li>
+                <li><a href="/adminprofile.php">Admin Profile</a></li>
             </ul>
         </nav>
     </aside>
