@@ -316,10 +316,10 @@ canvas {
         font-size: 2rem;
     }
     .card h3 {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     .card p {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
 
@@ -339,8 +339,5 @@ canvas {
     }
     .overview-cards {
         gap: 10px;
-    }
-    .container {
-        width: 50%;
     }
 }
