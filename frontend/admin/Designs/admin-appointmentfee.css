@@ -133,6 +133,7 @@ i.bx-menu{
 .appointment-fee-content h1{
     font-size: 2rem;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .appointment-fee-content label {
@@ -140,7 +141,7 @@ i.bx-menu{
     font-weight: bold;
 }
 .appointment-fee-content input[type="number"]{
-    width: 100%;
+    width: 50%;
     padding: 10px; 
     margin-bottom: 15px; /* Space below inputs */
     border: 1px solid #ccc;
