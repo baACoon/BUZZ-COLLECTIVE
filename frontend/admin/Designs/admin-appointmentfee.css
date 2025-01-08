@@ -204,17 +204,7 @@ i.bx-menu{
     line-height: 1.2;
 }
 
-.content {
-    padding: 20px;
-    margin: 20px 0;
-    margin-left: 300px;
-    margin-top: 30px;
-    text-align: left;
-    display: flex; 
-    gap: 20px; /* Add space between services list and information */
-    justify-content: flex-start;
-    align-items: flex-start; 
-}
+
 .update-btn{
     background-color: rgb(77, 77, 180);
     color: white;
