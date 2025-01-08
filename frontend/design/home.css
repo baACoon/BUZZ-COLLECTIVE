@@ -164,7 +164,10 @@ li:hover .arrow, li:hover .profile-arrow {
   display: none;
   }
 
-.bgimage {
+.bgimage
+
+
+ {
     background-image: linear-gradient(to right, rgba(0,0,0,0.8500000238418579), rgba(0, 0, 0, 0.4)), url('image/cover.jpg');
     background-size: cover;
     background-position: center;
