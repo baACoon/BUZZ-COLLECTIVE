@@ -117,42 +117,47 @@ i.bx-menu{
 }
 
 .profile-container {
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: linear-gradient(135deg, #4e4e4e, #000000);
     color: white;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     max-width: 500px;
     width: 100%;
-    margin: 50px auto; /* Center the container */
+    margin: 75px auto; /* Center the container */
     text-align: left;
 }
-
-h1, h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: bold;
+h1{
+    text-transform:uppercase;
     color: #ffffff;
     text-align: center;
+    font-size:22px;
+}
+h2 {
+    color: #ffffff;
+    font-size:18px;
+    margin-top:20px;
 }
 
 .admin-details p {
     margin: 10px 0;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+    display: flex;
+    flex-direction:column
 }
 
 label {
     display: block;
     margin: 15px 0 5px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 11px;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 20px;
     border: none;
     border-radius: 6px;
     font-size: 16px;
@@ -169,14 +174,14 @@ input:focus {
 button {
     width: 100%;
     padding: 12px;
-    background-color: #f73201;
+    margin-top: 10px;
+    background: none;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 button:hover {

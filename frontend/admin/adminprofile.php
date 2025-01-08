@@ -68,8 +68,7 @@
 </div>
 
 <script>
-         // menu icon
-         document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const menuIcon = document.getElementById('menu-icon');
             const sidebar = document.querySelector('.sidebar');
             const closeSidebar = document.getElementById('close-sidebar');
