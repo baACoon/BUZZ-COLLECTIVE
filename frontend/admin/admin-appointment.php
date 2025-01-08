@@ -58,6 +58,7 @@ $branches = json_decode($json_data, true);
     <div class="content">
         <div class="dropdown-container">
             <select id="status" name="status_id">
+                <option value="0">All</option>
                 <option value="1">Pending</option>
                 <option value="2">Confirmed</option>
                 <option value="3">Cancelled</option>
@@ -294,19 +295,23 @@ $branches = json_decode($json_data, true);
         }
 
         // Status dropdown change event handler
-        var statusDropdown = document.getElementById('status');
-        statusDropdown.addEventListener('change', function() {
+        document.getElementById('status').addEventListener('change', function() {
             var selectedStatus = this.value;
             var appointmentRows = document.querySelectorAll('tbody tr');
 
             // Loop through each appointment row
             appointmentRows.forEach(function(row) {
-                var currentStatus = row.cells[5].innerText.trim(); 
+                // Map dropdown values to status names
+                var statusMap = {
+                    '1': 'Pending',
+                    '2': 'Confirmed',
+                    '3': 'Cancelled'
+                };
+
+                var currentStatus = row.querySelector('td:last-child').innerText.trim(); 
 
                 // Show/Hide rows based on selected status
-                if ((selectedStatus === '1' && currentStatus === 'Pending') ||
-                    (selectedStatus === '2' && currentStatus === 'Confirmed') ||
-                    (selectedStatus === '3' && currentStatus === 'Cancelled')) {
+                if (selectedStatus === '0' || currentStatus === statusMap[selectedStatus]) {
                     row.style.display = 'table-row';
                 } else {
                     row.style.display = 'none';
