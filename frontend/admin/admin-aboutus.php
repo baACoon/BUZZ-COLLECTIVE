@@ -1,84 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../design/image/buzznCollectives.jpg">
-    <title>Buzz & Collective - About Us</title>
-    <link rel="stylesheet" href="Designs/admin-aboutus.css?v=901">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-     <!-- Navbar for screens below 768px -->
-     <div class="mobile-navbar" id="mobile-navbar">
-        <div class="mobile-logo">
-            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
-        </div>
-        <i class='bx bx-menu' id="menu-icon"></i>
-    </div>
-    
-    <aside class="sidebar" id="sidebar">
-        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
-        <div class="logo">
-            <a href="/admin-home.php">
-                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/dashboard.php">Dashboard</a></li>
-                <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
-                <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
-                <li><a href="/services.php">Services</a><span class="notification-dot"></span></li>
-                <li>
-                    <a href="/admin-aboutus.php">About Us</a>
-                    <ul class="htmlCss-sub-menu sub-menu">
-                                <li><a href="/aboutus.php">Barbers</a></li>
-                                <li><a href="/aboutushiring.php">Hiring</a></li>
-                            </ul>
-                </li>
-                <li><a href="/news.php">News</a></li>
-                <li><a href="/admin-branches.php">Branches</a></li>
-                <li><a href="/adminprofile.php">Admin Profile</a></li>
-            </ul>
-        </nav>
-    </aside>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+.profile-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
 
-    <div class="aboutus-content">
-        <div class="aboutusheader">
-            <h1>ABOUT US</h1>
-        </div>
+h1, h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
 
-        <div class="aboutus-btn">
-            <li><button class="aboutbarbers"><a href="/aboutus.php">ABOUT US</a></button></li>
-            <li><button class="hiring"><a href="/hiring.php">HIRING</a></button></li>
+.admin-details, .change-password, .logout {
+    margin-bottom: 20px;
+}
 
-        </div>
-    </div>
+.admin-details p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #555;
+}
 
- 
-    <script>
-         // menu icon
-         document.addEventListener('DOMContentLoaded', function() {
-            const menuIcon = document.getElementById('menu-icon');
-            const sidebar = document.querySelector('.sidebar');
-            const closeSidebar = document.getElementById('close-sidebar');
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
 
-            // Add click event to the menu icon
-            menuIcon.addEventListener('click', function() {
-                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
-                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
-            });
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
 
-            // Add click event to the close button
-            closeSidebar.addEventListener('click', function() {
-                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
-                closeSidebar.style.display = 'none'; // Hide close button
-            });
-        });
-    </script>
-</body>
-</html>
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
