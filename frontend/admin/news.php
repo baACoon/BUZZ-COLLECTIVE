@@ -134,7 +134,7 @@ if ($result) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                        <img src="<?= file_exists('../uploads/' . $item['poster']) ? '../uploads/' . htmlspecialchars($item['poster']) : 'https://admin.buzzcollective.gayvar.com/frontend/design/image/default-placeholder.png' ?>" alt="<?= htmlspecialchars($item['title']) ?>"                   
+                    <img src="<?= file_exists('../uploads/' . $item['poster']) ? '../uploads/' . htmlspecialchars($item['poster']) : 'https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/design/image/default-placeholder.png' ?>" alt="<?= htmlspecialchars($item['title']) ?>"                   
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>
                         <p><?= htmlspecialchars($item['description']) ?></p>
