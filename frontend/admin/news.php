@@ -114,8 +114,8 @@ if ($result) {
                     <li><a href="/dashboard.php">Dashboard</a></li>
                     <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
                     <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
-                    <li class="/services"><a href="services.php">Services</a><span class="notification-dot"></span></li>
-                    <li class="/about-us"><a href="admin-aboutus.php">About Us</a></li>
+                    <li><a href="/services.php">Services</a><span class="notification-dot"></span></li>
+                    <li><a href="/admin-aboutus.php">About Us</a></li>
                     <li><a href="/news.php">News</a></li>
                     <li><a href="/admin-branches.php">Branches</a></li>
                     <li><a href="/settings.php">Settings</a></li>
