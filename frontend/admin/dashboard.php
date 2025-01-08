@@ -96,7 +96,7 @@
         });
      });
 
-    fetch('/BUZZ-COLLECTIVE/backend/get_appointment_data.php')
+    fetch('public_HTML/Buzz-collective/backend/get_appointment_data.php')
         .then(response => response.json())
         .then(data => {
             // Update Overview Cards
