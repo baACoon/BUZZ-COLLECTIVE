@@ -305,7 +305,14 @@ i.bx-menu{
     background-color: #222222;
 }
 
-/* Media Query */ 
+/* Media Query */
+
+@media (min-width: 769px) {
+    .mobile-navbar {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .mobile-navbar {
         display: flex;
