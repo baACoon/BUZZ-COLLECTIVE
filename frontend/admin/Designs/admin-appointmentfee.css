@@ -179,28 +179,42 @@ i.bx-menu{
 }
 
 /* APPOINTMENT FEE STYLE */
-.appointment-fee-content{
+/*.appointment-fee-content{
     padding: 20px;
     margin: 20px;
     margin-left: 300px;
     margin-top: 30px;
     text-align: left;
     position: relative;
-}
+} */
 
 .appointment-fee-header{
+    padding: 20px;
+    margin-left: 300px;
+    margin-top: 30px;
+    text-align: left;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
 }
 
 .appointment-fee-header h1{
     margin: 0;
     font-size: 2rem;
     text-transform: uppercase;
+    line-height: 1.2;
 }
 
+.content {
+    padding: 20px;
+    margin: 20px 0;
+    margin-left: 300px;
+    margin-top: 30px;
+    text-align: left;
+    display: flex; 
+    gap: 20px; /* Add space between services list and information */
+    justify-content: flex-start;
+    align-items: flex-start; 
+}
 .update-btn{
     background-color: rgb(77, 77, 180);
     color: white;
@@ -251,6 +265,16 @@ i.bx-menu{
         max-height: 15vh;
         max-width: 15vh;
     }
+    .appointment-fee-header {
+        margin-left: 50px;
+        margin-top: 100px;
+    }
+    .appointment-fee-header h1 {
+        font-size: 1.5rem;
+    }
+    .content {
+        margin-left: 50px;
+    }
 
 }
 
@@ -263,5 +287,11 @@ i.bx-menu{
         max-height: 13vh;
         max-width: 13vh;
         margin-left: -0.5rem;
+    }
+    .appointment-fee-header {
+        margin-left: 30px;
+    }
+    .content {
+        margin-left: 30px;
     }
 }

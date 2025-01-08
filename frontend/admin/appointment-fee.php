@@ -80,7 +80,7 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
 
     <div class="appointment-fee-content">
         <div class="appointment-fee-header">
-            <h1>Update Appointment Fee</h1>
+            <h1>Appointment Fee</h1>
             <?php if ($successMessage): ?>
                 <p style="color: green;"><?php echo $successMessage; ?></p>
             <?php elseif ($errorMessage): ?>
@@ -88,11 +88,14 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
             <?php endif; ?>
         </div>
 
-        <form method="POST">
-            <label for="new_appointment_fee">New Appointment Fee:</label>
-            <input type="number" step="0.01" id="new_appointment_fee" name="new_appointment_fee" value="<?php echo $currentFee; ?>" required>
-            <button type="submit" class="update-btn">Update Fee</button>
-        </form>
+        <div class="content">
+            <form method="POST">
+                <label for="new_appointment_fee">Appointment Fee:</label>
+                <input type="number" step="0.01" id="new_appointment_fee" name="new_appointment_fee" value="<?php echo $currentFee; ?>" required>
+                <button type="submit" class="update-btn">Update Fee</button>
+            </form>
+        </div>
+   
     </div>
 
     <script>
