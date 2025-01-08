@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Profile</title>
@@ -15,24 +15,24 @@
     </div>
     
     <aside class="sidebar" id="sidebar">
-        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
         <div class="logo">
-            <a href="/admin-home.php">
+            <a href="../admin/admin-home.php">
                 <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="/dashboard.php">Dashboard</a></li>
-                <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
-                <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
-                <li><a href="/services.php">Services</a></li>
-                <li><a href="/admin-aboutus.php">About Us</a></li>
-                <li><a href="/news.php">News</a></li>
-                <li><a href="/admin-branches.php">Branches</a></li>
-                <li><a href="/settings.php">Settings</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard.php">Dashboard</a></li>
+                    <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
+                    <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
+                    <li><a href="/services.php">Services</a><span class="notification-dot"></span></li>
+                    <li><a href="/admin-aboutus.php">About Us</a></li>
+                    <li><a href="/news.php">News</a></li>
+                    <li><a href="/admin-branches.php">Branches</a></li>
+                    <li><a href="/settings.php">Settings</a></li>
+                </ul>
+            </nav>
     </aside>
 
     <div class="profile-container">
