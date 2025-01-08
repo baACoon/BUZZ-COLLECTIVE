@@ -308,7 +308,7 @@ i.bx-menu{
 /* Media Query */
 
 @media (min-width: 769px) {
-    .mobile-navbar {
+    .mobile-logo {
         display: none;
     }
 }
