@@ -313,7 +313,13 @@ canvas {
         margin-top: 70px;
     }
     .dashboard-content h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
+    }
+    .card h3 {
+        font-size: 0.9rem;
+    }
+    .card p {
+        font-size: 0.9rem;
     }
 }
 
@@ -329,10 +335,12 @@ canvas {
         margin-left: -0.5rem;
     }
     .dashboard-content {
-        margin-left: -5px;
+        margin-left: -2px;
     }
     .overview-cards {
         gap: 10px;
     }
-
+    .container {
+        width: 50%;
+    }
 }
