@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['username'] = $username; // Assign the username to the session
-
 if (!isset($_SESSION['username'])) {
     header('Location: admin_log.php');
     exit();
