@@ -11,22 +11,21 @@ $username = $_SESSION['username'];
 $email = '';
 $profile_image = 'design/image/default-placeholder.png'; // Default placeholder image path
 
-$sql = "SELECT email, profile_image FROM users WHERE username = ?";
+$sql = "SELECT a.appointment_id, a.first_name, a.last_name, a.services, a.date, a.timeslot, a.barber 
+        FROM appointments a
+        JOIN users u ON a.email = u.email 
+        WHERE u.username = ?
+        ORDER BY a.appointment_id DESC";
 $stmt = $db->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("s", $username);
     $stmt->execute();
-    $stmt->bind_result($email, $profile_image_path);
-    $stmt->fetch();
+    $result = $stmt->get_result();
     $stmt->close();
-
-    if ($profile_image_path) {
-        $profile_image = $profile_image_path; // Use the saved image if available
-    }
+} else {
+    // Fallback if preparation fails
+    $result = $db->query($sql);
 }
-$sql = "SELECT appointment_id, first_name, last_name, services, date, timeslot, barber FROM appointments ORDER BY appointment_id DESC";
-$result = $db->query($sql);
-
 $db->close();
 ?>
 
