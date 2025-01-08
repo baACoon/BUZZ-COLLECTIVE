@@ -13,7 +13,7 @@
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
-    
+
     <aside class="sidebar" id="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
         <div class="logo">
@@ -30,7 +30,7 @@
                     <li><a href="/admin-aboutus.php">About Us</a></li>
                     <li><a href="/news.php">News</a></li>
                     <li><a href="/admin-branches.php">Branches</a></li>
-                    <li><a href="/settings.php">Settings</a></li>
+                    <li><a href="adminprofile.php">Admin Profile</a></li>
                 </ul>
             </nav>
     </aside>
@@ -68,22 +68,25 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuIcon = document.getElementById('menu-icon');
-        const closeSidebar = document.getElementById('close-sidebar');
-        const sidebar = document.getElementById('sidebar');
+         // menu icon
+         document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
 
-        // Open sidebar
-        menuIcon.addEventListener('click', () => {
-            sidebar.classList.add('open');
-        });
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
 
-        // Close sidebar
-        closeSidebar.addEventListener('click', () => {
-            sidebar.classList.remove('open');
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
        

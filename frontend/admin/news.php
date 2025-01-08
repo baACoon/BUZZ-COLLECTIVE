@@ -118,7 +118,7 @@ if ($result) {
                     <li><a href="/admin-aboutus.php">About Us</a></li>
                     <li><a href="/news.php">News</a></li>
                     <li><a href="/admin-branches.php">Branches</a></li>
-                    <li><a href="/settings.php">Settings</a></li>
+                    <li><a href="adminprofile.php">Admin Profile</a></li>
                 </ul>
             </nav>
     </aside>
