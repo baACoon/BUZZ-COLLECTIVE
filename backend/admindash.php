@@ -53,38 +53,41 @@ if (isset($_POST['reg_admin'])) {
 
 // LOGIN ADMIN
 if (isset($_POST['log_admin'])) {
-    $username = mysqli_real_escape_string($db, $_POST['username']);
+  $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
-  if (empty($username)) {
-    array_push($errors, "Username is required");
-  }
-  if (empty($password)) {
-    array_push($errors, "Password is required");
-  }
+  if (empty($username)) $errors[] = "Username is required";
+  if (empty($password)) $errors[] = "Password is required";
 
   if (count($errors) == 0) {
-    $password = md5($password);
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      $_SESSION['show_popup'] = true; // Set popup flag
-      header('location: admin-home.php');
-      exit();
-    } else {
-      array_push($errors, "Wrong username/password combination");
-    }
+      $query = "SELECT * FROM admin WHERE username='$username'";
+      $result = mysqli_query($db, $query);
+
+      if (mysqli_num_rows($result) == 1) {
+          $user = mysqli_fetch_assoc($result);
+
+          // Verify the password
+          if (password_verify($password, $user['password'])) {
+              $_SESSION['username'] = $username;
+              $_SESSION['success'] = "You are now logged in";
+              header('Location: admin-home.php'); // Redirect to admin home
+              exit();
+          } else {
+              $errors[] = "Wrong username/password combination";
+          }
+      } else {
+          $errors[] = "User not found";
+      }
   }
 
   // If there are errors, store them in session and redirect back
   if (!empty($errors)) {
-    $_SESSION['errors'] = $errors;
-    header('location: admin-home.php'); // Redirect back to login
-    exit();
+      $_SESSION['errors'] = $errors;
+      header('Location: admin_log.php'); // Redirect back to login page
+      exit();
   }
 }
+
 
 // OPTIONAL: Password Hashing Fix Script
 // Uncomment this function and the call below only to hash existing plaintext passwords once.
