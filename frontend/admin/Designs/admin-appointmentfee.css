@@ -135,12 +135,25 @@ i.bx-menu{
     margin-bottom: 20px;
 }
 
+.appointment-fee-content label {
+    display: block;
+    font-weight: bold;
+}
+.appointment-fee-content input[type="number"]{
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 15px; /* Space below inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    font-size: 16px;
+}
 .update-btn{
-    background-color: rgb(77, 77, 180);
+    background-color: #E43A19;
+    text-transform: uppercase;
     color: white;
+    padding: 10px 15px;    
+    border-radius: 14px;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.3s ease;
@@ -191,9 +204,6 @@ i.bx-menu{
     .appointment-fee-header h1 {
         font-size: 1.5rem;
     }
-    .content {
-        margin-left: 50px;
-    }
 
 }
 
@@ -208,9 +218,6 @@ i.bx-menu{
         margin-left: -0.5rem;
     }
     .appointment-fee-header {
-        margin-left: 30px;
-    }
-    .content {
         margin-left: 30px;
     }
 }
