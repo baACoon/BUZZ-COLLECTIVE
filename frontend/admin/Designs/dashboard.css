@@ -306,6 +306,9 @@ canvas {
         max-height: 15vh;
         max-width: 15vh;
     }
+    .dashboard-content {
+        margin-left: 100px;
+    }
 }
 
 
@@ -319,4 +322,5 @@ canvas {
         max-width: 13vh;
         margin-left: -0.5rem;
     }
+
 }
