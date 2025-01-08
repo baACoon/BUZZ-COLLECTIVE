@@ -91,7 +91,7 @@ if ($result) {
     <link rel="stylesheet" href="Designs/news.css?=901">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin">
 </head>
 <body>
     <!-- Navbar for screens below 768px -->
@@ -106,7 +106,7 @@ if ($result) {
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
         <div class="logo">
             <a href="../admin/admin-home.php">
-                <img src="images/BUZZ-White.png" alt="Buzz Collective Logo">
+                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
             <nav>
