@@ -141,7 +141,7 @@ i.bx-menu{
     font-weight: bold;
 }
 .appointment-fee-content input[type="number"]{
-    width: 100%;
+    width: 50%;
     padding: 10px; 
     margin-bottom: 15px; /* Space below inputs */
     border: 1px solid #ccc;
@@ -197,8 +197,14 @@ i.bx-menu{
     .mobile-logo img {
         max-height: 15vh;
         max-width: 15vh;
-    
+    }
 
+    .appointment-fee-header {
+        padding: 40px;
+        margin: 40px;
+        margin-left: 20px;
+        margin-top: 70px;
+    }
 
 }
 
