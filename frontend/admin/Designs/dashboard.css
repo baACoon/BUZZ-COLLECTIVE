@@ -337,6 +337,9 @@ canvas {
     .dashboard-content {
         margin-left: -2px;
     }
+    .dashboard-content h1 {
+        font-size: 1.5rem;
+    }
     .overview-cards {
         gap: 10px;
     }
