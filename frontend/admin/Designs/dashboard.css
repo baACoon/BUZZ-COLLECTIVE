@@ -307,8 +307,13 @@ canvas {
         max-width: 15vh;
     }
     .dashboard-content {
+        padding: 40px;
+        margin: 40px;
         margin-left: 20px;
-        margin-top: 50px;
+        margin-top: 70px;
+    }
+    .dashboard-content h1 {
+        font-size: 1.5rem;
     }
 }
 
@@ -322,6 +327,12 @@ canvas {
         max-height: 13vh;
         max-width: 13vh;
         margin-left: -0.5rem;
+    }
+    .dashboard-content {
+        margin-left: -5px;
+    }
+    .overview-cards {
+        gap: 10px;
     }
 
 }
