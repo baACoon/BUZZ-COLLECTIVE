@@ -64,7 +64,7 @@ $branches = json_decode($json_data, true);
                 <option value="3">Cancelled</option>
             </select>
             <div class="delete-btn">
-                <button class="delete-button" id="delete-btn" type="button">DELETE</button>
+                <button class="delete-btn" id="delete-btn" type="button">DELETE</button>
                 <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
                 <button type="button" class="confirm-btn" id="confirm-btn">Confirm</button>
             </div>
@@ -259,7 +259,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('/../..//backend/cancel_appointment.php', {
+                fetch('/../../backend/cancel_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
