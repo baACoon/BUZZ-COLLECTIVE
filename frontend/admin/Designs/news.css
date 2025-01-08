@@ -12,6 +12,34 @@ body {
     color: #000000;
 }
 
+/* Mobile Navbar (for screens below 768px) */
+.mobile-navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #F8F8F8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.mobile-logo img {
+    max-height: 25vh;
+    max-width: 25vw;
+    margin: 1rem;
+}
+
 .sidebar {
     display: block;
     position: fixed;
@@ -306,12 +334,6 @@ i.bx-menu{
 }
 
 /* Media Query */
-
-@media (min-width: 769px) {
-    .mobile-logo {
-        display: none;
-    }
-}
 
 @media (max-width: 768px) {
     .mobile-navbar {

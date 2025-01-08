@@ -97,7 +97,7 @@ if ($result) {
     <!-- Navbar for screens below 768px -->
     <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
-            <img src="images/BUZZ-Black.png" alt="Buzz Collective Logo">
+            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
