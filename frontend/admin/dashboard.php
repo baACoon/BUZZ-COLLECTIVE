@@ -96,7 +96,7 @@
         });
      });
 
-    fetch('https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/get_appointment_data.php')
+    fetch('/Buzz-collective/frontend/admin/get_appointment_data.php')
         .then(response => response.json())
         .then(data => {
             // Update Overview Cards
