@@ -36,29 +36,54 @@
     </aside>
 
     <div class="profile-container">
-        <h1>Admin Profile</h1>
+    <h1>Admin Profile</h1>
 
-        <!-- Display Admin Details -->
-        <div class="admin-details">
-            <p><strong>Username:</strong> AdminUsername</p>
-            <p><strong>Email:</strong> admin@example.com</p>
-        </div>
+    <!-- Admin Details -->
+    <div class="admin-details">
+        <p><strong>Username:</strong> AdminUsername</p>
+        <p><strong>Email:</strong> admin@example.com</p>
+    </div>
 
-        <!-- Change Password -->
-        <div class="change-password">
-            <h2>Change Password</h2>
-            <form method="post" action="#">
-                <label for="current_password">Current Password:</label>
-                <input type="password" name="current_password" id="current_password" placeholder="Enter current password" required>
-                
-                <label for="new_password">New Password:</label>
-                <input type="password" name="new_password" id="new_password" placeholder="Enter new password" required>
-                
-                <label for="confirm_password">Confirm New Password:</label>
-                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm new password" required>
-                
-                <button type="submit" name="change_password">Change Password</button>
-            </form>
-        </div>
+    <!-- Change Password -->
+    <div class="change-password">
+        <h2>Change Password</h2>
+        <form method="post" action="#">
+            <label for="current_password">Current Password</label>
+            <input type="password" name="current_password" id="current_password" placeholder="Enter current password" required>
+            
+            <label for="new_password">New Password</label>
+            <input type="password" name="new_password" id="new_password" placeholder="Enter new password" required>
+            
+            <label for="confirm_password">Confirm New Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm new password" required>
+            
+            <button type="submit" name="change_password">Change Password</button>
+        </form>
+    </div>
 
+    <!-- Logout -->
+    <div class="logout">
+        <button type="button" name="logout">Logout</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuIcon = document.getElementById('menu-icon');
+        const closeSidebar = document.getElementById('close-sidebar');
+        const sidebar = document.getElementById('sidebar');
+
+        // Open sidebar
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.add('open');
+        });
+
+        // Close sidebar
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
        
