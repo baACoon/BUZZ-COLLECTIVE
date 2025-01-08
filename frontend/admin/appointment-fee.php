@@ -88,13 +88,11 @@ $currentFee = $result->fetch_assoc()['appointment_fee'];
             <?php endif; ?>
         </div>
 
-        <div class="content">
             <form method="POST">
                 <label for="new_appointment_fee">Appointment Fee:</label>
                 <input type="number" step="0.01" id="new_appointment_fee" name="new_appointment_fee" value="<?php echo $currentFee; ?>" required>
                 <button type="submit" class="update-btn">Update Fee</button>
             </form>
-        </div>
    
     </div>
 
