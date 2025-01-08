@@ -56,15 +56,13 @@ body {
 
   /* Initial state for elements */
 .news-item,
-.v79368,
 .barber-selection,
 .buzzin-barber,
 .appntmnt-button,
-.barber-button,
-.day-row {
+.barber-button {
     opacity: 0; /* Start hidden */
     transform: translateY(20px); /* Start slightly offset */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+    transition: opacity 0.7s ease, transform 0.5s ease; /* Smooth transition */
 }
 
 /* When the element is visible */
