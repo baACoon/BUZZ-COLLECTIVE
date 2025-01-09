@@ -78,7 +78,7 @@ $branches = json_decode($json_data, true);
                         <tr>
                             <th class="left"><input type="checkbox" id="select-all"></th>
                             <th>ID</th>
-                            <th>Branch</th>
+                            <th>Branches</th>
                             <th>Date & Time</th>
                             <th>Booking Data</th>
                             <th>Services</th>
