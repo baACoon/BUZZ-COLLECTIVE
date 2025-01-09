@@ -60,8 +60,7 @@ body {
 .barber-selection,
 .buzzin-barber,
 .appntmnt-button,
-.barber-button,
-.day-row {
+.barber-button {
     opacity: 0; /* Start hidden */
     transform: translateY(20px); /* Start slightly offset */
     transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
