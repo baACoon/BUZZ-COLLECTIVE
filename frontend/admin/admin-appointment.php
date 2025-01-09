@@ -107,7 +107,7 @@ $branches = json_decode($json_data, true);
 
                         foreach ($appointments as $appointment) {
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                                ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('" . htmlspecialchars("https://buzzcollective.gayvar.com/frontend/uploads/receipts/{$appointment['receipt']}") . "')\">View Receipt</a>" 
+                                ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('" . htmlspecialchars("https://buzzcollective.gayvar.com/uploads/receipts/{$appointment['receipt']}") . "')\">View Receipt</a>" 
                                 : 'No Receipt Uploaded';
 
                             $branch_name = 'Main Branch';
