@@ -95,7 +95,7 @@ $branches = json_decode($json_data, true);
 
                         foreach ($appointments as $appointment) {
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                            ? "<a href='#' class='view-receipt' data-receipt='" . "/Buzz-collective/frontend/admin/proxy-image.php?path=" . urlencode($appointment['receipt']) . "'>View Receipt</a>" 
+                            ? "<a href='#' class='view-receipt' data-receipt='" . "../../../admin/proxy-image.php?path=" . urlencode($appointment['receipt']) . "'>View Receipt</a>" 
                             : 'No Receipt Uploaded';
 
                             $branch_name = 'Main Branch';
