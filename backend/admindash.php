@@ -52,37 +52,49 @@ if (isset($_POST['reg_admin'])) {
 }
 
 // LOGIN ADMIN
+// LOGIN ADMIN
 if (isset($_POST['log_admin'])) {
-    $username = mysqli_real_escape_string($db, $_POST['username']);
+  $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
+  // Validate inputs
   if (empty($username)) {
-    array_push($errors, "Username is required");
+      $errors[] = "Username is required";
   }
   if (empty($password)) {
-    array_push($errors, "Password is required");
+      $errors[] = "Password is required";
   }
 
+  // Only proceed if there are no validation errors
   if (count($errors) == 0) {
-    $password = md5($password);
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      $_SESSION['show_popup'] = true; // Set popup flag
-      header('location: admin-home.php');
-      exit();
-    } else {
-      array_push($errors, "Wrong username/password combination");
-    }
+      // Fetch the hashed password from the database
+      $query = "SELECT * FROM admin WHERE username='$username'";
+      $result = mysqli_query($db, $query);
+
+      if ($result && mysqli_num_rows($result) == 1) {
+          $admin = mysqli_fetch_assoc($result);
+          $hashed_password = $admin['password'];
+
+          // Verify the password
+          if (password_verify($password, $hashed_password)) {
+              $_SESSION['admin_username'] = $username;
+              $_SESSION['success'] = "You are now logged in";
+              $_SESSION['show_popup'] = true; // Set popup flag
+              header('Location: admin-home.php');
+              exit();
+          } else {
+              $errors[] = "Wrong username/password combination";
+          }
+      } else {
+          $errors[] = "Wrong username/password combination";
+      }
   }
 
   // If there are errors, store them in session and redirect back
   if (!empty($errors)) {
-    $_SESSION['errors'] = $errors;
-    header('location: admin-home.php'); // Redirect back to login
-    exit();
+      $_SESSION['errors'] = $errors;
+      header('Location: admin_log.php'); // Redirect back to login
+      exit();
   }
 }
 
