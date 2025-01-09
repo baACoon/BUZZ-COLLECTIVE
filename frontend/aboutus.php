@@ -317,6 +317,20 @@ $db->close();
         htmlcssArrow.onclick = function() {
         navLinks.classList.toggle("show1");
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const buzzingContainer = document.querySelector(".buzzing_container");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    buzzingContainer.classList.add("visible");
+                }
+            });
+        });
+
+    observer.observe(buzzingContainer);
+});
+
     </script>
 
 </body>

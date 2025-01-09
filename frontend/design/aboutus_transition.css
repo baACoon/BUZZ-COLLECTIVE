@@ -6,3 +6,80 @@
     background-color: #222222; 
     transform: scale(1.05);
 }
+
+@keyframes textSwipe {
+    0% {
+        opacity: 0;
+        transform: translateX(100%); /* Start from the right */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End at its original position */
+    }
+}
+
+@keyframes imageSwipe {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%); /* Start from the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End at its original position */
+    }
+}
+
+/* Text animation */
+.buzzing_container h3,
+.buzzing_container h2,
+.buzzing_container h4,
+.buzzing_container p {
+    animation: textSwipe 1s ease-out forwards; /* Apply swipe animation */
+    opacity: 0; /* Start hidden */
+}
+
+/* Images animation */
+.v105_40 img,
+.v105_38 img {
+    animation: imageSwipe 1s ease-out forwards;
+    opacity: 0; /* Start hidden */
+}
+
+/* Delay the animation to make it look smoother */
+.v105_40 img {
+    animation-delay: 0.5s; /* Delay for Monti's image */
+}
+
+.v105_38 img {
+    animation-delay: 0.7s; /* Delay for Akira's image */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .buzzing_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buzzing_container h3,
+    .buzzing_container h2,
+    .buzzing_container h4,
+    .buzzing_container p {
+        text-align: center;
+    }
+
+    .v105_40 img,
+    .v105_38 img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.buzzing_container.visible h3,
+.buzzing_container.visible h2,
+.buzzing_container.visible h4,
+.buzzing_container.visible p,
+.buzzing_container.visible .v105_40 img,
+.buzzing_container.visible .v105_38 img {
+    animation-play-state: running; /* Start the animation */
+}
