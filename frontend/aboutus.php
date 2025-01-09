@@ -62,7 +62,7 @@ $db->close();
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <base href="https://buzzcollective.gayvar.com/Buzz-collective/frontend/">
     <title>About us</title>
-</head>
+</head> 
 <body>
     <nav>
         <div class="navbar">
@@ -105,33 +105,41 @@ $db->close();
             </div>
     </nav>
 
-
     <div id="body-container">
         <img src="design/image/buzz.png" class="logo-body" alt="">
         <p>Buzz & Collectives is more than just a barbershop—it's a dynamic concept store where craftsmanship meets community. Experience top-notch grooming services alongside curated selections of lifestyle products, fostering a vibrant space where style and culture intersect.</p>
     </div>  
 
     <div class="buzzing_container">
-        <h3>Founders</h3>
-        <h2>Monti & Comia started</h2>
-        <h4><i>BUZZING</i></h4>
-        <p>
-            In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
-        </p>
-            <div class="v105_40">
-                <img src="design/image/Monti_Comia.png" alt="">
+        <!-- Image Section -->
+        <div class="images">
+            <div class="image-stack">
+                <!-- Monti's Image (Taller and Behind) -->
+                <div class="image monti">
+                    <img src="design/image/Monti_Comia.png" alt="Monti Comia">
+                    <span class="label">Monti Comia</span>
+                </div>
+                <!-- Akira's Image (In Front) -->
+                <div class="image akira">
+                    <img src="design/image/Akira_Gata.png" alt="Akira Gata">
+                    <span class="label">Akira Gata</span>
+                </div>
             </div>
-            <div class="v105_38">
-                <img src="design/image/Akira_Gata.png" alt="">
-            </div>
-        <div class="name1">
-            <h3> Monti Comia </h3>
         </div>
-        <div class="name2">
-            <h3> Akira Gata </h3>
+
+        <!-- Text Section -->
+        <div class="text-content">
+            <h3>Founders</h3>
+            <h2>Monti & Comia started</h2>
+            <h1><i>BUZZING</i></h1>
+            <p>
+                In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintaining strict safety measures built trust with their clients.
+            </p>
         </div>
-        
     </div>
+
+
+
 
      <!-- BARBERS INFO SELECTION -->
      <section>
