@@ -39,7 +39,7 @@ document.getElementById('delete-btn').addEventListener('click', function() {
     var formData = new FormData(form);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/../../backend/delete_appointment.php', true);
+    xhr.open('POST', '/Buzz-collective/backend/delete_appointment.php', true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
@@ -64,7 +64,7 @@ document.getElementById('confirm-btn').addEventListener('click', function() {
             formData.append('appointments[]', appointmentId);
         });
 
-        fetch('/../../backend/confirm_appointment.php', {
+        fetch('/Buzz-collective/backend/confirm_appointment.php', {
             method: 'POST',
             body: formData
         })
@@ -96,7 +96,7 @@ document.getElementById('cancel-btn').addEventListener('click', function() {
             formData.append('appointments[]', appointmentId);
         });
 
-        fetch('/../../backend/cancel_appointment.php', {
+        fetch('/Buzz-collective/backend/cancel_appointment.php', {
             method: 'POST',
             body: formData
         })
