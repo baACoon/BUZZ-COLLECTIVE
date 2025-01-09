@@ -137,7 +137,7 @@ if ($result) {
                     <?php if (!empty($item['poster']) && file_exists('uploads/' . $item['poster'])): ?>
                         <img src="uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                     <?php else: ?>
-                        <img src="design/image/default-placeholder.png" alt="Default Image">
+                        <img src="/images/default-placeholder.png" alt="Default Image">
                     <?php endif; ?>
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>

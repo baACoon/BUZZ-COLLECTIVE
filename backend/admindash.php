@@ -53,58 +53,58 @@ if (isset($_POST['reg_admin'])) {
 
 // LOGIN ADMIN
 if (isset($_POST['log_admin'])) {
-    $username = mysqli_real_escape_string($db, $_POST['username']);
+  $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
+  // Check if inputs are empty
   if (empty($username)) {
-    array_push($errors, "Username is required");
+      $errors[] = "Username is required";
   }
   if (empty($password)) {
-    array_push($errors, "Password is required");
+      $errors[] = "Password is required";
   }
 
-  if (count($errors) == 0) {
-    $password = md5($password);
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      $_SESSION['show_popup'] = true; // Set popup flag
-      header('location: admin-home.php');
-      exit();
-    } else {
-      array_push($errors, "Wrong username/password combination");
-    }
+  // Proceed only if no validation errors
+  if (count($errors) === 0) {
+      // Query database for admin credentials
+      $query = "SELECT * FROM admin WHERE username = ?";
+      $stmt = $db->prepare($query);
+      $stmt->bind_param("s", $username);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if ($result->num_rows === 1) {
+          $admin = $result->fetch_assoc();
+          $hashed_password = $admin['password'];
+
+          // Handle both hashed and plaintext passwords (for legacy accounts)
+          if (password_verify($password, $hashed_password)) {
+              $_SESSION['admin_username'] = $username;
+              header('Location: admin-home.php');
+              exit();
+          } elseif ($hashed_password === md5($password)) {
+              // If password is stored as md5, rehash it for security
+              $new_hashed_password = password_hash($password, PASSWORD_BCRYPT);
+              $update_query = "UPDATE admin SET password = ? WHERE username = ?";
+              $update_stmt = $db->prepare($update_query);
+              $update_stmt->bind_param("ss", $new_hashed_password, $username);
+              $update_stmt->execute();
+
+              $_SESSION['admin_username'] = $username;
+              header('Location: admin-home.php');
+              exit();
+          } else {
+              $errors[] = "Wrong username/password combination";
+          }
+      } else {
+          $errors[] = "Wrong username/password combination";
+      }
+
+      $stmt->close();
   }
 
-  // If there are errors, store them in session and redirect back
-  if (!empty($errors)) {
-    $_SESSION['errors'] = $errors;
-    header('location: admin-home.php'); // Redirect back to login
-    exit();
-  }
+
 }
 
-// OPTIONAL: Password Hashing Fix Script
-// Uncomment this function and the call below only to hash existing plaintext passwords once.
-// function hashPlaintextPasswords($db) {
-//     $query = "SELECT id, password FROM admin";
-//     $result = mysqli_query($db, $query);
-
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         $id = $row['id'];
-//         $password = $row['password'];
-
-//         if (!password_get_info($password)['algo']) {
-//             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-//             $update_query = "UPDATE admin SET password='$hashed_password' WHERE id=$id";
-//             mysqli_query($db, $update_query);
-//         }
-//     }
-// }
-
-// Uncomment this line only to hash plaintext passwords once.
-// hashPlaintextPasswords($db);
 
 ?>
