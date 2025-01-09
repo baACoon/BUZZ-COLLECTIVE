@@ -94,12 +94,7 @@ if (isset($_POST['log_admin'])) {
       }
   }
 
-  // If there are errors, store them in session and redirect back
-  if (!empty($errors)) {
-      $_SESSION['errors'] = $errors;
-      header('Location: admin_log.php'); // Redirect back to login
-      exit();
-  }
+
 }
 
 
