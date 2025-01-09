@@ -74,8 +74,36 @@ $db->close();
     <link rel="stylesheet" href="Designs/admin-profile.css">
 </head>
 <body>
+<div class="mobile-navbar" id="mobile-navbar">
+        <div class="mobile-logo">
+            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
+        </div>
+        <i class='bx bx-menu' id="menu-icon"></i>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Close button -->
+        <div class="logo">
+            <a href="../admin/admin-home.php">
+                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
+            </a>
+        </div>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard.php">Dashboard</a></li>
+                    <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
+                    <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
+                    <li><a href="/services.php">Services</a><span class="notification-dot"></span></li>
+                    <li><a href="/admin-aboutus.php">About Us</a></li>
+                    <li><a href="/news.php">News</a></li>
+                    <li><a href="/admin-branches.php">Branches</a></li>
+                    <li><a href="/adminprofile.php">Admin Profile </a></li>
+                </ul>
+            </nav>
+    </aside>
+
     <div class="profile-container">
-        <h1>Admin Profile</h1>
+    <h1>Admin Profile</h1>
 
         <!-- Admin Details -->
         <div class="admin-details">
@@ -108,5 +136,27 @@ $db->close();
             <a href="?logout=true">Logout</a>
         </div>
     </div>
+</div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
+    </script>
+
 </body>
 </html>
