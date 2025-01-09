@@ -1,6 +1,19 @@
 <?php
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    // Handle preflight request
+    header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    exit(0);
+}
+// Allow from any origin
+header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+
 // Security checks
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     http_response_code(403);
@@ -15,7 +28,7 @@ if (empty($imagePath)) {
 }
 
 // Set the full path to your uploads directory
-$fullPath = $_SERVER['DOCUMENT_ROOT'] . '/../../uploads/receipts/' . $imagePath;
+$fullPath = $_SERVER['DOCUMENT_ROOT'] . 'https://buzzcollective.gayvar.com/frontend/uploads/receipts/' . $imagePath;
 
 // Validate the path and file existence
 if (!file_exists($fullPath) || !is_file($fullPath)) {

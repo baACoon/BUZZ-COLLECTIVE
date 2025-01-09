@@ -1,17 +1,5 @@
 <?php
 session_start();
-       
-// Allow from specific origin
-header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
-// Handle preflight (OPTIONS) request
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200); // Respond with HTTP 200 OK
-    exit(0); // Terminate script
-}
-
 
 $appointments = isset($_SESSION['appointments']) ? $_SESSION['appointments'] : [];
 unset($_SESSION['appointments']);
@@ -109,7 +97,7 @@ $branches = json_decode($json_data, true);
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
                             ? "<a href='#' class='view-receipt' data-receipt='" . "/Buzz-collective/frontend/admin/proxy-image.php?path=" . urlencode($appointment['receipt']) . "'>View Receipt</a>" 
                             : 'No Receipt Uploaded';
-                            
+
                             $branch_name = 'Main Branch';
                             foreach ($branches as $branch) {
                                 if ($branch['branchName'] == $branch_name) {
