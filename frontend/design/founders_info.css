@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Space between image and text sections */
+    gap: 40px;
     max-width: 1200px;
     margin: 50px auto;
     padding: 40px;
@@ -14,39 +14,71 @@
 
 /* Images Section */
 .images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Space between the two images */
-}
-
-.image-wrapper {
     position: relative;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 40%;
 }
 
-.image-wrapper img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Circle images */
-    object-fit: cover; /* Maintain aspect ratio */
+.image-stack {
+    position: relative;
 }
 
-.image-wrapper .label {
+.image {
     position: absolute;
-    top: -20px; /* Adjust label position */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Monti Image */
+.image.monti {
+    top: -30px; /* Slightly higher than Akira */
+    left: 10px;
+    z-index: 1; /* Behind Akira */
+}
+
+.image.monti .label {
+    position: absolute;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 14px;
-    color: #000;
     font-weight: bold;
+    color: #000;
+}
+
+/* Akira Image */
+.image.akira {
+    top: 30px; /* Lower than Monti */
+    left: 0;
+    z-index: 2; /* In front of Monti */
+}
+
+.image.akira .label {
+    position: absolute;
+    top: 230px; /* Below the image */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
 }
 
 /* Text Section */
 .text-content {
     flex: 1;
     text-align: left;
-    color: #333; /* Dark text color */
+    color: #333;
 }
 
 .text-content h3 {
@@ -79,6 +111,8 @@
 }
 
 /* Responsive Design */
+
+/* For Tablets */
 @media (max-width: 768px) {
     .buzzing_container {
         flex-direction: column;
@@ -86,14 +120,19 @@
     }
 
     .images {
-        flex-direction: row;
+        width: 100%;
         justify-content: center;
-        gap: 10px;
+        margin-bottom: 20px;
     }
 
-    .image-wrapper img {
-        width: 100px;
-        height: 100px;
+    .image.monti {
+        top: -20px;
+        left: 0;
+    }
+
+    .image.akira {
+        top: 10px;
+        left: 0;
     }
 
     .text-content {
@@ -117,14 +156,15 @@
     }
 }
 
+/* For Mobile Phones */
 @media (max-width: 480px) {
-    .buzzing_container {
-        padding: 15px;
+    .images {
+        flex-direction: column;
     }
 
-    .image-wrapper img {
-        width: 80px;
-        height: 80px;
+    .image {
+        width: 150px;
+        height: 150px;
     }
 
     .text-content h1 {

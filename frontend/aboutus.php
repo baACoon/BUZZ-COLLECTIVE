@@ -111,15 +111,19 @@ $db->close();
     </div>  
 
     <div class="buzzing_container">
-        <!-- Images Section -->
+        <!-- Image Section -->
         <div class="images">
-            <div class="image-wrapper">
-                <img src="design/image/Monti_Comia.png" alt="Monti Comia">
-                <span class="label">Monti Comia</span>
-            </div>
-            <div class="image-wrapper">
-                <img src="design/image/Akira_Gata.png" alt="Akira Gata">
-                <span class="label">Akira Gata</span>
+            <div class="image-stack">
+                <!-- Monti's Image (Taller and Behind) -->
+                <div class="image monti">
+                    <img src="design/image/Monti_Comia.png" alt="Monti Comia">
+                    <span class="label">Monti Comia</span>
+                </div>
+                <!-- Akira's Image (In Front) -->
+                <div class="image akira">
+                    <img src="design/image/Akira_Gata.png" alt="Akira Gata">
+                    <span class="label">Akira Gata</span>
+                </div>
             </div>
         </div>
 
@@ -133,6 +137,7 @@ $db->close();
             </p>
         </div>
     </div>
+
 
 
 
