@@ -111,32 +111,29 @@ $db->close();
     </div>  
 
     <div class="buzzing_container">
-        <div class="buzzing_content">
-            <!-- Monti Image -->
-            <div class="v105_40">
+        <!-- Images Section -->
+        <div class="images">
+            <div class="image-wrapper">
                 <img src="design/image/Monti_Comia.png" alt="Monti Comia">
+                <span class="label">Monti Comia</span>
             </div>
-            <!-- Akira Image -->
-            <div class="v105_38">
+            <div class="image-wrapper">
                 <img src="design/image/Akira_Gata.png" alt="Akira Gata">
+                <span class="label">Akira Gata</span>
             </div>
-            <!-- Names -->
-            <div class="name1">
-                <h3>Monti Comia</h3>
-            </div>
-            <div class="name2">
-                <h3>Akira Gata</h3>
-            </div>
-            <!-- Title -->
+        </div>
+
+        <!-- Text Section -->
+        <div class="text-content">
             <h3>Founders</h3>
             <h2>Monti & Comia started</h2>
-            <h4><i>BUZZING</i></h4>
-            <!-- Description -->
+            <h1><i>BUZZING</i></h1>
             <p>
                 In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintaining strict safety measures built trust with their clients.
             </p>
         </div>
     </div>
+
 
 
      <!-- BARBERS INFO SELECTION -->

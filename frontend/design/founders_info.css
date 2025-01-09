@@ -1,148 +1,145 @@
-/* AKIRA_MONTI */
+/* Container */
 .buzzing_container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 50px 20px;
-    background-color: #ffffff; /* White background for the container */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+    gap: 30px; /* Space between image and text sections */
+    max-width: 1200px;
     margin: 50px auto;
-    max-width: 1200px; /* Limit the width of the container */
+    padding: 40px;
+    background-color: #ffffff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Images Section */
+.images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between the two images */
+}
+
+.image-wrapper {
+    position: relative;
     text-align: center;
-    overflow: hidden;
 }
 
-.buzzing_container h4 {
-    font-size: 50px;
-    font-weight: 800;
-    margin: 10px 0;
-    color: #333; /* Dark text for better contrast */
+.image-wrapper img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circle images */
+    object-fit: cover; /* Maintain aspect ratio */
 }
 
-.buzzing_container h2 {
-    font-size: 30px;
-    font-weight: 300;
+.image-wrapper .label {
+    position: absolute;
+    top: -20px; /* Adjust label position */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Text Section */
+.text-content {
+    flex: 1;
+    text-align: left;
+    color: #333; /* Dark text color */
+}
+
+.text-content h3 {
+    font-size: 20px;
+    font-weight: 400;
     margin-bottom: 10px;
     color: #555;
 }
 
-.buzzing_container h3 {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 5px 0;
+.text-content h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.text-content h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #000;
+}
+
+.text-content p {
+    font-size: 16px;
+    line-height: 1.8;
     color: #666;
-}
-
-.buzzing_container p {
-    width: 80%;
-    font-size: 16px;
-    line-height: 1.6;
     text-align: justify;
-    color: #444;
-    margin: 20px auto 0;
 }
 
-.name1 h3,
-.name2 h3 {
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 10px;
-    color: #333;
-}
-
-/* MONTI IMAGE */
-.v105_40 {
-    width: 250px;
-    height: 250px;
-    margin: 20px;
-    border-radius: 50%; /* Fully round the image */
-    overflow: hidden;
-}
-
-.v105_40 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* AKIRA IMAGE */
-.v105_38 {
-    width: 250px;
-    height: 250px;
-    margin: 20px;
-    border-radius: 50%; /* Fully round the image */
-    overflow: hidden;
-}
-
-.v105_38 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* RESPONSIVE STYLES */
-
-/* For Tablets */
+/* Responsive Design */
 @media (max-width: 768px) {
     .buzzing_container {
-        flex-direction: column; /* Stack items vertically */
-        padding: 30px 10px;
+        flex-direction: column;
+        padding: 20px;
     }
 
-    .buzzing_container h4 {
-        font-size: 40px;
+    .images {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
     }
 
-    .buzzing_container h2 {
-        font-size: 24px;
+    .image-wrapper img {
+        width: 100px;
+        height: 100px;
     }
 
-    .buzzing_container h3 {
-        font-size: 16px;
+    .text-content {
+        text-align: center;
     }
 
-    .buzzing_container p {
-        width: 90%; /* Expand text width */
-    }
-
-    .v105_40,
-    .v105_38 {
-        width: 200px;
-        height: 200px; /* Resize images */
-    }
-}
-
-/* For Mobile Phones */
-@media (max-width: 480px) {
-    .buzzing_container {
-        padding: 20px 10px;
-    }
-
-    .buzzing_container h4 {
+    .text-content h1 {
         font-size: 30px;
     }
 
-    .buzzing_container h2 {
+    .text-content h2 {
+        font-size: 22px;
+    }
+
+    .text-content h3 {
         font-size: 18px;
     }
 
-    .buzzing_container h3 {
+    .text-content p {
         font-size: 14px;
     }
+}
 
-    .buzzing_container p {
-        font-size: 14px;
-        width: 100%; /* Full width for mobile */
-        text-align: justify;
+@media (max-width: 480px) {
+    .buzzing_container {
+        padding: 15px;
     }
 
-    .v105_40,
-    .v105_38 {
-        width: 150px;
-        height: 150px; /* Resize images further */
+    .image-wrapper img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .text-content h1 {
+        font-size: 24px;
+    }
+
+    .text-content h2 {
+        font-size: 18px;
+    }
+
+    .text-content h3 {
+        font-size: 16px;
+    }
+
+    .text-content p {
+        font-size: 12px;
     }
 }
