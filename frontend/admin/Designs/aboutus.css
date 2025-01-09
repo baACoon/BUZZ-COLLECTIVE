@@ -324,17 +324,16 @@ li:hover > .sub-menu {
     flex-direction: column;
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
-    background-color: #8a0808;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     width: 100%;
-    position: absolute;
+    height: 90%;
+    position: fixed;
     top: 50%; /* Position the form in the middle */
     left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for the element's own size */
-    transition: opacity 0.3s ease;
 }
 
 
