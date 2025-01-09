@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+
 // Database connection
 $db = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 if ($db->connect_error) {
@@ -9,6 +11,7 @@ if ($db->connect_error) {
 
 // Fetch admin details
 $username = $_SESSION['admin_username'];
+echo "Session Username: " . htmlspecialchars($username) . "<br>"; // Debug: Check session username
 $query = "SELECT username, email FROM admin WHERE username = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param("s", $username);
@@ -17,7 +20,7 @@ $result = $stmt->get_result();
 $admin = $result->fetch_assoc();
 $stmt->close();
 
-// Handle missing admin details
+// Debug: Check if admin details are fetched
 if (!$admin) {
     die("Admin details not found. Please check your database.");
 }
