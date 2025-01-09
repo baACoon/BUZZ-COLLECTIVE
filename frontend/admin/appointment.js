@@ -118,7 +118,8 @@ document.getElementById('cancel-btn').addEventListener('click', function() {
         document.getElementById('popup').style.display = 'flex';
     }
 });
-function showReceiptModal(imageUrl) {
+
+function showReceiptModal(receiptPath) {
     const modal = document.getElementById('receiptModal');
     const receiptImage = document.getElementById('receiptImage');
     
@@ -127,7 +128,8 @@ function showReceiptModal(imageUrl) {
     
     // Set up image loading handlers
     receiptImage.onload = function() {
-        // Image loaded successfully - no additional action needed since modal is already visible
+        // Image loaded successfully
+        modal.style.display = 'block';
     };
     
     receiptImage.onerror = function() {
@@ -135,18 +137,16 @@ function showReceiptModal(imageUrl) {
         closeReceiptModal();
     };
     
-    // Load the image through the proxy
-    receiptImage.src = imageUrl;
+   // Updated proxy path
+   const proxyUrl = `/Buzz-Collective/proxy-image.php?path=${encodeURIComponent(receiptPath.split('/').pop())}`;
+   receiptImage.src = proxyUrl;
 }
 
 function closeReceiptModal() {
     const modal = document.getElementById('receiptModal');
     const receiptImage = document.getElementById('receiptImage');
     
-    // Hide the modal
     modal.style.display = 'none';
-    
-    // Clear the image source
     receiptImage.src = '';
     
     // Remove event listeners
@@ -154,6 +154,13 @@ function closeReceiptModal() {
     receiptImage.onerror = null;
 }
 
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('receiptModal');
+    if (event.target === modal) {
+        closeReceiptModal();
+    }
+}
 // Add event listeners when the document loads
 document.addEventListener('DOMContentLoaded', function() {
     // Close modal when clicking outside of it
