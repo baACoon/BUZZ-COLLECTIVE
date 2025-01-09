@@ -1,23 +1,20 @@
 <?php
 session_start();
 
+// Ensure session variable is set
+if (!isset($_SESSION['admin_username'])) {
+    header('Location: admin_log.php');
+    exit();
+}
+
 // Database connection
 $db = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 if ($db->connect_error) {
     die("Database connection failed: " . $db->connect_error);
 }
 
-// Check if admin is logged in
-if(isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['admin_username']);
-    header('location: admin_log.php');
-    exit();
-}
-
-$username = $_SESSION['admin_username'];
-
 // Fetch admin details
+$username = $_SESSION['admin_username'];
 $query = "SELECT username, email FROM admin WHERE username = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param("s", $username);
@@ -26,6 +23,19 @@ $result = $stmt->get_result();
 $admin = $result->fetch_assoc();
 $stmt->close();
 
+// Handle missing admin details
+if (!$admin) {
+    die("Admin details not found. Please check your database.");
+}
+
+// Handle logout
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['admin_username']);
+    header('Location: admin_log.php');
+    exit();
+}
+
 // Change password functionality
 $message = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
@@ -33,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Fetch the current password hash from the database
+    // Fetch the current password hash
     $query = "SELECT password FROM admin WHERE username = ?";
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $username);
@@ -42,13 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
     $stmt->fetch();
     $stmt->close();
 
-    // Verify current password
+    // Validate current password
     if (!password_verify($current_password, $hashed_password)) {
         $message = "Current password is incorrect.";
     } elseif ($new_password !== $confirm_password) {
         $message = "New password and confirmation do not match.";
     } else {
-        // Update the password in the database
+        // Update the password
         $new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
         $update_query = "UPDATE admin SET password = ? WHERE username = ?";
         $stmt = $db->prepare($update_query);
