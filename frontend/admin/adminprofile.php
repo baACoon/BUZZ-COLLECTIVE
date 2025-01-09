@@ -1,3 +1,15 @@
+<?php
+
+// Add this to the top of admin-home.php or create a logout.php
+if(isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['admin_username']);
+    header('location: admin_log.php');
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -63,7 +75,7 @@
 
     <!-- Logout -->
     <div class="logout">
-        <a href="buzzcollective.gayvar.com/backend/file/adminlogout.php" name="logout">Logout</a>
+        <a href="/admin_log.php" name="logout">Logout</a>
     </div>
 </div>
 
