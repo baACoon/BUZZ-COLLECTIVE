@@ -159,6 +159,6 @@ $branches = json_decode($json_data, true);
     </div>
 
 
-    <script src="/appointment.js"> </script>
+    <script src="/admin/appointment.js"> </script>
 </body>
 </html>
