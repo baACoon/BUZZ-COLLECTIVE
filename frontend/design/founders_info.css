@@ -29,7 +29,7 @@
     top: 100px;
 }
 
-.buzzing_container  p{
+.buzzing_container p{
     width: 50%;
     text-align: justify;
     margin-left: -20px;
@@ -99,6 +99,6 @@
         width: 100%; /* Expand width for mobile devices */
     }
     .buzzing_container p {
-        width: 0%; /* Reduce width for better readability */
+        width: 90%; /* Reduce width for better readability */
     }
 }
