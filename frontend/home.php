@@ -158,8 +158,8 @@ $db->close();
                         <?php foreach ($news as $item): ?>
                             <div class="news-item">
                                 <div class="news-image">
-                                <?php if (!empty($item['poster']) && file_exists('uploads/' . $item['poster'])): ?>
-                                    <img src="uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                <?php if (!empty($item['poster']) && file_exists(__DIR__ . '/uploads/' . basename($item['poster']))): ?>
+                                    <img src="/uploads/<?= htmlspecialchars(basename($item['poster'])) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                                 <?php else: ?>
                                     <img src="design/image/default-placeholder.png" alt="Default Image">
                                 <?php endif; ?>
