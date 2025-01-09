@@ -191,34 +191,6 @@ $db->close();
                 arrow.classList.remove('rotate');
             }
         });
-
-        // Add transition effects to branches
-        document.addEventListener('DOMContentLoaded', function() {
-            // Staggered appearance of branches
-            const branchLogos = document.querySelectorAll('.buzz-logo');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('show');
-                        }, index * 200); // Stagger the animation
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe each branch logo
-            branchLogos.forEach(logo => {
-                observer.observe(logo);
-            });
-        });
     </script>
 </body>
 </html>
