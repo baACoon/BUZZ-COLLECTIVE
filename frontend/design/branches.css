@@ -205,7 +205,10 @@ nav .navbar .links li .sub-menu {
 .buzz-logo {
   display: flex;               
   align-items: center;    
-  margin-bottom: 20px;      
+  margin-bottom: 20px;    
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
 /* Styling the image in the branches */
