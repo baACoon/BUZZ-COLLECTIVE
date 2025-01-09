@@ -63,7 +63,7 @@
 
     <!-- Logout -->
     <div class="logout">
-        <a href="https://admin.buzzcollective.gayvar.com/backend/adminlogout.php" type="button" name="logout">Logout</a>
+        <a href="buzzcollective.gayvar.com/backend/file/adminlogout.php" name="logout">Logout</a>
     </div>
 </div>
 
