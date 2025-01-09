@@ -160,6 +160,6 @@ $branches = json_decode($json_data, true);
     </div>
 
 
-    <script src="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/appointment.js"> </script>
+    <script src="/appointment.js"> </script>
 </body>
 </html>
