@@ -16,12 +16,9 @@
     </div>
     <div class="login-container">
         <?php 
-        if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0): ?>
+        if (isset($errors) && count($errors) > 0): ?>
             <div class="error-message">
-                <?php foreach ($_SESSION['errors'] as $error): ?>
-                    <p><?= htmlspecialchars($error) ?></p>
-                <?php endforeach; ?>
-                <?php unset($_SESSION['errors']); ?>
+                <?php foreach ($errors as $error) echo $error . '<br>'; ?>
             </div>
         <?php endif; ?>
         <form class="login-form" method="post" action="/admin_log.php">
