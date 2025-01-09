@@ -631,29 +631,16 @@ margin: 10px 0 20px;
       width: 90%; /* Add padding/margin to keep a centered appearance */
     }
 
-
     .footer-content {
       flex-direction: column;
+      align-items: center;
     }
-  
-    .footer-left, .footer-right {
+
+  .footer-left, .footer-right {
       margin: 20px 0;
-    }
-    
+      text-align: center;
   }
-
-
-  @media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-left, .footer-right {
-        margin: 20px 0;
-        text-align: center;
-    }
-} 
+}
 
 @media (max-width:480px){
   nav .navbar .nav-links{
