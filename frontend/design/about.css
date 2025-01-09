@@ -206,9 +206,10 @@ li:hover .arrow, li:hover .profile-arrow {
     margin-top: 0;
     margin-left: 0;
     text-align: justify;
-    width: 600px;
+    width: 900px;
     line-height: 1.6;
     padding: 10px;
+    text-align: center;
 }
 
 /*book appointment button */

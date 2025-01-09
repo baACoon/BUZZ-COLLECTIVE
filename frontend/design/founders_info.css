@@ -5,7 +5,7 @@
     align-items: center;
     gap: 40px;
     margin: 50px auto;
-    padding: 40px;
+    padding: 100px;
     width: 100%;
     background-color: #ffffff; /* White background */
 }
@@ -114,6 +114,7 @@
     line-height: 1.8;
     color: #000000;
     text-align: justify;
+    /*! padding-right: 150px; */
 }
 
 /* Responsive Design */
