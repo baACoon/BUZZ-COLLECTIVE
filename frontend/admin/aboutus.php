@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'add') {
         // Add a new barber
-        $title = $_POST['title'];
         $name = $_POST['name'];
         $age = $_POST['age'];
         $position = $_POST['position'];
@@ -32,35 +31,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Handle image upload
         if (isset($_FILES['backgroundImage']) && $_FILES['backgroundImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'design/image/';
+            $uploadDir = __DIR__ . '/uploads/'; // Directory for uploads
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }
-            $image = $uploadDir . basename($_FILES['backgroundImage']['name']);
-            move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $image);
+            $imagePath = $uploadDir . basename($_FILES['backgroundImage']['name']);
+            if (move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $imagePath)) {
+                $image = 'uploads/' . basename($_FILES['backgroundImage']['name']); // Save relative path
+            }
         }
 
-        $stmt = $db->prepare("INSERT INTO barbers (name, age, work, experience, position, image) VALUES (?, ?, '', ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO barbers (name, age, experience, position, image) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sisss", $name, $age, $experience, $position, $image);
         $stmt->execute();
         $stmt->close();
     } elseif ($action === 'edit') {
         // Edit an existing barber
         $id = $_POST['id'];
-        $title = $_POST['title'];
         $name = $_POST['name'];
         $age = $_POST['age'];
         $position = $_POST['position'];
         $experience = $_POST['experience'];
-
         $image = $_POST['currentImage'];
+
         if (isset($_FILES['backgroundImage']) && $_FILES['backgroundImage']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'design/image/';
-            $image = $uploadDir . basename($_FILES['backgroundImage']['name']);
-            move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $image);
+            $uploadDir = __DIR__ . '/uploads/';
+            $imagePath = $uploadDir . basename($_FILES['backgroundImage']['name']);
+            if (move_uploaded_file($_FILES['backgroundImage']['tmp_name'], $imagePath)) {
+                $image = 'uploads/' . basename($_FILES['backgroundImage']['name']);
+            }
         }
 
-        $stmt = $db->prepare("UPDATE barbers SET name = ?, age = ?, work = '', experience = ?, position = ?, image = ? WHERE id = ?");
+        $stmt = $db->prepare("UPDATE barbers SET name = ?, age = ?, experience = ?, position = ?, image = ? WHERE id = ?");
         $stmt->bind_param("sisssi", $name, $age, $experience, $position, $image, $id);
         $stmt->execute();
         $stmt->close();
@@ -80,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $db->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

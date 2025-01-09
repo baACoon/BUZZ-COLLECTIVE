@@ -38,7 +38,7 @@ if ($result) {
         $barbers[] = $row;
     }
 } else {
-    echo "<p class='error'>Error fetching barbers: " . $db->error . "</p>";
+    echo "Error fetching barbers: " . $db->error;
 }
 
 $db->close();
