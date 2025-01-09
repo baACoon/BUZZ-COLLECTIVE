@@ -8,6 +8,7 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to the login page
-header('Location: ../admin_log.php');
+header('Location: ../frontend/admin/admin_log.php');
 exit();
+
 ?>
