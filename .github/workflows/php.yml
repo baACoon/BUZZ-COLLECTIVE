@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHP Composer CI
 
 on:
   push:
@@ -15,12 +15,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Checkout the repository
     - uses: actions/checkout@v4
 
-    - name: Validate composer.json and composer.lock
+    # Validate composer.json and composer.lock
+    - name: Validate Composer Files
       run: composer validate --strict
 
-    - name: Cache Composer packages
+    # Cache Composer dependencies
+    - name: Cache Composer Dependencies
       id: composer-cache
       uses: actions/cache@v3
       with:
@@ -29,11 +32,23 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
+    # Install Composer dependencies
+    - name: Install Dependencies
       run: composer install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+    # Run PHPUnit test suite
+    - name: Run Test Suite
+      run: |
+        if [ -f "vendor/bin/phpunit" ]; then
+          vendor/bin/phpunit --configuration phpunit.xml.dist
+        else
+          echo "PHPUnit is not installed. Skipping tests."
+        fi
 
-    # - name: Run test suite
-    #   run: composer run-script test
+    # Lint PHP files for syntax errors
+    - name: Lint PHP Files
+      run: find . -name "*.php" -exec php -l {} \;
+
+    # Security check using Composer
+    - name: Run Composer Security Audit
+      run: composer audit --locked
