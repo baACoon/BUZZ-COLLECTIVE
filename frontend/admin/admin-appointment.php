@@ -22,6 +22,7 @@ $branches = json_decode($json_data, true);
     <title>Appointments - Buzz & Collective</title>
     <link rel="icon" type="image/x-icon" href="/images/buzznCollectives.jpg">
     <link rel="stylesheet" href="/Designs/adminappointment.css">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -94,7 +95,7 @@ $branches = json_decode($json_data, true);
                         foreach ($appointments as $appointment) {
         
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                            ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('/../uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
+                            ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('./../../../uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
                             : 'No Receipt Uploaded';
 
                             $branch_name = 'Main Branch';
@@ -201,7 +202,7 @@ $branches = json_decode($json_data, true);
             var formData = new FormData(form);
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../../../../backend/delete_appointment.php', true);
+            xhr.open('POST', '/backend/delete_appointment.php', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);
@@ -226,7 +227,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('https://admin.buzzcollective.gayvar.com/Buzz-collective/backend/confirm_appointment.php', {
+                fetch('/backend/confirm_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
@@ -258,7 +259,7 @@ $branches = json_decode($json_data, true);
                     formData.append('appointments[]', appointmentId);
                 });
 
-                fetch('../../../../backend/cancel_appointment.php', {
+                fetch('/backend/cancel_appointment.php', {
                     method: 'POST',
                     body: formData
                 })
