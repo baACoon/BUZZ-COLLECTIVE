@@ -118,18 +118,59 @@ document.getElementById('cancel-btn').addEventListener('click', function() {
         document.getElementById('popup').style.display = 'flex';
     }
 });
-
 function showReceiptModal(imageUrl) {
-    document.getElementById('receiptImage').src = imageUrl;
-    // Show the modal
-    document.getElementById('receiptModal').style.display = 'block';
+    const modal = document.getElementById('receiptModal');
+    const receiptImage = document.getElementById('receiptImage');
+    
+    // Show loading state
+    modal.style.display = 'block';
+    
+    // Set up image loading handlers
+    receiptImage.onload = function() {
+        // Image loaded successfully - no additional action needed since modal is already visible
+    };
+    
+    receiptImage.onerror = function() {
+        alert('Unable to load receipt image. Please try again later.');
+        closeReceiptModal();
+    };
+    
+    // Load the image through the proxy
+    receiptImage.src = imageUrl;
 }
 
 function closeReceiptModal() {
+    const modal = document.getElementById('receiptModal');
+    const receiptImage = document.getElementById('receiptImage');
+    
     // Hide the modal
-    document.getElementById('receiptModal').style.display = 'none';
-    document.getElementById('receiptImage').src = '';
+    modal.style.display = 'none';
+    
+    // Clear the image source
+    receiptImage.src = '';
+    
+    // Remove event listeners
+    receiptImage.onload = null;
+    receiptImage.onerror = null;
 }
+
+// Add event listeners when the document loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modal when clicking outside of it
+    const modal = document.getElementById('receiptModal');
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeReceiptModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeReceiptModal();
+        }
+    });
+});
 
 // Status dropdown change event handler
 document.getElementById('status').addEventListener('change', function() {
