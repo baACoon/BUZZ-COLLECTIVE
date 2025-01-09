@@ -1,5 +1,16 @@
 <?php
 session_start();
+       
+// Allow from specific origin
+header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Handle preflight (OPTIONS) request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200); // Respond with HTTP 200 OK
+    exit(0); // Terminate script
+}
 
 
 $appointments = isset($_SESSION['appointments']) ? $_SESSION['appointments'] : [];
@@ -91,46 +102,33 @@ $branches = json_decode($json_data, true);
                     </thead>
                     <tbody>
                         <?php
-                        
-                            if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-                                // Handle preflight request
-                                header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
-                                header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
-                                header("Access-Control-Allow-Headers: Content-Type, Authorization");
-                                exit(0);
-                            }
-                            // Allow from any origin
-                            header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
-                            header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
-                            header("Access-Control-Allow-Headers: Content-Type, Authorization");
+                        // Include required backend script
+                        include(__DIR__ . '/../../backend/displayappointment.php');
 
-                         include(__DIR__ . '/../../backend/displayappointment.php'); 
-                        
                         foreach ($appointments as $appointment) {
-        
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                            ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('https://buzzcollective.gayvar.com/frontend/uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
-                            : 'No Receipt Uploaded';
+                                ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('" . htmlspecialchars("https://buzzcollective.gayvar.com/frontend/uploads/receipts/{$appointment['receipt']}") . "')\">View Receipt</a>" 
+                                : 'No Receipt Uploaded';
 
                             $branch_name = 'Main Branch';
-                            foreach ($branches as $key => $branch) {
+                            foreach ($branches as $branch) {
                                 if ($branch['branchName'] == $branch_name) {
                                     $branch_location = $branch['branchLocation'];
-                                    break; 
+                                    break;
                                 }
                             }
-                            $payment_status = isset($appointment['payment_status_name']) ? $appointment['payment_status_name'] : 'N/A';
-                            $payment_display = ($payment_status === 'Paid') ? 'Paid' : 'Unpaid'; 
 
-                            $payment_option = isset($appointment['payment_option']) ? $appointment['payment_option'] : 'Not specified';
-                    
+                            $payment_status = $appointment['payment_status_name'] ?? 'N/A';
+                            $payment_display = ($payment_status === 'Paid') ? 'Paid' : 'Unpaid';
+                            $payment_option = $appointment['payment_option'] ?? 'Not specified';
+
                             echo "
                             <tr data-appointment-id='{$appointment['appointment_id']}'>
                                 <td><input type='checkbox' name='appointments[]' value='{$appointment['appointment_id']}'></td>
                                 <td>{$appointment['appointment_id']}</td>
                                 <td>
                                     <strong>Branch Name:</strong> {$branch_name}
-                                </td> 
+                                </td>
                                 <td>
                                     <strong>Date:</strong> {$appointment['date']}<br>
                                     <strong>Time:</strong> {$appointment['timeslot']}
@@ -144,14 +142,14 @@ $branches = json_decode($json_data, true);
                                 <td>
                                     <strong>Service:</strong> {$appointment['services']}<br>
                                     <strong>Stylist:</strong> {$appointment['barber']}
+                                </td>
                                 <td>{$payment_option}</td>
                                 <td>{$receipt_link}</td>
-                                <td>{$payment_display}</td>                                
+                                <td>{$payment_display}</td>
                                 <td>{$appointment['status_name']}</td>
                             </tr>";
-
                         }
-                            ?>
+                        ?>
                     </tbody>
                 </table>
             </form>
