@@ -67,7 +67,7 @@ if (isset($_POST['reg_admin'])) {
         $_SESSION['admin_username'] = $username;
         $_SESSION['success'] = "You are now logged in";
         $_SESSION['show_popup'] = true; //set popup flag
-        header('location: admin-home.php');
+        header('location: ../frontend/admin/admin-home.php');
     }
     }
 
@@ -99,7 +99,7 @@ if (isset($_POST['log_admin'])) {
             $_SESSION['admin_username'] = $username;
             $_SESSION['success'] = "You are now logged in";
             $_SESSION['show_popup'] = true; // Set popup flag
-            header('location: admin-home.php');
+            header('location: ../frontend/admin/admin-home.php');
             exit();
 
         case 0: // Wrong username/password combination
@@ -115,7 +115,7 @@ if (isset($_POST['log_admin'])) {
  // If there are errors, store them in session and redirect back
  if (!empty($errors)) {
     $_SESSION['errors'] = $errors;
-    header('location: admin_log.php'); // Redirect back to login
+    header('location: ../frontend/admin/admin_log.php'); // Redirect back to login
     exit();
   }
 }
