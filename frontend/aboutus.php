@@ -111,13 +111,7 @@ $db->close();
     </div>  
 
     <div class="buzzing_container">
-        <h3>Founders</h3>
-        <h2>Monti & Comia started</h2>
-        <h4><i>BUZZING</i></h4>
-        <p>
-            In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
-        </p>
-            <div class="v105_40">
+    <div class="v105_40">
                 <img src="design/image/Monti_Comia.png" alt="">
             </div>
             <div class="v105_38">
@@ -129,6 +123,13 @@ $db->close();
         <div class="name2">
             <h3> Akira Gata </h3>
         </div>
+        <h3>Founders</h3>
+        <h2>Monti & Comia started</h2>
+        <h4><i>BUZZING</i></h4>
+        <p>
+            In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
+        </p>
+            
         
     </div>
 
