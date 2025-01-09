@@ -639,7 +639,21 @@ margin: 10px 0 20px;
     .footer-left, .footer-right {
       margin: 20px 0;
     }
+    
   }
+
+
+  @media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 20px 0;
+        text-align: center;
+    }
+} 
 
 @media (max-width:480px){
   nav .navbar .nav-links{
@@ -686,15 +700,5 @@ margin: 10px 0 20px;
   .additional-images img {
     max-width: 100%; /* Adjust image size for very small screens */
     border-radius: 5px; /* Smaller rounded corners */
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-left, .footer-right {
-      margin: 20px 0;
-      text-align: center;
   }
 }
