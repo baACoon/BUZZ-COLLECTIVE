@@ -8,8 +8,6 @@
     margin: 50px auto;
     padding: 40px;
     background-color: #ffffff; /* White background */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 /* Images Section */
@@ -17,61 +15,70 @@
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    width: 40%;
+    align-items: center;
+    flex-direction: column;
 }
 
 .image-stack {
     position: relative;
-}
-
-.image {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    width: 300px; /* Adjusted size for larger images */
+    height: 450px; /* Adjusted size for larger images */
 }
 
 /* Monti Image */
 .image.monti {
-    top: -30px; /* Slightly higher than Akira */
-    left: 10px;
+    position: absolute;
+    width: 250px; /* Increased size */
+    height: 350px; /* Increased size */
+    top: -50px;
+    left:40px;
     z-index: 1; /* Behind Akira */
+    border-radius: 0 0 250px 250px; /* Rounded bottom only */
+    overflow: hidden;
 }
 
-.image.monti .label {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    font-weight: bold;
-    color: #000;
+.image.monti img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Akira Image */
 .image.akira {
-    top: 30px; /* Lower than Monti */
-    left: 0;
+    position: absolute;
+    width: 200px; /* Increased size */
+    height: 300px; /* Increased size */
+    top: 100px;
+    left: 50px;
     z-index: 2; /* In front of Monti */
+    border-radius: 50%; /* Fully rounded */
+    overflow: hidden;
+}
+
+.image.akira img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Labels for Names */
+.image .label {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.image.monti .label {
+    top: 360px; /* Below the image */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .image.akira .label {
-    position: absolute;
-    top: 230px; /* Below the image */
+    top: 310px; /* Below the image */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 14px;
-    font-weight: bold;
-    color: #000;
 }
 
 /* Text Section */
@@ -126,12 +133,15 @@
     }
 
     .image.monti {
-        top: -20px;
-        left: 0;
+        width: 200px;
+        height: 280px;
+        top: -30px;
     }
 
     .image.akira {
-        top: 10px;
+        width: 150px;
+        height: 220px;
+        top: 60px;
         left: 0;
     }
 
@@ -162,9 +172,17 @@
         flex-direction: column;
     }
 
-    .image {
+    .image.monti {
         width: 150px;
-        height: 150px;
+        height: 200px;
+        top: -20px;
+    }
+
+    .image.akira {
+        width: 120px;
+        height: 180px;
+        top: 40px;
+        left: 0;
     }
 
     .text-content h1 {
