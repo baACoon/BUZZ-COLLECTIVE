@@ -75,6 +75,10 @@ if (isset($_POST['log_admin'])) {
           $admin = mysqli_fetch_assoc($result);
           $hashed_password = $admin['password'];
 
+          // Debugging: Log the retrieved password hash
+          error_log("Database Password Hash: $hashed_password");
+          error_log("Entered Password: $password");
+
           // Verify the password
           if (password_verify($password, $hashed_password)) {
               $_SESSION['admin_username'] = $username;
@@ -97,6 +101,7 @@ if (isset($_POST['log_admin'])) {
       exit();
   }
 }
+
 
 // OPTIONAL: Password Hashing Fix Script
 // Uncomment this function and the call below only to hash existing plaintext passwords once.
