@@ -1,104 +1,148 @@
 /* AKIRA_MONTI */
-.buzzing_container{
+.buzzing_container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: right;
-    padding-top: 500px;
-    color: #000000;
-    margin-left: 45em;
-    margin-top: 100px;
+    padding: 50px 20px;
+    background-color: #ffffff; /* White background for the container */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+    margin: 50px auto;
+    max-width: 1200px; /* Limit the width of the container */
+    text-align: center;
     overflow: hidden;
-} 
-
-.buzzing_container h4{
-    font-size: 100px;
-    font-weight: 800;
-    padding:0;
-    margin: 0;
 }
 
-.buzzing_container h2{
+.buzzing_container h4 {
     font-size: 50px;
+    font-weight: 800;
+    margin: 10px 0;
+    color: #333; /* Dark text for better contrast */
+}
+
+.buzzing_container h2 {
+    font-size: 30px;
     font-weight: 300;
-    margin-bottom: -9px;
+    margin-bottom: 10px;
+    color: #555;
 }
 
-.buzzing_container h3{
-    font-size: 20px;
-    font-weight: 200;
-    top: 100px;
+.buzzing_container h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 5px 0;
+    color: #666;
 }
 
-.buzzing_container p{
-    width: 50%;
+.buzzing_container p {
+    width: 80%;
+    font-size: 16px;
+    line-height: 1.6;
     text-align: justify;
-    margin-left: -20px;
+    color: #444;
+    margin: 20px auto 0;
+}
 
-}
-.name1 h3{
-    position:absolute;
+.name1 h3,
+.name2 h3 {
     font-size: 16px;
-    font-weight: 200;
-    top: 175%;
-    left:20%;
-}
-.name2 h3{
-    position:absolute;
-    font-size: 16px;
-    font-weight: 200;
-    top: 200%;
-    left:9%;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #333;
 }
 
 /* MONTI IMAGE */
-
-.v105_40{
-    position: absolute;
-    float: left;
-    width: 500px;
-    height: 500px;
-    top: 1000px;
-    left: 280px;
-}
-.v105_40 img{
-    border-bottom-right-radius: 500px;
-    border-bottom-left-radius: 250px;
+.v105_40 {
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    border-radius: 50%; /* Fully round the image */
+    overflow: hidden;
 }
 
-
-/*AKIRA IMAGE */
-.v105_38{
-    width: 450px;
-    height: 446px;
-    opacity: 1;
-    position: absolute;
-    top: 1240px;
-    left: 80px;
-    border-radius: 4px;
-}
-.v105_38 img{
-    border-bottom-right-radius: 250px;
-    border-bottom-left-radius: 250px;
+.v105_40 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
+/* AKIRA IMAGE */
+.v105_38 {
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    border-radius: 50%; /* Fully round the image */
+    overflow: hidden;
+}
 
+.v105_38 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* RESPONSIVE STYLES */
+
+/* For Tablets */
 @media (max-width: 768px) {
-    .v105_38 {
-        width:250px;
-        height: 250px;
-        
-    }
     .buzzing_container {
-        display: column;
+        flex-direction: column; /* Stack items vertically */
+        padding: 30px 10px;
     }
-    .buzzing_container h4 { 
+
+    .buzzing_container h4 {
         font-size: 40px;
     }
-    .buzzing_container .text-container {
-        margin-left: 0; /* Reset margin for smaller screens */
-        width: 100%; /* Expand width for mobile devices */
+
+    .buzzing_container h2 {
+        font-size: 24px;
     }
+
+    .buzzing_container h3 {
+        font-size: 16px;
+    }
+
     .buzzing_container p {
-        width: 90%; /* Reduce width for better readability */
+        width: 90%; /* Expand text width */
+    }
+
+    .v105_40,
+    .v105_38 {
+        width: 200px;
+        height: 200px; /* Resize images */
+    }
+}
+
+/* For Mobile Phones */
+@media (max-width: 480px) {
+    .buzzing_container {
+        padding: 20px 10px;
+    }
+
+    .buzzing_container h4 {
+        font-size: 30px;
+    }
+
+    .buzzing_container h2 {
+        font-size: 18px;
+    }
+
+    .buzzing_container h3 {
+        font-size: 14px;
+    }
+
+    .buzzing_container p {
+        font-size: 14px;
+        width: 100%; /* Full width for mobile */
+        text-align: justify;
+    }
+
+    .v105_40,
+    .v105_38 {
+        width: 150px;
+        height: 150px; /* Resize images further */
     }
 }

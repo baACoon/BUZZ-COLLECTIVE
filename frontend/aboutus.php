@@ -111,27 +111,33 @@ $db->close();
     </div>  
 
     <div class="buzzing_container">
-    <div class="v105_40">
-                <img src="design/image/Monti_Comia.png" alt="">
+        <div class="buzzing_content">
+            <!-- Monti Image -->
+            <div class="v105_40">
+                <img src="design/image/Monti_Comia.png" alt="Monti Comia">
             </div>
+            <!-- Akira Image -->
             <div class="v105_38">
-                <img src="design/image/Akira_Gata.png" alt="">
+                <img src="design/image/Akira_Gata.png" alt="Akira Gata">
             </div>
-        <div class="name1">
-            <h3> Monti Comia </h3>
+            <!-- Names -->
+            <div class="name1">
+                <h3>Monti Comia</h3>
+            </div>
+            <div class="name2">
+                <h3>Akira Gata</h3>
+            </div>
+            <!-- Title -->
+            <h3>Founders</h3>
+            <h2>Monti & Comia started</h2>
+            <h4><i>BUZZING</i></h4>
+            <!-- Description -->
+            <p>
+                In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintaining strict safety measures built trust with their clients.
+            </p>
         </div>
-        <div class="name2">
-            <h3> Akira Gata </h3>
-        </div>
-        <h3>Founders</h3>
-        <h2>Monti & Comia started</h2>
-        <h4><i>BUZZING</i></h4>
-        <p>
-            In <b>May 2022</b>, Akira Gata and Monti Comia established Buzz&Collectives just as Cavite City was still recovering from the aftermath of the COVID-19 pandemic. The team’s commitment to maintain strict safety measures built the trust with the clients.
-        </p>
-            
-        
     </div>
+
 
      <!-- BARBERS INFO SELECTION -->
      <section>
