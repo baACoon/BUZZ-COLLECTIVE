@@ -21,7 +21,7 @@ ini_set('display_errors', 1);
 
 // Ensure admin is logged in
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    error_log("Unauthorized access attempt to proxy-image.php");
+    error_log("Unauthorized access attempt to proxy-image.php HAYS!! ");
     http_response_code(403);
     exit('Unauthorized');
 }
