@@ -2,17 +2,19 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    // Handle preflight request
     header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
     exit(0);
 }
-// Allow from any origin
+
 header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
+// For debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Security checks
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
@@ -27,16 +29,20 @@ if (empty($imagePath)) {
     exit('Invalid request');
 }
 
-// Set the full path to your uploads directory
-$fullPath = $_SERVER['DOCUMENT_ROOT'] . 'https://buzzcollective.gayvar.com/frontend/uploads/receipts/' . $imagePath;
+// Set the full path to your uploads directory with correct path
+$fullPath = $_SERVER['DOCUMENT_ROOT'] . '/Buzz-collective/frontend/uploads/receipts/' . $imagePath;
+
+// Debug information
+error_log("Attempting to access file: " . $fullPath);
 
 // Validate the path and file existence
-if (!file_exists($fullPath) || !is_file($fullPath)) {
+if (!file_exists($fullPath)) {
+    error_log("File not found at: " . $fullPath);
     http_response_code(404);
-    exit('File not found');
+    exit('File not found at: ' . $fullPath);
 }
 
-// Validate file extension (optional but recommended)
+// Validate file extension
 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
 $fileExtension = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
 if (!in_array($fileExtension, $allowedExtensions)) {
@@ -52,7 +58,7 @@ finfo_close($finfo);
 // Set proper headers
 header('Content-Type: ' . $mimeType);
 header('Content-Length: ' . filesize($fullPath));
-header('Cache-Control: public, max-age=86400'); // Cache for 24 hours
+header('Cache-Control: public, max-age=86400');
 
 // Output file
 readfile($fullPath);
