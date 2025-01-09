@@ -8,8 +8,10 @@ if ($db->connect_error) {
 }
 
 // Check if admin is logged in
-if (!isset($_SESSION['admin_username'])) {
-    header('Location: admin_log.php');
+if(isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['admin_username']);
+    header('location: admin_log.php');
     exit();
 }
 
