@@ -62,7 +62,7 @@ $db->close();
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <base href="https://buzzcollective.gayvar.com/Buzz-collective/frontend/">
     <title>About us</title>
-</head>
+</head> 
 <body>
     <nav>
         <div class="navbar">
