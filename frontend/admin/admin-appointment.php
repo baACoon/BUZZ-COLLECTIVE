@@ -1,6 +1,19 @@
 <?php
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    // Handle preflight request
+    header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    exit(0);
+}
+// Allow from any origin
+header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+
 $appointments = isset($_SESSION['appointments']) ? $_SESSION['appointments'] : [];
 unset($_SESSION['appointments']);
 
@@ -95,7 +108,7 @@ $branches = json_decode($json_data, true);
                         foreach ($appointments as $appointment) {
         
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                            ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('https://buzzcollective.gayvar.com/frontend/uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
+                            ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('https://buzzcollective.gayvar.com/uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
                             : 'No Receipt Uploaded';
 
                             $branch_name = 'Main Branch';
