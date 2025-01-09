@@ -22,7 +22,7 @@ $branches = json_decode($json_data, true);
     <title>Appointments - Buzz & Collective</title>
     <link rel="icon" type="image/x-icon" href="/images/buzznCollectives.jpg">
     <link rel="stylesheet" href="/Designs/adminappointment.css">
-    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/admin/">
+    <base href="https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -30,27 +30,27 @@ $branches = json_decode($json_data, true);
     <!-- Navbar for screens below 768px -->
     <div class="mobile-navbar" id="mobile-navbar">
         <div class="mobile-logo">
-            <img src="/images/BUZZ-Black.png" alt="Buzz Collective Logo">
+            <img src="/admin/images/BUZZ-Black.png" alt="Buzz Collective Logo">
         </div>
         <i class='bx bx-menu' id="menu-icon"></i>
     </div>
     <aside class="sidebar">
         <i class='bx bx-x' id="close-sidebar" style="display: none;"></i> <!-- Add this line for the close button -->
         <div class="logo">
-            <a href="/admin-home.php">
-                <img src="/images/BUZZ-White.png" alt="Buzz Collective Logo">
+            <a href="/admin/admin-home.php">
+                <img src="/admin/images/BUZZ-White.png" alt="Buzz Collective Logo">
             </a>
         </div>
         <nav>
             <ul>
-                <li><a href="/dashboard.php">Dashboard</a></li>
-                <li><a href="/admin-appointment.php">Appointment Bookings</a></li>
-                <li><a href="/admin-barber.php">Barbers' Schedule</a></li>
-                <li><a href="/services.php">Services</a><span class="notification-dot"></span></li>
-                <li><a href="/admin-aboutus.php">About Us</a></li>
-                <li><a href="/news.php">News</a></li>
-                <li><a href="/admin-branches.php">Branches</a></li>
-                <li><a href="/adminprofile.php">Admin Profile </a></li>
+                <li><a href="/admin/dashboard.php">Dashboard</a></li>
+                <li><a href="/admin/admin-appointment.php">Appointment Bookings</a></li>
+                <li><a href="admin/admin-barber.php">Barbers' Schedule</a></li>
+                <li><a href="/admin/services.php">Services</a><span class="notification-dot"></span></li>
+                <li><a href="/admin//admin-aboutus.php">About Us</a></li>
+                <li><a href="/admin/news.php">News</a></li>
+                <li><a href="/admin/admin-branches.php">Branches</a></li>
+                <li><a href="/admin/adminprofile.php">Admin Profile </a></li>
             </ul>
         </nav>
     </aside>
@@ -95,7 +95,7 @@ $branches = json_decode($json_data, true);
 
                         foreach ($appointments as $appointment) {
                             $receipt_link = isset($appointment['receipt']) && !empty($appointment['receipt']) 
-                            ? "<a href='#' class='view-receipt' data-receipt='https://buzzcollective.gayvar.com/proxy-image.php?path=" . urlencode($appointment['receipt']) . "'>View Receipt</a>" 
+                            ? "<a href='#' class='view-receipt' onclick=\"showReceiptModal('/uploads/receipts/{$appointment['receipt']}')\">View Receipt</a>" 
                             : 'No Receipt Uploaded';
                             $branch_name = 'Main Branch';
                             foreach ($branches as $branch) {
