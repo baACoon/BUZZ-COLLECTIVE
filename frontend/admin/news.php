@@ -134,7 +134,7 @@ if ($result) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                    <?php if (!empty($item['poster']) && file_exists(__DIR__ . 'admin/uploads/' . basename($item['poster']))): ?>
+                    <?php if (!empty($item['poster']) && file_exists(__DIR__ . '/uploads/' . basename($item['poster']))): ?>
                         <img src="/uploads/<?= htmlspecialchars(basename($item['poster'])) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                     <?php else: ?>
                         <img src="/images/default-placeholder.png" alt="Default Image">
