@@ -83,21 +83,25 @@ if (isset($_POST['login_user'])) {
   if (empty($password)) {
     array_push($errors, "Password is required");
   }
-
   if (count($errors) == 0) {
     $password = md5($password);
     $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $results = mysqli_query($db, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      $_SESSION['show_popup'] = true; // Set popup flag
-      header('location: ../frontend/home.php');
-      exit();
-    } else {
-      array_push($errors, "Wrong username/password combination");
+    $rowCount = mysqli_num_rows($results); // Save the result for reuse
+
+    switch ($rowCount) {
+        case 1: // Successful login
+            $_SESSION['username'] = $username;
+            $_SESSION['success'] = "You are now logged in";
+            $_SESSION['show_popup'] = true; // Set popup flag
+            header('location: ../frontend/home.php');
+            exit();
+
+        default: // Any other case, handle as an error
+            array_push($errors, "Wrong username/password combination");
+            break;
     }
-  }
+}
 
   // If there are errors, store them in session and redirect back
   if (!empty($errors)) {
