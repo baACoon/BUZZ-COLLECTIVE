@@ -134,7 +134,11 @@ if ($result) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                    <img src="<?= file_exists('../uploads/' . $item['poster']) ? '../uploads/' . htmlspecialchars($item['poster']) : 'https://admin.buzzcollective.gayvar.com/Buzz-collective/frontend/design/image/default-placeholder.png' ?>" alt="<?= htmlspecialchars($item['title']) ?>"                   
+                    <?php if (!empty($item['poster']) && file_exists('uploads/' . $item['poster'])): ?>
+                        <img src="uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                    <?php else: ?>
+                        <img src="design/image/default-placeholder.png" alt="Default Image">
+                    <?php endif; ?>
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>
                         <p><?= htmlspecialchars($item['description']) ?></p>
