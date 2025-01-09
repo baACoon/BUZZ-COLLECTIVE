@@ -2,7 +2,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.barbers-button{
+.barbers-button:hover{
     background-color: #555; 
     transform: scale(1.05);
 }
