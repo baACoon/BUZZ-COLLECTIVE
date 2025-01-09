@@ -63,7 +63,7 @@
 
     <!-- Logout -->
     <div class="logout">
-        <button type="button" name="logout">Logout</button>
+        <a href="../backend/adminlogout.php" type="button" name="logout">Logout</a>
     </div>
 </div>
 
