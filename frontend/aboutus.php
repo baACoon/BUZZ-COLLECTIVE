@@ -318,18 +318,29 @@ $db->close();
         navLinks.classList.toggle("show1");
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-        const buzzingContainer = document.querySelector(".buzzing_container");
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    buzzingContainer.classList.add("visible");
+        document.addEventListener("DOMContentLoaded", function () {
+            const buzzingContainer = document.querySelector(".buzzing_container");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Add the visible class when in viewport
+                            entry.target.classList.add("visible");
+                        } else {
+                            // Remove the visible class when out of viewport (optional)
+                            entry.target.classList.remove("visible");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1, // Trigger when 10% of the element is visible
                 }
-            });
-        });
+            );
 
-    observer.observe(buzzingContainer);
+            // Observe the container
+            observer.observe(buzzingContainer);
 });
+
 
     </script>
 

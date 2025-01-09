@@ -1,57 +1,65 @@
-.barbers-button{
+/* Button Transition */
+.barbers-button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.barbers-button:hover{
-    background-color: #222222; 
-    transform: scale(1.05);
+.barbers-button:hover {
+    background-color: #222222; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
+/* Keyframes for Text Swipe */
 @keyframes textSwipe {
     0% {
         opacity: 0;
-        transform: translateX(100%); /* Start from the right */
+        transform: translateX(100%); /* Start off-screen to the right */
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* End at its original position */
+        transform: translateX(0); /* End at original position */
     }
 }
 
+/* Keyframes for Image Swipe */
 @keyframes imageSwipe {
     0% {
         opacity: 0;
-        transform: translateX(-100%); /* Start from the left */
+        transform: translateX(-100%); /* Start off-screen to the left */
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* End at its original position */
+        transform: translateX(0); /* End at original position */
     }
 }
 
-/* Text animation */
+/* Initial state for animation */
 .buzzing_container h3,
 .buzzing_container h2,
 .buzzing_container h4,
-.buzzing_container p {
-    animation: textSwipe 1s ease-out forwards; /* Apply swipe animation */
-    opacity: 0; /* Start hidden */
-}
-
-/* Images animation */
+.buzzing_container p,
 .v105_40 img,
 .v105_38 img {
-    animation: imageSwipe 1s ease-out forwards;
     opacity: 0; /* Start hidden */
+    transform: translateX(100%); /* Text starts off-screen to the right */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
 }
 
-/* Delay the animation to make it look smoother */
-.v105_40 img {
-    animation-delay: 0.5s; /* Delay for Monti's image */
-}
-
+.v105_40 img,
 .v105_38 img {
-    animation-delay: 0.7s; /* Delay for Akira's image */
+    transform: translateX(-100%); /* Images start off-screen to the left */
+}
+
+/* When visible, apply the animation */
+.visible h3,
+.visible h2,
+.visible h4,
+.visible p {
+    animation: textSwipe 0.8s ease forwards; /* Adjust duration for smoother effect */
+}
+
+.visible .v105_40 img,
+.visible .v105_38 img {
+    animation: imageSwipe 0.8s ease forwards; /* Adjust duration for smoother effect */
 }
 
 /* Responsive Adjustments */
@@ -75,11 +83,12 @@
     }
 }
 
+/* Ensure animation runs only when visible */
 .buzzing_container.visible h3,
 .buzzing_container.visible h2,
 .buzzing_container.visible h4,
 .buzzing_container.visible p,
 .buzzing_container.visible .v105_40 img,
 .buzzing_container.visible .v105_38 img {
-    animation-play-state: running; /* Start the animation */
+    animation-play-state: running; /* Start animation when visible */
 }
