@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-// Ensure session variable is set
-if (!isset($_SESSION['admin_username'])) {
-    header('Location: admin_log.php');
-    exit();
-}
-
 // Database connection
 $db = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 if ($db->connect_error) {
