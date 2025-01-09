@@ -79,16 +79,6 @@ if ($result) {
         $news[] = $row;
     }
 }
-
-$result = $mysqli->query("SELECT id, poster FROM news");
-while ($row = $result->fetch_assoc()) {
-    $id = $row['id'];
-    $poster = $row['poster'];
-    if (!file_exists(__DIR__ . '/' . $poster) && file_exists(__DIR__ . '/uploads/' . basename($poster))) {
-        $newPoster = 'uploads/' . basename($poster);
-        $mysqli->query("UPDATE news SET poster = '$newPoster' WHERE id = $id");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,12 +134,11 @@ while ($row = $result->fetch_assoc()) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                    <?php if (!empty($item['poster']) && file_exists(__DIR__ . '/' . $item['poster'])): ?>
-                        <img src="admin/uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                    <?php if (!empty($item['poster']) && file_exists('uploads/' . $item['poster'])): ?>
+                        <img src="uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
                     <?php else: ?>
                         <img src="design/image/default-placeholder.png" alt="Default Image">
                     <?php endif; ?>
-
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>
                         <p><?= htmlspecialchars($item['description']) ?></p>

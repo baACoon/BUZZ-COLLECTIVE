@@ -119,7 +119,6 @@ $db->close();
                         <a href="admin-aboutus.php" class="parent-menu">About Us</a>
                         <ul class="submenu">
                             <li><a href="aboutus.php">Barbers</a></li>
-                            <li><a href="aboutushiring.php">Hiring</a></li>
                         </ul>
                     </li>
                     <li><a href="news.php">News</a></li>
