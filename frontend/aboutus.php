@@ -105,7 +105,7 @@ $db->close();
             </div>
     </nav>
 
-
+    <div class="bgimage"></div>
     <div id="body-container">
         <img src="design/image/buzz.png" class="logo-body" alt="">
         <p>Buzz & Collectives is more than just a barbershop—it's a dynamic concept store where craftsmanship meets community. Experience top-notch grooming services alongside curated selections of lifestyle products, fostering a vibrant space where style and culture intersect.</p>
