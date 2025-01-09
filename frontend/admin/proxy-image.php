@@ -30,7 +30,7 @@ if (empty($imagePath)) {
 }
 
 // Set the full path to your uploads directory with correct path
-$fullPath = $_SERVER['DOCUMENT_ROOT'] . '/Buzz-collective/frontend/uploads/receipts/' . $imagePath;
+$fullPath = $_SERVER['DOCUMENT_ROOT'] . 'https://buzzcollective.gayvar.com/Buzz-collective/frontend/uploads/receipts/' . $imagePath;
 
 // Debug information
 error_log("Attempting to access file: " . $fullPath);
