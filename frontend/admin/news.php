@@ -135,7 +135,7 @@ if ($result) {
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
                     <?php if (!empty($item['poster']) && file_exists('uploads/' . $item['poster'])): ?>
-                        <img src="uploads/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                        <img src="<?= htmlspecialchars($item['poster']) ?>">
                     <?php else: ?>
                         <img src="/images/default-placeholder.png" alt="Default Image">
                     <?php endif; ?>
