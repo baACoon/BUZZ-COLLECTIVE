@@ -7,6 +7,7 @@
     max-width: 1200px;
     margin: 50px auto;
     padding: 40px;
+    width: 100%;
     background-color: #ffffff; /* White background */
 }
 
@@ -89,23 +90,22 @@
 }
 
 .text-content h3 {
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
     color: #555;
 }
 
 .text-content h2 {
     font-size: 28px;
     font-weight: 500;
-    margin-bottom: 10px;
+
     color: #000;
 }
 
 .text-content h1 {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 100px;
+    font-weight: 900;
     font-style: italic;
     color: #000;
 }
@@ -113,7 +113,7 @@
 .text-content p {
     font-size: 16px;
     line-height: 1.8;
-    color: #666;
+    color: #000000;
     text-align: justify;
 }
 
@@ -129,7 +129,6 @@
     .images {
         width: 100%;
         justify-content: center;
-        margin-bottom: 20px;
     }
 
     .image.monti {
@@ -145,12 +144,15 @@
         left: 0;
     }
 
+    .image-stack{
+        height:250px;
+    }
     .text-content {
         text-align: center;
     }
 
     .text-content h1 {
-        font-size: 30px;
+        font-size: 80px;
     }
 
     .text-content h2 {
@@ -163,30 +165,17 @@
 
     .text-content p {
         font-size: 14px;
+        margin-bottom:80px;
     }
 }
 
 /* For Mobile Phones */
 @media (max-width: 480px) {
-    .images {
-        flex-direction: column;
+    .image-stack{
+        height: 275px;
     }
-
-    .image.monti {
-        width: 150px;
-        height: 200px;
-        top: -20px;
-    }
-
-    .image.akira {
-        width: 120px;
-        height: 180px;
-        top: 40px;
-        left: 0;
-    }
-
     .text-content h1 {
-        font-size: 24px;
+        font-size: 60px;
     }
 
     .text-content h2 {
