@@ -1,4 +1,17 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    // Handle preflight request
+    header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    exit(0);
+}
+
+// Allow from any origin
+header("Access-Control-Allow-Origin: https://admin.buzzcollective.gayvar.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Use the correct POST name 'appointments[]'
     $appointments = isset($_POST['appointments']) ? $_POST['appointments'] : [];
