@@ -37,15 +37,15 @@
 .buzzing_container h2,
 .buzzing_container h4,
 .buzzing_container p,
-.v105_40 img,
-.v105_38 img {
+.image.monti,
+.image.akira {
     opacity: 0; /* Start hidden */
     transform: translateX(100%); /* Text starts off-screen to the right */
     transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
 }
 
-.v105_40 img,
-.v105_38 img {
+.image.akira,
+.image.monti {
     transform: translateX(-100%); /* Images start off-screen to the left */
 }
 
@@ -57,8 +57,8 @@
     animation: textSwipe 0.8s ease forwards; /* Adjust duration for smoother effect */
 }
 
-.visible .v105_40 img,
-.visible .v105_38 img {
+.visible .image.monti,
+.visible .image.akira {
     animation: imageSwipe 0.8s ease forwards; /* Adjust duration for smoother effect */
 }
 
