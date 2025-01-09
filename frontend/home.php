@@ -355,6 +355,35 @@ $db->close();
                                 document.getElementById('popBackground').style.display = 'none';
                             }
 
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Select all elements that need transitions
+                            const elements = document.querySelectorAll(
+                                ".news-item, .v79368, .barber-selection, .buzzin-barber, .appntmnt-button, .barber-button, .day-row"
+                            );
+
+                            // Create the Intersection Observer
+                            const observer = new IntersectionObserver(
+                                (entries) => {
+                                    entries.forEach((entry) => {
+                                        if (entry.isIntersecting) {
+                                            // Add 'visible' class when the element enters the viewport
+                                            entry.target.classList.add("visible");
+                                        } else {
+                                            // Optional: Remove 'visible' class when the element exits the viewport
+                                            entry.target.classList.remove("visible");
+                                        }
+                                    });
+                                },
+                                {
+                                    threshold: 0.1, // Trigger when 10% of the element is visible
+                                }
+                            );
+
+                            // Observe each element
+                            elements.forEach((el) => observer.observe(el));
+                        });
+
+
             </script>
 
 </body>
