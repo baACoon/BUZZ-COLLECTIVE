@@ -2,11 +2,11 @@
 // Database connection
 $mysqli = new mysqli('localhost', 'u634485059_root', '>nZ7/&Zzr', 'u634485059_barbershop');
 
-
 // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
+
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -18,31 +18,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $subtitle = $_POST['subtitle'] ?? '';
             $description = $_POST['description'] ?? '';
             $posterPath = '';
-        
+
             // Handle uploaded poster
             if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = __DIR__ . '/uploads/';
                 if (!is_dir($uploadDir)) {
                     mkdir($uploadDir, 0777, true);
                 }
-                $fullPosterPath = $uploadDir . basename($_FILES['poster']['name']);
+                $filename = basename($_FILES['poster']['name']);
+                $fullPosterPath = $uploadDir . $filename;
                 if (move_uploaded_file($_FILES['poster']['tmp_name'], $fullPosterPath)) {
-                    $posterPath = 'admin/uploads/' . basename($_FILES['poster']['name']); // Relative path for the database
+                    $posterPath = 'uploads/' . $filename; // Relative path for database
+                } else {
+                    echo "Error uploading file.";
                 }
             }
-        
+
             // Insert into database
             $stmt = $mysqli->prepare("INSERT INTO news (title, subtitle, description, poster) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $title, $subtitle, $description, $posterPath);
-            $stmt->execute();
-            $stmt->close();
+            if ($stmt) {
+                $stmt->bind_param("ssss", $title, $subtitle, $description, $posterPath);
+                $stmt->execute();
+                $stmt->close();
+            }
         } elseif ($action === 'delete' && isset($_POST['id'])) {
             // Delete news
             $id = $_POST['id'];
             $stmt = $mysqli->prepare("DELETE FROM news WHERE id = ?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->close();
+            if ($stmt) {
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+                $stmt->close();
+            }
         } elseif ($action === 'edit' && isset($_POST['id'])) {
             // Edit news
             $id = $_POST['id'];
@@ -53,20 +60,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Handle uploaded poster
             if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-                $posterPath = 'admin/uploads/' . basename($_FILES['poster']['name']);
-                move_uploaded_file($_FILES['poster']['tmp_name'], $posterPath);
+                $uploadDir = __DIR__ . '/uploads/';
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+                $filename = basename($_FILES['poster']['name']);
+                $fullPosterPath = $uploadDir . $filename;
+                if (move_uploaded_file($_FILES['poster']['tmp_name'], $fullPosterPath)) {
+                    $posterPath = 'uploads/' . $filename;
+                }
             }
 
-            // Update in database
+            // Update database
             if (!empty($posterPath)) {
                 $stmt = $mysqli->prepare("UPDATE news SET title = ?, subtitle = ?, description = ?, poster = ? WHERE id = ?");
-                $stmt->bind_param("ssssi", $title, $subtitle, $description, $posterPath, $id);
+                if ($stmt) {
+                    $stmt->bind_param("ssssi", $title, $subtitle, $description, $posterPath, $id);
+                    $stmt->execute();
+                    $stmt->close();
+                }
             } else {
                 $stmt = $mysqli->prepare("UPDATE news SET title = ?, subtitle = ?, description = ? WHERE id = ?");
-                $stmt->bind_param("sssi", $title, $subtitle, $description, $id);
+                if ($stmt) {
+                    $stmt->bind_param("sssi", $title, $subtitle, $description, $id);
+                    $stmt->execute();
+                    $stmt->close();
+                }
             }
-            $stmt->execute();
-            $stmt->close();
         }
     }
 }
@@ -87,7 +107,6 @@ if ($result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <title>Buzz & Collective - News</title>
-    <link rel="icon" type="image/x-icon" href="design/image/buzznCollectives.jpg">
     <link rel="stylesheet" href="Designs/news.css?=901">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -123,7 +142,6 @@ if ($result) {
             </nav>
     </aside>
 
-
     <div class="news-content">
         <div class="news-header">
             <h1>NEWS</h1>
@@ -134,11 +152,11 @@ if ($result) {
             <?php if (!empty($news)): ?>
                 <?php foreach ($news as $item): ?>
                     <div class="news-item">
-                    <?php if (!empty($item['poster']) && file_exists(__DIR__ . '/uploads/' . basename($item['poster']))): ?>
-                        <img src="/uploads/<?= htmlspecialchars(basename($item['poster'])) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
-                    <?php else: ?>
-                        <img src="/images/default-placeholder.png" alt="Default Image">
-                    <?php endif; ?>
+                        <?php if (!empty($item['poster']) && file_exists(__DIR__ . '/' . $item['poster'])): ?>
+                            <img src="/<?= htmlspecialchars($item['poster']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                        <?php else: ?>
+                            <img src="/images/default-placeholder.png" alt="Default Image">
+                        <?php endif; ?>
 
                         <h2><?= htmlspecialchars($item['title']) ?></h2>
                         <h4><?= htmlspecialchars($item['subtitle']) ?></h4>
@@ -180,8 +198,50 @@ if ($result) {
         </div>
     </div>
         
-    <script src="/news.js">
+    <script>
+        // Menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
 
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
+
+        // Handle Add News button and form visibility
+        document.getElementById('addButton').addEventListener('click', () => {
+            document.getElementById('newsForm').style.display = 'block';
+            document.getElementById('newsAction').value = 'add';
+            document.getElementById('newsId').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('subtitle').value = '';
+            document.getElementById('description').value = '';
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', () => {
+            document.getElementById('newsForm').style.display = 'none';
+        });
+
+        // Handle Edit functionality
+        function editNews(newsItem) {
+            const item = JSON.parse(newsItem);
+            document.getElementById('newsForm').style.display = 'block';
+            document.getElementById('newsAction').value = 'edit';
+            document.getElementById('newsId').value = item.id;
+            document.getElementById('title').value = item.title;
+            document.getElementById('subtitle').value = item.subtitle;
+            document.getElementById('description').value = item.description;
+        }
     </script>
 </body>
 </html>
