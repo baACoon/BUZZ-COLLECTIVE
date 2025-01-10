@@ -155,3 +155,70 @@ document.getElementById('newsForm').style.display = 'none';
 document.querySelector('.news').classList.remove('vertical'); // Restore image layout
 });
 });
+
+        // menu icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            // Add click event to the menu icon
+            menuIcon.addEventListener('click', function() {
+                sidebar.classList.toggle('open'); // Toggle the 'open' class on the sidebar
+                closeSidebar.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; // Show/hide close button
+            });
+
+            // Add click event to the close button
+            closeSidebar.addEventListener('click', function() {
+                sidebar.classList.remove('open'); // Remove the 'open' class on the sidebar
+                closeSidebar.style.display = 'none'; // Hide close button
+            });
+        });
+        // Handle Add News button and form visibility
+        document.getElementById('addButton').addEventListener('click', () => {
+            document.getElementById('newsForm').style.display = 'block';
+            document.getElementById('newsAction').value = 'add';
+            document.getElementById('newsId').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('subtitle').value = '';
+            document.getElementById('description').value = '';
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', () => {
+            document.getElementById('newsForm').style.display = 'none';
+        });
+
+        // Delete news
+        function deleteNews(id) {
+            if (confirm('Are you sure you want to delete this news item?')) {
+                const form = document.createElement('form');
+                form.method = 'post';
+                form.action = 'news.php';
+
+                const actionInput = document.createElement('input');
+                actionInput.type = 'hidden';
+                actionInput.name = 'action';
+                actionInput.value = 'delete';
+
+                const idInput = document.createElement('input');
+                idInput.type = 'hidden';
+                idInput.name = 'id';
+                idInput.value = id;
+
+                form.appendChild(actionInput);
+                form.appendChild(idInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        // Handle Edit functionality
+        function editNews(newsItem) {
+            const item = JSON.parse(newsItem);
+            document.getElementById('newsForm').style.display = 'block';
+            document.getElementById('newsAction').value = 'edit';
+            document.getElementById('newsId').value = item.id;
+            document.getElementById('title').value = item.title;
+            document.getElementById('subtitle').value = item.subtitle;
+            document.getElementById('description').value = item.description;
+        }
